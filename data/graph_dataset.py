@@ -411,3 +411,5 @@ if __name__ == "__main__":
     print("加载是否成功:", sample['success'])
     print("特征 shape:", sample['features'].shape)
     print("特征内容:", sample['features'])
+from igraph_features import topo_features_igraph as _tfi
+GraphDataset._extract_topological_and_edge_features = lambda self, pi, g: _tfi(pi, g)

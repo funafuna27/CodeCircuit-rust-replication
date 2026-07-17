@@ -9,8 +9,8 @@ from graph_dataset import GraphDataset
 # METADATA_PATH = "/home/kaiyu/CodeCircuit/data/cpp_graph/graph_metadata.jsonl"
 # OUTPUT_PATH = "gemma_mbpp_cpp_features.jsonl"
 
-METADATA_PATH = "/home/kaiyu/CodeCircuit/data/java_graph/graph_metadata.jsonl"
-OUTPUT_PATH = "gemma_mbpp_java_features.jsonl"
+METADATA_PATH = "/content/drive/MyDrive/codecircuit/python_graph/graph_metadata.jsonl"
+OUTPUT_PATH = "/content/drive/MyDrive/codecircuit/gemma_mbpp_features.jsonl"
 
 
 def load_metadata(jsonl_path: str):
@@ -37,7 +37,7 @@ def extract_and_save_features():
     dataset = GraphDataset(
         graph_paths=metadata,
         feature_type='advanced_graph_features',
-        use_cpu=False
+        use_cpu=True
     )
 
     print("Start extracting features...")
