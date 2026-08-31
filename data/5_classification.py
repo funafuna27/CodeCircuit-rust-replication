@@ -14,7 +14,7 @@ from sklearn.metrics import (
 features = []
 labels = []
 
-with open("/home/kaiyu/CodeCircuit/data/gemma_mbpp_cpp_features.jsonl", "r") as f:
+with open("/content/drive/MyDrive/codecircuit/gemma_mbpp_features.jsonl", "r") as f:
     for line in f:
         data = json.loads(line)
         features.append(data["feature"])
