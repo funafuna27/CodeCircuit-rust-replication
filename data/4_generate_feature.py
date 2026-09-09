@@ -10,8 +10,11 @@ from graph_dataset import GraphDataset
 # METADATA_PATH = "/home/kaiyu/CodeCircuit/data/cpp_graph/graph_metadata.jsonl"
 # OUTPUT_PATH = "gemma_mbpp_cpp_features.jsonl"
 
-METADATA_PATH = "python_graph/graph_metadata.jsonl"
-OUTPUT_PATH = "gemma_mbpp_features.jsonl"
+# Same GRAPH_DIR / FEATURES_FILE knob as script 3 and chunk_cleanup, so a
+# language switch cannot leave the three stages pointing at different places.
+GRAPH_DIR = os.environ.get("GRAPH_DIR", "python_graph")
+METADATA_PATH = f"{GRAPH_DIR}/graph_metadata.jsonl"
+OUTPUT_PATH = os.environ.get("FEATURES_FILE", "gemma_mbpp_features.jsonl")
 
 
 def load_metadata(jsonl_path: str):

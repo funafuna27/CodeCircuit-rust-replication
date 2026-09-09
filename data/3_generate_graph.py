@@ -37,8 +37,13 @@ CHUNK_SIZE = int(os.environ.get('CHUNK_SIZE', 200))
 # DATA_FILE_PATH = 'gemma_mbpp_cpp_incremental.jsonl'
 # OUTPUT_DIR = Path('cpp_graph')
 
-DATA_FILE_PATH = 'gemma_mbpp_incremental.jsonl'
-OUTPUT_DIR = Path('python_graph')
+# GRAPH_DIR / DATA_FILE / FEATURES_FILE are the single knob for which language
+# is being processed; run_chunked.sh exports them to scripts 3, 4 and cleanup
+# together. Editing only some of the per-language blocks below used to leave
+# cleanup pointing at another language's graphs, freeing nothing while the run
+# filled the disk -- the exact failure chunking exists to prevent.
+DATA_FILE_PATH = os.environ.get('DATA_FILE', 'gemma_mbpp_incremental.jsonl')
+OUTPUT_DIR = Path(os.environ.get('GRAPH_DIR', 'python_graph'))
 
 OUTPUT_DIR.mkdir(exist_ok=True)
 print(f"Graph files will be saved in: {OUTPUT_DIR.resolve()}")

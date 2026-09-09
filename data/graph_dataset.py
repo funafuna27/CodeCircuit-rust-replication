@@ -63,7 +63,12 @@ class GraphDataset(Dataset):
 
         try:
             # Load graph on CPU or GPU based on flag
-            if self.use_cpu:
+            if self.feature_type == 'advanced_graph_features':
+                # This path goes through Graph.from_pt, which re-reads the file
+                # itself. Loading it here as well held a second ~400MB copy for
+                # nothing and doubled the read volume of a 1420-graph run.
+                graph = None
+            elif self.use_cpu:
                 graph = torch.load(graph_path, weights_only=False, map_location='cpu')
             else:
                 graph = torch.load(graph_path, weights_only=False)
