@@ -11,17 +11,20 @@ from sklearn.metrics import (
     classification_report
 )
 
-features = []
-labels = []
-
-with open("/content/drive/MyDrive/codecircuit/gemma_mbpp_features.jsonl", "r") as f:
+rows = []
+with open("gemma_mbpp_features.jsonl", "r") as f:
     for line in f:
-        data = json.loads(line)
-        features.append(data["feature"])
-        labels.append(data["step_labels"])
+        if line.strip():
+            rows.append(json.loads(line))
 
-X = np.array(features)
-y = np.array(labels)
+# The split below is positional, and the chunked pipeline appends rows in the
+# order chunks happen to finish -- a graph that failed once is regenerated at
+# the top of a later chunk, landing far from its neighbours. Restore the source
+# dataset's order so the split does not depend on generation history.
+rows.sort(key=lambda r: (r.get("row_index", -1), r["expr_id"], r["step_number"]))
+
+X = np.array([r["feature"] for r in rows])
+y = np.array([r["step_labels"] for r in rows])
 
 # X_train, X_test, y_train, y_test = train_test_split(
 #     X, y, test_size=0.2, random_state=42, stratify=y

@@ -11,21 +11,25 @@ from sklearn.model_selection import GroupShuffleSplit
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, average_precision_score
 
-FEATURES_PATH = "/content/drive/MyDrive/codecircuit/gemma_mbpp_features.jsonl"
+FEATURES_PATH = "gemma_mbpp_features.jsonl"
 N_SEEDS = 20
 TEST_SIZE = 0.3
 
-features, labels, groups = [], [], []
+rows = []
 with open(FEATURES_PATH, "r") as f:
     for line in f:
-        data = json.loads(line)
-        features.append(data["feature"])
-        labels.append(data["step_labels"])
-        groups.append(data["expr_id"])
+        if line.strip():
+            rows.append(json.loads(line))
 
-X = np.array(features)
-y = np.array(labels)
-g = np.array(groups)
+# GroupShuffleSplit does not care about order, but keeping both variants on the
+# same canonical ordering means any difference between them is the split, not
+# the row order.
+rows.sort(key=lambda r: (r.get("row_index", -1), r["expr_id"], r["step_number"]))
+
+X = np.array([r["feature"] for r in rows])
+y = np.array([r["step_labels"] for r in rows])
+g = np.array([r["expr_id"] for r in rows])
+groups = list(g)
 
 print(f"records={len(X)}  groups={len(set(groups))}  "
       f"labels={dict(zip(*np.unique(y, return_counts=True)))}")

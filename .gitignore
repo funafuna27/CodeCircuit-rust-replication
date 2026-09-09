@@ -7,3 +7,5 @@ data/rust_graph
 *.bak
 data/*.jsonl
 .cache
+__pycache__/
+*.pyc
