@@ -9,8 +9,8 @@ from graph_dataset import GraphDataset
 # METADATA_PATH = "/home/kaiyu/CodeCircuit/data/cpp_graph/graph_metadata.jsonl"
 # OUTPUT_PATH = "gemma_mbpp_cpp_features.jsonl"
 
-METADATA_PATH = "/content/drive/MyDrive/codecircuit/python_graph/graph_metadata.jsonl"
-OUTPUT_PATH = "/content/drive/MyDrive/codecircuit/gemma_mbpp_features.jsonl"
+METADATA_PATH = "python_graph/graph_metadata.jsonl"
+OUTPUT_PATH = "gemma_mbpp_features.jsonl"
 
 
 def load_metadata(jsonl_path: str):
@@ -28,11 +28,27 @@ def append_jsonl(path: str, record: dict):
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def load_done_keys(path: str) -> set:
+    """(expr_id, step_number) already present in the output, so re-running a
+    chunk after a crash appends nothing twice."""
+    done = set()
+    if Path(path).exists():
+        with open(path, "r") as f:
+            for line in f:
+                if line.strip():
+                    r = json.loads(line)
+                    done.add((r["expr_id"], r["step_number"]))
+    return done
+
+
 def extract_and_save_features():
     print("Loading metadata...")
     metadata = load_metadata(METADATA_PATH)
 
     print(f"Loaded {len(metadata)} graph entries.")
+
+    done = load_done_keys(OUTPUT_PATH)
+    print(f"Already extracted: {len(done)} (will be skipped)")
 
     dataset = GraphDataset(
         graph_paths=metadata,
@@ -43,8 +59,9 @@ def extract_and_save_features():
     print("Start extracting features...")
 
     for idx in tqdm(range(len(dataset))):
-        if idx ==0 or idx ==1:
+        if (metadata[idx]["expr_id"], metadata[idx]["step_number"]) in done:
             continue
+
         sample = dataset[idx]
 
         if not sample["success"]:
