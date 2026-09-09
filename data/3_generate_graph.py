@@ -25,6 +25,7 @@ MAX_FEATURE_NODES = 8192
 BATCH_SIZE = int(os.environ.get('BATCH_SIZE', 64))
 OFFLOAD = 'cpu'
 VERBOSE = False
+EMPTY_CACHE = os.environ.get('EMPTY_CACHE', '1') != '0'
 
 # Stop after this many NEW graphs so a full run fits on disk: a whole language
 # is ~1420 graphs x ~400MB (~500GB). Run 3 -> 4 -> chunk_cleanup.py in a loop;
@@ -147,6 +148,12 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             continue
 
         partial_path = graph_path.with_name(graph_name + PARTIAL_SUFFIX)
+        # Every prompt is a different shape and the card runs at ~96% VRAM, so
+        # blocks cached for the previous graph rarely fit the next one. Handing
+        # them back keeps the allocator from falling into cudaMalloc/cudaFree,
+        # which synchronises the device. Set EMPTY_CACHE=0 to compare.
+        if EMPTY_CACHE:
+            torch.cuda.empty_cache()
         t_start = time.time()
         try:
             graph = attribute(
@@ -165,18 +172,21 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             t_attr += t_mid - t_start
             t_save += time.time() - t_mid
         except Exception as exc:
-            # VRAM headroom is only ~4%, so an OOM on one prompt is plausible.
-            # The step counter is advanced either way: numbering must depend
-            # only on (i, task_id) or a later retry would rename every
-            # following graph of the same task.
+            # Stop the whole chunk, do not try the next prompt. attribute()
+            # reloads its offloaded modules in a finally block, but each
+            # reload_handle is a bare module.to('cuda'): once the CUDA context
+            # is unhappy the first one raises and the rest never run, leaving
+            # the transcoders stranded on the CPU. Every later prompt then dies
+            # with "indices should be either on cpu or on the same device".
+            # Observed for real: one allocator fault at graph 8 was followed by
+            # 1412 identical failures. A fresh process is the only reliable
+            # repair, so exit and let run_chunked.sh retry.
             print(f"\nFAILED {graph_name}: {type(exc).__name__}: {exc}")
             with open(FAILED_FILE_PATH, 'a', encoding='utf-8') as f:
                 f.write(f"{graph_name}\t{type(exc).__name__}\t{exc}\n")
             partial_path.unlink(missing_ok=True)
-            torch.cuda.empty_cache()
             n_failed += 1
-            task_step_counters[task_id] = current_step + 1
-            continue
+            break
 
         metadata = {
             'row_index': i,

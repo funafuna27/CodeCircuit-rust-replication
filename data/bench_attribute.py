@@ -48,7 +48,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--rows', type=int, nargs='+', default=[3],
                     help='row indices of gemma_mbpp_incremental.jsonl to time')
+    ap.add_argument('--batch-sizes', type=int, nargs='+', default=None,
+                    help='override the batch sizes to compare')
     args = ap.parse_args()
+
+    configs = ([(b, 'cpu') for b in args.batch_sizes]
+               if args.batch_sizes else CONFIGS)
 
     rows = [json.loads(l) for l in open(DATA_FILE_PATH, encoding='utf-8')]
     model = ReplacementModel.from_pretrained(
@@ -61,7 +66,7 @@ def main():
         print(f"\n===== row {idx}: {len(prompt)} chars, {n_tok} tokens, "
               f"baseline {BASELINE.get(idx, '?')}s =====", flush=True)
 
-        for batch_size, offload in CONFIGS:
+        for batch_size, offload in configs:
             torch.cuda.empty_cache()
             torch.cuda.reset_peak_memory_stats()
             tag = f"batch={batch_size:<3} offload={str(offload):<5}"
