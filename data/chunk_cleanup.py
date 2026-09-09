@@ -27,8 +27,9 @@ METADATA_PATH = GRAPH_DIR / 'graph_metadata.jsonl'
 LEDGER_PATH = GRAPH_DIR / 'done_graphs.txt'
 
 # Keep the .pt of the first N graphs on disk so there is always a sample to
-# debug feature extraction against without a regeneration run.
-KEEP_FIRST_N = 50
+# debug feature extraction against without a regeneration run. Set to 0 to
+# exercise the delete path on a short validation run.
+KEEP_FIRST_N = int(os.environ.get('KEEP_FIRST_N', 50))
 
 
 def load_jsonl(path: Path) -> list:

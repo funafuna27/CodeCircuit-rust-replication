@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import time
 import torch
 import json
 from circuit_tracer import ReplacementModel, attribute
@@ -31,17 +32,17 @@ VERBOSE = False
 CHUNK_SIZE = int(os.environ.get('CHUNK_SIZE', 200))
 
 # --- Input/Output Paths ---
-# DATA_FILE_PATH = 'gemma_mbpp_incremental.jsonl'
-# OUTPUT_DIR = Path('graph')
-
-# DATA_FILE_PATH = 'gemma_mbpp_cpp_incremental.jsonl'
-# OUTPUT_DIR = Path('cpp_graph')
-
-# GRAPH_DIR / DATA_FILE / FEATURES_FILE are the single knob for which language
-# is being processed; run_chunked.sh exports them to scripts 3, 4 and cleanup
-# together. Editing only some of the per-language blocks below used to leave
-# cleanup pointing at another language's graphs, freeing nothing while the run
-# filled the disk -- the exact failure chunking exists to prevent.
+# Set by environment, not by editing: scripts 3, 4 and chunk_cleanup all read
+# GRAPH_DIR / DATA_FILE / FEATURES_FILE, and run_chunked.sh exports them
+# together. Each script used to carry its own commented-out per-language block,
+# and editing only some of them left cleanup pointing at another language's
+# graphs -- freeing nothing while the run filled the disk, the exact failure
+# chunking exists to prevent.
+#
+#   java: DATA_FILE=gemma_mbpp_java_incremental.jsonl GRAPH_DIR=java_graph \
+#         FEATURES_FILE=gemma_mbpp_java_features.jsonl
+#   cpp:  DATA_FILE=gemma_mbpp_cpp_incremental.jsonl  GRAPH_DIR=cpp_graph  \
+#         FEATURES_FILE=gemma_mbpp_cpp_features.jsonl
 DATA_FILE_PATH = os.environ.get('DATA_FILE', 'gemma_mbpp_incremental.jsonl')
 OUTPUT_DIR = Path(os.environ.get('GRAPH_DIR', 'python_graph'))
 
@@ -93,6 +94,9 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
     ledger = load_ledger()
     n_new = 0
     n_failed = 0
+    # Serializing ~400MB per graph is a real share of the run, and the graphs
+    # are discarded after featurization -- worth knowing what it costs.
+    t_attr = t_save = 0.0
 
     # Leftovers from a kill during a previous save. They are always incomplete,
     # and leaving them would slowly fill a disk the study is already tight on.
@@ -143,6 +147,7 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             continue
 
         partial_path = graph_path.with_name(graph_name + PARTIAL_SUFFIX)
+        t_start = time.time()
         try:
             graph = attribute(
                 prompt=prompt,
@@ -154,8 +159,11 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
                 offload=OFFLOAD,
                 verbose=VERBOSE
             )
+            t_mid = time.time()
             graph.to_pt(partial_path)
             os.replace(partial_path, graph_path)
+            t_attr += t_mid - t_start
+            t_save += time.time() - t_mid
         except Exception as exc:
             # VRAM headroom is only ~4%, so an OOM on one prompt is plausible.
             # The step counter is advanced either way: numbering must depend
@@ -185,12 +193,11 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
         n_new += 1
         task_step_counters[task_id] = current_step + 1
 
-    return n_new, n_failed
+    return n_new, n_failed, t_attr, t_save
 
 
 if __name__ == "__main__":
     import sys
-    import time
 
     # Clear metadata file if already exists
     open(METADATA_FILE_PATH, 'w').close()
@@ -199,12 +206,16 @@ if __name__ == "__main__":
     print(f"Already done in earlier chunks: {len(load_ledger())} / {len(data_list)}")
 
     _t0 = time.time()
-    n_new, n_failed = generate_and_save_graphs(data_list, OUTPUT_DIR, model)
+    n_new, n_failed, t_attr, t_save = generate_and_save_graphs(data_list, OUTPUT_DIR, model)
     _el = time.time() - _t0
 
     if n_new:
-        print(f"\n[MEASURE] BATCH_SIZE={BATCH_SIZE} generation only: {_el:.1f}s "
-              f"({_el / n_new:.1f}s/graph over {n_new} graphs)")
+        print(f"\n[MEASURE] BATCH_SIZE={BATCH_SIZE}: {_el:.1f}s total, "
+              f"{_el / n_new:.1f}s/graph over {n_new} graphs")
+        print(f"[MEASURE]   attribute: {t_attr / n_new:6.1f}s/graph "
+              f"({t_attr / _el * 100:4.1f}%)")
+        print(f"[MEASURE]   to_pt    : {t_save / n_new:6.1f}s/graph "
+              f"({t_save / _el * 100:4.1f}%)")
 
     print("\n--- Process Complete ---")
     print(f"Metadata appended to: {METADATA_FILE_PATH.resolve()}")
