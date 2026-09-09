@@ -1,5 +1,13 @@
-from pathlib import Path
 import os
+
+# Must precede the torch import: the allocator reads this when CUDA starts.
+# The card sits at ~96% VRAM with a different prompt shape every graph, and
+# letting the allocator collect early rather than fragment cut a three-graph
+# chunk from 1389s to 764s. expandable_segments is faster still but trips an
+# allocator INTERNAL ASSERT here, taking the rest of the run with it.
+os.environ.setdefault('PYTORCH_CUDA_ALLOC_CONF', 'garbage_collection_threshold:0.8')
+
+from pathlib import Path
 import time
 import torch
 import json
