@@ -2,5 +2,8 @@ demos
 data/cpp_graph
 data/graph
 data/java_graph
+data/python_graph
+data/rust_graph
+*.bak
 data/*.jsonl
 .cache

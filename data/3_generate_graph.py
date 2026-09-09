@@ -13,8 +13,8 @@ model = ReplacementModel.from_pretrained(MODEL_NAME, TRANSCODER_NAME, dtype=torc
 MAX_N_LOGITS = 10
 DESIRED_LOGIT_PROB = 0.95
 MAX_FEATURE_NODES = 8192
-BATCH_SIZE = 64
-OFFLOAD = None
+BATCH_SIZE = 16
+OFFLOAD = 'cpu'
 VERBOSE = False
 
 # --- Input/Output Paths ---
@@ -24,8 +24,8 @@ VERBOSE = False
 # DATA_FILE_PATH = 'gemma_mbpp_cpp_incremental.jsonl'
 # OUTPUT_DIR = Path('cpp_graph')
 
-DATA_FILE_PATH = 'gemma_mbpp_java_incremental.jsonl'
-OUTPUT_DIR = Path('java_graph')
+DATA_FILE_PATH = 'gemma_mbpp_incremental.jsonl'
+OUTPUT_DIR = Path('python_graph')
 
 OUTPUT_DIR.mkdir(exist_ok=True)
 print(f"Graph files will be saved in: {OUTPUT_DIR.resolve()}")
@@ -111,7 +111,11 @@ if __name__ == "__main__":
     open(METADATA_FILE_PATH, 'w').close()
 
     data_list = load_data(DATA_FILE_PATH)
+    import time; _t0 = time.time()
     generate_and_save_graphs(data_list, OUTPUT_DIR, model)
+    _el = time.time() - _t0
+    print(f"\n[MEASURE] BATCH_SIZE={BATCH_SIZE} generation only: {_el:.1f}s "
+          f"({_el/len(data_list):.1f}s/graph)")
 
     print("\n--- Process Complete ---")
     print(f"Metadata appended to: {METADATA_FILE_PATH.resolve()}")
