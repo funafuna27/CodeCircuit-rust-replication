@@ -29,7 +29,21 @@ LEDGER_PATH = GRAPH_DIR / 'done_graphs.txt'
 # Keep the .pt of the first N graphs on disk so there is always a sample to
 # debug feature extraction against without a regeneration run. Set to 0 to
 # exercise the delete path on a short validation run.
-KEEP_FIRST_N = int(os.environ.get('KEEP_FIRST_N', 50))
+# Parsed defensively: `export KEEP_FIRST_N=$UNSET` yields an empty string, and
+# a bare int() would abort at import, after a chunk has already cost ~14
+# GPU-hours, with a traceback that does not name the variable.
+def _int_env(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None or not raw.strip():
+        return default
+    try:
+        return int(raw.strip())
+    except ValueError:
+        print(f"WARNING: {name}={raw!r} is not an integer; using {default}")
+        return default
+
+
+KEEP_FIRST_N = _int_env('KEEP_FIRST_N', 50)
 
 
 def load_jsonl(path: Path) -> list:
@@ -50,16 +64,26 @@ def load_jsonl(path: Path) -> list:
                 print(f"WARNING: ignoring truncated final line of {path}")
                 break
             raise
-        if not line.endswith(b"\n") and n == len(lines):
-            print(f"WARNING: ignoring unterminated final line of {path}")
-            break
+        # A final line that parses is a COMPLETE record that merely lost its
+        # newline. Dropping it here would report an intact feature row as
+        # missing, and the caller treats "missing" as a reason to refuse to
+        # free the graph and to fail the run.
         out.append(rec)
     return out
 
 
 def graph_index(name: str) -> int:
-    """graph_<i>_<task>_<step>.pt -> i"""
-    return int(name.split("_")[1])
+    """graph_<i>_<task>_<step>.pt -> i
+
+    Returns -1 for anything that does not parse. Since every caller compares
+    against KEEP_FIRST_N, that puts an unrecognised name on the keep side: a
+    file this code cannot identify is never deleted. It is called on whatever
+    .pt files are in the directory, not only on names the pipeline produced.
+    """
+    parts = name.split("_")
+    if len(parts) < 2 or not parts[1].isdigit():
+        return -1
+    return int(parts[1])
 
 
 def append_ledger(names: list):
@@ -91,13 +115,29 @@ def main():
     print(f"featurized     : {len(featurized)} rows")
     print(f"ledger (before): {len(ledger)}")
 
-    verified, unverified = [], []
+    verified, unverified, regenerating = [], [], []
     for entry in metadata:
         name = Path(entry["graph_path"]).name
         if (entry["expr_id"], entry["step_number"]) in featurized:
             verified.append(name)
+        elif not (GRAPH_DIR / name).exists():
+            # Script 4 deletes a graph it cannot load, so it will simply be
+            # regenerated. Nothing is stranded and this is not an error.
+            regenerating.append(name)
         else:
             unverified.append(name)
+
+    # Orphans from an interrupted deletion loop. A ledgered name is skipped by
+    # script 3 and never re-enters a chunk's metadata, so nothing else would
+    # ever look at these files again -- an interrupted cleanup would otherwise
+    # leak tens of GB for the rest of the run. Names belonging to the current
+    # chunk are excluded: the loop below already owns those, and sweeping them
+    # here too would stat a file that loop has just unlinked.
+    this_chunk = set(verified) | set(unverified) | set(regenerating)
+    orphans = [pt for pt in sorted(GRAPH_DIR.glob('*.pt'))
+               if pt.name in ledger
+               and pt.name not in this_chunk
+               and graph_index(pt.name) >= KEEP_FIRST_N]
 
     # Ledger first, then delete. A crash between the two costs nothing: the
     # graphs are recorded as done and their features are already durable.
@@ -117,10 +157,27 @@ def main():
         if not args.dry_run:
             pt.unlink()
 
+    reclaimed = 0
+    swept = 0
+    for pt in orphans:
+        try:
+            reclaimed += pt.stat().st_size
+            if not args.dry_run:
+                pt.unlink()
+            swept += 1
+        except FileNotFoundError:
+            # Raced with something else that removed it; nothing to reclaim.
+            pass
+
     verb = "would free" if args.dry_run else "freed"
     print(f"\n{verb}       : {freed / 1024**3:.1f} GB ({len(verified)} verified)")
     print(f"kept (first {KEEP_FIRST_N}): {kept / 1024**3:.1f} GB")
     print(f"already gone   : {missing}")
+    if swept:
+        print(f"orphans swept  : {swept} files, {reclaimed / 1024**3:.1f} GB "
+              f"(ledgered but never deleted)")
+    if regenerating:
+        print(f"to regenerate  : {len(regenerating)} (deleted by script 4 as unloadable)")
     print(f"ledger (after) : {len(ledger | set(verified))}")
 
     if unverified:

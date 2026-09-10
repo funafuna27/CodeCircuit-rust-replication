@@ -20,10 +20,15 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 
-# Must exceed MAX_GRAPH_ATTEMPTS in 3_generate_graph.py (default 3). A graph
-# that keeps failing burns one attempt per restart; the extra pass is the one
-# where script 3 gives up on it and walks past, so the chunk can finish.
+# Consecutive script-3 failures that produced NO new graph. Resetting on
+# progress is what makes this a stall detector rather than a failure quota:
+# escaping one deterministic bad row already costs MAX_GRAPH_ATTEMPTS passes
+# that generate nothing, so a plain per-chunk budget would leave zero tolerance
+# for an ordinary transient fault during the ~11 GPU-hours that follow.
 MAX_RETRIES="${MAX_RETRIES:-4}"
+# Hard stop on total passes per chunk, so a cycle that keeps making a little
+# progress and then dying still terminates instead of looping for days.
+MAX_PASSES="${MAX_PASSES:-20}"
 GRAPH_DIR="${GRAPH_DIR:-python_graph}"
 FEATURES_FILE="${FEATURES_FILE:-gemma_mbpp_features.jsonl}"
 LEDGER="$GRAPH_DIR/done_graphs.txt"
@@ -35,29 +40,51 @@ export GRAPH_DIR FEATURES_FILE
 mkdir -p "$BACKUP_DIR"
 
 ledger_count() { [ -f "$LEDGER" ] && wc -l < "$LEDGER" || echo 0; }
+# The ledger only moves after cleanup, so it cannot measure progress inside the
+# retry loop. Generated graphs can.
+graph_count() { ls "$GRAPH_DIR"/*.pt 2>/dev/null | wc -l; }
 
 while true; do
     before=$(ledger_count)
     echo "=== $(date '+%F %T') generating (ledger=$before, CHUNK_SIZE=${CHUNK_SIZE:-default}) ==="
 
     attempt=1
+    passes=0
     exhausted=0
     while true; do
+        graphs_before=$(graph_count)
         python 3_generate_graph.py
         rc=$?
-        if [ $rc -eq 0 ] || [ $rc -eq 3 ]; then
+        passes=$((passes + 1))
+        # 0 = generated, 3 = nothing left, 4 = nothing left but some graphs
+        # were permanently skipped.
+        if [ $rc -eq 0 ] || [ $rc -eq 3 ] || [ $rc -eq 4 ]; then
             break
         fi
-        if [ $attempt -ge $MAX_RETRIES ]; then
-            echo "!!! script 3 exited $rc on $MAX_RETRIES attempts."
-            echo "!!! see $GRAPH_DIR/failed_graphs.tsv"
+
+        graphs_after=$(graph_count)
+        if [ "$graphs_after" -gt "$graphs_before" ]; then
+            # This pass produced graphs before dying, so the failure is not a
+            # stall. Forgive it and keep the budget for passes that achieve
+            # nothing at all.
+            echo "--- script 3 exit $rc after +$((graphs_after - graphs_before)) graphs; retrying ---"
+            attempt=1
+        else
+            if [ $attempt -ge $MAX_RETRIES ]; then
+                echo "!!! script 3 exited $rc on $MAX_RETRIES consecutive passes with no new graph."
+                echo "!!! see $GRAPH_DIR/failed_graphs.tsv"
+                exhausted=1
+                break
+            fi
+            echo "--- script 3 exit $rc, no new graph, retry $attempt/$MAX_RETRIES ---"
+            attempt=$((attempt + 1))
+        fi
+
+        if [ $passes -ge $MAX_PASSES ]; then
+            echo "!!! $passes script-3 passes in one chunk without finishing it."
             exhausted=1
             break
         fi
-        # Whatever finished before the failure is on disk, so a retry resumes
-        # rather than restarting the chunk.
-        echo "--- script 3 exit $rc, retry $attempt/$MAX_RETRIES ---"
-        attempt=$((attempt + 1))
         sleep 30
     done
 
@@ -71,14 +98,26 @@ while true; do
     echo "=== $(date '+%F %T') freeing chunk ==="
     python chunk_cleanup.py || { echo "!!! cleanup failed"; exit 1; }
 
-    cp "$FEATURES_FILE" "$BACKUP_DIR/" 2>/dev/null \
-        && echo "backed up $FEATURES_FILE -> $BACKUP_DIR"
+    # This file is the only irreplaceable output, so a failed copy has to be
+    # visible. Chained with && and stderr discarded, a broken drvfs mount or a
+    # full C: would have shown up as nothing at all in a four-day log.
+    if cp "$FEATURES_FILE" "$BACKUP_DIR/"; then
+        echo "backed up $FEATURES_FILE -> $BACKUP_DIR"
+    else
+        echo "!!! BACKUP FAILED: could not copy $FEATURES_FILE to $BACKUP_DIR"
+    fi
     df -h . | tail -1
 
     after=$(ledger_count)
     if [ $exhausted -eq 1 ]; then
         echo "!!! stopping after banking this chunk (ledger $before -> $after)."
         exit 1
+    fi
+    if [ $rc -eq 4 ]; then
+        echo "=== $(date '+%F %T') FINISHED BUT INCOMPLETE (ledger=$after) ==="
+        echo "!!! some graphs were permanently skipped; see $GRAPH_DIR/failed_graphs.tsv"
+        echo "!!! the feature dataset is short -- do not treat this as a clean run"
+        exit 4
     fi
     if [ $rc -eq 3 ]; then
         echo "=== $(date '+%F %T') ALL CHUNKS COMPLETE (ledger=$after) ==="

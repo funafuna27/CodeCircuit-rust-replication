@@ -15,6 +15,9 @@ from graph_dataset import GraphDataset
 GRAPH_DIR = os.environ.get("GRAPH_DIR", "python_graph")
 METADATA_PATH = f"{GRAPH_DIR}/graph_metadata.jsonl"
 OUTPUT_PATH = os.environ.get("FEATURES_FILE", "gemma_mbpp_features.jsonl")
+# Shared with script 3: an unloadable graph is recorded here so the same
+# give-up counter bounds it.
+FAILED_PATH = f"{GRAPH_DIR}/failed_graphs.tsv"
 
 
 def load_metadata(jsonl_path: str):
@@ -112,7 +115,21 @@ def extract_and_save_features():
         sample = dataset[idx]
 
         if not sample["success"]:
-            print(f" Failed to load graph for expr_id={sample['expr_id']} step={sample['step_number']}")
+            # An unloadable .pt is unusable and nothing else will ever repair
+            # it: script 3 resumes on bare exists(), so leaving the file in
+            # place makes this chunk fail identically forever. Delete it so the
+            # graph is regenerated, and record the attempt in the same ledger
+            # script 3 uses to give up, so a prompt that keeps producing bad
+            # graphs is bounded instead of looping.
+            path = Path(metadata[idx]["graph_path"])
+            print(f" Failed to load {path.name} "
+                  f"(expr_id={sample['expr_id']} step={sample['step_number']}) "
+                  f"-- deleting so it is regenerated")
+            path.unlink(missing_ok=True)
+            with open(FAILED_PATH, "a", encoding="utf-8") as fh:
+                fh.write(f"{path.name}\tUnloadableGraph\tscript 4 could not load it\n")
+                fh.flush()
+                os.fsync(fh.fileno())
             n_failed += 1
             continue
 
@@ -149,11 +166,12 @@ def extract_and_save_features():
     print(f"rows written this chunk: {n_written}, failed to load: {n_failed}")
 
     if n_failed:
-        # Cleanup will refuse to free these graphs and script 3 will re-admit
-        # them to every later chunk, so the driver would spin without progress.
-        print(f"{n_failed} graph(s) could not be loaded -- stopping so they can "
-              f"be inspected rather than silently dropped.")
-        raise SystemExit(1)
+        # Not fatal any more: the bad files are gone, so the next chunk will
+        # regenerate them and the give-up counter bounds how often that repeats.
+        # Exiting here instead would stop the driver before cleanup and strand
+        # the whole chunk.
+        print(f"{n_failed} graph(s) were unloadable, deleted, and will be "
+              f"regenerated; see {FAILED_PATH}")
 
 
 if __name__ == "__main__":

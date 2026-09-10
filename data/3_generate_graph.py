@@ -123,7 +123,8 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
     task_step_counters = {}
     ledger = load_ledger()
     failure_counts = load_failure_counts()
-    n_new = 0
+    n_new = 0        # graphs entering this chunk's metadata, generated or not
+    n_generated = 0  # graphs this process actually computed
     n_failed = 0
     given_up = []
     # Serializing ~400MB per graph is a real share of the run, and the graphs
@@ -209,7 +210,23 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             )
             t_mid = time.time()
             graph.to_pt(partial_path)
+            # os.replace is atomic for the NAME, not for the ~400MB behind it.
+            # Without these fsyncs a host-level crash (a Windows Update reboot
+            # takes the whole WSL2 VM down) can leave the final name present
+            # with its data still only a page-cache promise -- and the resume
+            # check is bare exists(), so that torn file would be accepted
+            # forever and script 4 would fail on it every single chunk.
+            fd = os.open(partial_path, os.O_RDONLY)
+            try:
+                os.fsync(fd)
+            finally:
+                os.close(fd)
             os.replace(partial_path, graph_path)
+            dir_fd = os.open(output_dir, os.O_RDONLY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
             t_attr += t_mid - t_start
             t_save += time.time() - t_mid
         except Exception as exc:
@@ -248,6 +265,7 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
 
         append_metadata(metadata)
         n_new += 1
+        n_generated += 1
         task_step_counters[task_id] = current_step + 1
 
     if given_up:
@@ -256,7 +274,7 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
         for name in given_up:
             print(f"  {name}")
 
-    return n_new, n_failed, t_attr, t_save, given_up
+    return n_new, n_generated, n_failed, t_attr, t_save, given_up
 
 
 if __name__ == "__main__":
@@ -266,20 +284,27 @@ if __name__ == "__main__":
     open(METADATA_FILE_PATH, 'w').close()
 
     data_list = load_data(DATA_FILE_PATH)
-    print(f"Already done in earlier chunks: {len(load_ledger())} / {len(data_list)}")
+    # Rows over the length filter are never generated, so counting against the
+    # raw row count would make a finished run read as 27 graphs short -- which
+    # is exactly how a genuinely lossy run looks.
+    n_target = sum(1 for r in data_list if len(r['text']) <= 550)
+    print(f"Already done in earlier chunks: {len(load_ledger())} / {n_target} "
+          f"({len(data_list) - n_target} rows are over the length filter)")
 
     _t0 = time.time()
-    n_new, n_failed, t_attr, t_save, given_up = generate_and_save_graphs(
+    n_new, n_generated, n_failed, t_attr, t_save, given_up = generate_and_save_graphs(
         data_list, OUTPUT_DIR, model)
     _el = time.time() - _t0
 
-    if n_new:
+    # Divide by what this process actually computed. n_new also counts graphs
+    # that were already on disk from an interrupted pass, and those did no
+    # work -- averaging them in understates the per-graph cost, which is the
+    # number BATCH_SIZE was chosen on.
+    if n_generated:
         print(f"\n[MEASURE] BATCH_SIZE={BATCH_SIZE}: {_el:.1f}s total, "
-              f"{_el / n_new:.1f}s/graph over {n_new} graphs")
-        print(f"[MEASURE]   attribute: {t_attr / n_new:6.1f}s/graph "
-              f"({t_attr / _el * 100:4.1f}%)")
-        print(f"[MEASURE]   to_pt    : {t_save / n_new:6.1f}s/graph "
-              f"({t_save / _el * 100:4.1f}%)")
+              f"{n_generated} generated ({n_new - n_generated} already on disk)")
+        print(f"[MEASURE]   attribute: {t_attr / n_generated:6.1f}s/graph")
+        print(f"[MEASURE]   to_pt    : {t_save / n_generated:6.1f}s/graph")
 
     print("\n--- Process Complete ---")
     print(f"Metadata appended to: {METADATA_FILE_PATH.resolve()}")
@@ -295,5 +320,13 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if n_new == 0:
+        if given_up:
+            # Exit 3 would have the driver print ALL CHUNKS COMPLETE and finish
+            # with status 0 over a dataset that is quietly short, which is the
+            # one outcome this pipeline must never produce. A separate code
+            # lets the driver finish the work and still report the loss.
+            print(f"\nNothing left to generate, but {len(given_up)} graph(s) were "
+                  f"permanently skipped. The dataset is INCOMPLETE.")
+            sys.exit(4)
         print("Nothing left to generate.")
         sys.exit(3)
