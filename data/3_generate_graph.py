@@ -67,9 +67,17 @@ METADATA_FILE_PATH = OUTPUT_DIR / 'graph_metadata.jsonl'
 # the .pt and an existence check would regenerate it on the next chunk.
 LEDGER_FILE_PATH = OUTPUT_DIR / 'done_graphs.txt'
 
-# Graphs whose attribution raised. Recorded rather than fatal, so one bad
-# prompt cannot end a multi-day run.
+# Graphs whose attribution raised, one line per attempt. This file is READ at
+# startup, not just written: it is the only thing that distinguishes a
+# transient fault (a fresh process fixes it) from a prompt that always fails.
 FAILED_FILE_PATH = OUTPUT_DIR / 'failed_graphs.tsv'
+
+# Give up on a single graph after this many recorded attempts and move past it.
+# Without this the run cannot make progress at all: a deterministic failure
+# breaks the chunk, the retry rebuilds identical state, reaches the same row and
+# dies the same way, and after run_chunked.sh exhausts its retries the whole
+# chunk -- ~80GB and ~14 GPU-hours -- is left neither featurized nor ledgered.
+MAX_GRAPH_ATTEMPTS = int(os.environ.get('MAX_GRAPH_ATTEMPTS', 3))
 
 # torch.save streams ~400MB straight to the destination path, so a kill during
 # a save leaves a truncated file under the real name -- which the resume logic
@@ -92,6 +100,19 @@ def load_ledger() -> set:
         return {line.strip() for line in f if line.strip()}
 
 
+def load_failure_counts() -> dict:
+    """How many times each graph has already raised."""
+    counts = {}
+    if not FAILED_FILE_PATH.exists():
+        return counts
+    with open(FAILED_FILE_PATH, 'r', encoding='utf-8') as f:
+        for line in f:
+            name = line.split('\t', 1)[0].strip()
+            if name:
+                counts[name] = counts.get(name, 0) + 1
+    return counts
+
+
 def append_metadata(metadata: dict):
     """Append one metadata entry to the jsonl file."""
     with open(METADATA_FILE_PATH, 'a', encoding='utf-8') as f:
@@ -101,8 +122,10 @@ def append_metadata(metadata: dict):
 def generate_and_save_graphs(data_list: list, output_dir: Path, model: ReplacementModel):
     task_step_counters = {}
     ledger = load_ledger()
+    failure_counts = load_failure_counts()
     n_new = 0
     n_failed = 0
+    given_up = []
     # Serializing ~400MB per graph is a real share of the run, and the graphs
     # are discarded after featurization -- worth knowing what it costs.
     t_attr = t_save = 0.0
@@ -124,6 +147,16 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
         # --- Already featurized in an earlier chunk ---
         # No metadata: script 4 must only see the current chunk.
         if graph_name in ledger:
+            task_step_counters[task_id] = current_step + 1
+            continue
+
+        # --- Tried and failed too many times already ---
+        # A fresh process repairs a corrupted CUDA context, so the first
+        # failures are worth retrying. One that survives that many restarts is
+        # a property of the prompt, and retrying it forever would stall the run
+        # instead of losing one sample.
+        if failure_counts.get(graph_name, 0) >= MAX_GRAPH_ATTEMPTS:
+            given_up.append(graph_name)
             task_step_counters[task_id] = current_step + 1
             continue
 
@@ -188,10 +221,16 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             # with "indices should be either on cpu or on the same device".
             # Observed for real: one allocator fault at graph 8 was followed by
             # 1412 identical failures. A fresh process is the only reliable
-            # repair, so exit and let run_chunked.sh retry.
-            print(f"\nFAILED {graph_name}: {type(exc).__name__}: {exc}")
+            # repair, so exit and let run_chunked.sh retry. The attempt is
+            # recorded so that after MAX_GRAPH_ATTEMPTS restarts this graph is
+            # skipped instead of stalling the run forever.
+            attempts = failure_counts.get(graph_name, 0) + 1
+            print(f"\nFAILED {graph_name} (attempt {attempts}/{MAX_GRAPH_ATTEMPTS}): "
+                  f"{type(exc).__name__}: {exc}")
             with open(FAILED_FILE_PATH, 'a', encoding='utf-8') as f:
                 f.write(f"{graph_name}\t{type(exc).__name__}\t{exc}\n")
+                f.flush()
+                os.fsync(f.fileno())
             partial_path.unlink(missing_ok=True)
             n_failed += 1
             break
@@ -211,7 +250,13 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
         n_new += 1
         task_step_counters[task_id] = current_step + 1
 
-    return n_new, n_failed, t_attr, t_save
+    if given_up:
+        print(f"\nGIVEN UP on {len(given_up)} graph(s) after {MAX_GRAPH_ATTEMPTS} "
+              f"attempts each; they will be missing from the dataset:")
+        for name in given_up:
+            print(f"  {name}")
+
+    return n_new, n_failed, t_attr, t_save, given_up
 
 
 if __name__ == "__main__":
@@ -224,7 +269,8 @@ if __name__ == "__main__":
     print(f"Already done in earlier chunks: {len(load_ledger())} / {len(data_list)}")
 
     _t0 = time.time()
-    n_new, n_failed, t_attr, t_save = generate_and_save_graphs(data_list, OUTPUT_DIR, model)
+    n_new, n_failed, t_attr, t_save, given_up = generate_and_save_graphs(
+        data_list, OUTPUT_DIR, model)
     _el = time.time() - _t0
 
     if n_new:
@@ -237,7 +283,8 @@ if __name__ == "__main__":
 
     print("\n--- Process Complete ---")
     print(f"Metadata appended to: {METADATA_FILE_PATH.resolve()}")
-    print(f"new graphs this chunk: {n_new}, failed: {n_failed}")
+    print(f"new graphs this chunk: {n_new}, failed: {n_failed}, "
+          f"given up: {len(given_up)}")
 
     # A sweep where nothing succeeded looks identical to a finished dataset if
     # only n_new is consulted, so a GPU fault would be reported as completion.

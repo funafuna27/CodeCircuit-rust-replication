@@ -20,7 +20,10 @@
 set -uo pipefail
 cd "$(dirname "$0")"
 
-MAX_RETRIES=3
+# Must exceed MAX_GRAPH_ATTEMPTS in 3_generate_graph.py (default 3). A graph
+# that keeps failing burns one attempt per restart; the extra pass is the one
+# where script 3 gives up on it and walks past, so the chunk can finish.
+MAX_RETRIES="${MAX_RETRIES:-4}"
 GRAPH_DIR="${GRAPH_DIR:-python_graph}"
 FEATURES_FILE="${FEATURES_FILE:-gemma_mbpp_features.jsonl}"
 LEDGER="$GRAPH_DIR/done_graphs.txt"
@@ -38,6 +41,7 @@ while true; do
     echo "=== $(date '+%F %T') generating (ledger=$before, CHUNK_SIZE=${CHUNK_SIZE:-default}) ==="
 
     attempt=1
+    exhausted=0
     while true; do
         python 3_generate_graph.py
         rc=$?
@@ -45,9 +49,10 @@ while true; do
             break
         fi
         if [ $attempt -ge $MAX_RETRIES ]; then
-            echo "!!! script 3 exited $rc on $MAX_RETRIES attempts. Stopping."
+            echo "!!! script 3 exited $rc on $MAX_RETRIES attempts."
             echo "!!! see $GRAPH_DIR/failed_graphs.tsv"
-            exit $rc
+            exhausted=1
+            break
         fi
         # Whatever finished before the failure is on disk, so a retry resumes
         # rather than restarting the chunk.
@@ -56,6 +61,10 @@ while true; do
         sleep 30
     done
 
+    # Featurize and free even when generation gave up: an aborted chunk can
+    # hold ~200 graphs, ~80GB and a dozen GPU-hours, and exiting straight from
+    # the retry loop would leave all of it unfeaturized, unledgered, and
+    # occupying a disk the study is already tight on.
     echo "=== $(date '+%F %T') extracting features ==="
     python 4_generate_feature.py || { echo "!!! script 4 failed"; exit 1; }
 
@@ -67,6 +76,10 @@ while true; do
     df -h . | tail -1
 
     after=$(ledger_count)
+    if [ $exhausted -eq 1 ]; then
+        echo "!!! stopping after banking this chunk (ledger $before -> $after)."
+        exit 1
+    fi
     if [ $rc -eq 3 ]; then
         echo "=== $(date '+%F %T') ALL CHUNKS COMPLETE (ledger=$after) ==="
         break
