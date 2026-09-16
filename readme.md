@@ -32,6 +32,49 @@ python 0_generate_response.py  # generate code from LLMs
 ```
 Simply run the scripts in order using `python x.py`.
 
+# Replication log (this fork)
+
+This fork replicates CodeCircuit on Python as a baseline for extending the study
+to Rust. Phase 1 — reproducing the reported Python AUROC — completed on
+2026-09-16.
+
+| Split | AUROC | vs. paper (79.89%) |
+|---|---|---|
+| Ordered 70/30, as in `5_classification.py` | **79.73%** | −0.16 pt |
+| `GroupShuffleSplit` by `expr_id`, 20 seeds | 77.06% ± 4.25% | −2.83 pt |
+
+Both numbers come from the same 1420-graph dataset (248 label-0, 1172 label-1,
+256 problems; no graph failed or was skipped). The gap between them is the
+train/test leakage in the ordered split: the paper's split is positional, so
+steps of the same problem land on both sides of the boundary. Removing that
+leak costs 2.67 points, which is smaller than feared — the central claim
+survives it.
+
+Two things worth knowing before comparing across languages:
+
+- **`BATCH_SIZE` is not a performance knob.** `attribute()` chooses which
+  `MAX_FEATURE_NODES` of the active features enter the graph by greedy frontier
+  expansion, re-ranking once per `update_interval * batch_size` features, so it
+  changes the graph itself. The cap binds on every graph here (8192 selected out
+  of 34k–99k active). All 1420 graphs were generated at the upstream default
+  of 64.
+- **Three of the 49 features are constant.** `adjacency_matrix` only ever
+  populates feature rows and logit rows, so input-token nodes have out-degree 0
+  and `input_to_logit_shortest_path` (and `avg_shortest_path_length`) can never
+  find a path. Dimensions 42, 47 and 48 are identical across all 1420 rows; the
+  effective feature space is 46-dimensional.
+
+The `len(text) > 550` filter drops 27 of 1447 rows, and it is not class-neutral:
+66.7% of the dropped rows are label 0 against 17.5% overall (z = −6.54). That is
+harmless for reproducing the paper, which applies the same filter, but it is a
+confound for a cross-language comparison, since a fixed character threshold will
+drop a different share of a more verbose language.
+
+Generation took 5 days 10 hours on one RTX 5070 (12GB) at
+`batch_size=64, offload='cpu'`, chunked at 200 graphs so peak disk stays near
+80GB rather than the ~500GB a whole language would otherwise need. See
+`data/run_chunked.sh`.
+
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).
 
