@@ -44,11 +44,64 @@ to Rust. Phase 1 — reproducing the reported Python AUROC — completed on
 | `GroupShuffleSplit` by `expr_id`, 20 seeds | 77.06% ± 4.25% | −2.83 pt |
 
 Both numbers come from the same 1420-graph dataset (248 label-0, 1172 label-1,
-256 problems; no graph failed or was skipped). The gap between them is the
-train/test leakage in the ordered split: the paper's split is positional, so
-steps of the same problem land on both sides of the boundary. Removing that
-leak costs 2.67 points, which is smaller than feared — the central claim
-survives it.
+256 problems; no graph failed or was skipped).
+
+**Correction to an earlier version of this section.** The gap between the two
+splits was described here as train/test leakage. It is not. Exactly 1 of 256
+problems straddles the positional boundary (13 of 427 test rows), and a
+task-identity oracle scores AUROC 0.4933 on that split — chance. The positional
+split is effectively group-disjoint already, and the 2.67-point gap is which
+problems happened to land in test, well inside the grouped split's own seed
+spread (0.6766–0.8396).
+
+## What the 79.73% measures
+
+The labels are not execution results. `1_code_correct.py` asks gpt-4o-mini to
+score each generated line 1 or 0. Three properties of that target, all measured
+on this dataset, bound what the headline can mean:
+
+- **The labels are a step function.** 255 of 256 tasks have monotone
+  non-increasing line scores, so a task's whole label vector is determined by one
+  cutoff index. Effective sample size is closer to 256 tasks than 1420 rows
+  (design effect ≈ 3.3–5.5); the honest 95% CI on the grouped number is about
+  [0.710, 0.822].
+- **A one-line heuristic gets most of it.** Ranking by `-step_number`, with no
+  training at all, scores 0.7284 on the ordered split against the features'
+  0.7973. In above-chance terms the control captures ~77%. The features' margin
+  is small but robust — they win 20/20 grouped seeds, paired t ≈ 6–11 — and they
+  are not size proxies: dropping the six dimensions that correlate |r| > 0.7 with
+  prefix length *raises* ordered AUROC to 0.8056.
+- **The signal is task-level, not line-level.** Only 0.92% of (positive,
+  negative) test pairs are within-task. Within mixed tasks the features score
+  0.907 while `-step_number` scores 0.993, and 60 of 61 mixed tasks have labels
+  that are an exact step function of line index — so this dataset cannot evidence
+  line-level error localisation for any method, in either direction.
+
+## Against execution instead
+
+MBPP ships tests. Running the 256 generations against them (subprocess, 10s
+timeout) and re-labelling the *same* graphs — only the `y` vector changes, the
+5 days of graph compute is reused:
+
+| Target | Ordered | Grouped (20 seeds) |
+|---|---|---|
+| gpt-4o-mini judge | 79.73% | 77.06% ± 4.25% |
+| Execution, name-adapted | 60.68% | 67.93% ± 4.54% |
+| Execution, strict | 59.47% | 63.37% ± 13.65% |
+
+The judge and execution disagree on 49.6% of rows. At task level the judge calls
+177/256 solutions fully correct; execution passes 105/256 (41.0%) once the
+function name is aliased, 15/256 (5.9%) without — MBPP's prompts never state the
+required name, so 210 of 256 strict runs die on `NameError` before reaching an
+assert. The disagreement is one-directional: **77 tasks where the judge calls a
+failing solution correct, against 5 the other way** (agreement 67.97%, Cohen's
+κ = 0.40).
+
+The trivial control collapses on the execution target too — `-step_number` falls
+from 0.7284 to 0.5638 — which confirms it was exploiting the judge's step-function
+shape rather than anything about the code. Under execution labels every task is
+single-label (0 of 256 mixed), so the question becomes honestly "is this whole
+generation correct", and the features answer it at 0.679 grouped.
 
 Two things worth knowing before comparing across languages:
 
@@ -69,6 +122,28 @@ The `len(text) > 550` filter drops 27 of 1447 rows, and it is not class-neutral:
 harmless for reproducing the paper, which applies the same filter, but it is a
 confound for a cross-language comparison, since a fixed character threshold will
 drop a different share of a more verbose language.
+
+## Plan for the Rust arm
+
+1. **Put the required signature in the generation prompt.** MBPP does not state
+   the function name, which cost 210 of 256 Python runs a `NameError` before any
+   assert ran. Ported naively, that becomes a Rust compile error and the label
+   measures naming rather than reasoning.
+2. **Label with `cargo test`, not an LLM judge**, and re-label the Python arm the
+   same way so the two are the same quantity. The graphs are label-independent,
+   so this costs seconds per re-labelling, not another run.
+3. **Report the grouped split as the headline.** Execution labels make every task
+   single-label, so a positional split would compare tasks it has already seen
+   nothing of — the grouped protocol is the one that matches the target.
+4. **Pre-register the expected range.** Python sits at 0.679 ± 0.045 grouped
+   against execution truth. Compare Rust to that, not to 79.89%, which is a
+   different target measured a different way.
+5. **Match the length filter on tokens or on drop rate**, and report the dropped
+   count and class balance per language.
+
+Note for anyone forking this: `data/1_code_correct.py` carries a hardcoded
+OpenAI key inherited from upstream. It must not be used, and must be scrubbed
+from history before this fork is ever made public.
 
 Generation took 5 days 10 hours on one RTX 5070 (12GB) at
 `batch_size=64, offload='cpu'`, chunked at 200 graphs so peak disk stays near
