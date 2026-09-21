@@ -247,6 +247,70 @@ same question asked properly, and it must not repeat any of this.
    count and class balance per language. A fixed character threshold will cut a
    different share of a more verbose language.
 
+## Phase 2: the Rust arm
+
+Generation and labelling are done; no graphs have been built yet. Nothing here
+costs GPU time, and the point of doing it first was to find out whether the arm
+is viable before committing any.
+
+**How much of MBPP can be ported.** `data/mbpp_rust.py` reads a Rust signature
+off the literals in each task's asserts, requiring the types to agree across
+every assert and rejecting the task rather than guessing when they do not.
+**350 of 427 tasks survive (82.0%)**; of the Python arm's 256, 207 do. The
+rejects are 31 whose argument types disagree between asserts, 18 with an
+argument type that has no simple Rust form (empty list literals, dicts, None),
+13 with disagreeing return types, 10 with an unrepresentable return, and 5 with
+a non-literal argument. Returns are 153 `i64`, 55 `bool`, 40 `Vec<i64>`, 34
+`String`, 21 `f64` and a tail of tuples; 237 of the 350 take one argument.
+
+**Labels come from `rustc`, not a judge.** `data/1_rust_correct.py` compiles each
+generation, renames any `main` the model wrote, evaluates every assert inside
+`catch_unwind` so a panic in case 2 cannot hide that case 1 passed, and runs
+under a wall-clock timeout. Float asserts use MBPP's own `rel_tol=0.001`. It is
+checked against eight hand-written solutions whose outcomes were stated in
+advance — correct, wrong answer, syntax error, type error, panic, infinite loop,
+a solution defining its own `main`, one defining a helper — and classifies all
+eight as specified.
+
+| | Rust | Python (same protocol) |
+|---|---|---|
+| compiles / parses | 214/350 (61.1%) | 256/256 after the extraction fix |
+| passes every assert | **99/350 (28.3%)** | 114/256 (44.5%) |
+| passes, given it compiles | 99/214 (46.3%) | — |
+
+On the 207 problems both arms cover: Python passes 97 (46.9%), Rust 55 (26.6%);
+51 pass in both, 106 in neither, 46 in Python only and **4 in Rust only**. The
+model is much weaker in Rust, which is the finding the arm exists to exploit —
+but it also means the two arms are not matched on difficulty, and that has to be
+carried into any comparison.
+
+**Two pipeline artefacts, found before spending GPU time.** The Python arm's
+lesson applied: check whether a failure class is the model's fault or the
+harness's. 14 generations began with a stray `;` — the model terminating the
+dangling signature the prompt ends on — and 9 ended with unbalanced braces
+because the model finished the function, started rewriting it, and hit the token
+cap. Both are the harness's fault. Removing them gained **+10 compiles and +3
+passes with zero regressions**. An A/B over three prompt endings on 40 problems
+found no pass-rate difference between the bare signature and a wordier version
+that never provokes the `;` (15/40 vs 13/40), and opening the body for the model
+was much worse (5/40), so the prompt stands and the artefacts are cleaned.
+
+**The length filter is matched on drop rate, not on the threshold.** Python drops
+27 of 1447 rows (1.87%) at 550 characters. **`MAX_PROMPT_CHARS=605` drops 38 of
+2031 Rust rows (1.87%)** — the same rate. `3_generate_graph.py` now reads that
+threshold from the environment and still defaults to 550, so the Python numbers
+are unchanged. Note the filter is class-biased in both arms and in opposite
+directions: the rows it removes are 33.3% positive in Python against an 81.6%
+base rate, and 0.0% positive in Rust against 37.7%.
+
+**What the graphs will cost.** 1993 Rust rows survive the filter against 1420
+Python rows — 1.40x by row count, but **1.92x by token sum**, and cost is
+superlinear because peak allocation crosses the 12 GB card around 130-140 tokens
+and spills to host RAM over PCIe. Rows past that knee: **259 in Rust (13.0%)
+against 83 in Python (5.8%)**. Extrapolating from a benchmark was wrong by 2.8x
+last time, so the estimate is being measured instead, on a 12-row sample
+stratified over the token range (27-284) in the production code path.
+
 Note for anyone forking this: `data/1_code_correct.py` carries a hardcoded
 OpenAI key inherited from upstream. It must not be used, and must be scrubbed
 from history before this fork is ever made public.

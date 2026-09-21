@@ -54,12 +54,66 @@ def extract_code(text: str) -> str:
     return "\n".join(kept)
 
 
+def drop_stray_semicolon(code: str) -> str:
+    """The prompt ends on a bare signature, and the model sometimes answers it
+    with `;` -- completing it as a declaration -- before writing the real
+    function. A lone `;` is never a meaningful item, so it is noise from the
+    prompt shape rather than anything the model meant. 14 of 350 generations
+    failed to compile on this alone.
+
+    An A/B over three prompt endings on 40 problems found no pass-rate
+    difference between the bare signature and a wordier version that never
+    provokes the `;` (15/40 vs 13/40), and opening the body for the model was
+    much worse (5/40), so the prompt is left alone and the artefact removed
+    here.
+    """
+    lines = code.splitlines()
+    while lines and lines[0].strip() in (';', ''):
+        lines.pop(0)
+    return "\n".join(lines)
+
+
+def trim_to_balanced(code: str) -> str:
+    """Cut back to the last point where braces balance.
+
+    The model finishes the function and then starts writing it over again; the
+    token cap cuts the restart off mid-way and leaves the whole file unparseable.
+    Keeping the complete first attempt is the same rule the Python extractor
+    applies to a restarted fenced block. 9 of 350 generations end unbalanced.
+    """
+    depth, last, in_str, in_chr, esc = 0, None, False, False, False
+    for i, ch in enumerate(code):
+        if esc:
+            esc = False
+            continue
+        if ch == '\\' and (in_str or in_chr):
+            esc = True
+            continue
+        if ch == '"' and not in_chr:
+            in_str = not in_str
+            continue
+        if ch == "'" and not in_str:
+            in_chr = not in_chr
+            continue
+        if in_str or in_chr:
+            continue
+        if ch == '{':
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0:
+                last = i
+    if depth == 0:
+        return code
+    return code[:last + 1] if last is not None else code
+
+
 def clean_output(text: str) -> str:
     text = extract_code(text.strip())
     lines = text.splitlines()
     lines = [l for l in lines if not l.strip().startswith("//")]
     lines = [l for l in lines if l.strip() != ""]
-    return "\n".join(lines).strip()
+    return trim_to_balanced(drop_stray_semicolon("\n".join(lines))).strip()
 
 
 def to_rust_prose(prompt: str) -> str:

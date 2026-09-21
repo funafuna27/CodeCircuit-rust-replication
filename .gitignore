@@ -9,3 +9,5 @@ data/*.jsonl
 .cache
 __pycache__/
 *.pyc
+data/rust_cost_probe/
+data/rust_cost_sample.jsonl

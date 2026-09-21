@@ -30,7 +30,17 @@ MAX_FEATURE_NODES = 8192
 # so a run must keep one value throughout, and it should be the upstream
 # default that the reference numbers were produced with. Measured on row 3:
 # batch 16 = 88.3s, 32 = 45.3s, 64 = 26.2s, 128 = 75.4s, all at 9.08 GiB peak.
+# (The "34k-99k active" figure above was wrong; the measured range over all 1420
+# Python graphs is 16,785-216,132, and the cap binds on every one of them.)
 BATCH_SIZE = int(os.environ.get('BATCH_SIZE', 64))
+
+# Upstream drops any row whose prompt is longer than 550 characters. Keep that
+# default so the Python numbers stay reproducible, but make it settable: a fixed
+# character threshold cuts a more verbose language harder, and on the Python arm
+# it was not class-neutral either (27 of 1447 rows dropped, 67% of them label 0
+# against a 17.5% base rate). Match across languages on tokens or on drop rate,
+# and report what was dropped.
+MAX_PROMPT_CHARS = int(os.environ.get('MAX_PROMPT_CHARS', 550))
 OFFLOAD = 'cpu'
 VERBOSE = False
 EMPTY_CACHE = os.environ.get('EMPTY_CACHE', '1') != '0'
@@ -186,7 +196,7 @@ def generate_and_save_graphs(data_list: list, output_dir: Path, model: Replaceme
             continue
 
         # --- Generation ---
-        if len(prompt) > 550:
+        if len(prompt) > MAX_PROMPT_CHARS:
             continue
 
         partial_path = graph_path.with_name(graph_name + PARTIAL_SUFFIX)
@@ -287,7 +297,7 @@ if __name__ == "__main__":
     # Rows over the length filter are never generated, so counting against the
     # raw row count would make a finished run read as 27 graphs short -- which
     # is exactly how a genuinely lossy run looks.
-    n_target = sum(1 for r in data_list if len(r['text']) <= 550)
+    n_target = sum(1 for r in data_list if len(r['text']) <= MAX_PROMPT_CHARS)
     print(f"Already done in earlier chunks: {len(load_ledger())} / {n_target} "
           f"({len(data_list) - n_target} rows are over the length filter)")
 
