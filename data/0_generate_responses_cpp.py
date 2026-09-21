@@ -26,20 +26,13 @@ SYSTEM_PROMPT_CPP = (
 def build_prompt_cpp(text):
     return SYSTEM_PROMPT_CPP + "\n\n" + text
 
-def clean_output(text: str):
-    text = text.strip()
-    if text.startswith("```cpp"):
-        text = text[len("```cpp"):].strip()
-    elif text.startswith("```"):
-        text = text[len("```"):].strip()
-    if text.endswith("```"):
-        text = text[:-3].strip()
-
-    text = re.sub(r'("""|\'\'\')(.*?)\1', '', text, flags=re.DOTALL)
-    lines = text.splitlines()
-    lines = [l for l in lines if not l.strip().startswith("//")]
-    lines = [l for l in lines if l.strip() != ""]
-    return "\n".join(lines).strip()
+# A first definition of clean_output used to sit here. It was dead code -- the
+# definition further down shadows it, and generate_cpp resolves the name at call
+# time -- but it was the version that stripped a fence only at the start and the
+# end of the reply, and it is almost certainly where the Python and Java scripts
+# copied theirs from. That bug corrupted 16 of 256 Python generations and 17% of
+# the feature rows. Removed so nobody copies it a fourth time; the live
+# definition is below.
 
 def generate_cpp(text, max_new_tokens=256):
     prompt = build_prompt_cpp(text)

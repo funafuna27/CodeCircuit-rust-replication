@@ -206,10 +206,23 @@ at the wrong unit, against a target whose shape a prompt dictates, with interval
 that understate uncertainty several-fold. The Rust arm is worth running as the
 same question asked properly, and it must not repeat any of this.
 
-1. **Fix the extraction before generating anything.** 17% of the Python rows are
-   prefixes of code containing markdown fences. Strip fences and de-duplicate
-   repeated blocks in `0_generate_responses.py`, verify every generation parses
-   before it enters the pipeline, and re-check the Python arm the same way.
+1. **Fix the extraction before generating anything — done.**
+   `0_generate_responses.py` now treats fences as separators rather than
+   delimiters (pairing is what broke: the model emits ``` immediately followed
+   by ```python, and a paired regex reads the second as the first's closing
+   fence and drops everything outside), de-duplicates repeated blocks, drops a
+   block that a later one restarts, and preserves indentation so a fence that
+   splits a `def` from its body rejoins. It then refuses to finish quietly:
+   every generation is `ast.parse`-checked and the failures are listed. Applied
+   to the shipped Python generations the new extractor repairs **16 of 16** and
+   changes none of the 240 that already parsed — parse rate 240/256 → 256/256.
+   The same fix went into the Java script; the C++ script already had a working
+   version further down the file, shadowing the broken one, which is where all
+   three copies most likely came from. That dead copy is deleted.
+   The existing Python graphs were built on the corrupted prefixes and cannot be
+   repaired without regenerating, but the headline does not depend on them:
+   dropping all 16 problems gives 0.7111 [0.6431, 0.7755] against 0.7324
+   [0.6686, 0.7955] on all 256.
 2. **Put the required signature in the generation prompt.** MBPP does not state
    the function name, which cost 210 of 256 Python generations a `NameError`
    before any assert ran. Ported naively that becomes a Rust compile error, and
