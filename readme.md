@@ -303,13 +303,43 @@ are unchanged. Note the filter is class-biased in both arms and in opposite
 directions: the rows it removes are 33.3% positive in Python against an 81.6%
 base rate, and 0.0% positive in Rust against 37.7%.
 
-**What the graphs will cost.** 1993 Rust rows survive the filter against 1420
-Python rows — 1.40x by row count, but **1.92x by token sum**, and cost is
-superlinear because peak allocation crosses the 12 GB card around 130-140 tokens
-and spills to host RAM over PCIe. Rows past that knee: **259 in Rust (13.0%)
-against 83 in Python (5.8%)**. Extrapolating from a benchmark was wrong by 2.8x
-last time, so the estimate is being measured instead, on a 12-row sample
-stratified over the token range (27-284) in the production code path.
+**What the graphs cost, measured rather than extrapolated.** 1993 Rust rows
+survive the character filter against 1420 Python rows — 1.40x by row count, but
+**1.92x by token sum**, and cost is superlinear because peak allocation crosses
+the 12 GB card around 130-140 tokens and spills to host RAM over PCIe. Rows past
+that knee: 259 in Rust (13.0%) against 83 in Python (5.8%).
+
+Extrapolating from a benchmark was wrong by 2.8x last time, so this was measured
+in the production code path on 12 rows stratified over the token range (27-284
+tokens, 3 h 03 m of GPU). Fitting those gives `seconds ≈ e^-4.077 · tokens^2.278`,
+and — the step that was missing last time — **the same curve integrated over the
+Python arm's own token distribution predicts 144.7 h against the 130 h that run
+actually took, a ratio of 1.11**. On that calibration the uncapped Rust arm is
+**13.5 days** (10.1–18.0 from fit scatter), 2.49x Python.
+
+**A token cap makes that 7.6 days and costs nothing measurable.** The bill is
+concentrated in a thin tail — rows past 180 tokens are 4.6% of the data and
+21.6% of the compute — and evaluation is at the problem level, where the Python
+arm showed the signal lives between problems rather than within them. Capping at
+140 tokens keeps **all 214 Rust problems** with at least 3 rows each and leaves
+the positive rate at 46.3%. Applied to Python, where the graphs already exist so
+it is free, the headline moves from 0.7324 [0.6686, 0.7955] to **0.7269 [0.6637,
+0.7873]** with all 256 problems retained — 0.006 against a CI half-width of 0.06.
+
+| cap | Rust rows | problems | days |
+|---|---|---|---|
+| none | 1993 | 214 | 13.5 |
+| 180 | 1907 | 214 | 10.7 |
+| **140** | **1734** | **214** | **7.6** |
+| 120 | 1549 | 213 | 5.4 |
+
+The cap has to be applied to **both** arms or they differ in preprocessing: the
+rows it removes are only 13.1% positive against 37.7% overall, because long
+prefixes skew to failures. `data/2b_apply_token_cap.py` does it and reports
+exactly what went.
+
+**The run is in flight**: 1734 graphs at `BATCH_SIZE=64`, chunked at 200 so peak
+disk stays near 80 GB, launched 2026-09-22.
 
 Note for anyone forking this: `data/1_code_correct.py` carries a hardcoded
 OpenAI key inherited from upstream. It must not be used, and must be scrubbed
