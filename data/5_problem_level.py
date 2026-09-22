@@ -1,23 +1,24 @@
 """The evaluation protocol for both arms. Fixed before the Rust graphs exist.
 
+See PREREGISTRATION.md. The short version of why it looks like this:
+
 Upstream's 5_classification.py scores 1420 ROWS with a positional 70/30 split.
 Neither is right for this target, and the Python arm was measured three times
-before that was clear:
+before that was clear. Execution labels are constant within a problem, so a
+row-level AUROC weights each problem by its solution length, which correlates
+with the label; a seed-to-seed sd measures split noise rather than sampling
+error; and the effective sample size is the number of problems, not rows.
 
-  - execution labels are constant within a problem, so a row-level AUROC weights
-    each problem by its row count, which is its solution length, which
-    correlates with the label. That single choice made the graph features look
-    like they had lost to surface heuristics; at equal weight they win;
-  - a seed-to-seed sd over GroupShuffleSplit reshuffles the SAME problems, so it
-    measures split noise, not sampling error, and is 4-10x too narrow. A paired
-    t or Wilcoxon over seeds is not a hypothesis test either: its p-value is a
-    function of how many seeds you draw (one comparison ran p=0.2305 at 20
-    seeds, 0.0494 at 50, 0.0010 at 100);
-  - the effective sample size is the number of problems, not the number of rows.
-    ICC of a task-constant label is 1 by construction, so n_eff = n_problems.
+The primary output is NOT the AUROC. It is the C1 contrast:
 
-So: one aggregated prediction per held-out problem, and every interval a
-bootstrap over problems.
+    AUROC(all rows) - AUROC(step-0 rows only)
+
+Step 0 is the prompt plus the function signature and no body -- no logic that
+could be right or wrong. On the Python arm that contrast is +0.0332
+[-0.0172, +0.0826]: a graph taken before the model writes any logic predicts
+correctness as well as one taken over the whole generation. Reporting the level
+alone would let a problem-difficulty detector pass as "predicts whether
+generated code is correct", which is the paper's claim.
 
   FEATURES_FILE  gemma_mbpp_features.jsonl | gemma_mbpp_rust_features.jsonl
   LABELS_FILE    gemma_mbpp_python_correctness.jsonl | gemma_mbpp_rust_correctness.jsonl
@@ -30,6 +31,7 @@ import os
 import numpy as np
 from scipy import stats
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import GroupKFold
 from sklearn.metrics import roc_auc_score
 
@@ -41,7 +43,12 @@ N_REPEATS = int(os.environ.get('N_REPEATS', 10))
 N_FOLDS = int(os.environ.get('N_FOLDS', 5))
 N_BOOT = int(os.environ.get('N_BOOT', 5000))
 N_PERM = int(os.environ.get('N_PERM', 1000))
+N_JOBS = int(os.environ.get('N_JOBS', -1))
 SEED = int(os.environ.get('SEED', 0))
+# Restrict to a task-id subset, one per line. Used for the like-for-like
+# comparators the pre-registration locks (the 240 Python problems that parse,
+# the 129 shared with Rust, the 85 Rust problems Python never saw).
+SUBSET_FILE = os.environ.get('SUBSET_FILE', '')
 
 RNG = np.random.default_rng(SEED)
 
@@ -55,7 +62,9 @@ def oof_problem_scores(X, groups, y, problems):
     """Every problem scored out of fold, averaged over repeats.
 
     Each repeat permutes the problem -> surrogate-group map so fold membership
-    differs between repeats; no problem ever straddles a fold.
+    differs between repeats; no problem ever straddles a fold. (Checked: the
+    reshuffling is real, adjusted Rand index between repeat partitions ~0.001,
+    mean 4.3 of 5 distinct folds visited per problem.)
     """
     idx = {int(p): i for i, p in enumerate(problems)}
     acc = np.zeros(len(problems))
@@ -64,7 +73,7 @@ def oof_problem_scores(X, groups, y, problems):
         surrogate = np.array([perm[idx[int(g)]] for g in groups])
         p = np.zeros(len(y), dtype=float)
         for tr, te in GroupKFold(n_splits=N_FOLDS).split(X, y, groups=surrogate):
-            clf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
+            clf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=N_JOBS)
             clf.fit(X[tr], y[tr])
             p[te] = clf.predict_proba(X[te])[:, 1]
         acc += np.array([p[groups == q].mean() for q in problems])
@@ -72,6 +81,13 @@ def oof_problem_scores(X, groups, y, problems):
 
 
 def boot_ci(score, y_problem, n=None):
+    """Bootstrap over PROBLEMS.
+
+    Conditional on the fitted scoring rule: the score vector is computed once,
+    so model-fitting variance is excluded and this is about 1.28x too narrow.
+    Stated rather than corrected, because widening it would make the locked
+    baseline non-reproducible.
+    """
     n = n or N_BOOT
     obs = roc_auc_score(y_problem, score)
     out = []
@@ -95,10 +111,30 @@ def paired_boot(s1, s2, y_problem, n=None):
     return d.mean(), np.percentile(d, 2.5), np.percentile(d, 97.5), float((d <= 0).mean())
 
 
+def residualise(X, covars):
+    """Strip everything linearly predictable from length and position.
+
+    Replaces the drop-|r|>0.7 filter of version 1, which a matrix built to be
+    100% length by construction passed at every noise level -- a test nothing
+    can fail. It was also computed at the row unit while the claim is at the
+    problem unit (23 of 49 dims exceed the threshold when recomputed correctly,
+    against 10 at the row unit).
+    """
+    return X - LinearRegression().fit(covars, X).predict(covars)
+
+
 def main():
     rows = read_jsonl(FEATURES_FILE)
     rows.sort(key=lambda r: r.get('row_index', 0))
     labels = {int(r['task_id']): int(bool(r['passes'])) for r in read_jsonl(LABELS_FILE)}
+
+    if SUBSET_FILE:
+        wanted = {int(l) for l in open(SUBSET_FILE, encoding='utf-8')
+                  if l.strip() and not l.startswith('#')}
+        before = len({int(r['expr_id']) for r in rows})
+        rows = [r for r in rows if int(r['expr_id']) in wanted]
+        print(f"SUBSET_FILE {SUBSET_FILE}: {before} problems -> "
+              f"{len({int(r['expr_id']) for r in rows})}")
 
     from transformers import AutoTokenizer
     tok = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -116,6 +152,16 @@ def main():
                          f"{sorted(missing)[:10]}")
 
     X = np.array([r['feature'] for r in rows], dtype=float)
+    if not np.isfinite(X).all():
+        # A single NaN used to pass silently: it escapes the constant-dim count
+        # (nan < 1e-12 is False), escapes any correlation filter (abs(nan) > 0.7
+        # is False), and sklearn fits it without a word. Reachable from
+        # graph_dataset.py's std() over one node and mean() over an empty mask.
+        bad = np.argwhere(~np.isfinite(X))
+        raise SystemExit(f"feature matrix has {len(bad)} non-finite entries, first "
+                         f"at row {bad[0][0]} dim {bad[0][1]}. Fix the featuriser; "
+                         f"do not impute.")
+
     g = np.array([int(r['expr_id']) for r in rows])
     step = np.array([r['step_number'] for r in rows], dtype=float)
     chars = np.array([len(r['original_expression']) for r in rows], dtype=float)
@@ -134,39 +180,83 @@ def main():
     print(f"  features: {X.shape[1]} dims, {const} constant "
           f"-> {X.shape[1]-const} effective\n")
 
-    print("=== headline: graph topology, problem level ===")
+    print("=== level: graph topology over all rows ===")
     sc = oof_problem_scores(X, g, y_row, problems)
     obs, lo, hi = boot_ci(sc, y_prob)
     print(f"  AUROC {obs:.4f}  95% CI [{lo:.4f}, {hi:.4f}]  "
-          f"(bootstrap over {len(problems)} problems)")
+          f"(bootstrap over {len(problems)} problems, conditional on the fitted rule)")
 
-    print("\n=== surface baselines, same problems ===")
+    print("\n=== C1 (PRIMARY): does the generated body add anything? ===")
+    s0 = step == 0
+    p0 = np.array([p for p in problems if s0[g == p].any()])
+    if len(p0) < len(problems):
+        print(f"  WARNING: {len(problems)-len(p0)} problems have no step-0 row")
+    sc0_sub = oof_problem_scores(X[s0], g[s0], y_row[s0], p0)
+    y0 = np.array([labels[int(p)] for p in p0])
+    o0, l0, h0 = boot_ci(sc0_sub, y0)
+    print(f"  step-0 only (signature, no body)  {o0:.4f}  95% CI [{l0:.4f}, {h0:.4f}]")
+    pos = {int(p): i for i, p in enumerate(problems)}
+    pos0 = {int(p): i for i, p in enumerate(p0)}
+    common = np.array([p for p in problems if int(p) in pos0])
+    a = np.array([sc[pos[int(p)]] for p in common])
+    b = np.array([sc0_sub[pos0[int(p)]] for p in common])
+    yc = np.array([labels[int(p)] for p in common])
+    m, cl, ch, pv = paired_boot(a, b, yc)
+    verdict = ('EXCLUDES ZERO -- the body contributes' if cl > 0
+               else 'includes zero -- the body adds nothing measurable')
+    print(f"  C1 contrast  {m:+.4f}  95% CI [{cl:+.4f}, {ch:+.4f}]  "
+          f"P(<=0)={pv:.3f}")
+    print(f"  -> {verdict}")
+
+    print("\n=== C2: surface baselines and the paired contrast ===")
     surf_rows = np.column_stack([chars, lines, step, n_steps])
     sc_surf = oof_problem_scores(surf_rows, g, y_row, problems)
+    per_problem = lambda v: np.array([v[g == p].max() for p in problems])
     singles = {
         '-n_steps': -np.array([n_steps_of[int(p)] for p in problems], dtype=float),
-        '-max prefix chars': -np.array([chars[g == p].max() for p in problems]),
-        '-max prefix lines': -np.array([lines[g == p].max() for p in problems]),
+        '-max prefix chars': -per_problem(chars),
+        '-max prefix lines': -per_problem(lines),
     }
+    if np.allclose(singles['-n_steps'], singles['-max prefix lines']):
+        print("  note: -n_steps and -max prefix lines are the same vector "
+              "(rows are line prefixes), so there are 3 distinct baselines, not 4")
     named = {'trained RF on 4 surface dims': sc_surf, **singles}
+    best_nm, best = None, -1.0
     for nm, s in named.items():
         o, l, h = boot_ci(s, y_prob)
         print(f"  {nm:30} {o:.4f}  95% CI [{l:.4f}, {h:.4f}]")
-
-    print("\n=== paired: graph minus each baseline (same problems resampled) ===")
+        if o > best:
+            best_nm, best = nm, o
     for nm, s in named.items():
-        m, l, h, p = paired_boot(sc, s, y_prob)
-        mark = '  CI excludes 0' if l > 0 or h < 0 else ''
-        print(f"  vs {nm:30} {m:+.4f}  95% CI [{l:+.4f}, {h:+.4f}]  "
-              f"P(<=0)={p:.3f}{mark}")
+        m2, l2, h2, p2 = paired_boot(sc, s, y_prob)
+        mark = '  CI excludes 0' if l2 > 0 or h2 < 0 else '  unresolved'
+        star = '  <- C2' if nm == best_nm else ''
+        print(f"  vs {nm:30} {m2:+.4f}  95% CI [{l2:+.4f}, {h2:+.4f}]  "
+              f"P(<=0)={p2:.3f}{mark}{star}")
+    print(f"  best surface is {best_nm} at {best:.4f}; minimum resolvable paired "
+          f"gap at n={len(problems)} is about 0.06")
 
-    print("\n=== is it above chance? permutation over problems ===")
+    print("\n=== C3: above chance? ===")
     null = np.array([roc_auc_score(RNG.permutation(y_prob), sc) for _ in range(N_PERM)])
-    p_perm = float((null >= obs).mean())
-    print(f"  observed {obs:.4f} | null {null.mean():.4f} +- {null.std():.4f} "
-          f"| p = {p_perm:.4f}  ({N_PERM} permutations)")
+    p_perm = (1 + int((null >= obs).sum())) / (1 + N_PERM)
+    print(f"  CI excludes 0.50: {'yes' if lo > 0.5 else 'NO'}")
+    print(f"  permutation p = {p_perm:.4f} (null {null.mean():.4f} +- {null.std():.4f}, "
+          f"floor 1/{N_PERM+1})")
+    print("  note: the permutation holds the score vector fixed, so this is the same "
+          "test as the CI, not a second one")
 
-    print("\n=== learning curve over problems ===")
+    print("\n=== C4: is it length? ===")
+    cov = np.column_stack([chars, np.log1p(chars), chars ** 2, step, n_steps,
+                           lines, n_tok, n_tok.astype(float) ** 2])
+    Xr = residualise(X, cov)
+    sc_r = oof_problem_scores(Xr, g, y_row, problems)
+    o4, l4, h4 = boot_ci(sc_r, y_prob)
+    print(f"  residualised on 8 length/position terms: {o4:.4f} "
+          f"95% CI [{l4:.4f}, {h4:.4f}]  (vs {obs:.4f})")
+    print(f"  loss {obs - o4:+.4f}  -> {'passes' if obs - o4 < 0.05 else 'FAILS'} "
+          f"the 0.05 criterion")
+
+    print("\n=== descriptive: learning curve (not a prediction) ===")
     for frac in (0.25, 0.5, 0.75, 1.0):
         aucs = []
         for s in range(10):
@@ -178,7 +268,7 @@ def main():
             tr, te = np.isin(g, list(tr_p)), np.isin(g, list(te_p))
             if len(set(y_row[tr].tolist())) < 2:
                 continue
-            clf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=-1)
+            clf = RandomForestClassifier(n_estimators=100, random_state=42, n_jobs=N_JOBS)
             clf.fit(X[tr], y_row[tr])
             pr = clf.predict_proba(X[te])[:, 1]
             tt = np.array(sorted(te_p))
@@ -187,25 +277,16 @@ def main():
             if len(set(y_te.tolist())) > 1:
                 aucs.append(roc_auc_score(y_te, s_te))
         a = np.array(aucs)
+        # spread over splits, NOT an interval -- all four fractions reuse the
+        # same test problems within a split
         print(f"  train on {int(len(problems)*0.8*frac):4} problems: "
-              f"{a.mean():.4f} +- {a.std(ddof=1):.4f} (n={len(a)})")
+              f"{a.mean():.4f} (split spread {a.std(ddof=1):.4f}, n={len(a)})")
 
-    print("\n=== length-proxy check ===")
-    r = np.array([abs(stats.spearmanr(X[:, j], chars).statistic)
-                  if X[:, j].var() > 1e-12 else 0.0 for j in range(X.shape[1])])
-    proxies = np.flatnonzero(r > 0.7)
-    print(f"  {len(proxies)} of {X.shape[1]} dims correlate |r|>0.7 with prefix chars "
-          f"(max {r.max():.3f})")
-    if len(proxies) and len(proxies) < X.shape[1]:
-        rest = [j for j in range(X.shape[1]) if j not in set(proxies.tolist())]
-        s2 = oof_problem_scores(X[:, rest], g, y_row, problems)
-        o2, l2, h2 = boot_ci(s2, y_prob)
-        print(f"  dropping them: {o2:.4f}  95% CI [{l2:.4f}, {h2:.4f}] "
-              f"(vs {obs:.4f} with all dims)")
-
-    print(f"\n=== summary line ===")
-    print(f"  {FEATURES_FILE} | {len(problems)} problems | "
-          f"AUROC {obs:.4f} [{lo:.4f}, {hi:.4f}] | perm p={p_perm:.4f}")
+    print(f"\n=== summary ===")
+    print(f"  {FEATURES_FILE} | {len(problems)} problems")
+    print(f"  level  {obs:.4f} [{lo:.4f}, {hi:.4f}]")
+    print(f"  C1     {m:+.4f} [{cl:+.4f}, {ch:+.4f}]   <- the primary result")
+    print(f"  C4     {obs - o4:+.4f} loss after residualising on length")
 
 
 if __name__ == '__main__':

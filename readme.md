@@ -168,6 +168,36 @@ prompt-mandated step function. The comparable quantity is 0.7324 [0.6703, 0.7918
 execution signal are not the ones carrying the judge signal: Spearman between the
 two permutation-importance vectors is 0.031, sharing 2 of 10 top dimensions.
 
+## Does not survive: that any of this is about the generated code
+
+Found by red-teaming the Rust pre-registration before the Rust data existed, and
+confirmed by re-running it. `original_expression` — what the graph is computed
+on — is the prompt plus a code prefix, and at step 0 that prefix is one line: the
+function signature. No body. No logic that could be right or wrong.
+
+| | AUROC | 95% CI |
+|---|---|---|
+| all rows | 0.7269 | [0.6619, 0.7901] |
+| **step-0 rows only** (signature, no body) | **0.6931** | [0.6265, 0.7558] |
+| paired difference | **+0.0340** | **[−0.0160, +0.0846]** |
+
+The interval includes zero. A graph taken before the model writes a line of logic
+predicts correctness as well as one taken over the whole generation. On the clean
+240-problem subset the contrast is smaller still, +0.0165 [−0.0341, +0.0684].
+
+Everything else in this dataset agrees. Correctness is a property of the
+*problem*, not the generation: on the 129 problems both arms share, copying the
+Python label predicts Rust correctness at **AUROC 0.8669** (86.0% agreement,
+φ = +0.731). What the features have is a problem-difficulty read — one that
+genuinely beats length heuristics (that part survives), but that is available
+before the answer exists.
+
+The paper's claim is that internal circuits indicate whether *generated code* is
+correct. On this dataset that claim is not separable from "the model can tell a
+hard problem from an easy one", and the separation test is null. It is the
+reason the Rust arm's primary result is now the paired contrast rather than the
+AUROC — see `PREREGISTRATION.md`.
+
 ## Known defects in this dataset
 
 - **16 of 256 generations carry markdown fences.** `generated_code` contains
@@ -215,14 +245,21 @@ same question asked properly, and it must not repeat any of this.
    splits a `def` from its body rejoins. It then refuses to finish quietly:
    every generation is `ast.parse`-checked and the failures are listed. Applied
    to the shipped Python generations the new extractor repairs **16 of 16** and
-   changes none of the 240 that already parsed — parse rate 240/256 → 256/256.
-   The same fix went into the Java script; the C++ script already had a working
-   version further down the file, shadowing the broken one, which is where all
-   three copies most likely came from. That dead copy is deleted.
-   The existing Python graphs were built on the corrupted prefixes and cannot be
-   repaired without regenerating, but the headline does not depend on them:
-   dropping all 16 problems gives 0.7111 [0.6431, 0.7755] against 0.7324
-   [0.6686, 0.7955] on all 256.
+   changes none of the 240 that already parsed — it would take the parse rate
+   from 240/256 to 256/256. The same fix went into the Java script; the C++
+   script already had a working version further down the file, shadowing the
+   broken one, which is where all three copies most likely came from. That dead
+   copy is deleted.
+
+   **Correction.** An earlier version of this line said "parse rate 240/256 →
+   256/256" as though the data had been repaired. It has not. The fix landed in
+   the script only: `data/gemma_mbpp_responses.jsonl` is still the pre-fix file,
+   16 generations still fail `ast.parse`, and 147 of the 1420 feature rows
+   contain a literal ` ``` `. Repairing it means regenerating those 16 problems'
+   graphs, which needs the GPU the Rust run is using until ~2026-09-29. Until
+   then the like-for-like comparator is the 240 problems that parse, and it is
+   locked in `PREREGISTRATION.md` §3b so the choice cannot be made later:
+   0.7091 [0.6402, 0.7737] against 0.7269 [0.6619, 0.7901] on all 256.
 2. **Put the required signature in the generation prompt.** MBPP does not state
    the function name, which cost 210 of 256 Python generations a `NameError`
    before any assert ran. Ported naively that becomes a Rust compile error, and
