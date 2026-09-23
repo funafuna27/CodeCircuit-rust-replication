@@ -168,35 +168,46 @@ prompt-mandated step function. The comparable quantity is 0.7324 [0.6703, 0.7918
 execution signal are not the ones carrying the judge signal: Spearman between the
 two permutation-importance vectors is 0.031, sharing 2 of 10 top dimensions.
 
-## Does not survive: that any of this is about the generated code
+## The sharpest result: the features read the judge, not the execution
 
 Found by red-teaming the Rust pre-registration before the Rust data existed, and
-confirmed by re-running it. `original_expression` — what the graph is computed
-on — is the prompt plus a code prefix, and at step 0 that prefix is one line: the
-function signature. No body. No logic that could be right or wrong.
+confirmed by re-running it. `original_expression` — what the graph is computed on
+— is the prompt plus a code prefix, and at step 0 that prefix is one line: the
+function signature. No body. No logic that could be right or wrong. Comparing a
+model trained on all rows against one trained on step-0 rows alone isolates what
+the generated body contributes.
 
-| | AUROC | 95% CI |
-|---|---|---|
-| all rows | 0.7269 | [0.6619, 0.7901] |
-| **step-0 rows only** (signature, no body) | **0.6931** | [0.6265, 0.7558] |
-| paired difference | **+0.0340** | **[−0.0160, +0.0846]** |
+| target | all rows | step-0 only | contribution of the body |
+|---|---|---|---|
+| gpt-4o-mini judge, all lines 1 | 0.6992 | 0.6114 | **+0.0882 [+0.024, +0.154]** |
+| judge, majority of lines | 0.6811 | 0.5685 | +0.1134 [−0.009, +0.244] |
+| **execution truth** | 0.7269 | 0.6931 | **+0.0337 [−0.017, +0.084]** |
 
-The interval includes zero. A graph taken before the model writes a line of logic
-predicts correctness as well as one taken over the whole generation. On the clean
-240-problem subset the contrast is smaller still, +0.0165 [−0.0341, +0.0684].
+Read carefully, because the two rows say different things.
 
-Everything else in this dataset agrees. Correctness is a property of the
-*problem*, not the generation: on the 129 problems both arms share, copying the
-Python label predicts Rust correctness at **AUROC 0.8669** (86.0% agreement,
-φ = +0.731). What the features have is a problem-difficulty read — one that
-genuinely beats length heuristics (that part survives), but that is available
-before the answer exists.
+**Against the judge, the body does contribute** — the interval excludes zero.
+That is not surprising once stated: the judge reads the code, so predicting the
+judge benefits from seeing the code.
 
-The paper's claim is that internal circuits indicate whether *generated code* is
-correct. On this dataset that claim is not separable from "the model can tell a
-hard problem from an easy one", and the separation test is null. It is the
-reason the Rust arm's primary result is now the paired contrast rather than the
-AUROC — see `PREREGISTRATION.md`.
+**Against execution truth it does not.** A graph taken before the model writes a
+line of logic predicts whether the program actually works as well as one taken
+over the whole generation. On the clean 240-problem subset the contrast shrinks
+further, to +0.0165 [−0.0341, +0.0684].
+
+So the honest statement is narrower than "it is all problem difficulty", and
+more specific: **the features carry information about what an LLM judge will say
+about the code, and no separable information about whether the code runs.** The
+part of the signal that predicts execution is not distinguishable from a read on
+problem difficulty, which is available before the answer exists.
+
+The rest of the dataset agrees that correctness here is largely a property of the
+problem: on the 129 problems both arms share, copying the Python label predicts
+Rust correctness at **AUROC 0.8669** (86.0% agreement, φ = +0.731).
+
+This is why the Rust arm's primary result is the paired contrast rather than the
+AUROC — see `PREREGISTRATION.md`. The features do beat surface length heuristics
+(+0.1026 [+0.0408, +0.1658]), and that survives; what does not survive is reading
+the headline as evidence about generated code rather than about the problem.
 
 ## Known defects in this dataset
 

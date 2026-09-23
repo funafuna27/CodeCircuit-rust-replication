@@ -45,7 +45,22 @@ larger: on clean data the body accounts for 0.017 of 0.709.
 
 The interval includes zero. A graph computed before the model has written a line
 of logic predicts the outcome as well as one computed over the whole generation.
-The features are reading **problem difficulty**, available before the answer is.
+
+**But the same contrast against the paper's own target is positive.** Run on the
+gpt-4o-mini judge label the paper reports against:
+
+```
+Python, 256 problems, target = judge says every line is correct
+  all rows          0.6992
+  step-0 rows only  0.6114
+  paired difference +0.0882 95% CI [+0.024, +0.154]   EXCLUDES zero
+```
+
+So the body is not inert. The features carry real information about **what the
+judge will say** — unsurprising, since the judge reads the code — and no
+separable information about **whether the code runs**. The execution-predicting
+part of the signal is not distinguishable from a read on problem difficulty,
+which is available before the answer exists.
 
 That is consistent with the rest of what this dataset shows. Correctness here is
 overwhelmingly a property of the problem, not the generation: on the 129
@@ -56,8 +71,12 @@ Python passed) = 0.794 against 0.066).
 So the question this study can actually answer is narrower, and it is the one
 that matters for the paper's claim:
 
-> **Does anything in the attribution graph of the generated code predict its
-> correctness, beyond what the prompt alone already predicts?**
+> **Does anything in the attribution graph of the generated code predict whether
+> that code RUNS, beyond what the problem statement alone already predicts?**
+
+On Python the answer is no — the contrast is +0.0340 [−0.0160, +0.0846], and
++0.0165 [−0.0341, +0.0684] once the corrupted generations are removed. The Rust
+arm asks the same question of a second language.
 
 ## 2. The protocol — fixed
 
