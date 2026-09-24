@@ -307,8 +307,22 @@ sample of MBPP.
 ## 7. Known defects not fixed before the data lands
 
 - The Python graphs are built on 16 fence-corrupted generations (§3b). Fixing
-  this needs the GPU, which is busy until ~2026-09-29. Until then §3b's
+  this needs the GPU, which is busy until ~2026-09-28. Until then §3b's
   240-problem number is the comparator.
+
+  **The fix is prepared and costed, so it cannot be quietly skipped or quietly
+  adopted.** `0b_repair_responses.py` repairs all 16 (0 remaining); the repaired
+  code is shorter, so the rows to rebuild fall from 263 to 132, of which 124
+  sit inside the 140-token cap — a measured **8.9 hours** of GPU.
+  `run_python_topup.sh` runs the whole sequence and refuses to start while
+  another graph run holds the card.
+
+  Relabelling the repaired generations moves the Python pass rate from
+  **114/256 to 117/256**: tasks 285, 395 and 405 flip to passing, each on 3/3
+  asserts. They were failing because the extractor left fence lines in their
+  code, not because the model got them wrong. When the top-up lands, the result
+  is recorded in §8 as a deviation **alongside** the locked 240-problem number,
+  not in place of it.
 - Task 67's Rust harness cannot compile at all — its MBPP test literal exceeds
   `i64` — so it is recorded as a model compile failure. One problem of 350.
 - The Rust float check uses `max(|e|, 1.0)` where `math.isclose` uses
