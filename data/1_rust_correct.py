@@ -40,17 +40,26 @@ RUN_TIMEOUT = int(os.environ.get('RUN_TIMEOUT', 10))
 MAIN_RE = re.compile(r'\bfn\s+main\s*\(')
 
 
-def build_case(i, sig, args, expected):
-    """One assert, evaluated without letting a panic kill the rest."""
+def build_case(i, sig, args, expected, is_close):
+    """One assert, evaluated without letting a panic kill the rest.
+
+    The tolerant comparison is used ONLY where MBPP itself wrote
+    math.isclose, and reproduces its rule exactly:
+        |v-e| <= rel_tol*max(|v|,|e|) + abs_tol,  rel_tol=0.001, abs_tol=0
+    An earlier version applied |v-e| <= 1e-3*max(|e|,1.0) to every f64-returning
+    task. That is looser twice over -- the 1.0 floor when |e|<1, and using |e|
+    alone when |v|>|e| -- and 10 of the 21 f64 tasks demand exact equality in
+    MBPP. It changed no label here (closest approach 34x inside the threshold),
+    but it is the wrong test.
+    """
     call_args = ', '.join(rust_literal(a, owned=(sig['params'][j] != '&str'))
                           for j, a in enumerate(args))
     call = f"{sig['name']}({call_args})"
     exp = rust_literal(expected, owned=True)
-    if sig['ret'] == 'f64':
-        # MBPP's float asserts use math.isclose(rel_tol=0.001).
+    if is_close and sig['ret'] == 'f64':
         check = (f"match r {{ Ok(v) => {{ let e = {exp}; "
-                 f"if (v - e).abs() <= 1e-3 * e.abs().max(1.0) {{ p += 1; }} "
-                 f"else {{ println!(\"FAIL {i}\"); }} }}, "
+                 f"if v == e || (v - e).abs() <= 1e-3 * v.abs().max(e.abs()) "
+                 f"{{ p += 1; }} else {{ println!(\"FAIL {i}\"); }} }}, "
                  f"Err(_) => println!(\"PANIC {i}\") }}")
     else:
         check = (f"match r {{ Ok(v) => {{ if v == {exp} {{ p += 1; }} "
@@ -62,7 +71,8 @@ def build_case(i, sig, args, expected):
 
 def build_source(code, sig):
     body = MAIN_RE.sub('fn __generated_main(', code)
-    cases = ''.join(build_case(i, sig, a, e) for i, (a, e) in enumerate(sig['cases']))
+    cases = ''.join(build_case(i, sig, a, e, ic)
+                    for i, (a, e, ic) in enumerate(sig['cases']))
     return (
         "#![allow(warnings)]\n"
         f"{body}\n\n"
@@ -137,7 +147,9 @@ def main():
             sig = typeable[int(row['task_id'])]
             v = judge(row['generated_code'], sig, wd)
             results.append({'task_id': int(row['task_id']),
-                            'n_assert': len(sig['cases']), **v})
+                            'n_assert': len(sig['cases']),
+                            'n_mbpp_asserts': sig['n_mbpp_asserts'],
+                            'graded_all_tests': sig['graded_all_tests'], **v})
             if n % 25 == 0 or n == len(rows):
                 print(f"  {n}/{len(rows)}")
 
@@ -157,6 +169,20 @@ def main():
     print("\n  where they stop:")
     for st, k in Counter(r['stage'] for r in results).most_common():
         print(f"    {k:4}  {st}")
+
+    partial = [r for r in results if not r['graded_all_tests']]
+    if partial:
+        pos = [r['task_id'] for r in partial if r['passes']]
+        print(f"\n  graded on a SUBSET of MBPP's asserts: {len(partial)} tasks")
+        print(f"    {[r['task_id'] for r in partial]}")
+        print(f"    of which positive: {len(pos)} {pos}")
+        strict = [r for r in results if r['graded_all_tests']]
+        sc = sum(r['compiles'] for r in strict)
+        sp = sum(r['passes'] for r in strict)
+        print(f"  strict population (every MBPP assert gradeable): {len(strict)} "
+              f"tasks, {sc} compile, {sp} pass "
+              f"({sp/sc*100:.1f}% of compiling)" if sc else "")
+        print("  PREREGISTRATION fixes the headline on the strict population.")
 
 
 if __name__ == '__main__':

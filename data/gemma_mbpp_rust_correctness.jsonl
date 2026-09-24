@@ -1,350 +1,350 @@
-{"task_id": 3, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 4, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 6, "n_assert": 6, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3 FAIL 4 FAIL 5"}
-{"task_id": 8, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 9, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `rotate` found for struct `Vec<char>` in the current scope"}
-{"task_id": 11, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 12, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 14, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 16, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
-{"task_id": 17, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 18, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `&char: Pattern` is not satisfied"}
-{"task_id": 19, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 20, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
-{"task_id": 56, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 57, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `->`, `where`, or `{`, found keyword `fn`"}
-{"task_id": 58, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 59, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 61, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `substring` found for reference `&str` in the current scope"}
-{"task_id": 62, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 63, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
-{"task_id": 64, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 66, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 67, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
-{"task_id": 68, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 69, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 71, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 72, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 74, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0765]: unterminated double quote string"}
-{"task_id": 75, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 77, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 79, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 80, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 82, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 83, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `get_Char` is defined multiple times"}
-{"task_id": 84, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `sequence` is defined multiple times"}
-{"task_id": 85, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
-{"task_id": 86, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 89, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 90, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 91, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 92, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
-{"task_id": 93, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 94, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 95, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 96, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 99, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 100, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 101, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
-{"task_id": 102, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 103, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 104, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `sort` found for struct `String` in the current scope"}
-{"task_id": 105, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 106, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
-{"task_id": 108, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 109, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 113, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 116, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 117, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 118, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 119, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 120, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 123, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 125, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `str` cannot be indexed by `usize`"}
-{"task_id": 126, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 127, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 128, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 129, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
-{"task_id": 130, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 131, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
-{"task_id": 133, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 135, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 137, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 138, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 139, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 141, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "binary TIMEOUT"}
-{"task_id": 142, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 160, "n_assert": 2, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 161, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 162, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: unexpected closing delimiter: `}`"}
-{"task_id": 163, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 164, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 165, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0369]: cannot add `u8` to `char`"}
-{"task_id": 166, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 167, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 168, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 170, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
-{"task_id": 171, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 172, "n_assert": 5, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: character literal may only contain one codepoint"}
-{"task_id": 223, "n_assert": 4, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 224, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 226, "n_assert": 4, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `index` found for type `char` in the current scope"}
-{"task_id": 227, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 228, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 229, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 230, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 233, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
-{"task_id": 234, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 235, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 238, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 239, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
-{"task_id": 242, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 244, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `sqrt` found for type `i64` in the current scope"}
-{"task_id": 245, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 246, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot divide `i64` by `f64`"}
-{"task_id": 247, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `max` in this scope"}
-{"task_id": 248, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 249, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 250, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: `(i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64)` is not an iterator"}
-{"task_id": 251, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 252, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
-{"task_id": 253, "n_assert": 1, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `is_integer` found for type `i64` in the current scope"}
-{"task_id": 256, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
-{"task_id": 257, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 259, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
-{"task_id": 260, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 261, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
-{"task_id": 264, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 266, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 267, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
-{"task_id": 268, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 269, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `char` cannot be made by summing an iterator over elements of type `char`"}
-{"task_id": 270, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 271, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 272, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0609]: no field `rear` on type `(i64, String, i64)`"}
-{"task_id": 273, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer})`"}
-{"task_id": 274, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: arguments to this function are incorrect"}
-{"task_id": 276, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `powi` found for type `i64` in the current scope"}
-{"task_id": 279, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 280, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 281, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 282, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 283, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `str` cannot be indexed by `usize`"}
-{"task_id": 285, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 286, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
-{"task_id": 287, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 290, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 291, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `k` in this scope"}
-{"task_id": 292, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 295, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 296, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 297, "n_assert": 2, "compiles": true, "passes": true, "n_pass": 2, "stage": "ok", "error": ""}
-{"task_id": 299, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 300, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 304, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `rotate` in this scope"}
-{"task_id": 305, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 306, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `:`"}
-{"task_id": 308, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 309, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 311, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 312, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `{float}`"}
-{"task_id": 388, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `highest_Power_of_2` in this scope"}
-{"task_id": 389, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
-{"task_id": 392, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 393, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 395, "n_assert": 2, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1"}
-{"task_id": 396, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 397, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot divide `i64` by `{float}`"}
-{"task_id": 398, "n_assert": 2, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "PANIC 1"}
-{"task_id": 399, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
-{"task_id": 400, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
-{"task_id": 401, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
-{"task_id": 404, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 406, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 408, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `:`"}
-{"task_id": 409, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 411, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 412, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 414, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 415, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 419, "n_assert": 2, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
-{"task_id": 420, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 421, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 424, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 426, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 427, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0433]: cannot find module or crate `chrono` in this scope"}
-{"task_id": 428, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
-{"task_id": 429, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
-{"task_id": 430, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
-{"task_id": 433, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 434, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 435, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 436, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 437, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0369]: cannot calculate the remainder of `char` divided by `{integer}`"}
-{"task_id": 438, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 439, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 440, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_adverb_position` is defined multiple times"}
-{"task_id": 441, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 442, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `f64: From<usize>` is not satisfied"}
-{"task_id": 443, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 445, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
-{"task_id": 447, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 448, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 450, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 451, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 452, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 453, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 454, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 455, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
-{"task_id": 456, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 458, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 459, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 460, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 461, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 463, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `max` in this scope"}
-{"task_id": 468, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 470, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0609]: no field `5` on type `(i64, i64, i64, i64, i64)`"}
-{"task_id": 471, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_remainder` is defined multiple times"}
-{"task_id": 472, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 474, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `replace_char` is defined multiple times"}
-{"task_id": 476, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 477, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 478, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 479, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 554, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 555, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 556, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: comparison operators cannot be chained"}
-{"task_id": 557, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 558, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 559, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 562, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 563, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 564, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 565, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 566, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 567, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 569, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 572, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 573, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 574, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `{integer}` by `{float}`"}
-{"task_id": 576, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 577, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
-{"task_id": 578, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 579, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `(i64, i64, i64, i64)`"}
-{"task_id": 581, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 583, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[{integer}]` cannot be indexed by `i64`"}
-{"task_id": 584, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_adverbs` is defined multiple times"}
-{"task_id": 586, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 588, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 589, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 591, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
-{"task_id": 592, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
-{"task_id": 593, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 594, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 597, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 598, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 599, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 600, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 602, "n_assert": 2, "compiles": true, "passes": true, "n_pass": 2, "stage": "ok", "error": ""}
-{"task_id": 603, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 604, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 605, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 606, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `{float}`"}
-{"task_id": 607, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0433]: cannot find type `Regex` in this scope"}
-{"task_id": 608, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
-{"task_id": 610, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 611, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
-{"task_id": 616, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
-{"task_id": 618, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 619, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 620, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 622, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: `[i64]` is not an iterator"}
-{"task_id": 623, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 624, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 625, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 626, "n_assert": 2, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 627, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 628, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 629, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 630, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `get_coordinates` is defined multiple times"}
-{"task_id": 631, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
-{"task_id": 632, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 633, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `pair_xor_Sum` is defined multiple times"}
-{"task_id": 635, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `heap_sort` is defined multiple times"}
-{"task_id": 637, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 638, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `round` found for type `i64` in the current scope"}
-{"task_id": 639, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `lowercase` in this scope"}
-{"task_id": 640, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0502]: cannot borrow `result` as mutable because it is also borrowed as immutable"}
-{"task_id": 641, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 643, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 644, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
-{"task_id": 721, "n_assert": 4, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `=`"}
-{"task_id": 723, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 724, "n_assert": 4, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3"}
-{"task_id": 725, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 728, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 731, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
-{"task_id": 732, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 733, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 734, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 735, "n_assert": 5, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3 FAIL 4"}
-{"task_id": 736, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 737, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 738, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
-{"task_id": 739, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 741, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 742, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 743, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 744, "n_assert": 1, "compiles": true, "passes": true, "n_pass": 1, "stage": "ok", "error": ""}
-{"task_id": 745, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `Vec<i32>` cannot be built from an iterator over elements of type `u32`"}
-{"task_id": 746, "n_assert": 2, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 747, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
-{"task_id": 748, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `String: Pattern` is not satisfied"}
-{"task_id": 749, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 750, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
-{"task_id": 751, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 752, "n_assert": 4, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3"}
-{"task_id": 753, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0507]: cannot move out of index of `Vec<(String, i64)>`"}
-{"task_id": 754, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 755, "n_assert": 1, "compiles": true, "passes": true, "n_pass": 1, "stage": "ok", "error": ""}
-{"task_id": 756, "n_assert": 6, "compiles": true, "passes": true, "n_pass": 6, "stage": "ok", "error": ""}
-{"task_id": 757, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 759, "n_assert": 5, "compiles": true, "passes": false, "n_pass": 3, "stage": "run", "error": "FAIL 0 FAIL 3"}
-{"task_id": 760, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
-{"task_id": 762, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
-{"task_id": 764, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 765, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "binary TIMEOUT"}
-{"task_id": 766, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 767, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 769, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 FAIL 2"}
-{"task_id": 770, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 771, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 772, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 773, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 775, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `[`"}
-{"task_id": 776, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `is_vowel` found for type `char` in the current scope"}
-{"task_id": 777, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 780, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 781, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `{`"}
-{"task_id": 782, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 784, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
-{"task_id": 785, "n_assert": 4, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `Vec<String>` cannot be built from an iterator over elements of type `&str`"}
-{"task_id": 786, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 787, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 788, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
-{"task_id": 790, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `[`"}
-{"task_id": 792, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 793, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
-{"task_id": 794, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 797, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 798, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 799, "n_assert": 7, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `d` in this scope"}
-{"task_id": 800, "n_assert": 4, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
-{"task_id": 801, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
-{"task_id": 802, "n_assert": 5, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2 PANIC 3 PANIC 4"}
-{"task_id": 803, "n_assert": 4, "compiles": true, "passes": false, "n_pass": 3, "stage": "run", "error": "FAIL 1"}
-{"task_id": 804, "n_assert": 3, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0283]: type annotations needed"}
-{"task_id": 805, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
-{"task_id": 806, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 807, "n_assert": 3, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
-{"task_id": 809, "n_assert": 3, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 3, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 4, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 6, "n_assert": 6, "n_mbpp_asserts": 6, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3 FAIL 4 FAIL 5"}
+{"task_id": 8, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 9, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `rotate` found for struct `Vec<char>` in the current scope"}
+{"task_id": 11, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 12, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 14, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 16, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
+{"task_id": 17, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 18, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `&char: Pattern` is not satisfied"}
+{"task_id": 19, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 20, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
+{"task_id": 56, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 57, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `->`, `where`, or `{`, found keyword `fn`"}
+{"task_id": 58, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 59, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 61, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `substring` found for reference `&str` in the current scope"}
+{"task_id": 62, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 63, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
+{"task_id": 64, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 66, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 67, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
+{"task_id": 68, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 69, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 71, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 72, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 74, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0765]: unterminated double quote string"}
+{"task_id": 75, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 77, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 79, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 80, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 82, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 83, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `get_Char` is defined multiple times"}
+{"task_id": 84, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `sequence` is defined multiple times"}
+{"task_id": 85, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
+{"task_id": 86, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 89, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 90, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 91, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 92, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
+{"task_id": 93, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 94, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 95, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 96, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 99, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 100, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 101, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
+{"task_id": 102, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 103, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 104, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `sort` found for struct `String` in the current scope"}
+{"task_id": 105, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 106, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
+{"task_id": 108, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 109, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 113, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 116, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 117, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 118, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 119, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 120, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 123, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 125, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `str` cannot be indexed by `usize`"}
+{"task_id": 126, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 127, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 128, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 129, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
+{"task_id": 130, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 131, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
+{"task_id": 133, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 135, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 137, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 138, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 139, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 141, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "binary TIMEOUT"}
+{"task_id": 142, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 160, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 161, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 162, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: unexpected closing delimiter: `}`"}
+{"task_id": 163, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 164, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 165, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0369]: cannot add `u8` to `char`"}
+{"task_id": 166, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 167, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 168, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 170, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
+{"task_id": 171, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 172, "n_assert": 5, "n_mbpp_asserts": 5, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: character literal may only contain one codepoint"}
+{"task_id": 223, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 224, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 226, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `index` found for type `char` in the current scope"}
+{"task_id": 227, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 228, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 229, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 230, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 233, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
+{"task_id": 234, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 235, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 238, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 239, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
+{"task_id": 242, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 244, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `sqrt` found for type `i64` in the current scope"}
+{"task_id": 245, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 246, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot divide `i64` by `f64`"}
+{"task_id": 247, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `max` in this scope"}
+{"task_id": 248, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 249, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 250, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: `(i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64, i64)` is not an iterator"}
+{"task_id": 251, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 252, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
+{"task_id": 253, "n_assert": 1, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `is_integer` found for type `i64` in the current scope"}
+{"task_id": 256, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
+{"task_id": 257, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 259, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
+{"task_id": 260, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 261, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
+{"task_id": 264, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 266, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 267, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
+{"task_id": 268, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 269, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `char` cannot be made by summing an iterator over elements of type `char`"}
+{"task_id": 270, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 271, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 272, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0609]: no field `rear` on type `(i64, String, i64)`"}
+{"task_id": 273, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer})`"}
+{"task_id": 274, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: arguments to this function are incorrect"}
+{"task_id": 276, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `powi` found for type `i64` in the current scope"}
+{"task_id": 279, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 280, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 281, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 282, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 283, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `str` cannot be indexed by `usize`"}
+{"task_id": 285, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 286, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
+{"task_id": 287, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 290, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 291, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `k` in this scope"}
+{"task_id": 292, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 295, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 296, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 297, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": true, "passes": true, "n_pass": 2, "stage": "ok", "error": ""}
+{"task_id": 299, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 300, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 304, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `rotate` in this scope"}
+{"task_id": 305, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 306, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `:`"}
+{"task_id": 308, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 309, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 311, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 312, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `{float}`"}
+{"task_id": 388, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `highest_Power_of_2` in this scope"}
+{"task_id": 389, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `n` in this scope"}
+{"task_id": 392, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 393, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 395, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1"}
+{"task_id": 396, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 397, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot divide `i64` by `{float}`"}
+{"task_id": 398, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "PANIC 1"}
+{"task_id": 399, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
+{"task_id": 400, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 0"}
+{"task_id": 401, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
+{"task_id": 404, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 406, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 408, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `:`"}
+{"task_id": 409, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 411, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 412, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 414, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 415, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 419, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
+{"task_id": 420, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 421, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 424, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 426, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 427, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0433]: cannot find module or crate `chrono` in this scope"}
+{"task_id": 428, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
+{"task_id": 429, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
+{"task_id": 430, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
+{"task_id": 433, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 434, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 435, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 436, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 437, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0369]: cannot calculate the remainder of `char` divided by `{integer}`"}
+{"task_id": 438, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 439, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 440, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_adverb_position` is defined multiple times"}
+{"task_id": 441, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 442, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `f64: From<usize>` is not satisfied"}
+{"task_id": 443, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 445, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `where` or `{`, found keyword `fn`"}
+{"task_id": 447, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 448, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 450, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 451, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 452, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 453, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 454, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 455, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
+{"task_id": 456, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 458, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 459, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 460, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 461, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 463, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find function `max` in this scope"}
+{"task_id": 468, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 470, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0609]: no field `5` on type `(i64, i64, i64, i64, i64)`"}
+{"task_id": 471, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_remainder` is defined multiple times"}
+{"task_id": 472, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 474, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `replace_char` is defined multiple times"}
+{"task_id": 476, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 477, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 478, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 479, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 554, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 555, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 556, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: comparison operators cannot be chained"}
+{"task_id": 557, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 558, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 559, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 562, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 563, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 564, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 565, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 566, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 567, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 569, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 572, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 573, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 574, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `{integer}` by `{float}`"}
+{"task_id": 576, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 577, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
+{"task_id": 578, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 579, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `(i64, i64, i64, i64)`"}
+{"task_id": 581, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 583, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[{integer}]` cannot be indexed by `i64`"}
+{"task_id": 584, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `find_adverbs` is defined multiple times"}
+{"task_id": 586, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 588, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 589, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 591, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
+{"task_id": 592, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 1"}
+{"task_id": 593, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 594, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 597, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 598, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 599, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 600, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 602, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": true, "passes": true, "n_pass": 2, "stage": "ok", "error": ""}
+{"task_id": 603, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 604, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 605, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 606, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `{float}`"}
+{"task_id": 607, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0433]: cannot find type `Regex` in this scope"}
+{"task_id": 608, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
+{"task_id": 610, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 611, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 1 FAIL 2"}
+{"task_id": 616, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0608]: cannot index into a value of type `({integer}, {integer}, {integer}, {integer})`"}
+{"task_id": 618, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 619, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 620, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 622, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: `[i64]` is not an iterator"}
+{"task_id": 623, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 624, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 625, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 626, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 627, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 628, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 629, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 630, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `get_coordinates` is defined multiple times"}
+{"task_id": 631, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
+{"task_id": 632, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 633, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `pair_xor_Sum` is defined multiple times"}
+{"task_id": 635, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0428]: the name `heap_sort` is defined multiple times"}
+{"task_id": 637, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 638, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `round` found for type `i64` in the current scope"}
+{"task_id": 639, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `lowercase` in this scope"}
+{"task_id": 640, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0502]: cannot borrow `result` as mutable because it is also borrowed as immutable"}
+{"task_id": 641, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 643, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 644, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the type `[i64]` cannot be indexed by `i64`"}
+{"task_id": 721, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected one of `!` or `::`, found `=`"}
+{"task_id": 723, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 724, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3"}
+{"task_id": 725, "n_assert": 3, "n_mbpp_asserts": 4, "graded_all_tests": false, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 728, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 731, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `f64` by `i64`"}
+{"task_id": 732, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 733, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 734, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 735, "n_assert": 5, "n_mbpp_asserts": 5, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3 FAIL 4"}
+{"task_id": 736, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 737, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 738, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: cannot multiply `i64` by `f64`"}
+{"task_id": 739, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 741, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 742, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 743, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 744, "n_assert": 1, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": true, "passes": true, "n_pass": 1, "stage": "ok", "error": ""}
+{"task_id": 745, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `Vec<i32>` cannot be built from an iterator over elements of type `u32`"}
+{"task_id": 746, "n_assert": 2, "n_mbpp_asserts": 3, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 747, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
+{"task_id": 748, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: the trait bound `String: Pattern` is not satisfied"}
+{"task_id": 749, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 750, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0596]: cannot borrow `a0` as mutable, as it is not declared as mutable"}
+{"task_id": 751, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 752, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3"}
+{"task_id": 753, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0507]: cannot move out of index of `Vec<(String, i64)>`"}
+{"task_id": 754, "n_assert": 3, "n_mbpp_asserts": 4, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 755, "n_assert": 1, "n_mbpp_asserts": 4, "graded_all_tests": false, "compiles": true, "passes": true, "n_pass": 1, "stage": "ok", "error": ""}
+{"task_id": 756, "n_assert": 6, "n_mbpp_asserts": 6, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 6, "stage": "ok", "error": ""}
+{"task_id": 757, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 759, "n_assert": 5, "n_mbpp_asserts": 5, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 3, "stage": "run", "error": "FAIL 0 FAIL 3"}
+{"task_id": 760, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 1, "stage": "run", "error": "FAIL 0 FAIL 2"}
+{"task_id": 762, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 1"}
+{"task_id": 764, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 765, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "binary TIMEOUT"}
+{"task_id": 766, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 767, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 769, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 FAIL 2"}
+{"task_id": 770, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 771, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 772, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 773, "n_assert": 3, "n_mbpp_asserts": 4, "graded_all_tests": false, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 775, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `[`"}
+{"task_id": 776, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0599]: no method named `is_vowel` found for type `char` in the current scope"}
+{"task_id": 777, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 780, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 781, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `{`"}
+{"task_id": 782, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 784, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}
+{"task_id": 785, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0277]: a value of type `Vec<String>` cannot be built from an iterator over elements of type `&str`"}
+{"task_id": 786, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 787, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 788, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: this file contains an unclosed delimiter"}
+{"task_id": 790, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error: expected item, found `[`"}
+{"task_id": 792, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 793, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0308]: mismatched types"}
+{"task_id": 794, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 797, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 798, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 799, "n_assert": 7, "n_mbpp_asserts": 7, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0425]: cannot find value `d` in this scope"}
+{"task_id": 800, "n_assert": 4, "n_mbpp_asserts": 4, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 4, "stage": "ok", "error": ""}
+{"task_id": 801, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 2, "stage": "run", "error": "FAIL 2"}
+{"task_id": 802, "n_assert": 5, "n_mbpp_asserts": 5, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2 PANIC 3 PANIC 4"}
+{"task_id": 803, "n_assert": 4, "n_mbpp_asserts": 6, "graded_all_tests": false, "compiles": true, "passes": false, "n_pass": 3, "stage": "run", "error": "FAIL 1"}
+{"task_id": 804, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": false, "passes": false, "n_pass": 0, "stage": "compile", "error": "error[E0283]: type annotations needed"}
+{"task_id": 805, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "PANIC 0 PANIC 1 PANIC 2"}
+{"task_id": 806, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 807, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": true, "n_pass": 3, "stage": "ok", "error": ""}
+{"task_id": 809, "n_assert": 3, "n_mbpp_asserts": 3, "graded_all_tests": true, "compiles": true, "passes": false, "n_pass": 0, "stage": "run", "error": "FAIL 0 FAIL 1 FAIL 2"}

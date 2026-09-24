@@ -19,12 +19,20 @@ import ast
 __all__ = ['rust_type', 'rust_literal', 'derive_signature', 'load_typeable']
 
 
+I64_MIN, I64_MAX = -(2 ** 63), 2 ** 63 - 1
+
+
 def rust_type(v, owned=True):
     """Python literal -> Rust type, or None if not simply representable."""
     if isinstance(v, bool):          # before int: bool is a subclass of int
         return 'bool'
     if isinstance(v, int):
-        return 'i64'
+        # Range-checked: an earlier version mapped every Python int to i64, so
+        # MBPP task 67's 55-digit assert produced a literal rustc refuses
+        # ("integer literal is too large") and the task was recorded as a model
+        # compile failure. Exactly one task in all 427 is affected, but an
+        # unchecked cast is a trap for any regenerated dataset.
+        return 'i64' if I64_MIN <= v <= I64_MAX else None
     if isinstance(v, float):
         return 'f64'
     if isinstance(v, str):
@@ -65,25 +73,38 @@ def rust_literal(v, owned=True):
 
 
 def _unwrap_call(node):
-    """Find the (call, expected) pair inside one assert's test expression."""
+    """Find (call, expected, isclose) inside one assert's test expression.
+
+    `isclose` says whether MBPP wrote this assert with math.isclose. An earlier
+    version applied a 1e-3 tolerance to every f64-returning task; only 11 of the
+    21 use isclose, and the other 10 demand exact equality. It changed no label
+    on this dataset (the closest approach is 34x inside the threshold) but it is
+    the wrong test and would bite on any regenerated set.
+    """
     if isinstance(node, ast.Compare) and len(node.comparators) == 1:
+        # Only == is handled. MBPP sanitized contains no non-Eq comparison
+        # assert, but silently grading `!=` as `==` would be invisible.
+        if not isinstance(node.ops[0], ast.Eq):
+            return None, None, False
         left, right = node.left, node.comparators[0]
         for cand, other in ((left, right), (right, left)):
             if isinstance(cand, ast.Call) and isinstance(cand.func, ast.Name):
-                return cand, other
-        return None, None
+                return cand, other, False
+        return None, None, False
     if isinstance(node, ast.Call):
         if isinstance(node.func, ast.Name):
-            return node, ast.Constant(value=True)     # assert f(...)
+            return node, ast.Constant(value=True), False     # assert f(...)
         if isinstance(node.func, ast.Attribute) and node.args:
             inner = node.args[0]                      # assert math.isclose(f(...), v)
             if isinstance(inner, ast.Call) and isinstance(inner.func, ast.Name):
-                return inner, node.args[1] if len(node.args) > 1 else None
+                is_close = node.func.attr == 'isclose'
+                return (inner, node.args[1] if len(node.args) > 1 else None,
+                        is_close)
     if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
-        call, _ = _unwrap_call(node.operand)
+        call, _, _ = _unwrap_call(node.operand)
         if call is not None:
-            return call, ast.Constant(value=False)    # assert not f(...)
-    return None, None
+            return call, ast.Constant(value=False), False    # assert not f(...)
+    return None, None, False
 
 
 def derive_signature(task):
@@ -98,7 +119,7 @@ def derive_signature(task):
         if not isinstance(stmt, ast.Assert):
             reasons.append('not an assert')
             continue
-        call, expected = _unwrap_call(stmt.test)
+        call, expected, is_close = _unwrap_call(stmt.test)
         if call is None:
             reasons.append('no bare function call found')
             continue
@@ -129,7 +150,7 @@ def derive_signature(task):
             reasons.append('return type not representable')
             continue
         ret_types.add(rt)
-        cases.append((args, exp))
+        cases.append((args, exp, is_close))
 
     if len(names) != 1:
         return None, f'{len(names)} distinct function names'
@@ -143,9 +164,17 @@ def derive_signature(task):
 
     name, ret, params = names.pop(), ret_types.pop(), list(arg_sigs[0])
     plist = ', '.join(f'a{i}: {t}' for i, t in enumerate(params))
+    # graded_all_tests is the field that matters for the headline. Skipping an
+    # assert and accepting the task anyway leaves 15 of 350 graded on a strict
+    # subset, and 4 of those carry passes=True -- task 744's two None-returning
+    # asserts are both dropped, so it is graded on one case that a stub passes.
+    # Nothing in the output used to say so.
     return {'task_id': int(task['task_id']), 'name': name, 'params': params,
             'ret': ret, 'signature': f'fn {name}({plist}) -> {ret}',
-            'cases': cases, 'prompt': task['prompt']}, None
+            'cases': cases, 'prompt': task['prompt'],
+            'n_mbpp_asserts': len(task['test_list']),
+            'graded_all_tests': len(cases) == len(task['test_list']),
+            'skipped_reasons': reasons}, None
 
 
 def load_typeable():

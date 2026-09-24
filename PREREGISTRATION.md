@@ -89,7 +89,7 @@ arm asks the same question of a second language.
 | model | `RandomForestClassifier(n_estimators=100, random_state=42)` |
 | scoring | 10 repeats × 5-fold `GroupKFold`, grouped by problem, every problem out of fold |
 | interval | 5000-draw bootstrap resampling **problems** |
-| population | the problems whose generation compiles (Rust: 214 of 350). The restriction is imposed upstream by `2_incremental_data_rust.py`, not chosen at analysis time; no graph exists or is planned for the 136 that do not compile |
+| population | **strict**: the problems whose generation compiles *and* every MBPP assert is gradeable — Rust 206 of 350, 95 positive (46.1%). The loose population (214 / 99) is reported alongside, never instead |
 | token cap | 140, applied to both arms |
 | labels | execution: compiles **and** every graded assert passes |
 
@@ -295,10 +295,28 @@ model-fitting variance. Refitting inside the bootstrap widens the interval by
 about 1.28×. The power arithmetic above uses the reported widths and is
 therefore optimistic in the same direction.
 
-**The Rust label is graded on a subset of MBPP's asserts for 15 of 350 tasks.**
-`derive_signature` silently skips asserts it cannot type — mostly the `== None`
-invalid-input cases — and 4 of those tasks are labelled passing. They are
-excluded from the headline and reported separately.
+**The Rust label was graded on a subset of MBPP's asserts for 16 of 350 tasks,
+and 4 of them are labelled passing.** `derive_signature` skips asserts it cannot
+type — mostly the `== None` invalid-input cases — and accepted the task anyway.
+Task 744 is the clearest: both asserts that return `True` pass `None` inside a
+tuple and are dropped, so it is graded on one remaining case, which a stub
+passes by comparing each field to `0`. 297 is graded 2/3, 602 2/3, 755 1/4.
+
+That is ~4% of the positive class, and it is not random — the dropped asserts
+are systematically the edge cases, so the Rust arm was being measured on an
+easier test set than the Python arm. **This is why the headline population is
+the strict one.** The rule is applied uniformly and requires no judgement about
+which subsets are "partial enough":
+
+```
+  loose  (as shipped)                    214 compile, 99 pass (46.3%)
+  strict (every MBPP assert gradeable)   206 compile, 95 pass (46.1%)
+  the 8 that drop out: 297, 395, 398, 602, 725, 744, 755, 803
+  of those, positive: 297, 602, 744, 755
+```
+
+Their graphs are still built — the restriction is applied at analysis time, so
+the in-flight run needs no change, and the 8 are reported separately.
 
 **Selection.** Rust problems are the 350 of 427 whose types can be read off
 their asserts, then the 214 whose generations compile. Neither is a random
@@ -323,11 +341,7 @@ sample of MBPP.
   code, not because the model got them wrong. When the top-up lands, the result
   is recorded in §8 as a deviation **alongside** the locked 240-problem number,
   not in place of it.
-- Task 67's Rust harness cannot compile at all — its MBPP test literal exceeds
-  `i64` — so it is recorded as a model compile failure. One problem of 350.
-- The Rust float check uses `max(|e|, 1.0)` where `math.isclose` uses
-  `max(|v|, |e|)`, and is applied to 10 tasks whose MBPP assert demands exact
-  equality. No shipped label is affected; it is wrong for any re-run.
+*(Both Rust harness defects listed here in version 2 are now fixed — see §8.)*
 
 ## 8. Deviations
 
@@ -351,3 +365,34 @@ version 1 and confirmed by re-running each:
 8. The compile restriction documented as imposed upstream, not chosen.
 9. P4 (learning curve) demoted from a prediction to a descriptive figure: it had
    no decision rule and its final Python increment is not significant.
+
+**2026-09-24, version 2 → 3, still before any Rust feature existed.** The Rust
+execution labels were independently re-derived twice, by deliberately different
+mechanisms: one built a real cargo crate per problem with each assert as a
+`#[test]` and the dev profile's overflow checks **on**, the other derived the
+types from scratch under stricter rules and emitted floats as exact bit
+patterns. Both reproduce the shipped labels on **350/350 for `compiles`,
+350/350 for `passes`, and 350/350 for `n_pass`**. The Rust arm carries no
+analogue of the two Python-arm label bugs, and the reason is structural: putting
+the signature in the prompt eliminates the name-derivation bug, and handling
+`math.isclose` at derivation time eliminates the `test_imports` bug. **The
+in-flight graph run covers the right 214 problems and needed no change.**
+
+Three harness defects were found and fixed. Re-labelling with the corrected
+harness moved **no label at all** (350/350 unchanged), confirming all three were
+latent — but each was live for any regenerated dataset:
+
+  a. `rust_type` mapped every Python int to `i64` unchecked, so task 67's
+     55-digit assert produced a literal `rustc` refuses. Now range-checked.
+  b. The float tolerance `|v−e| ≤ 1e-3·max(|e|,1.0)` was applied to all 21
+     f64-returning tasks; only 11 use `math.isclose`, and the formula was not
+     isclose's. Now `|v−e| ≤ 1e-3·max(|v|,|e|)` and only where MBPP wrote it.
+     (Verified to change 0 asserts: closest approach is 34× inside the threshold.)
+  c. `_unwrap_call` never checked the comparison operator was `==`, so `!=`
+     would have been graded as `==`. MBPP sanitized contains no such assert, so
+     exposure was zero, but it is now checked.
+
+The fourth defect is the one with live consequences and is handled by changing
+the population rather than the harness — see §6. `graded_all_tests` and
+`n_mbpp_asserts` are now recorded per task so the strict population is
+reproducible from the file rather than from this document.
