@@ -1,0 +1,242 @@
+=== REHEARSAL: /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl with labels /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/labels_shuffled.jsonl -- no number here is a result ===
+=== 2026-09-25 18:14:51 integrity of /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl ===
+  600 rows, 76 problems
+  ok   600 rows, expected 600
+  ok   batch_size is 64 on every row
+  ok   no duplicated (problem, step)
+  ok   49 dims, all finite
+  ok   every problem has a step-0 row
+  ok   every problem is a compiling task
+=== 2026-09-25 18:14:52 5_problem_level.py, population: strict ===
+SUBSET_FILE subset_rust_strict.txt: 76 problems -> 76
+/mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl: 600 rows after a 140-token cap (0 dropped)
+  76 problems, 36 positive (47.4%), 7.89 rows each
+  tokens: mean 78.4, max 140
+  features: 49 dims, 3 constant -> 46 effective
+
+=== level: graph topology over all rows ===
+  AUROC 0.5250  95% CI [0.3960, 0.6590]  (bootstrap over 76 problems, conditional on the fitted rule)
+
+=== C1 (PRIMARY): does the generated body add anything? ===
+  step-0 only (signature, no body)  0.4580  95% CI [0.3243, 0.5896]
+  C1 contrast  +0.0674  95% CI [-0.0558, +0.1871]  P(<=0)=0.136
+  -> includes zero -- the body adds nothing measurable
+
+=== C2: surface baselines and the paired contrast ===
+  note: -n_steps and -max prefix lines are the same vector (rows are line prefixes), so there are 3 distinct baselines, not 4
+  trained RF on 4 surface dims   0.4382  95% CI [0.3109, 0.5699]
+  -n_steps                       0.4122  95% CI [0.2872, 0.5417]
+  -max prefix chars              0.4135  95% CI [0.2812, 0.5510]
+  -max prefix lines              0.4122  95% CI [0.2903, 0.5458]
+  vs trained RF on 4 surface dims   +0.0869  95% CI [-0.0592, +0.2342]  P(<=0)=0.126  unresolved  <- C2
+  vs -n_steps                       +0.1138  95% CI [-0.0967, +0.3228]  P(<=0)=0.144  unresolved
+  vs -max prefix chars              +0.1148  95% CI [-0.1188, +0.3501]  P(<=0)=0.171  unresolved
+  vs -max prefix lines              +0.1131  95% CI [-0.0885, +0.3158]  P(<=0)=0.149  unresolved
+  best surface is trained RF on 4 surface dims at 0.4382; minimum resolvable paired gap at n=76 is about 0.06
+
+=== C3: above chance? ===
+  CI excludes 0.50: NO
+  permutation p = 0.3646 (null 0.5023 +- 0.0678, floor 1/1001)
+  note: the permutation holds the score vector fixed, so this is the same test as the CI, not a second one
+
+=== C4: is it length? ===
+  residualised on 8 length/position terms: 0.6000 95% CI [0.4619, 0.7311]  (vs 0.5250)
+  loss -0.0750  -> passes the 0.05 criterion
+
+=== descriptive: learning curve (not a prediction) ===
+  train on   15 problems: 0.4543 (split spread 0.1298, n=10)
+  train on   30 problems: 0.5105 (split spread 0.1280, n=10)
+  train on   45 problems: 0.5303 (split spread 0.1294, n=10)
+  train on   60 problems: 0.5280 (split spread 0.1063, n=10)
+
+=== summary ===
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl | 76 problems
+  level  0.5250 [0.3960, 0.6590]
+  C1     +0.0674 [-0.0558, +0.1871]   <- the primary result
+  C4     -0.0750 loss after residualising on length
+
+  per-problem scores for 76 problems -> /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_strict.json
+=== 2026-09-25 18:16:35 5_problem_level.py, population: loose ===
+/mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl: 600 rows after a 140-token cap (0 dropped)
+  76 problems, 36 positive (47.4%), 7.89 rows each
+  tokens: mean 78.4, max 140
+  features: 49 dims, 3 constant -> 46 effective
+
+=== level: graph topology over all rows ===
+  AUROC 0.5250  95% CI [0.3960, 0.6590]  (bootstrap over 76 problems, conditional on the fitted rule)
+
+=== C1 (PRIMARY): does the generated body add anything? ===
+  step-0 only (signature, no body)  0.4580  95% CI [0.3243, 0.5896]
+  C1 contrast  +0.0674  95% CI [-0.0558, +0.1871]  P(<=0)=0.136
+  -> includes zero -- the body adds nothing measurable
+
+=== C2: surface baselines and the paired contrast ===
+  note: -n_steps and -max prefix lines are the same vector (rows are line prefixes), so there are 3 distinct baselines, not 4
+  trained RF on 4 surface dims   0.4382  95% CI [0.3109, 0.5699]
+  -n_steps                       0.4122  95% CI [0.2872, 0.5417]
+  -max prefix chars              0.4135  95% CI [0.2812, 0.5510]
+  -max prefix lines              0.4122  95% CI [0.2903, 0.5458]
+  vs trained RF on 4 surface dims   +0.0869  95% CI [-0.0592, +0.2342]  P(<=0)=0.126  unresolved  <- C2
+  vs -n_steps                       +0.1138  95% CI [-0.0967, +0.3228]  P(<=0)=0.144  unresolved
+  vs -max prefix chars              +0.1148  95% CI [-0.1188, +0.3501]  P(<=0)=0.171  unresolved
+  vs -max prefix lines              +0.1131  95% CI [-0.0885, +0.3158]  P(<=0)=0.149  unresolved
+  best surface is trained RF on 4 surface dims at 0.4382; minimum resolvable paired gap at n=76 is about 0.06
+
+=== C3: above chance? ===
+  CI excludes 0.50: NO
+  permutation p = 0.3646 (null 0.5023 +- 0.0678, floor 1/1001)
+  note: the permutation holds the score vector fixed, so this is the same test as the CI, not a second one
+
+=== C4: is it length? ===
+  residualised on 8 length/position terms: 0.6000 95% CI [0.4619, 0.7311]  (vs 0.5250)
+  loss -0.0750  -> passes the 0.05 criterion
+
+=== descriptive: learning curve (not a prediction) ===
+  train on   15 problems: 0.4543 (split spread 0.1298, n=10)
+  train on   30 problems: 0.5105 (split spread 0.1280, n=10)
+  train on   45 problems: 0.5303 (split spread 0.1294, n=10)
+  train on   60 problems: 0.5280 (split spread 0.1063, n=10)
+
+=== summary ===
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl | 76 problems
+  level  0.5250 [0.3960, 0.6590]
+  C1     +0.0674 [-0.0558, +0.1871]   <- the primary result
+  C4     -0.0750 loss after residualising on length
+
+  per-problem scores for 76 problems -> /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_loose.json
+=== 2026-09-25 18:18:22 6_cross_arm.py: primary ===
+=== inputs ===
+  results/python/scores_python_240.json: 240 problems, fit on subset_python_parses.txt (gemma_mbpp_features.jsonl, labels gemma_mbpp_python_correctness.jsonl)
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_strict.json: 76 problems, fit on subset_rust_strict.txt (/mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl, labels /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/labels_shuffled.jsonl)
+  cross set subset_cross_primary.txt: 120 problems
+
+=== Python on the cross set (no refit) ===
+  120 problems, 67 passing in Python
+  AUROC 0.7775  95% CI [0.6857, 0.8602]
+  !!! ALLOW_PARTIAL: cross set in the Rust scores cut to 69 problems -- rehearsal only
+  !!! Python re-cut to the 69 problems Rust also has: 0.7880  95% CI [0.6672, 0.8973]
+
+=== Rust on the cross set (no refit) ===
+  69 problems, 31 passing in Rust
+  AUROC 0.4677  95% CI [0.3261, 0.6049]
+  labels agree across arms on 53.6% of these problems
+
+  Rust - Python, paired over problems: -0.3189  95% CI [-0.5047, -0.1207]  P(<=0)=0.998
+  descriptive only: section 6 shows a gap below ~0.11 cannot be resolved here, and no difference is attributed to language
+
+=== C5: do the arms rank the same problems as hard? ===
+  Spearman rho -0.4127  95% CI [-0.6102, -0.1744]  (bootstrap over 69 problems)
+  one-sided permutation p = 0.9998  (H1 rho > 0; null -0.0014 +- 0.1221, floor 1/10001)
+  NOT the decision statistic: permuting problems assumes the score vectors share no structure,
+  which label-free refits refute; C5 is decided by 6b_c5_null.py
+  a positive rho says both arms read language-invariant difficulty; it is NOT evidence that the effect generalises across languages
+
+=== Rust headline on problems Python never saw (no refit) ===
+  !!! ALLOW_PARTIAL: subset_rust_only_strict.txt in the Rust scores cut to 4 problems -- rehearsal only
+  subset_rust_only_strict.txt: 4 problems, 2 passing
+  level (all rows)                  1.0000  95% CI [1.0000, 1.0000]
+  step-0 only (signature, no body)  0.7500  95% CI [0.0000, 1.0000]
+  C1 contrast  +0.2564  95% CI [+0.0000, +1.0000]  P(<=0)=0.497
+
+=== summary ===
+  cross set (69)   Python 0.7880   Rust 0.4677   Rust-Python -0.3189 [-0.5047, -0.1207]
+  C5 rho -0.4127  (decided by 6b_c5_null.py; permutation p 0.9998 is not the test)
+  Rust-only (4)  level 1.0000 [1.0000, 1.0000]   C1 +0.2564 [+0.0000, +1.0000]
+=== 2026-09-25 18:19:01 6_cross_arm.py: as_v2 ===
+=== inputs ===
+  results/python/scores_python_256.json: 256 problems, fit on the whole file (gemma_mbpp_features.jsonl, labels gemma_mbpp_python_correctness.jsonl)
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_loose.json: 76 problems, fit on the whole file (/mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl, labels /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/labels_shuffled.jsonl)
+  cross set subset_cross_loose.txt: 129 problems
+
+=== Python on the cross set (no refit) ===
+  129 problems, 68 passing in Python
+  AUROC 0.7816  95% CI [0.6965, 0.8611]
+  !!! ALLOW_PARTIAL: cross set in the Rust scores cut to 72 problems -- rehearsal only
+  !!! Python re-cut to the 72 problems Rust also has: 0.7902  95% CI [0.6710, 0.8955]
+
+=== Rust on the cross set (no refit) ===
+  72 problems, 34 passing in Rust
+  AUROC 0.4977  95% CI [0.3625, 0.6332]
+  labels agree across arms on 51.4% of these problems
+
+  Rust - Python, paired over problems: -0.2932  95% CI [-0.4711, -0.1060]  P(<=0)=1.000
+  descriptive only: section 6 shows a gap below ~0.11 cannot be resolved here, and no difference is attributed to language
+
+=== C5: do the arms rank the same problems as hard? ===
+  Spearman rho -0.4734  95% CI [-0.6567, -0.2501]  (bootstrap over 72 problems)
+  one-sided permutation p = 0.9999  (H1 rho > 0; null -0.0018 +- 0.1189, floor 1/10001)
+  NOT the decision statistic: permuting problems assumes the score vectors share no structure,
+  which label-free refits refute; C5 is decided by 6b_c5_null.py
+  a positive rho says both arms read language-invariant difficulty; it is NOT evidence that the effect generalises across languages
+
+=== Rust headline on problems Python never saw (no refit) ===
+  !!! ALLOW_PARTIAL: subset_rust_only_loose.txt in the Rust scores cut to 4 problems -- rehearsal only
+  subset_rust_only_loose.txt: 4 problems, 2 passing
+  level (all rows)                  1.0000  95% CI [1.0000, 1.0000]
+  step-0 only (signature, no body)  0.7500  95% CI [0.0000, 1.0000]
+  C1 contrast  +0.2564  95% CI [+0.0000, +1.0000]  P(<=0)=0.497
+
+=== summary ===
+  cross set (72)   Python 0.7902   Rust 0.4977   Rust-Python -0.2932 [-0.4711, -0.1060]
+  C5 rho -0.4734  (decided by 6b_c5_null.py; permutation p 0.9999 is not the test)
+  Rust-only (4)  level 1.0000 [1.0000, 1.0000]   C1 +0.2564 [+0.0000, +1.0000]
+=== 2026-09-25 18:19:40 6b_c5_null.py: primary (K=5 refits on shuffled labels) ===
+population: 76 problems, 600 rows (subset_rust_strict.txt)
+  refit on the real labels reproduces /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_strict.json bit for bit
+  !!! ALLOW_PARTIAL: cross set cut to 69 -- rehearsal only
+
+=== C5 against label-free refits (subset_cross_primary.txt, 69 problems) ===
+  observed rho          -0.4127
+  label-free refits     mean -0.0524  sd 0.2419  5-95% [-0.3599, +0.1796]  (K=5)
+  one-sided p = 1.0000  (H1: rho exceeds what a model that learned nothing real about Rust correctness produces; floor 1/6)
+  this p is C5's decision statistic; 6_cross_arm.py's permutation p assumes exchangeability, which the rehearsal refuted
+=== 2026-09-25 18:20:18 6b_c5_null.py: as_v2 (K=5 refits on shuffled labels) ===
+population: 76 problems, 600 rows (whole file)
+  refit on the real labels reproduces /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_loose.json bit for bit
+  !!! ALLOW_PARTIAL: cross set cut to 72 -- rehearsal only
+
+=== C5 against label-free refits (subset_cross_loose.txt, 72 problems) ===
+  observed rho          -0.4734
+  label-free refits     mean -0.0572  sd 0.2650  5-95% [-0.3829, +0.2079]  (K=5)
+  one-sided p = 1.0000  (H1: rho exceeds what a model that learned nothing real about Rust correctness produces; floor 1/6)
+  this p is C5's decision statistic; 6_cross_arm.py's permutation p assumes exchangeability, which the rehearsal refuted
+
+=== 2026-09-25 18:20:57 done. Read it against the table in PREREGISTRATION.md §5 ===
+--- level_strict ---
+=== summary ===
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl | 76 problems
+  level  0.5250 [0.3960, 0.6590]
+  C1     +0.0674 [-0.0558, +0.1871]   <- the primary result
+  C4     -0.0750 loss after residualising on length
+
+  per-problem scores for 76 problems -> /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_strict.json
+--- level_loose ---
+=== summary ===
+  /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/features_snapshot.jsonl | 76 problems
+  level  0.5250 [0.3960, 0.6590]
+  C1     +0.0674 [-0.0558, +0.1871]   <- the primary result
+  C4     -0.0750 loss after residualising on length
+
+  per-problem scores for 76 problems -> /mnt/c/Users/user1/AppData/Local/Temp/claude/C--Users-user1-CodeCircuit-rust/24a0673d-1f5e-4b8f-8002-bb019e568e0d/scratchpad/rehearsal/out2/scores_rust_loose.json
+--- cross_primary ---
+=== summary ===
+  cross set (69)   Python 0.7880   Rust 0.4677   Rust-Python -0.3189 [-0.5047, -0.1207]
+  C5 rho -0.4127  (decided by 6b_c5_null.py; permutation p 0.9998 is not the test)
+  Rust-only (4)  level 1.0000 [1.0000, 1.0000]   C1 +0.2564 [+0.0000, +1.0000]
+--- cross_as_v2 ---
+=== summary ===
+  cross set (72)   Python 0.7902   Rust 0.4977   Rust-Python -0.2932 [-0.4711, -0.1060]
+  C5 rho -0.4734  (decided by 6b_c5_null.py; permutation p 0.9999 is not the test)
+  Rust-only (4)  level 1.0000 [1.0000, 1.0000]   C1 +0.2564 [+0.0000, +1.0000]
+--- c5null_primary ---
+=== C5 against label-free refits (subset_cross_primary.txt, 69 problems) ===
+  observed rho          -0.4127
+  label-free refits     mean -0.0524  sd 0.2419  5-95% [-0.3599, +0.1796]  (K=5)
+  one-sided p = 1.0000  (H1: rho exceeds what a model that learned nothing real about Rust correctness produces; floor 1/6)
+  this p is C5's decision statistic; 6_cross_arm.py's permutation p assumes exchangeability, which the rehearsal refuted
+--- c5null_as_v2 ---
+=== C5 against label-free refits (subset_cross_loose.txt, 72 problems) ===
+  observed rho          -0.4734
+  label-free refits     mean -0.0572  sd 0.2650  5-95% [-0.3829, +0.2079]  (K=5)
+  one-sided p = 1.0000  (H1: rho exceeds what a model that learned nothing real about Rust correctness produces; floor 1/6)
+  this p is C5's decision statistic; 6_cross_arm.py's permutation p assumes exchangeability, which the rehearsal refuted

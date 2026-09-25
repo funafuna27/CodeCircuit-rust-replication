@@ -1,0 +1,47 @@
+gemma_mbpp_features.jsonl: 1337 rows after a 140-token cap (83 dropped)
+  256 problems, 114 positive (44.5%), 5.22 rows each
+  tokens: mean 59.6, max 139
+  features: 49 dims, 3 constant -> 46 effective
+
+=== level: graph topology over all rows ===
+  AUROC 0.7269  95% CI [0.6619, 0.7901]  (bootstrap over 256 problems, conditional on the fitted rule)
+
+=== C1 (PRIMARY): does the generated body add anything? ===
+  step-0 only (signature, no body)  0.6931  95% CI [0.6265, 0.7558]
+  C1 contrast  +0.0340  95% CI [-0.0160, +0.0846]  P(<=0)=0.095
+  -> includes zero -- the body adds nothing measurable
+
+=== C2: surface baselines and the paired contrast ===
+  note: -n_steps and -max prefix lines are the same vector (rows are line prefixes), so there are 3 distinct baselines, not 4
+  trained RF on 4 surface dims   0.5751  95% CI [0.5059, 0.6442]
+  -n_steps                       0.6011  95% CI [0.5347, 0.6640]
+  -max prefix chars              0.6245  95% CI [0.5527, 0.6926]
+  -max prefix lines              0.6011  95% CI [0.5343, 0.6660]
+  vs trained RF on 4 surface dims   +0.1526  95% CI [+0.0733, +0.2299]  P(<=0)=0.000  CI excludes 0
+  vs -n_steps                       +0.1264  95% CI [+0.0577, +0.1958]  P(<=0)=0.000  CI excludes 0
+  vs -max prefix chars              +0.1026  95% CI [+0.0408, +0.1658]  P(<=0)=0.000  CI excludes 0  <- C2
+  vs -max prefix lines              +0.1257  95% CI [+0.0566, +0.1957]  P(<=0)=0.000  CI excludes 0
+  best surface is -max prefix chars at 0.6245; minimum resolvable paired gap at n=256 is about 0.06
+
+=== C3: above chance? ===
+  CI excludes 0.50: yes
+  permutation p = 0.0010 (null 0.5001 +- 0.0363, floor 1/1001)
+  note: the permutation holds the score vector fixed, so this is the same test as the CI, not a second one
+
+=== C4: is it length? ===
+  residualised on 8 length/position terms: 0.7241 95% CI [0.6565, 0.7836]  (vs 0.7269)
+  loss +0.0028  -> passes the 0.05 criterion
+
+=== descriptive: learning curve (not a prediction) ===
+  train on   51 problems: 0.6591 (split spread 0.0889, n=10)
+  train on  102 problems: 0.7131 (split spread 0.0718, n=10)
+  train on  153 problems: 0.7382 (split spread 0.0939, n=10)
+  train on  204 problems: 0.7534 (split spread 0.0921, n=10)
+
+=== summary ===
+  gemma_mbpp_features.jsonl | 256 problems
+  level  0.7269 [0.6619, 0.7901]
+  C1     +0.0340 [-0.0160, +0.0846]   <- the primary result
+  C4     +0.0028 loss after residualising on length
+
+  per-problem scores for 256 problems -> results/python/scores_python_256.json

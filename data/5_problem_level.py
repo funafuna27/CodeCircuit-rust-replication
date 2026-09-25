@@ -14,16 +14,18 @@ The primary output is NOT the AUROC. It is the C1 contrast:
     AUROC(all rows) - AUROC(step-0 rows only)
 
 Step 0 is the prompt plus the function signature and no body -- no logic that
-could be right or wrong. On the Python arm that contrast is +0.0332
-[-0.0172, +0.0826]: a graph taken before the model writes any logic predicts
-correctness as well as one taken over the whole generation. Reporting the level
-alone would let a problem-difficulty detector pass as "predicts whether
-generated code is correct", which is the paper's claim.
+could be right or wrong. On the Python arm that contrast is +0.0340
+[-0.0160, +0.0846] (PREREGISTRATION.md §3a): a graph taken before the model
+writes any logic predicts correctness as well as one taken over the whole
+generation. Reporting the level alone would let a problem-difficulty detector
+pass as "predicts whether generated code is correct", which is the paper's claim.
 
   FEATURES_FILE  gemma_mbpp_features.jsonl | gemma_mbpp_rust_features.jsonl
   LABELS_FILE    gemma_mbpp_python_correctness.jsonl | gemma_mbpp_rust_correctness.jsonl
                  (both carry task_id + passes; the schemas already match)
   TOKEN_CAP      140 -- applied to BOTH arms or they differ in preprocessing
+  SCORES_OUT     optional path; writes the per-problem out-of-fold scores that
+                 6_cross_arm.py needs for C5 and the evaluation-only subsets
 """
 import json
 import os
@@ -45,10 +47,14 @@ N_BOOT = int(os.environ.get('N_BOOT', 5000))
 N_PERM = int(os.environ.get('N_PERM', 1000))
 N_JOBS = int(os.environ.get('N_JOBS', -1))
 SEED = int(os.environ.get('SEED', 0))
-# Restrict to a task-id subset, one per line. Used for the like-for-like
-# comparators the pre-registration locks (the 240 Python problems that parse,
-# the 129 shared with Rust, the 85 Rust problems Python never saw).
+# Restrict to a task-id POPULATION, one per line, and refit on it: the 240
+# Python problems that parse, the 206 strict Rust problems. The cross-arm and
+# Rust-only sets are not populations -- 6_cross_arm.py restricts an existing
+# score vector to them and never refits (5a_make_subsets.py explains why).
 SUBSET_FILE = os.environ.get('SUBSET_FILE', '')
+# Writing the scores consumes no randomness, so every printed number is the
+# same with or without it.
+SCORES_OUT = os.environ.get('SCORES_OUT', '')
 
 RNG = np.random.default_rng(SEED)
 
@@ -287,6 +293,22 @@ def main():
     print(f"  level  {obs:.4f} [{lo:.4f}, {hi:.4f}]")
     print(f"  C1     {m:+.4f} [{cl:+.4f}, {ch:+.4f}]   <- the primary result")
     print(f"  C4     {obs - o4:+.4f} loss after residualising on length")
+
+    if SCORES_OUT:
+        out = {
+            'features_file': FEATURES_FILE, 'labels_file': LABELS_FILE,
+            'subset_file': SUBSET_FILE or None, 'token_cap': TOKEN_CAP,
+            'n_repeats': N_REPEATS, 'n_folds': N_FOLDS,
+            'level': [obs, lo, hi], 'step0': [o0, l0, h0], 'c1': [m, cl, ch],
+            'problems': [{'task_id': int(p), 'label': int(labels[int(p)]),
+                          'score': float(sc[pos[int(p)]]),
+                          'score_step0': (float(sc0_sub[pos0[int(p)]])
+                                          if int(p) in pos0 else None)}
+                         for p in problems],
+        }
+        with open(SCORES_OUT, 'w', encoding='utf-8') as f:
+            json.dump(out, f, indent=1)
+        print(f"\n  per-problem scores for {len(problems)} problems -> {SCORES_OUT}")
 
 
 if __name__ == '__main__':

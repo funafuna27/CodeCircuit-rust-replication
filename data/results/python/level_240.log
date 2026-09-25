@@ -1,0 +1,48 @@
+SUBSET_FILE subset_python_parses.txt: 256 problems -> 240
+gemma_mbpp_features.jsonl: 1137 rows after a 140-token cap (41 dropped)
+  240 problems, 114 positive (47.5%), 4.74 rows each
+  tokens: mean 56.5, max 139
+  features: 49 dims, 3 constant -> 46 effective
+
+=== level: graph topology over all rows ===
+  AUROC 0.7091  95% CI [0.6402, 0.7737]  (bootstrap over 240 problems, conditional on the fitted rule)
+
+=== C1 (PRIMARY): does the generated body add anything? ===
+  step-0 only (signature, no body)  0.6928  95% CI [0.6234, 0.7586]
+  C1 contrast  +0.0165  95% CI [-0.0341, +0.0684]  P(<=0)=0.261
+  -> includes zero -- the body adds nothing measurable
+
+=== C2: surface baselines and the paired contrast ===
+  note: -n_steps and -max prefix lines are the same vector (rows are line prefixes), so there are 3 distinct baselines, not 4
+  trained RF on 4 surface dims   0.5407  95% CI [0.4687, 0.6144]
+  -n_steps                       0.5554  95% CI [0.4886, 0.6234]
+  -max prefix chars              0.5846  95% CI [0.5102, 0.6578]
+  -max prefix lines              0.5554  95% CI [0.4885, 0.6234]
+  vs trained RF on 4 surface dims   +0.1688  95% CI [+0.0815, +0.2538]  P(<=0)=0.000  CI excludes 0
+  vs -n_steps                       +0.1530  95% CI [+0.0745, +0.2309]  P(<=0)=0.000  CI excludes 0
+  vs -max prefix chars              +0.1243  95% CI [+0.0538, +0.1950]  P(<=0)=0.000  CI excludes 0  <- C2
+  vs -max prefix lines              +0.1539  95% CI [+0.0770, +0.2354]  P(<=0)=0.000  CI excludes 0
+  best surface is -max prefix chars at 0.5846; minimum resolvable paired gap at n=240 is about 0.06
+
+=== C3: above chance? ===
+  CI excludes 0.50: yes
+  permutation p = 0.0010 (null 0.5002 +- 0.0366, floor 1/1001)
+  note: the permutation holds the score vector fixed, so this is the same test as the CI, not a second one
+
+=== C4: is it length? ===
+  residualised on 8 length/position terms: 0.6999 95% CI [0.6317, 0.7642]  (vs 0.7091)
+  loss +0.0092  -> passes the 0.05 criterion
+
+=== descriptive: learning curve (not a prediction) ===
+  train on   48 problems: 0.6423 (split spread 0.0694, n=10)
+  train on   96 problems: 0.6831 (split spread 0.0578, n=10)
+  train on  144 problems: 0.7127 (split spread 0.0606, n=10)
+  train on  192 problems: 0.7131 (split spread 0.0762, n=10)
+
+=== summary ===
+  gemma_mbpp_features.jsonl | 240 problems
+  level  0.7091 [0.6402, 0.7737]
+  C1     +0.0165 [-0.0341, +0.0684]   <- the primary result
+  C4     +0.0092 loss after residualising on length
+
+  per-problem scores for 240 problems -> results/python/scores_python_240.json

@@ -1,10 +1,16 @@
 # Pre-registration — the Rust arm
 
-**Version 2, 2026-09-22.** Version 1 was written the same day and red-teamed
-before any Rust graph feature existed. Four independent attacks found nine
-defects rated "would produce a wrong conclusion", every one of which I confirmed
-by re-running it. This version fixes them. The Rust run is still in flight, no
-Rust feature exists, and every number below comes from data that already did.
+**Version 4, 2026-09-25.** Version 1 was written on 2026-09-22 and red-teamed
+the same day, before any Rust graph feature existed: four independent attacks
+found nine defects rated "would produce a wrong conclusion", every one of which
+I confirmed by re-running it, and version 2 fixed them. Version 3 (2026-09-24)
+re-derived the Rust labels twice and fixed three harness defects. Version 4
+settles which problems the cross-arm statistics use and how, and commits the
+whole analysis as a script. The Rust run is still in flight: when version 4 was
+written, 600 of its 1734 feature rows had landed and **none had been scored
+against a real label**. Every number below comes from data that existed before
+them, except the shuffled-label figures in §8 (version 4, item 9), which use
+the landed features with the labels permuted. §8 lists every change.
 
 The reason for the document is specific. The Python arm produced three
 successive wrong conclusions — a leakage claim, an execution-label indictment,
@@ -92,6 +98,17 @@ arm asks the same question of a second language.
 | population | **strict**: the problems whose generation compiles *and* every MBPP assert is gradeable — Rust 206 of 350, 95 positive (46.1%). The loose population (214 / 99) is reported alongside, never instead |
 | token cap | 140, applied to both arms |
 | labels | execution: compiles **and** every graded assert passes |
+
+**Populations and evaluation sets are different things** (version 4). A
+*population* — strict or loose Rust, the 256 or the 240 Python problems — is
+what a model is fitted on: `5_problem_level.py` refits on it via `SUBSET_FILE`.
+An *evaluation set* — the problems both arms share, the Rust problems Python
+never saw — only restricts an arm's existing out-of-fold score vector, and
+`6_cross_arm.py` never refits. Refitting on 80 or 120 problems would confound
+the subset with a smaller training set while the learning curve is still
+climbing (§6). Every set is written by `5a_make_subsets.py` from the label
+files, with its size asserted, and `run_rust_analysis.sh` runs the whole
+analysis below.
 
 **The primary result is a contrast, not a level.**
 
@@ -181,6 +198,25 @@ satisfiable only in [0.747, 0.80] — above P1's own central value — so whiche
 way the number landed, one prediction passed and the other failed. Both are
 restated in §4.
 
+**Version 4 adds the strict population**, which is C2's actual comparator and
+had no locked number:
+
+```
+                              Rust strict (206)          Rust loose (214)
+  trained RF on 4 surface   0.6567 [0.5827, 0.7296]    0.6603 [0.5834, 0.7294]
+  -n_steps                  0.6287 [0.5514, 0.7023]    0.6219 [0.5467, 0.6944]
+  -max prefix chars         0.6942 [0.6229, 0.7653]    0.6970 [0.6217, 0.7650]   <- best in both
+  -max prefix lines         0.6287 [0.5508, 0.7034]    0.6219 [0.5468, 0.6960]
+```
+
+These come from `5_problem_level.py` itself, run on a features file with the
+Rust run's exact rows and every feature set to zero: its surface block depends
+only on lengths and labels. The 600 rows already landed match that file row for
+row, and the loose column reproduces the table above to four decimals. The
+intervals differ from version 2's in the third decimal because version 2's came
+from a different random stream; the analysis script consumes its stream
+identically whatever the features are, so it will print these intervals.
+
 ### 3d. The arms overlap less than stated, and not at random
 
 ```
@@ -195,11 +231,33 @@ restated in §4.
 Version 1 and the readme both used 207. The analysed overlap is **129**. Those
 129 are easier in Python than the 127 that are not (52.7% vs 36.2% pass, Fisher
 p = 0.0085), so Python's AUROC on them is **0.7816**, not 0.7269 — a +0.055
-selection shift with no data change at all. Any cross-arm statement uses 0.7816
-at n = 129 or is not made.
+selection shift with no data change at all. Any cross-arm statement is made on
+problems both arms share, or is not made; §3e fixes which ones.
 
 The arms are also drawn from different MBPP populations: Python is the test
 split only; Rust spans train/test/validation/prompt (208/103/34/5).
+
+### 3e. The cross-arm comparators — version 4, still pre-data
+
+The 129 predate the strict rule, and two version-2 rules disagreed: §3b names
+the 240 parsing problems "the like-for-like comparator for Rust", while 0.7816
+above comes from the 256-problem fit. Version 4 applies both rules at once and
+locks the Python side now (files in `data/results/python/`):
+
+```
+                          cross set                          Python fit  n    Python AUROC on it
+  primary                 strict in Rust, parses in Python  240         120  0.7775  95% CI [0.6857, 0.8602]
+  as defined in v2        compiles in Rust                  256         129  0.7816  95% CI [0.6965, 0.8611]
+  after the top-up (§7)   strict in Rust                    repaired    126  when the top-up lands
+```
+
+Each number is the arm's own out-of-fold score vector **restricted** to the
+set, with no refit — re-running the version-2 computation that way reproduces
+0.7816 exactly, so that is also what it always was. The Rust side is computed
+the same way, from the strict fit for the primary row and the loose fit for the
+version-2 row. Of the primary 120, 67 pass in Python and 56 in Rust. The Rust
+problems Python never saw number **80** under the strict rule (38 pass) and 85
+under the loose one (41).
 
 ## 4. Predictions
 
@@ -209,11 +267,12 @@ and is positive, that is evidence the generated code contributes something in
 Rust that it does not in Python, and it is the one result that would support the
 paper's claim as the paper states it.
 
-**C2.** Rust AUROC(all rows) vs the locked best Rust surface baseline (0.6970),
-paired over problems. *Prediction: the CI includes zero.* Minimum resolvable
-paired gap at n = 214 is about **0.06**, so a real effect below that will not be
-detected; "CI includes zero" is reported as **unresolved**, never as "the claim
-fails".
+**C2.** Rust AUROC(all rows) vs the locked best Rust surface baseline —
+`-max prefix chars`, **0.6942** on the strict population (0.6970 on the loose;
+§3c) — paired over problems. *Prediction: the CI includes zero.* Minimum
+resolvable paired gap at n = 206 is about **0.06**, so a real effect below that
+will not be detected; "CI includes zero" is reported as **unresolved**, never as
+"the claim fails".
 
 **C3.** Rust AUROC(all rows) is above chance: the 95% CI excludes 0.50.
 *Prediction: yes, in [0.65, 0.76].* This band catches ~83% of outcomes if the
@@ -233,12 +292,25 @@ at the problem unit — 23 of 49 dims exceed the threshold when recomputed at th
 problem unit, against 10 at the row unit.*
 
 **C5 (difficulty transfer).** Spearman correlation between the Python and Rust
-per-problem out-of-fold scores, over the 129 shared problems, against a null
-from permuting problems. *Prediction: ρ is clearly positive.* A strongly
-positive ρ supports the reading that both arms read language-invariant problem
-difficulty, and is **not** evidence that the effect generalises across languages.
-The headline is additionally reported on the **85 Rust problems Python never
-saw**, where no such transfer is possible.
+per-problem out-of-fold scores over the cross set, against a null from
+refitting the Rust arm on shuffled labels. *Primary:* the 240-problem Python fit
+and the strict Rust fit, on the 120 problems in both (§3e). *Alongside:* the
+version-2 definition, the 256-problem fit and the loose Rust fit, on the 129.
+The interval is a 5000-draw bootstrap over problems. The p-value is one-sided —
+H1: ρ exceeds what a Rust model that learned nothing real about Rust
+correctness produces — from K = 100 refits of the Rust population with its
+labels permuted across its problems, with the +1 correction
+(`6b_c5_null.py`). The problem-permutation p that version 2 specified is still
+printed and is **not** the test (§8, version 4, item 9). *Prediction: ρ is
+clearly positive,* meaning ρ > 0 with that p below 0.05. A strongly positive ρ
+supports the reading that both arms read language-invariant problem
+difficulty, and is **not** evidence that the effect generalises across
+languages. The headline — level and C1 — is additionally
+reported on the Rust problems Python never saw, **80 strict** (primary) and 85
+loose, where no such transfer is possible; both are restrictions of the
+population fit, not refits. Each arm's AUROC on the cross set and their paired
+difference are printed beside C5 as description only — §6 shows the difference
+cannot resolve a gap below ~0.11, and none is attributed to language.
 
 ## 5. What each outcome means
 
@@ -325,15 +397,23 @@ sample of MBPP.
 ## 7. Known defects not fixed before the data lands
 
 - The Python graphs are built on 16 fence-corrupted generations (§3b). Fixing
-  this needs the GPU, which is busy until ~2026-09-28. Until then §3b's
+  this needs the GPU, which is busy until ~2026-09-30. Until then §3b's
   240-problem number is the comparator.
 
   **The fix is prepared and costed, so it cannot be quietly skipped or quietly
   adopted.** `0b_repair_responses.py` repairs all 16 (0 remaining); the repaired
-  code is shorter, so the rows to rebuild fall from 263 to 132, of which 124
-  sit inside the 140-token cap — a measured **8.9 hours** of GPU.
+  code is shorter, so the rows to rebuild fall from 263 to 132 (242 feature rows
+  today — the 550-character filter had dropped 21 of the long corrupted ones),
+  of which 124 sit inside the 140-token cap — a measured **8.9 hours** of GPU.
   `run_python_topup.sh` runs the whole sequence and refuses to start while
-  another graph run holds the card.
+  another graph run holds the card. Since version 4 it runs to the end: it stops
+  if the regenerated inputs differ from the committed ones, merges through
+  `4b_merge_topup.py` — which copies the other 240 problems' rows byte for byte
+  and refuses an incomplete, duplicated, non-finite or non-64 top-up — and scores
+  the repaired arm alone and against Rust on the 126-problem cross set.
+  Dropping the 550-character filter for the top-up loosens nothing: on this data
+  the 140-token cap is strictly tighter (the longest row inside it is 486
+  characters, and no repaired row is over 550 characters yet inside it).
 
   Relabelling the repaired generations moves the Python pass rate from
   **114/256 to 117/256**: tasks 285, 395 and 405 flip to passing, each on 3/3
@@ -396,3 +476,70 @@ The fourth defect is the one with live consequences and is handled by changing
 the population rather than the harness — see §6. `graded_all_tests` and
 `n_mbpp_asserts` are now recorded per task so the strict population is
 reproducible from the file rather than from this document.
+
+**2026-09-25, version 3 → 4, before any Rust feature was scored against a
+label.** 600 of the 1734 Rust feature rows had landed. They had been read only
+by integrity checks (batch size, duplicates, non-finite values) and by the
+shuffled-label runs in items 6 and 9; no statistic relating a Rust feature to a
+real Rust label had been computed.
+
+1. **A correction to version 3's entry,** which said "still before any Rust
+   feature existed". That was false: the run banks features every 200 graphs,
+   and 400 rows had landed by then (chunks banked 2026-09-23 05:34 and
+   2026-09-24 04:38; version 3 was committed 2026-09-24 14:05). The version-2
+   header's "no Rust feature exists" was true when written and stayed in the
+   document after it stopped being true. What held throughout, and still holds,
+   is that no Rust feature had been scored against a label.
+2. **The header still said "Version 2"** after version 3 was committed — the
+   edit meant to change it did not match. Fixed.
+3. **The cross-arm sets.** The overlap of 129 and the 85 Rust-only problems
+   predate the strict rule, and §3b ("the like-for-like comparator for Rust" is
+   the 240) disagreed with §3d (0.7816, from the 256-problem fit). Both rules now
+   apply: the primary cross set is the 120 problems strict in Rust and parsing
+   in Python, scored by the 240-problem fit, with the version-2 definition
+   reported alongside; the Rust-only headline is 80 strict, 85 loose alongside.
+   The Python side is locked in §3e.
+4. **Restriction, not refit.** `SUBSET_FILE` refits, and its comment listed the
+   129 and the 85 among its uses, while 0.7816 had in fact been computed by
+   restricting the 256-problem score vector. Each kind of set now has one
+   meaning (§2), and the version-2 number reproduces exactly under it.
+5. **C5 was not computable from the protocol's output.** `5_problem_level.py`
+   wrote no per-problem scores. `SCORES_OUT` now writes them; it consumes no
+   randomness, and re-running both locked Python baselines with it reproduced
+   every number in §3a and §3b to four decimals. `6_cross_arm.py` computes ρ
+   and its interval; `6b_c5_null.py` computes its test (item 9).
+6. **The analysis is a committed script.** `run_rust_analysis.sh` checks
+   integrity (all 1734 rows and all 214 compiling problems, or it stops), then
+   runs both Rust populations, both cross-arm definitions and C5's null. It was
+   rehearsed end to end on a copy of the 600 landed rows with the pass/fail
+   labels permuted across the 214 compiling problems (seed 12345), which
+   exercises every step and says nothing about the real relation.
+7. **The Python top-up is scripted to the end** (§7). `4b_merge_topup.py` was
+   tested on a stand-in top-up: it accepts a complete one, and refuses a missing
+   problem, a duplicated step, batch size 32, a non-finite feature, a stray
+   problem, and an output path that is one of its inputs.
+8. The GPU date in §7 moved from ~2026-09-28 to ~2026-09-30, the Rust run's
+   measured pace; §7 also now counts the top-up's rows at both stages.
+9. **C5's null was wrong, and the rehearsal showed it.** In the rehearsal the
+   shuffled-label Rust scores correlated with the real Python scores at
+   ρ = −0.41 over 69 problems, far outside the problem-permutation null
+   (sd 0.12). Refitting the Rust model on the 600-row snapshot with its labels
+   shuffled under six seeds gave ρ = −0.425, −0.413, −0.125, −0.083, −0.072 and
+   +0.388: arbitrary sign, sd ≈ 0.30. The spread tracks each label-free score's
+   alignment with length (its ρ with `-max prefix chars` ran −0.583 to +0.250,
+   moving with the first column), and the Python score is itself aligned with
+   length (+0.503 on those 69). So a model that has learned nothing about Rust
+   correctness can match the Python ranking this well by riding a shared
+   feature axis, and a permutation of problems — which destroys that axis —
+   would call it significant. C5 is now decided against refits on shuffled
+   labels (§4, `6b_c5_null.py`, K = 100), and "clearly positive" is defined as
+   ρ > 0 with that p below 0.05. Before refitting, the script refits once on
+   the real labels and demands `5_problem_level.py`'s scores bit for bit. These
+   runs read Rust features with shuffled labels only, and length is already
+   known to predict Rust correctness (§3c), so they reveal nothing the
+   pre-registration did not already contain.
+10. **C2 had no comparator on its own population.** §3c locked the best surface
+   baseline on the loose 214 only, while C2 is decided on the strict 206. The
+   strict column is now locked (`-max prefix chars` 0.6942), computed by the
+   analysis script itself on zero features so that it will print the same
+   numbers on the real run.

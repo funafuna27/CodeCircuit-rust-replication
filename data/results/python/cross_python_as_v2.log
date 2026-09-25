@@ -1,0 +1,9 @@
+=== inputs ===
+  results/python/scores_python_256.json: 256 problems, fit on the whole file (gemma_mbpp_features.jsonl, labels gemma_mbpp_python_correctness.jsonl)
+  cross set subset_cross_loose.txt: 129 problems
+
+=== Python on the cross set (no refit) ===
+  129 problems, 68 passing in Python
+  AUROC 0.7816  95% CI [0.6965, 0.8611]
+
+  RUST_SCORES unset: Python side only.
