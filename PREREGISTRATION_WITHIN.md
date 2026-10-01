@@ -1,7 +1,9 @@
 # Pre-registration — the within-problem experiment (Phase 3)
 
-**Version 1, 2026-10-01.** Written and committed before a single sample was
-drawn. Every script it names was committed with it.
+**Version 2, 2026-10-01.** Version 1 was written and committed before a single
+sample was drawn. Version 2 changes the sampling design after a yield pilot
+that saw labels only, never a graph or a feature, and before the real draw;
+§8 records what changed, why, and the numbers it was decided on.
 
 ---
 
@@ -37,12 +39,13 @@ the pair is matched on length by design.
 |---|---|
 | problems | the 334 typeable MBPP tasks whose every assert is gradeable (`graded_all_tests`) |
 | model, prompt | Gemma-2-2b-it and the Phase 2 Rust prompt, signature included; extraction and cleaning imported from `0_generate_responses_rust.py`, not copied |
-| sampling | K = 10 per problem, temperature 0.8, top_p 0.95, max_new_tokens 384, seed 20261001 + task_id |
+| sampling | K = 20 per problem, temperature 0.8, top_p 0.95, max_new_tokens 384, seed 20261001 + task_id (v1: K = 10) |
+| cleaning | the Phase 2 cleaner, then `within_clean.tidy`: keep top-level items only, drop prose and a second definition of the target function (v1: Phase 2 cleaner only). Raw text stored alongside |
 | labels | `1_rust_correct.py`'s `judge`, unchanged: pass = compiles and every assert holds |
 | eligible sample | compiles, not truncated, and prompt + the whole solution ≤ 140 tokens, so the graph sees the complete function |
 | mixed problem | at least one eligible passing and one eligible failing sample |
 | pair | one per mixed problem: the passing × failing combination with the smallest difference in tokens; ties go to the lowest sample indices |
-| gate | at least **70 pairs**. Fewer: draw 10 more samples per problem once (seed + 1000, samples 10–19) and re-pair; still fewer: stop and report |
+| gate | at least **70 pairs**. Fewer: draw 20 more samples per problem once (seed + 1000, samples 20–39) and re-pair; still fewer: stop and report |
 | cap | more than 150 pairs: keep the 150 with the smallest token difference |
 | graphs | one per sample, on prompt + the complete solution; `BATCH_SIZE = 64`, the Phase 2 pipeline, the same 49 features |
 
@@ -109,6 +112,13 @@ SE(A) ≈ √(0.25 / N): 0.05 at N = 100 pairs. One-sided α = 0.05 with 80% pow
 resolves A ≈ 0.62 at N = 100 and 0.60 at N = 150 (normal approximation;
 fitting noise and the refit null make it somewhat worse).
 
+How much worse, for a signal carried by one feature: on 40 synthetic pairs
+with one of the 49 features shifted by 1.5 SD for the passing member (a
+single-feature A near 0.86), `w3`'s random forest reached A = 0.625. The
+forest spreads its splits over 48 noise features. A null here does not rule
+out a signal confined to one or two features; it rules out one the forest
+can find among all 49, which is the question Phase 2 asked.
+
 ## 7. Limitations
 
 - Sampled at temperature 0.8, not greedy: these are not the solutions Phase 2
@@ -123,4 +133,44 @@ fitting noise and the refit null make it somewhat worse).
 
 ## 8. Deviations
 
-None yet.
+**v1 → v2 (2026-10-01, before the real draw): K, cleaning, second draw.**
+
+*Why.* A smoke test (20 problems × 4 samples) produced no pair: within a
+problem the compiling samples nearly always agreed, and half the samples did
+not compile — many for wrapping rather than code (a duplicate definition of
+the target function, E0428; prose or a stray fence line left after the Phase 2
+cleaner). At that yield the gate would fail.
+
+*Yield pilot.* The first 40 strict problems, K = 20, at temperature 0.8 and
+1.0, with and without `within_clean.tidy`. Only compile rate, pass count,
+eligible samples and mixed problems were measured; no graph was built and no
+feature computed, so the choice cannot have been steered by the outcome.
+The rule was stated before the numbers came in: adopt tidy if it raises the
+projected pairs by ≥ 10%; take the temperature with more pairs, 0.8 if within
+10%; K = 10 if it projects ≥ 100 pairs, else 20.
+
+| T | cleaning | compile / 800 | pass | eligible | mixed / 40 | pairs over 334, K = 20 | K = 10 (samples 0–9) |
+|---|---|---|---|---|---|---|---|
+| 0.8 | Phase 2 | 410 (51.2%) | 192 | 372 | 13 | ~109 | ~67 |
+| 0.8 | + tidy | 530 (66.2%) | 227 | 470 | 14 | ~117 | ~75 |
+| 1.0 | Phase 2 | 316 (39.5%) | 145 | 286 | 13 | ~109 | ~58 |
+| 1.0 | + tidy | 483 (60.4%) | 205 | 428 | 15 | ~125 | ~84 |
+
+tidy changed 209 of 800 samples at 0.8 and 314 at 1.0.
+
+*Decision.* The rule did not fix the order in which its three parts are
+applied, and tidy's gain depends on the temperature (+7% at 0.8, +15% at 1.0).
+Applied as a 2 × 2 main effect: tidy, pooled over both temperatures, gives 29
+mixed problems against 26 (+12%) → **adopted**. With tidy, 1.0 against 0.8 is
+125 against 117 (+7%, within 10%) → **0.8**. At 0.8 with tidy, K = 10 projects
+~75 pairs, short of 100 → **K = 20** (~117 pairs). Every difference in the
+"mixed" column is one or two problems out of 40, inside sampling noise; the
+rule exists to make the choice without judgement, not because the differences
+are real. tidy is kept on its own merit too: it turns 120 wrapping failures
+into compiling samples, which also enlarges the eligible pool pairs are drawn
+from.
+
+*Consequences.* The gate's second draw becomes 20 more samples (20–39, seed +
+1000). The 40 pilot problems are part of the real draw and, seeded the same,
+yield the same samples; only their labels were seen. Graphs see the tidied
+code, which is the code that was judged.

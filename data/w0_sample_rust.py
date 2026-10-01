@@ -2,18 +2,23 @@
 
 The model, prompt, extraction and cleaning are imported from
 0_generate_responses_rust.py rather than copied, so the only thing that differs
-from Phase 2 is the decoding: temperature 0.8, top_p 0.95, K per problem.
+from Phase 2 is the decoding (temperature 0.8, top_p 0.95, K per problem) and
+the extra cleaning of within_clean.tidy (PREREGISTRATION_WITHIN.md §8, v2).
 
 Resumable: (task, sample) pairs already in OUTPUT are not drawn again. Each
 problem's draw is seeded on its own (SEED_BASE + task_id, + 1000 for the gate's
 second draw), so the samples do not depend on the order or on a restart.
 
-  K=10  SAMPLE_OFFSET=0 (first draw) | 10 (second draw, samples 10-19)
+  K=20  SAMPLE_OFFSET=0 (first draw) | 20 (second draw, samples 20-39)
   OUTPUT=within_samples.jsonl  LIMIT=0 (every problem)
+  TIDY=1 (default) applies within_clean.tidy after the Phase 2 cleaner; TIDY=0
+  is the yield pilot's comparison arm. The raw decoded text and the Phase 2
+  cleaning are stored alongside either way.
 """
 import importlib.util
 import json
 import os
+import re
 import sys
 import time
 
@@ -23,19 +28,21 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from mbpp_rust import load_typeable  # noqa: E402
+from within_clean import tidy  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location(
     'phase2_gen', os.path.join(HERE, '0_generate_responses_rust.py'))
 gen = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(gen)
 
-K = int(os.environ.get('K', 10))
+K = int(os.environ.get('K', 20))
 TEMPERATURE = float(os.environ.get('TEMPERATURE', 0.8))
 TOP_P = float(os.environ.get('TOP_P', 0.95))
 SEED_BASE = int(os.environ.get('SEED_BASE', 20261001))
 SAMPLE_OFFSET = int(os.environ.get('SAMPLE_OFFSET', 0))
 OUTPUT = os.environ.get('OUTPUT', 'within_samples.jsonl')
 LIMIT = int(os.environ.get('LIMIT', 0))
+TIDY = os.environ.get('TIDY', '1') == '1'
 N_PROBLEMS = 334
 
 
@@ -75,16 +82,19 @@ def main():
                     temperature=TEMPERATURE, top_p=TOP_P, num_return_sequences=K,
                     pad_token_id=tok.eos_token_id)
             start = inputs['input_ids'].shape[1]
+            name = re.search(r'fn\s+(\w+)', sig['signature']).group(1)
             for k in range(K):
                 new = out[k][start:].tolist()
                 end = next((i for i, t in enumerate(new) if t in stop), None)
                 n_new = len(new) if end is None else end + 1
                 raw = tok.decode(new[:n_new], skip_special_tokens=True)
+                code2 = gen.clean_output(raw)
                 f.write(json.dumps({
                     'task_id': tid, 'sample': SAMPLE_OFFSET + k,
                     'text': gen.to_rust_prose(sig['prompt']),
                     'signature': sig['signature'],
-                    'generated_code': gen.clean_output(raw),
+                    'generated_code': tidy(code2, name) if TIDY else code2,
+                    'code_phase2': code2, 'raw': raw, 'tidy': TIDY,
                     'n_new_tokens': n_new,
                     'truncated': end is None and n_new >= gen.MAX_NEW_TOKENS,
                     'temperature': TEMPERATURE, 'top_p': TOP_P,

@@ -19,15 +19,15 @@ if pgrep -f 3_generate_graph.py > /dev/null; then
 fi
 
 if [ "$PHASE" = pilot ] || [ "$PHASE" = all ]; then
-    stage "sampling, first draw (samples 0-9)"
-    SAMPLE_OFFSET=0 $PY w0_sample_rust.py || exit 1
+    stage "sampling, first draw (samples 0-19)"
+    K=20 TIDY=1 SAMPLE_OFFSET=0 $PY w0_sample_rust.py || exit 1
     stage "labelling"
     $PY w1_label_samples.py || exit 1
     stage "pairing and the gate"
     $PY w2_make_pairs.py; rc=$?
     if [ $rc -eq 2 ]; then
-        stage "gate not met: the one pre-registered second draw (samples 10-19)"
-        SAMPLE_OFFSET=10 $PY w0_sample_rust.py || exit 1
+        stage "gate not met: the one pre-registered second draw (samples 20-39)"
+        K=20 TIDY=1 SAMPLE_OFFSET=20 $PY w0_sample_rust.py || exit 1
         $PY w1_label_samples.py || exit 1
         $PY w2_make_pairs.py; rc=$?
         if [ $rc -eq 2 ]; then
