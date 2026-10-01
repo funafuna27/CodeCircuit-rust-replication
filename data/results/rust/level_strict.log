@@ -1,0 +1,48 @@
+SUBSET_FILE subset_rust_strict.txt: 214 problems -> 206
+gemma_mbpp_rust_features.jsonl: 1654 rows after a 140-token cap (0 dropped)
+  206 problems, 95 positive (46.1%), 8.03 rows each
+  tokens: mean 78.4, max 140
+  features: 49 dims, 3 constant -> 46 effective
+
+=== level: graph topology over all rows ===
+  AUROC 0.7887  95% CI [0.7245, 0.8482]  (bootstrap over 206 problems, conditional on the fitted rule)
+
+=== C1 (PRIMARY): does the generated body add anything? ===
+  step-0 only (signature, no body)  0.6540  95% CI [0.5776, 0.7269]
+  C1 contrast  +0.1350  95% CI [+0.0715, +0.2013]  P(<=0)=0.000
+  -> EXCLUDES ZERO -- the body contributes
+
+=== C2: surface baselines and the paired contrast ===
+  note: -n_steps and -max prefix lines are the same vector (rows are line prefixes), so there are 3 distinct baselines, not 4
+  trained RF on 4 surface dims   0.6567  95% CI [0.5827, 0.7296]
+  -n_steps                       0.6287  95% CI [0.5514, 0.7023]
+  -max prefix chars              0.6942  95% CI [0.6229, 0.7653]
+  -max prefix lines              0.6287  95% CI [0.5508, 0.7034]
+  vs trained RF on 4 surface dims   +0.1326  95% CI [+0.0526, +0.2134]  P(<=0)=0.000  CI excludes 0
+  vs -n_steps                       +0.1594  95% CI [+0.0686, +0.2475]  P(<=0)=0.001  CI excludes 0
+  vs -max prefix chars              +0.0942  95% CI [+0.0248, +0.1650]  P(<=0)=0.005  CI excludes 0  <- C2
+  vs -max prefix lines              +0.1588  95% CI [+0.0703, +0.2449]  P(<=0)=0.000  CI excludes 0
+  best surface is -max prefix chars at 0.6942; minimum resolvable paired gap at n=206 is about 0.06
+
+=== C3: above chance? ===
+  CI excludes 0.50: yes
+  permutation p = 0.0010 (null 0.4976 +- 0.0406, floor 1/1001)
+  note: the permutation holds the score vector fixed, so this is the same test as the CI, not a second one
+
+=== C4: is it length? ===
+  residualised on 8 length/position terms: 0.7540 95% CI [0.6846, 0.8190]  (vs 0.7887)
+  loss +0.0347  -> passes the 0.05 criterion
+
+=== descriptive: learning curve (not a prediction) ===
+  train on   41 problems: 0.7391 (split spread 0.0780, n=10)
+  train on   82 problems: 0.7481 (split spread 0.0894, n=10)
+  train on  123 problems: 0.7749 (split spread 0.0747, n=10)
+  train on  164 problems: 0.7949 (split spread 0.0776, n=10)
+
+=== summary ===
+  gemma_mbpp_rust_features.jsonl | 206 problems
+  level  0.7887 [0.7245, 0.8482]
+  C1     +0.1350 [+0.0715, +0.2013]   <- the primary result
+  C4     +0.0347 loss after residualising on length
+
+  per-problem scores for 206 problems -> results/rust/scores_rust_strict.json

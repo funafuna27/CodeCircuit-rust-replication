@@ -1,0 +1,13 @@
+population: 214 problems, 1734 rows (whole file)
+  refit on the real labels reproduces results/rust/scores_rust_loose.json bit for bit
+  20/100 refits, 181s
+  40/100 refits, 356s
+  60/100 refits, 528s
+  80/100 refits, 704s
+  100/100 refits, 875s
+
+=== C5 against label-free refits (subset_cross_loose.txt, 129 problems) ===
+  observed rho          +0.7374
+  label-free refits     mean -0.0379  sd 0.2321  5-95% [-0.4681, +0.3108]  (K=100)
+  one-sided p = 0.0099  (H1: rho exceeds what a model that learned nothing real about Rust correctness produces; floor 1/101)
+  this p is C5's decision statistic; 6_cross_arm.py's permutation p assumes exchangeability, which the rehearsal refuted

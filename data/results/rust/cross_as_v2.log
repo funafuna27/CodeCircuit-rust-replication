@@ -1,0 +1,34 @@
+=== inputs ===
+  results/python/scores_python_256.json: 256 problems, fit on the whole file (gemma_mbpp_features.jsonl, labels gemma_mbpp_python_correctness.jsonl)
+  results/rust/scores_rust_loose.json: 214 problems, fit on the whole file (gemma_mbpp_rust_features.jsonl, labels gemma_mbpp_rust_correctness.jsonl)
+  cross set subset_cross_loose.txt: 129 problems
+
+=== Python on the cross set (no refit) ===
+  129 problems, 68 passing in Python
+  AUROC 0.7816  95% CI [0.6965, 0.8611]
+
+=== Rust on the cross set (no refit) ===
+  129 problems, 58 passing in Rust
+  AUROC 0.8191  95% CI [0.7395, 0.8886]
+  labels agree across arms on 86.0% of these problems
+
+  Rust - Python, paired over problems: +0.0380  95% CI [-0.0494, +0.1255]  P(<=0)=0.204
+  descriptive only: section 6 shows a gap below ~0.11 cannot be resolved here, and no difference is attributed to language
+
+=== C5: do the arms rank the same problems as hard? ===
+  Spearman rho +0.7374  95% CI [+0.6506, +0.8030]  (bootstrap over 129 problems)
+  one-sided permutation p = 0.0001  (H1 rho > 0; null +0.0011 +- 0.0885, floor 1/10001)
+  NOT the decision statistic: permuting problems assumes the score vectors share no structure,
+  which label-free refits refute; C5 is decided by 6b_c5_null.py
+  a positive rho says both arms read language-invariant difficulty; it is NOT evidence that the effect generalises across languages
+
+=== Rust headline on problems Python never saw (no refit) ===
+  subset_rust_only_loose.txt: 85 problems, 41 passing
+  level (all rows)                  0.7677  95% CI [0.6545, 0.8598]
+  step-0 only (signature, no body)  0.6951  95% CI [0.5794, 0.8035]
+  C1 contrast  +0.0724  95% CI [-0.0153, +0.1619]  P(<=0)=0.050
+
+=== summary ===
+  cross set (129)   Python 0.7816   Rust 0.8191   Rust-Python +0.0380 [-0.0494, +0.1255]
+  C5 rho +0.7374  (decided by 6b_c5_null.py; permutation p 0.0001 is not the test)
+  Rust-only (85)  level 0.7677 [0.6545, 0.8598]   C1 +0.0724 [-0.0153, +0.1619]

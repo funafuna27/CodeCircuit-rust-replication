@@ -1,0 +1,8 @@
+  1734 rows, 214 problems
+  ok   1734 rows, expected 1734
+  ok   batch_size is 64 on every row
+  ok   no duplicated (problem, step)
+  ok   49 dims, all finite
+  ok   every problem has a step-0 row
+  ok   every problem is a compiling task
+  ok   all 214 compiling tasks present
