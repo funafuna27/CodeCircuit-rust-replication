@@ -544,6 +544,32 @@ real Rust label had been computed.
    analysis script itself on zero features so that it will print the same
    numbers on the real run.
 
+**2026-10-01, the Python top-up landed (§7) — a deviation, recorded alongside
+the locked numbers and not in place of them.** The 16 fence-corrupted
+generations were repaired and their graphs rebuilt: 132 rows at
+`BATCH_SIZE = 64`, no failure. The regenerated inputs matched the committed
+ones, and the merge kept the other 240 problems' 1178 rows byte for byte. With
+the repaired labels (117 of 256 passing):
+
+```
+                            locked 240 (§3b)              repaired 256
+  level                     0.7091 [0.6402, 0.7737]       0.7181 [0.6523, 0.7817]
+  step 0                    0.6928 [0.6234, 0.7586]       0.7016 [0.6353, 0.7660]
+  C1                        +0.0165 [-0.0341, +0.0684]    +0.0162 [-0.0352, +0.0691]
+  C2 vs -max prefix chars   +0.1243 [+0.0538, +0.1950]    +0.1195 [+0.0527, +0.1853]
+  C4 loss                   +0.0092                       +0.0171
+```
+
+Repairing the data changes nothing that matters: **the Python C1 stays null.**
+§3e's third row, the 126 shared problems strict in Rust: Python 0.7717
+[0.6817, 0.8558], Rust 0.7941; C5 ρ +0.7352, label-free refit p 0.0099. The
+one-row control of §9b on the repaired arm: last row − step 0 = −0.0091
+[−0.0842, +0.0656].
+
+The top-up took about 12 hours against the 8.9 costed in §7. The cost covered
+the 124 rows inside the 140-token cap, but the script also built the 8 rows
+over it, which the analysis then drops.
+
 ## 9. Results — the Rust arm
 
 The graph run finished 2026-09-30 23:44 (ALL CHUNKS COMPLETE: 1734 rows, 214
@@ -607,6 +633,7 @@ each side**: step 0 against the last row, the most code the 140-token cap keeps.
   Rust loose (214)     0.6732   0.7579     +0.0849 [+0.0117, +0.1564]    +0.0371 [-0.0074, +0.0806]
   Python 256           0.6931   0.6993     +0.0054 [-0.0660, +0.0746]    +0.0277 [-0.0182, +0.0739]
   Python 240           0.6928   0.6814     -0.0112 [-0.0865, +0.0646]    +0.0278 [-0.0214, +0.0767]
+  Python 256 repaired  0.7016   0.6930     -0.0091 [-0.0842, +0.0656]    +0.0253 [-0.0228, +0.0738]
 ```
 
 By the rule fixed beforehand: **in Rust the generated code carries information

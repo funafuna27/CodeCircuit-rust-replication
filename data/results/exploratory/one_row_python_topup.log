@@ -1,0 +1,20 @@
+gemma_mbpp_features_merged.jsonl | whole file
+  256 problems, 117 positive, 1261 rows (4.93 per problem)
+  problems whose last row IS step 0 (nothing past the signature): 0
+
+  one-problem AUROCs (bootstrap over problems)
+    all rows (pre-registered level)    0.7181  95% CI [0.6535, 0.7820]
+    step 0 only                        0.7016  95% CI [0.6339, 0.7666]
+    last row only                      0.6930  95% CI [0.6233, 0.7601]
+    last row, residualised on length   0.6915  95% CI [0.6264, 0.7540]
+    -max prefix chars (surface)        0.5988  95% CI [0.5294, 0.6654]
+
+  THE CONTRAST  last row - step 0   -0.0091  95% CI [-0.0842, +0.0656]  P(<=0)=0.597
+  -> includes zero -- not separable from the multi-row advantage
+
+  context only
+    last residualised - step 0       -0.0099  95% CI [-0.0862, +0.0655]  P(<=0)=0.604
+    last row - (-max prefix chars)   +0.0938  95% CI [+0.0238, +0.1647]  P(<=0)=0.003
+    all rows - last row              +0.0253  95% CI [-0.0228, +0.0738]  P(<=0)=0.155
+
+  -> results/exploratory/one_row_python_topup.json
