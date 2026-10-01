@@ -1,0 +1,20 @@
+gemma_mbpp_rust_features.jsonl | subset_rust_strict.txt
+  206 problems, 95 positive, 1654 rows (8.03 per problem)
+  problems whose last row IS step 0 (nothing past the signature): 0
+
+  one-problem AUROCs (bootstrap over problems)
+    all rows (pre-registered level)    0.7887  95% CI [0.7251, 0.8491]
+    step 0 only                        0.6540  95% CI [0.5769, 0.7270]
+    last row only                      0.7606  95% CI [0.6920, 0.8227]
+    last row, residualised on length   0.6871  95% CI [0.6120, 0.7567]
+    -max prefix chars (surface)        0.6942  95% CI [0.6184, 0.7672]
+
+  THE CONTRAST  last row - step 0   +0.1066  95% CI [+0.0321, +0.1810]  P(<=0)=0.002
+  -> EXCLUDES ZERO -- the code adds information with one row per side
+
+  context only
+    last residualised - step 0       +0.0320  95% CI [-0.0489, +0.1160]  P(<=0)=0.226
+    last row - (-max prefix chars)   +0.0655  95% CI [+0.0027, +0.1310]  P(<=0)=0.021
+    all rows - last row              +0.0281  95% CI [-0.0150, +0.0721]  P(<=0)=0.101
+
+  -> results/exploratory/one_row_rust_strict.json

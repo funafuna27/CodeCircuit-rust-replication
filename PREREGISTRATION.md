@@ -543,3 +543,81 @@ real Rust label had been computed.
    strict column is now locked (`-max prefix chars` 0.6942), computed by the
    analysis script itself on zero features so that it will print the same
    numbers on the real run.
+
+## 9. Results — the Rust arm
+
+The graph run finished 2026-09-30 23:44 (ALL CHUNKS COMPLETE: 1734 rows, 214
+problems, no failed graph, every integrity check passing). A watcher started
+`run_rust_analysis.sh` two minutes later, unattended, and its outputs were
+committed as produced (08a6663) before anything else was computed. Every locked
+comparator printed exactly as locked: the four C2 surface baselines on both
+populations, to the last digit of their intervals, and both Python cross-set
+numbers.
+
+### 9a. The pre-registered predictions — strict population, 206 problems, 95 passing
+
+```
+                           result                                   prediction            outcome
+  C1  all rows - step 0    +0.1350  95% CI [+0.0715, +0.2013]       CI includes zero      FAILED: excludes zero
+  C2  - best surface       +0.0942  95% CI [+0.0248, +0.1650]       CI includes zero      FAILED: excludes zero
+      (-max prefix chars 0.6942)
+  C3  level                0.7887   95% CI [0.7245, 0.8482]         > 0.50, in [0.65,0.76] above chance; band missed high
+  C4  residualised         0.7540, loss +0.0347                     loss under 0.05       held
+  C5  rho on the 120       +0.7581  95% CI [+0.6650, +0.8251]       clearly positive      held
+      label-free refits: mean -0.028, sd 0.241, 95th pct +0.358; p 0.0099 (K = 100, the floor)
+  equivalence bound        CI upper 0.8482                          below 0.65            not met: Rust is not weaker
+```
+
+**By the table in §5 this reads: the generated code contributes in Rust** —
+"the strongest result available, and stronger than Python's own". The
+prediction for the primary result was wrong, and wrong in the direction of the
+paper's claim. Step 0 alone scores 0.6540 [0.5776, 0.7269].
+
+The loose population (214, 99 passing) agrees: level 0.7953 [0.7316, 0.8524],
+step 0 0.6732, C1 +0.1217 [+0.0639, +0.1831], C2 +0.0989 [+0.0253, +0.1719], C4
+loss +0.0293. On the 80 strict problems Python never saw: level 0.7920
+[0.6842, 0.8845], C1 +0.1257 [+0.0352, +0.2201]; on the 85 loose ones, C1
++0.0724 [−0.0153, +0.1619].
+
+On the 120-problem cross set the two arms score 0.7775 (Python) and 0.7930
+(Rust), a paired difference of +0.0149 [−0.0775, +0.1096], and their labels agree
+on 85.8% of problems. Per §6 no difference between the arms is attributed to
+language: the Python labels lean on name-aliasing (99 of its 114 positives), and
+the Rust prompts carried the signature.
+
+The learning curve (descriptive) still climbs: 0.7391 at 41 training problems
+to 0.7949 at 164.
+
+### 9b. Exploratory, not pre-registered: is C1 the code, or the extra rows?
+
+This question was found only after 9a was seen, so it is handled the way the
+pre-registered analysis was: `7_one_row_control.py` was written and committed
+(dc7ed09) with its single question and its reading rule fixed in its docstring
+before it was first run.
+
+C1 compares a model fitted and scored on ~8 rows per problem with one fitted and
+scored on a single row. The multi-row side has several times the training rows
+and averages away test-time noise, which could raise its AUROC with no
+information from the code at all. The control puts **one row per problem on
+each side**: step 0 against the last row, the most code the 140-token cap keeps.
+
+```
+                       step 0   last row   last - step 0                 all rows - last row
+  Rust strict (206)    0.6540   0.7606     +0.1066 [+0.0321, +0.1810]    +0.0281 [-0.0150, +0.0721]
+  Rust loose (214)     0.6732   0.7579     +0.0849 [+0.0117, +0.1564]    +0.0371 [-0.0074, +0.0806]
+  Python 256           0.6931   0.6993     +0.0054 [-0.0660, +0.0746]    +0.0277 [-0.0182, +0.0739]
+  Python 240           0.6928   0.6814     -0.0112 [-0.0865, +0.0646]    +0.0278 [-0.0214, +0.0767]
+```
+
+By the rule fixed beforehand: **in Rust the generated code carries information
+beyond the prompt with one row on each side** — about four-fifths of C1
+survives, and the extra rows add a further +0.03 that is not distinguishable
+from zero. In Python the last row adds nothing to step 0.
+
+Printed alongside as context — not a test, and not something to lean on in
+either direction: residualising the last row's features on C4's eight length and
+position terms leaves it +0.0320 [−0.0489, +0.1160] above step 0 in Rust
+(+0.0039 loose). So at this n what the code adds **cannot be separated from its
+length**, although the last-row graph does beat the length heuristic itself,
++0.0655 [+0.0027, +0.1310]. Residualising also strips whatever is merely
+correlated with length, so this says "not separable", not "is length".

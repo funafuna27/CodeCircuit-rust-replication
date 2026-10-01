@@ -1,0 +1,20 @@
+gemma_mbpp_features.jsonl | subset_python_parses.txt
+  240 problems, 114 positive, 1137 rows (4.74 per problem)
+  problems whose last row IS step 0 (nothing past the signature): 0
+
+  one-problem AUROCs (bootstrap over problems)
+    all rows (pre-registered level)    0.7091  95% CI [0.6438, 0.7739]
+    step 0 only                        0.6928  95% CI [0.6243, 0.7615]
+    last row only                      0.6814  95% CI [0.6086, 0.7492]
+    last row, residualised on length   0.6771  95% CI [0.6055, 0.7459]
+    -max prefix chars (surface)        0.5846  95% CI [0.5093, 0.6566]
+
+  THE CONTRAST  last row - step 0   -0.0112  95% CI [-0.0865, +0.0646]  P(<=0)=0.619
+  -> includes zero -- not separable from the multi-row advantage
+
+  context only
+    last residualised - step 0       -0.0167  95% CI [-0.0961, +0.0623]  P(<=0)=0.658
+    last row - (-max prefix chars)   +0.0967  95% CI [+0.0221, +0.1687]  P(<=0)=0.006
+    all rows - last row              +0.0278  95% CI [-0.0214, +0.0767]  P(<=0)=0.134
+
+  -> results/exploratory/one_row_python_240.json
