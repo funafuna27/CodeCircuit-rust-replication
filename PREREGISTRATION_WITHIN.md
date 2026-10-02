@@ -174,3 +174,56 @@ from.
 1000). The 40 pilot problems are part of the real draw and, seeded the same,
 yield the same samples; only their labels were seen. Graphs see the tidied
 code, which is the code that was judged.
+
+## 9. Results
+
+### 9a. Pre-registered (`results/within/`, commit aa35c25)
+
+Draw: 6680 samples over 334 problems; 56.3% compile, 24.9% pass. Eligible:
+3096 samples over 284 problems; 89 mixed problems → **89 pairs, gate met** on
+the first draw (projected ~117 from the pilot's first 40 problems, which
+turned out richer than average). Every failing member fails an assertion; none
+timed out. Token difference pass − fail: mean +0.00, |d| median 2, max 38.
+178 graphs, none missing (2026-10-01 13:42 → 10-02 20:31, ~13.5 min each).
+
+| statistic | value | 95% CI | label-swap refits (K = 100) |
+|---|---|---|---|
+| **A**, graph features | **0.6236** | [0.5225, 0.7191] | mean 0.4942, sd 0.0596; **p = 0.0198** |
+| S1, residualised on length | 0.5337 | [0.4270, 0.6348] | mean 0.4912, sd 0.0665; p = 0.2673 |
+| S2, length only | 0.5449 | [0.4438, 0.6461] | — |
+| per-feature Wilcoxon, BH q < 0.1 | 0 of 49 | | |
+
+**Predictions.** A: p above 0.05 — **failed** (0.020). S2 near 0.5 — **held**
+(0.545, the interval covers 0.5).
+
+**Reading (§5):** A yes, S1 no → *a within-problem signal that cannot be
+separated from the length difference that matching left.* A sits at the
+resolvable effect for n = 89 (~0.632): the signal is weak, and the interval's
+lower end is 0.52.
+
+### 9b. Exploratory, not pre-registered (`results/exploratory/within_length_decomposition.*`)
+
+Within the pairs, length differences are small and unsigned (chars pass − fail
+median +2, |d| median 17; lines mean −0.15), yet S1 removed most of A. S1's
+pooled fit removes two things at once; `8_within_length_decomposition.py`,
+committed before it ran with its reading rule in the docstring, removes each
+alone with the same covariates and the same label-swap null.
+
+| | removes | A | 95% CI | p |
+|---|---|---|---|---|
+| A (9a) | nothing | 0.6236 | [0.5225, 0.7191] | 0.0198 |
+| E1 | each member's length departure from its pair mean | 0.5899 | [0.4888, 0.6966] | 0.0594 |
+| E2 | the pair's mean length among problems (within-pair differences unchanged, max change 2e-19) | 0.5674 | [0.4663, 0.6629] | 0.1584 |
+| S1 (9a) | both | 0.5337 | [0.4270, 0.6348] | 0.2673 |
+
+Within-pair length explains 31.3% of the within-pair feature variance, even
+though the members differ by a median of two tokens.
+
+**Reading, by the rule written beforehand: no clean split.** Of the 0.090 that
+S1 removed, E1 alone removes 0.034 and E2 alone 0.057; each part takes some,
+and every gap in the table is within one null sd (~0.065), so this n cannot
+apportion them. The data lean towards the first case — removing the members'
+own length difference leaves A at 0.590 (p 0.059), so that difference does not
+account for most of the signal — but a lean is all it is. What survives
+unchanged is 9a's reading: a weak within-problem signal (A ≈ 0.6) that this
+experiment cannot separate from length.

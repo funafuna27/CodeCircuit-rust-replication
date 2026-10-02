@@ -1,0 +1,17 @@
+89 pairs
+  check: E2 changes within-pair differences by at most 2.17e-19
+  within-pair length explains 0.313 of the within-pair feature variance
+
+=== E1: within-pair length removed ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  within-pair residualised     A = 0.5899  95% CI [0.4888, 0.6966]   label-swap refits: mean 0.5036, sd 0.0663;  p = 0.0594
+
+=== E2: between-pair length removed ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  between-pair residualised    A = 0.5674  95% CI [0.4663, 0.6629]   label-swap refits: mean 0.4939, sd 0.0640;  p = 0.1584
