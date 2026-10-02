@@ -1,0 +1,26 @@
+89 pairs; 89 have both graphs (0 dropped for a missing graph)
+  tokens pass - fail: mean +0.00, |d| median 2
+
+=== A: within-pair accuracy (primary) ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  graph features               A = 0.6236  95% CI [0.5225, 0.7191]   label-swap refits: mean 0.4942, sd 0.0596;  p = 0.0198
+
+=== S1: features residualised on length ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  residualised features        A = 0.5337  95% CI [0.4270, 0.6348]   label-swap refits: mean 0.4912, sd 0.0665;  p = 0.2673
+
+=== S2: length alone (did the matching work?) ===
+  length only                  A = 0.5449  95% CI [0.4438, 0.6461]
+
+=== descriptive: per-feature paired differences (Wilcoxon, BH) ===
+  features with q < 0.1: 0 of 49
+
+=== reading (PREREGISTRATION_WITHIN.md §5) ===
+  a within-problem signal that cannot be separated from the length difference matching left
+  resolvable at 80% power, one-sided 0.05: A ~ 0.632 (normal approximation, n = 89 pairs)

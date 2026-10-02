@@ -1,0 +1,803 @@
+[
+ {
+  "problem": 6,
+  "pass_sample": 19,
+  "fail_sample": 1,
+  "pass_id": 619,
+  "fail_id": 601,
+  "pass_tokens": 118,
+  "fail_tokens": 116
+ },
+ {
+  "problem": 11,
+  "pass_sample": 5,
+  "fail_sample": 1,
+  "pass_id": 1105,
+  "fail_id": 1101,
+  "pass_tokens": 113,
+  "fail_tokens": 109
+ },
+ {
+  "problem": 56,
+  "pass_sample": 10,
+  "fail_sample": 2,
+  "pass_id": 5610,
+  "fail_id": 5602,
+  "pass_tokens": 98,
+  "fail_tokens": 98
+ },
+ {
+  "problem": 58,
+  "pass_sample": 10,
+  "fail_sample": 9,
+  "pass_id": 5810,
+  "fail_id": 5809,
+  "pass_tokens": 59,
+  "fail_tokens": 59
+ },
+ {
+  "problem": 64,
+  "pass_sample": 1,
+  "fail_sample": 7,
+  "pass_id": 6401,
+  "fail_id": 6407,
+  "pass_tokens": 108,
+  "fail_tokens": 99
+ },
+ {
+  "problem": 68,
+  "pass_sample": 8,
+  "fail_sample": 2,
+  "pass_id": 6808,
+  "fail_id": 6802,
+  "pass_tokens": 128,
+  "fail_tokens": 128
+ },
+ {
+  "problem": 69,
+  "pass_sample": 14,
+  "fail_sample": 7,
+  "pass_id": 6914,
+  "fail_id": 6907,
+  "pass_tokens": 104,
+  "fail_tokens": 106
+ },
+ {
+  "problem": 71,
+  "pass_sample": 14,
+  "fail_sample": 12,
+  "pass_id": 7114,
+  "fail_id": 7112,
+  "pass_tokens": 110,
+  "fail_tokens": 110
+ },
+ {
+  "problem": 80,
+  "pass_sample": 7,
+  "fail_sample": 9,
+  "pass_id": 8007,
+  "fail_id": 8009,
+  "pass_tokens": 75,
+  "fail_tokens": 81
+ },
+ {
+  "problem": 82,
+  "pass_sample": 12,
+  "fail_sample": 3,
+  "pass_id": 8212,
+  "fail_id": 8203,
+  "pass_tokens": 74,
+  "fail_tokens": 62
+ },
+ {
+  "problem": 85,
+  "pass_sample": 16,
+  "fail_sample": 19,
+  "pass_id": 8516,
+  "fail_id": 8519,
+  "pass_tokens": 62,
+  "fail_tokens": 57
+ },
+ {
+  "problem": 89,
+  "pass_sample": 12,
+  "fail_sample": 1,
+  "pass_id": 8912,
+  "fail_id": 8901,
+  "pass_tokens": 78,
+  "fail_tokens": 78
+ },
+ {
+  "problem": 91,
+  "pass_sample": 5,
+  "fail_sample": 4,
+  "pass_id": 9105,
+  "fail_id": 9104,
+  "pass_tokens": 77,
+  "fail_tokens": 77
+ },
+ {
+  "problem": 92,
+  "pass_sample": 12,
+  "fail_sample": 7,
+  "pass_id": 9212,
+  "fail_id": 9207,
+  "pass_tokens": 93,
+  "fail_tokens": 92
+ },
+ {
+  "problem": 96,
+  "pass_sample": 6,
+  "fail_sample": 5,
+  "pass_id": 9606,
+  "fail_id": 9605,
+  "pass_tokens": 116,
+  "fail_tokens": 114
+ },
+ {
+  "problem": 101,
+  "pass_sample": 6,
+  "fail_sample": 18,
+  "pass_id": 10106,
+  "fail_id": 10118,
+  "pass_tokens": 119,
+  "fail_tokens": 119
+ },
+ {
+  "problem": 113,
+  "pass_sample": 2,
+  "fail_sample": 9,
+  "pass_id": 11302,
+  "fail_id": 11309,
+  "pass_tokens": 55,
+  "fail_tokens": 55
+ },
+ {
+  "problem": 117,
+  "pass_sample": 1,
+  "fail_sample": 13,
+  "pass_id": 11701,
+  "fail_id": 11713,
+  "pass_tokens": 140,
+  "fail_tokens": 139
+ },
+ {
+  "problem": 118,
+  "pass_sample": 6,
+  "fail_sample": 2,
+  "pass_id": 11806,
+  "fail_id": 11802,
+  "pass_tokens": 94,
+  "fail_tokens": 95
+ },
+ {
+  "problem": 120,
+  "pass_sample": 1,
+  "fail_sample": 18,
+  "pass_id": 12001,
+  "fail_id": 12018,
+  "pass_tokens": 118,
+  "fail_tokens": 140
+ },
+ {
+  "problem": 137,
+  "pass_sample": 10,
+  "fail_sample": 18,
+  "pass_id": 13710,
+  "fail_id": 13718,
+  "pass_tokens": 140,
+  "fail_tokens": 135
+ },
+ {
+  "problem": 141,
+  "pass_sample": 4,
+  "fail_sample": 7,
+  "pass_id": 14104,
+  "fail_id": 14107,
+  "pass_tokens": 110,
+  "fail_tokens": 115
+ },
+ {
+  "problem": 166,
+  "pass_sample": 6,
+  "fail_sample": 0,
+  "pass_id": 16606,
+  "fail_id": 16600,
+  "pass_tokens": 125,
+  "fail_tokens": 125
+ },
+ {
+  "problem": 167,
+  "pass_sample": 10,
+  "fail_sample": 6,
+  "pass_id": 16710,
+  "fail_id": 16706,
+  "pass_tokens": 73,
+  "fail_tokens": 73
+ },
+ {
+  "problem": 170,
+  "pass_sample": 7,
+  "fail_sample": 10,
+  "pass_id": 17007,
+  "fail_id": 17010,
+  "pass_tokens": 104,
+  "fail_tokens": 95
+ },
+ {
+  "problem": 230,
+  "pass_sample": 3,
+  "fail_sample": 4,
+  "pass_id": 23003,
+  "fail_id": 23004,
+  "pass_tokens": 64,
+  "fail_tokens": 69
+ },
+ {
+  "problem": 248,
+  "pass_sample": 3,
+  "fail_sample": 0,
+  "pass_id": 24803,
+  "fail_id": 24800,
+  "pass_tokens": 83,
+  "fail_tokens": 83
+ },
+ {
+  "problem": 251,
+  "pass_sample": 13,
+  "fail_sample": 19,
+  "pass_id": 25113,
+  "fail_id": 25119,
+  "pass_tokens": 105,
+  "fail_tokens": 101
+ },
+ {
+  "problem": 266,
+  "pass_sample": 0,
+  "fail_sample": 4,
+  "pass_id": 26600,
+  "fail_id": 26604,
+  "pass_tokens": 51,
+  "fail_tokens": 50
+ },
+ {
+  "problem": 269,
+  "pass_sample": 17,
+  "fail_sample": 19,
+  "pass_id": 26917,
+  "fail_id": 26919,
+  "pass_tokens": 50,
+  "fail_tokens": 54
+ },
+ {
+  "problem": 273,
+  "pass_sample": 18,
+  "fail_sample": 4,
+  "pass_id": 27318,
+  "fail_id": 27304,
+  "pass_tokens": 119,
+  "fail_tokens": 139
+ },
+ {
+  "problem": 285,
+  "pass_sample": 2,
+  "fail_sample": 10,
+  "pass_id": 28502,
+  "fail_id": 28510,
+  "pass_tokens": 107,
+  "fail_tokens": 104
+ },
+ {
+  "problem": 292,
+  "pass_sample": 2,
+  "fail_sample": 3,
+  "pass_id": 29202,
+  "fail_id": 29203,
+  "pass_tokens": 50,
+  "fail_tokens": 50
+ },
+ {
+  "problem": 397,
+  "pass_sample": 7,
+  "fail_sample": 3,
+  "pass_id": 39707,
+  "fail_id": 39703,
+  "pass_tokens": 86,
+  "fail_tokens": 84
+ },
+ {
+  "problem": 400,
+  "pass_sample": 17,
+  "fail_sample": 5,
+  "pass_id": 40017,
+  "fail_id": 40005,
+  "pass_tokens": 129,
+  "fail_tokens": 119
+ },
+ {
+  "problem": 406,
+  "pass_sample": 1,
+  "fail_sample": 9,
+  "pass_id": 40601,
+  "fail_id": 40609,
+  "pass_tokens": 64,
+  "fail_tokens": 73
+ },
+ {
+  "problem": 409,
+  "pass_sample": 9,
+  "fail_sample": 5,
+  "pass_id": 40909,
+  "fail_id": 40905,
+  "pass_tokens": 104,
+  "fail_tokens": 106
+ },
+ {
+  "problem": 424,
+  "pass_sample": 0,
+  "fail_sample": 7,
+  "pass_id": 42400,
+  "fail_id": 42407,
+  "pass_tokens": 112,
+  "fail_tokens": 95
+ },
+ {
+  "problem": 428,
+  "pass_sample": 17,
+  "fail_sample": 8,
+  "pass_id": 42817,
+  "fail_id": 42808,
+  "pass_tokens": 132,
+  "fail_tokens": 130
+ },
+ {
+  "problem": 434,
+  "pass_sample": 7,
+  "fail_sample": 5,
+  "pass_id": 43407,
+  "fail_id": 43405,
+  "pass_tokens": 69,
+  "fail_tokens": 69
+ },
+ {
+  "problem": 441,
+  "pass_sample": 5,
+  "fail_sample": 10,
+  "pass_id": 44105,
+  "fail_id": 44110,
+  "pass_tokens": 46,
+  "fail_tokens": 46
+ },
+ {
+  "problem": 443,
+  "pass_sample": 4,
+  "fail_sample": 5,
+  "pass_id": 44304,
+  "fail_id": 44305,
+  "pass_tokens": 91,
+  "fail_tokens": 92
+ },
+ {
+  "problem": 452,
+  "pass_sample": 17,
+  "fail_sample": 6,
+  "pass_id": 45217,
+  "fail_id": 45206,
+  "pass_tokens": 80,
+  "fail_tokens": 80
+ },
+ {
+  "problem": 455,
+  "pass_sample": 2,
+  "fail_sample": 8,
+  "pass_id": 45502,
+  "fail_id": 45508,
+  "pass_tokens": 79,
+  "fail_tokens": 79
+ },
+ {
+  "problem": 459,
+  "pass_sample": 0,
+  "fail_sample": 2,
+  "pass_id": 45900,
+  "fail_id": 45902,
+  "pass_tokens": 78,
+  "fail_tokens": 75
+ },
+ {
+  "problem": 471,
+  "pass_sample": 8,
+  "fail_sample": 18,
+  "pass_id": 47108,
+  "fail_id": 47118,
+  "pass_tokens": 80,
+  "fail_tokens": 80
+ },
+ {
+  "problem": 472,
+  "pass_sample": 2,
+  "fail_sample": 14,
+  "pass_id": 47202,
+  "fail_id": 47214,
+  "pass_tokens": 99,
+  "fail_tokens": 100
+ },
+ {
+  "problem": 474,
+  "pass_sample": 1,
+  "fail_sample": 10,
+  "pass_id": 47401,
+  "fail_id": 47410,
+  "pass_tokens": 112,
+  "fail_tokens": 138
+ },
+ {
+  "problem": 477,
+  "pass_sample": 17,
+  "fail_sample": 0,
+  "pass_id": 47717,
+  "fail_id": 47700,
+  "pass_tokens": 51,
+  "fail_tokens": 78
+ },
+ {
+  "problem": 478,
+  "pass_sample": 0,
+  "fail_sample": 16,
+  "pass_id": 47800,
+  "fail_id": 47816,
+  "pass_tokens": 79,
+  "fail_tokens": 79
+ },
+ {
+  "problem": 479,
+  "pass_sample": 11,
+  "fail_sample": 1,
+  "pass_id": 47911,
+  "fail_id": 47901,
+  "pass_tokens": 90,
+  "fail_tokens": 86
+ },
+ {
+  "problem": 555,
+  "pass_sample": 3,
+  "fail_sample": 15,
+  "pass_id": 55503,
+  "fail_id": 55515,
+  "pass_tokens": 134,
+  "fail_tokens": 140
+ },
+ {
+  "problem": 562,
+  "pass_sample": 11,
+  "fail_sample": 12,
+  "pass_id": 56211,
+  "fail_id": 56212,
+  "pass_tokens": 112,
+  "fail_tokens": 113
+ },
+ {
+  "problem": 564,
+  "pass_sample": 13,
+  "fail_sample": 7,
+  "pass_id": 56413,
+  "fail_id": 56407,
+  "pass_tokens": 126,
+  "fail_tokens": 95
+ },
+ {
+  "problem": 565,
+  "pass_sample": 19,
+  "fail_sample": 0,
+  "pass_id": 56519,
+  "fail_id": 56500,
+  "pass_tokens": 77,
+  "fail_tokens": 115
+ },
+ {
+  "problem": 569,
+  "pass_sample": 11,
+  "fail_sample": 12,
+  "pass_id": 56911,
+  "fail_id": 56912,
+  "pass_tokens": 129,
+  "fail_tokens": 129
+ },
+ {
+  "problem": 576,
+  "pass_sample": 18,
+  "fail_sample": 14,
+  "pass_id": 57618,
+  "fail_id": 57614,
+  "pass_tokens": 129,
+  "fail_tokens": 110
+ },
+ {
+  "problem": 578,
+  "pass_sample": 3,
+  "fail_sample": 1,
+  "pass_id": 57803,
+  "fail_id": 57801,
+  "pass_tokens": 126,
+  "fail_tokens": 117
+ },
+ {
+  "problem": 583,
+  "pass_sample": 11,
+  "fail_sample": 10,
+  "pass_id": 58311,
+  "fail_id": 58310,
+  "pass_tokens": 100,
+  "fail_tokens": 92
+ },
+ {
+  "problem": 593,
+  "pass_sample": 18,
+  "fail_sample": 16,
+  "pass_id": 59318,
+  "fail_id": 59316,
+  "pass_tokens": 81,
+  "fail_tokens": 81
+ },
+ {
+  "problem": 594,
+  "pass_sample": 17,
+  "fail_sample": 7,
+  "pass_id": 59417,
+  "fail_id": 59407,
+  "pass_tokens": 140,
+  "fail_tokens": 135
+ },
+ {
+  "problem": 598,
+  "pass_sample": 4,
+  "fail_sample": 13,
+  "pass_id": 59804,
+  "fail_id": 59813,
+  "pass_tokens": 98,
+  "fail_tokens": 107
+ },
+ {
+  "problem": 599,
+  "pass_sample": 16,
+  "fail_sample": 11,
+  "pass_id": 59916,
+  "fail_id": 59911,
+  "pass_tokens": 103,
+  "fail_tokens": 103
+ },
+ {
+  "problem": 604,
+  "pass_sample": 2,
+  "fail_sample": 11,
+  "pass_id": 60402,
+  "fail_id": 60411,
+  "pass_tokens": 89,
+  "fail_tokens": 87
+ },
+ {
+  "problem": 618,
+  "pass_sample": 2,
+  "fail_sample": 7,
+  "pass_id": 61802,
+  "fail_id": 61807,
+  "pass_tokens": 107,
+  "fail_tokens": 106
+ },
+ {
+  "problem": 625,
+  "pass_sample": 9,
+  "fail_sample": 13,
+  "pass_id": 62509,
+  "fail_id": 62513,
+  "pass_tokens": 72,
+  "fail_tokens": 90
+ },
+ {
+  "problem": 627,
+  "pass_sample": 5,
+  "fail_sample": 16,
+  "pass_id": 62705,
+  "fail_id": 62716,
+  "pass_tokens": 113,
+  "fail_tokens": 114
+ },
+ {
+  "problem": 633,
+  "pass_sample": 6,
+  "fail_sample": 13,
+  "pass_id": 63306,
+  "fail_id": 63313,
+  "pass_tokens": 118,
+  "fail_tokens": 117
+ },
+ {
+  "problem": 637,
+  "pass_sample": 9,
+  "fail_sample": 8,
+  "pass_id": 63709,
+  "fail_id": 63708,
+  "pass_tokens": 82,
+  "fail_tokens": 74
+ },
+ {
+  "problem": 643,
+  "pass_sample": 4,
+  "fail_sample": 17,
+  "pass_id": 64304,
+  "fail_id": 64317,
+  "pass_tokens": 114,
+  "fail_tokens": 114
+ },
+ {
+  "problem": 732,
+  "pass_sample": 15,
+  "fail_sample": 13,
+  "pass_id": 73215,
+  "fail_id": 73213,
+  "pass_tokens": 95,
+  "fail_tokens": 100
+ },
+ {
+  "problem": 736,
+  "pass_sample": 19,
+  "fail_sample": 2,
+  "pass_id": 73619,
+  "fail_id": 73602,
+  "pass_tokens": 134,
+  "fail_tokens": 132
+ },
+ {
+  "problem": 737,
+  "pass_sample": 8,
+  "fail_sample": 3,
+  "pass_id": 73708,
+  "fail_id": 73703,
+  "pass_tokens": 115,
+  "fail_tokens": 87
+ },
+ {
+  "problem": 741,
+  "pass_sample": 13,
+  "fail_sample": 19,
+  "pass_id": 74113,
+  "fail_id": 74119,
+  "pass_tokens": 97,
+  "fail_tokens": 96
+ },
+ {
+  "problem": 750,
+  "pass_sample": 9,
+  "fail_sample": 15,
+  "pass_id": 75009,
+  "fail_id": 75015,
+  "pass_tokens": 86,
+  "fail_tokens": 90
+ },
+ {
+  "problem": 751,
+  "pass_sample": 4,
+  "fail_sample": 17,
+  "pass_id": 75104,
+  "fail_id": 75117,
+  "pass_tokens": 125,
+  "fail_tokens": 125
+ },
+ {
+  "problem": 756,
+  "pass_sample": 5,
+  "fail_sample": 14,
+  "pass_id": 75605,
+  "fail_id": 75614,
+  "pass_tokens": 78,
+  "fail_tokens": 99
+ },
+ {
+  "problem": 760,
+  "pass_sample": 2,
+  "fail_sample": 4,
+  "pass_id": 76002,
+  "fail_id": 76004,
+  "pass_tokens": 91,
+  "fail_tokens": 93
+ },
+ {
+  "problem": 762,
+  "pass_sample": 17,
+  "fail_sample": 5,
+  "pass_id": 76217,
+  "fail_id": 76205,
+  "pass_tokens": 80,
+  "fail_tokens": 85
+ },
+ {
+  "problem": 764,
+  "pass_sample": 0,
+  "fail_sample": 14,
+  "pass_id": 76400,
+  "fail_id": 76414,
+  "pass_tokens": 67,
+  "fail_tokens": 44
+ },
+ {
+  "problem": 775,
+  "pass_sample": 18,
+  "fail_sample": 7,
+  "pass_id": 77518,
+  "fail_id": 77507,
+  "pass_tokens": 99,
+  "fail_tokens": 99
+ },
+ {
+  "problem": 777,
+  "pass_sample": 5,
+  "fail_sample": 2,
+  "pass_id": 77705,
+  "fail_id": 77702,
+  "pass_tokens": 90,
+  "fail_tokens": 90
+ },
+ {
+  "problem": 786,
+  "pass_sample": 13,
+  "fail_sample": 3,
+  "pass_id": 78613,
+  "fail_id": 78603,
+  "pass_tokens": 111,
+  "fail_tokens": 100
+ },
+ {
+  "problem": 787,
+  "pass_sample": 14,
+  "fail_sample": 0,
+  "pass_id": 78714,
+  "fail_id": 78700,
+  "pass_tokens": 70,
+  "fail_tokens": 70
+ },
+ {
+  "problem": 792,
+  "pass_sample": 6,
+  "fail_sample": 19,
+  "pass_id": 79206,
+  "fail_id": 79219,
+  "pass_tokens": 88,
+  "fail_tokens": 88
+ },
+ {
+  "problem": 794,
+  "pass_sample": 0,
+  "fail_sample": 1,
+  "pass_id": 79400,
+  "fail_id": 79401,
+  "pass_tokens": 66,
+  "fail_tokens": 67
+ },
+ {
+  "problem": 797,
+  "pass_sample": 11,
+  "fail_sample": 3,
+  "pass_id": 79711,
+  "fail_id": 79703,
+  "pass_tokens": 93,
+  "fail_tokens": 92
+ },
+ {
+  "problem": 800,
+  "pass_sample": 10,
+  "fail_sample": 4,
+  "pass_id": 80010,
+  "fail_id": 80004,
+  "pass_tokens": 44,
+  "fail_tokens": 50
+ },
+ {
+  "problem": 806,
+  "pass_sample": 3,
+  "fail_sample": 0,
+  "pass_id": 80603,
+  "fail_id": 80600,
+  "pass_tokens": 133,
+  "fail_tokens": 131
+ }
+]
