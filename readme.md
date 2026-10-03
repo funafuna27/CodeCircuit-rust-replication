@@ -34,9 +34,46 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python as a baseline for extending the study
-to Rust. Phase 1 — reproducing the reported Python AUROC — completed on
-2026-09-16.
+This fork replicates CodeCircuit on Python and extends it to Rust in three
+phases: reproduce the Python number (finished 2026-09-16); ask the same question
+of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
+and ask it within a problem, on two solutions to the same task
+(`PREREGISTRATION_WITHIN.md`, finished 2026-10-02).
+
+## Where this stands
+
+The paper's number reproduces — 79.73% against 79.89% — but it is a row-level
+score against an LLM judge whose prompt dictates the shape of the label. Measured
+at the problem level against execution, with intervals that resample problems,
+the graph features still beat surface heuristics in both languages; that much of
+the paper survives. The sharper question is whether the *generated code*
+contributes anything beyond the prompt, and there the two arms differ. In Python
+it does not: a graph taken at the signature, before a line of logic exists,
+predicts execution as well as one over the whole function, while the body does
+help predict what the judge will say. In Rust it does — between problems, and
+weakly between two solutions to the same problem — but in both designs that
+contribution cannot be separated from the code's length at this n. The arms
+differ in more than language (the Python labels lean on name-aliasing for 99 of
+114 positives; the Rust prompt carries the signature), so the difference is not
+attributed to language.
+
+| | question | result, 95% CI |
+|---|---|---|
+| Phase 1, Python, 256 problems | does the paper's number reproduce? | 79.73% on its own protocol; **0.7269 [0.6619, 0.7901]** at the problem level against execution |
+| | does the code add anything over the prompt? C1 = AUROC(all rows) − AUROC(step 0, signature only) | against the judge +0.0882 [+0.024, +0.154]; **against execution +0.0340 [−0.0160, +0.0846]**, and +0.0162 [−0.0352, +0.0691] on the repaired data |
+| Phase 2, Rust, 206 problems | the same C1 | **+0.1350 [+0.0715, +0.2013]**, predicted null. One row on each side: +0.1066 [+0.0321, +0.1810]. That row residualised on length: +0.0320 [−0.0489, +0.1160] (both exploratory) |
+| | graph against the best surface heuristic (C2) | +0.0942 [+0.0248, +0.1650], predicted null (Python: +0.1026 [+0.0408, +0.1658]) |
+| Phase 3, Rust, 89 pairs | of two length-matched solutions to one problem, one passing, does the graph rank the passing one higher? | **A = 0.624 [0.522, 0.719], p 0.020**, predicted null. Features residualised on length: 0.534, p 0.267 |
+
+Each "predicted null" was my prediction, written down before the data, and each
+was wrong in the paper's favour. What held: the level is not a length proxy (C4),
+the two arms rank the problems they share alike (ρ +0.758, consistent with both
+reading problem difficulty), and Phase 3's length matching worked (length alone
+scores 0.545).
+
+The sections below follow the order the work was done in.
+
+## Phase 1: the Python arm
 
 | Split | AUROC | vs. paper (79.89%) |
 |---|---|---|
@@ -52,8 +89,11 @@ of the *same* 256 problems, so the spread measures split noise, not sampling
 error. Resampling the 256 problems instead gives intervals 4–10× wider. Every
 interval below is a cluster bootstrap over problems. For the same reason, a
 paired t or Wilcoxon over seeds is not a hypothesis test: its p-value is a
-function of how many seeds you draw — one comparison here gives p = 0.2305 at 20
-seeds, 0.0494 at 50, 0.0010 at 100.
+function of how many seeds you draw — `-max prefix chars` against `-n_steps`, a
+true gap of +0.0216, gives p = 0.0020 at 10 seeds, 0.0001 at 20 and below 0.0001
+at 30. (An earlier version quoted 0.2305 / 0.0494 / 0.0010 at 20 / 50 / 100
+seeds; that triple does not reproduce from anything recorded and is withdrawn,
+`PREREGISTRATION.md` §2.)
 
 **Two corrections to earlier versions of this section.** First, the gap between
 the two splits was described here as train/test leakage. It is not. Exactly 1 of
@@ -71,7 +111,7 @@ weights each problem by its solution length — and length correlates with the
 label. Corrected and measured at the problem level, the paper's central claim
 survives; its headline magnitude and its reported precision do not.
 
-## What the 79.73% measures
+### What the 79.73% measures
 
 The labels are not execution results. `1_code_correct.py` asks gpt-4o-mini to
 score each generated line 1 or 0, and its prompt *mandates* the shape the labels
@@ -101,7 +141,7 @@ per problem, by construction. What follows is measured on this dataset:
   against 0.8850 for the trained 49-dim model. This dataset cannot evidence
   line-level error localisation for any method, in either direction.
 
-## Against execution instead
+### Against execution instead
 
 MBPP ships tests. Running the 256 generations against them (subprocess, 10 s
 timeout) re-labels the *same* graphs — only `y` changes, so the 5 days of graph
@@ -136,7 +176,7 @@ One caution on the sensitivity analysis: AUROC across eight execution-label
 variants is perfectly rank-ordered by positive rate (Spearman = 1.00, n = 8), so
 label-definition effects and base-rate effects cannot be separated here.
 
-## What survives, and what does not
+### What survives, and what does not
 
 **Survives — the paper's comparative claim.** At the problem level against
 corrected execution labels, the graph features beat surface heuristics by a
@@ -168,7 +208,7 @@ prompt-mandated step function. The comparable quantity is 0.7324 [0.6703, 0.7918
 execution signal are not the ones carrying the judge signal: Spearman between the
 two permutation-importance vectors is 0.031, sharing 2 of 10 top dimensions.
 
-## The sharpest result: the features read the judge, not the execution
+### The sharpest Python result: the features read the judge, not the execution
 
 Found by red-teaming the Rust pre-registration before the Rust data existed, and
 confirmed by re-running it. `original_expression` — what the graph is computed on
@@ -181,7 +221,7 @@ the generated body contributes.
 |---|---|---|---|
 | gpt-4o-mini judge, all lines 1 | 0.6992 | 0.6114 | **+0.0882 [+0.024, +0.154]** |
 | judge, majority of lines | 0.6811 | 0.5685 | +0.1134 [−0.009, +0.244] |
-| **execution truth** | 0.7269 | 0.6931 | **+0.0337 [−0.017, +0.084]** |
+| **execution truth** | 0.7269 | 0.6931 | **+0.0340 [−0.0160, +0.0846]** |
 
 Read carefully, because the two rows say different things.
 
@@ -192,7 +232,8 @@ judge benefits from seeing the code.
 **Against execution truth it does not.** A graph taken before the model writes a
 line of logic predicts whether the program actually works as well as one taken
 over the whole generation. On the clean 240-problem subset the contrast shrinks
-further, to +0.0165 [−0.0341, +0.0684].
+further, to +0.0165 [−0.0341, +0.0684], and with the 16 corrupted generations
+repaired and their graphs rebuilt (2026-10-01) it is +0.0162 [−0.0352, +0.0691].
 
 So the honest statement is narrower than "it is all problem difficulty", and
 more specific: **the features carry information about what an LLM judge will say
@@ -208,8 +249,9 @@ This is why the Rust arm's primary result is the paired contrast rather than the
 AUROC — see `PREREGISTRATION.md`. The features do beat surface length heuristics
 (+0.1026 [+0.0408, +0.1658]), and that survives; what does not survive is reading
 the headline as evidence about generated code rather than about the problem.
+Rust answered the same contrast differently; see Phase 2.
 
-## Known defects in this dataset
+### Known defects in this dataset
 
 - **16 of 256 generations carry markdown fences.** `generated_code` contains
   literal ``` fences and, in several cases, the same functions repeated several
@@ -218,7 +260,9 @@ the headline as evidence about generated code rather than about the problem.
   6 of them, including the bare fence line, against its own rule 1. Predicting
   "does this parse" from the graph features scores **0.9995** [0.9975, 1.0000]
   at problem level: these features separate sharply when the target is an
-  extraction artefact, and weakly when it is correctness.
+  extraction artefact, and weakly when it is correctness. Repaired on
+  2026-10-01 into separate `*_repaired` files, the locked originals untouched;
+  the Python C1 stays null (Phase 2, "The Python top-up").
 - **The `len(text) > 550` filter is class-biased.** 27 of 1447 rows dropped, 67%
   of them label 0 against a 17.5% base rate. Six of the eight affected problems
   are the fence-corrupted ones.
@@ -240,6 +284,9 @@ never more than all of it. All 1420 graphs were generated at the upstream defaul
 of 64, and the Rust arm must use the same value.
 
 ## Plan for the Rust arm
+
+*Written before any Rust graph existed and kept as written; where the plan
+changed, `PREREGISTRATION.md` §8 records it.*
 
 The Python arm's real finding is not "the paper is wrong" — its comparative claim
 held up under adversarial checking. It is that the reported quantity is measured
@@ -266,11 +313,12 @@ same question asked properly, and it must not repeat any of this.
    256/256" as though the data had been repaired. It has not. The fix landed in
    the script only: `data/gemma_mbpp_responses.jsonl` is still the pre-fix file,
    16 generations still fail `ast.parse`, and 147 of the 1420 feature rows
-   contain a literal ` ``` `. Repairing it means regenerating those 16 problems'
-   graphs, which needs the GPU the Rust run is using until ~2026-09-29. Until
-   then the like-for-like comparator is the 240 problems that parse, and it is
-   locked in `PREREGISTRATION.md` §3b so the choice cannot be made later:
-   0.7091 [0.6402, 0.7737] against 0.7269 [0.6619, 0.7901] on all 256.
+   contain a literal ` ``` `. Repairing it meant regenerating those 16 problems'
+   graphs, which had to wait for the Rust run, so the like-for-like comparator
+   was locked in `PREREGISTRATION.md` §3b as the 240 problems that parse, before
+   any Rust number existed: 0.7091 [0.6402, 0.7737] against 0.7269 [0.6619,
+   0.7901] on all 256. The repair landed on 2026-10-01 in separate `*_repaired`
+   files (Phase 2, "The Python top-up").
 2. **Put the required signature in the generation prompt.** MBPP does not state
    the function name, which cost 210 of 256 Python generations a `NameError`
    before any assert ran. Ported naively that becomes a Rust compile error, and
@@ -297,9 +345,67 @@ same question asked properly, and it must not repeat any of this.
 
 ## Phase 2: the Rust arm
 
-Generation and labelling are done; no graphs have been built yet. Nothing here
-costs GPU time, and the point of doing it first was to find out whether the arm
-is viable before committing any.
+Pre-registered in `PREREGISTRATION.md` before any Rust feature was scored
+against a label; its §9 holds the results and §8 every deviation. The graphs —
+1734 at `BATCH_SIZE=64` over 214 problems — finished on 2026-09-30 with no
+failure. The analysis ran unattended from a watcher, and its outputs were
+committed before anything else was computed.
+
+### Results
+
+Strict population (206 problems, 95 passing), problem level, 95% CI from 5000
+bootstrap draws over problems:
+
+| | result | prediction | outcome |
+|---|---|---|---|
+| C1, all rows − step 0 (primary) | +0.1350 [+0.0715, +0.2013] | CI includes zero | **failed**: excludes zero |
+| C2, − best surface (`-max prefix chars` 0.6942) | +0.0942 [+0.0248, +0.1650] | CI includes zero | **failed**: excludes zero |
+| C3, level | 0.7887 [0.7245, 0.8482] | above chance, in [0.65, 0.76] | above chance; band missed high |
+| C4, features residualised on length | 0.7540, loss +0.0347 | loss under 0.05 | held |
+| C5, Spearman of the two arms' scores on the 120 shared problems | +0.7581 [+0.6650, +0.8251], label-free refit p 0.0099 | clearly positive | held |
+
+Step 0 alone scores 0.6540 [0.5776, 0.7269]. By the pre-registered reading,
+**the generated code contributes in Rust**, where it does not in Python. The
+loose population (214) agrees, C1 +0.1217 [+0.0639, +0.1831], and so do the 80
+strict problems Python never saw, C1 +0.1257 [+0.0352, +0.2201]. On the 120
+shared problems the arms score 0.7775 (Python) and 0.7930 (Rust), a difference
+of +0.0149 [−0.0775, +0.1096] that is not attributed to language.
+
+**Is C1 the code, or the extra rows?** (Exploratory: `7_one_row_control.py`,
+committed with its reading rule before it ran.) C1 compares a model with ~8 rows
+per problem against one with a single row, and more rows can raise an AUROC with
+no information from the code. With one row on each side — step 0 against the
+last row, the most code the 140-token cap keeps:
+
+| | step 0 | last row | last − step 0 |
+|---|---|---|---|
+| Rust strict (206) | 0.6540 | 0.7606 | **+0.1066 [+0.0321, +0.1810]** |
+| Rust loose (214) | 0.6732 | 0.7579 | +0.0849 [+0.0117, +0.1564] |
+| Python 256 | 0.6931 | 0.6993 | +0.0054 [−0.0660, +0.0746] |
+| Python 240 | 0.6928 | 0.6814 | −0.0112 [−0.0865, +0.0646] |
+| Python 256 repaired | 0.7016 | 0.6930 | −0.0091 [−0.0842, +0.0656] |
+
+About four-fifths of C1 survives, so in Rust the code carries information
+beyond the prompt; in Python the last row adds nothing. But residualising the
+last row's features on C4's eight length and position terms leaves it only
++0.0320 [−0.0489, +0.1160] above step 0, so **what the code adds cannot be
+separated from its length** at this n — though the last-row graph does beat the
+length heuristic itself, +0.0655 [+0.0027, +0.1310]. Residualising also strips
+whatever merely correlates with length, so this says "not separable", not "is
+length". Phase 3 holds the problem fixed and matches length by design, to ask
+the question without leaning on that correction.
+
+**The Python top-up.** The 16 fence-corrupted Python generations were
+regenerated with the fixed extractor and their 132 graphs rebuilt on
+2026-10-01, in about 12 hours; the other 240 problems' rows were kept byte for
+byte. With the repaired labels (117 of 256 passing) the level is 0.7181
+[0.6523, 0.7817], C1 +0.0162 [−0.0352, +0.0691] and C2 +0.1195 [+0.0527,
++0.1853]: repairing the data changes nothing that matters.
+
+### Setup
+
+Everything below was done before any graph was built, to find out whether the
+arm was viable before committing GPU time.
 
 **How much of MBPP can be ported.** `data/mbpp_rust.py` reads a Rust signature
 off the literals in each task's asserts, requiring the types to agree across
@@ -326,11 +432,15 @@ eight as specified.
 | passes every assert | **99/350 (28.3%)** | 114/256 (44.5%) |
 | passes, given it compiles | 99/214 (46.3%) | — |
 
-On the 207 problems both arms cover: Python passes 97 (46.9%), Rust 55 (26.6%);
-51 pass in both, 106 in neither, 46 in Python only and **4 in Rust only**. The
-model is much weaker in Rust, which is the finding the arm exists to exploit —
-but it also means the two arms are not matched on difficulty, and that has to be
-carried into any comparison.
+On the 207 problems both arms can express: Python passes 97 (46.9%), Rust 55
+(26.6%); 51 pass in both, 106 in neither, 46 in Python only and **4 in Rust
+only**. **Correction:** an earlier version read this as "the model is much
+weaker in Rust, so the arms are not matched on difficulty". The gap is
+compilation — 136 of 350 Rust generations do not compile, and those are not
+analysed. On the analysed populations the base rates are close: Rust 95 of 206
+(46.1%, strict) or 99 of 214 (46.3%, loose), Python 114 of 256 (44.5%). And 207
+is not the analysed overlap, which is 129 (120 under the strict rule), easier in
+Python than the problems outside it (`PREREGISTRATION.md` §3d).
 
 **Two pipeline artefacts, found before spending GPU time.** The Python arm's
 lesson applied: check whether a failure class is the model's fault or the
@@ -386,17 +496,85 @@ rows it removes are only 13.1% positive against 37.7% overall, because long
 prefixes skew to failures. `data/2b_apply_token_cap.py` does it and reports
 exactly what went.
 
-**The run is in flight**: 1734 graphs at `BATCH_SIZE=64`, chunked at 200 so peak
-disk stays near 80 GB, launched 2026-09-22.
+**The run** — 1734 graphs at `BATCH_SIZE=64`, chunked at 200 so peak disk stays
+near 80 GB — took 8 days 16 hours (2026-09-22 08:07 to 09-30 23:44), 1.14x the
+7.6 days costed above.
 
 Note for anyone forking this: `data/1_code_correct.py` carries a hardcoded
 OpenAI key inherited from upstream. It must not be used, and must be scrubbed
 from history before this fork is ever made public.
 
-Generation took 5 days 10 hours on one RTX 5070 (12GB) at
+The Python graphs took 5 days 10 hours on the same RTX 5070 (12GB) at
 `batch_size=64, offload='cpu'`, chunked at 200 graphs so peak disk stays near
 80GB rather than the ~500GB a whole language would otherwise need. See
 `data/run_chunked.sh`.
+
+## Phase 3: two solutions to the same problem
+
+Phase 2's contrasts compare problems with problems, so problem difficulty and
+length are controlled only statistically. Phase 3 controls them by design: draw
+many solutions per problem and pair one that passes with one that fails, both
+compiling, matched on length. Problem difficulty cannot help a classifier tell
+the members of a pair apart, and length can help only through what the matching
+left. Pre-registered in `PREREGISTRATION_WITHIN.md`: version 1 before any sample
+was drawn, version 2 after a yield pilot that saw labels only — never a graph —
+and before the real draw (§8 records the change and the numbers it was decided
+on).
+
+**Design.** The 334 Rust problems whose every assert is gradeable, 20 samples
+each at temperature 0.8 (top_p 0.95), with the Phase 2 prompt and extraction plus
+a cleaner for wrapping debris (`data/within_clean.py`). A sample is eligible if
+it compiles, is not truncated, and fits prompt plus whole solution into 140
+tokens, so the graph sees the complete function. Each problem gives at most one
+pair: the passing × failing combination with the smallest token difference.
+Every sample gets its own graph through the Phase 2 pipeline and the same 49
+features. The classifier is Phase 2's random forest, with folds grouped by
+problem so a pair is never split, and the statistic is **A**: the fraction of
+pairs whose passing member scores higher, tested against 100 refits with each
+pair's labels swapped at random.
+
+**The draw.** 6680 samples; 56.3% compile, 24.9% pass. 89 problems yield a pair
+(gate: 70). Every failing member fails an assertion and none timed out; the
+token difference within a pair has median 2 and mean +0.00. 178 graphs, none
+missing (2026-10-01 13:42 to 10-02 20:31).
+
+| | A | 95% CI | label-swap p |
+|---|---|---|---|
+| **graph features (primary)** | **0.624** | [0.522, 0.719] | **0.020** |
+| S1: features residualised on length | 0.534 | [0.427, 0.635] | 0.267 |
+| S2: length alone | 0.545 | [0.444, 0.646] | — |
+| per-feature paired tests, BH q < 0.1 | 0 of 49 | | |
+
+My prediction — A's p above 0.05 — failed; S2's (near 0.5) held. By the
+pre-registered table this reads: **a within-problem signal that cannot be
+separated from the length difference matching left.** It is weak: 89 pairs
+resolve A ≈ 0.63 at 80% power, and the interval's lower end is 0.52.
+
+**What did the length correction remove?** (Exploratory:
+`8_within_length_decomposition.py`, committed with its reading rule before it
+ran.) The members' lengths are nearly equal and unsigned, yet S1 removed most of
+A. S1's pooled fit removes two things at once, so each was removed alone:
+
+| removed | A | 95% CI | p |
+|---|---|---|---|
+| nothing | 0.624 | [0.522, 0.719] | 0.020 |
+| E1: each member's length departure from its pair's mean | 0.590 | [0.489, 0.697] | 0.059 |
+| E2: the pair's mean length among problems (within-pair differences unchanged) | 0.567 | [0.466, 0.663] | 0.158 |
+| both (S1) | 0.534 | [0.427, 0.635] | 0.267 |
+
+No clean split: each part takes some of the drop, and every gap is within one
+null sd (~0.065). The data lean towards the members' own length difference not
+being most of the signal — removing it leaves 0.590 — but a lean is all it is.
+One more number shows why length is hard to remove here: within a pair, length
+explains 31% of the feature differences, although the members differ by a
+median of two tokens.
+
+**Limits.** The random forest dilutes a signal carried by one feature: on 40
+synthetic pairs with one of 49 features shifted by 1.5 SD — a feature that
+alone would rank about 86% of pairs correctly — it reached A = 0.625. Only
+problems the model sometimes solves can form a pair, so the population is the
+model's frontier; the solutions are sampled, not the greedy ones Phase 2
+graphed; and the 140-token cap keeps only short functions.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).
