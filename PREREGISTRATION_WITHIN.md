@@ -221,9 +221,11 @@ Within-pair length explains 31.3% of the within-pair feature variance, even
 though the members differ by a median of two tokens.
 
 **Reading, by the rule written beforehand: no clean split.** Of the 0.090 that
-S1 removed, E1 alone removes 0.034 and E2 alone 0.057; each part takes some,
-and every gap in the table is within one null sd (~0.065), so this n cannot
-apportion them. The data lean towards the first case — removing the members'
+S1 removed, E1 alone removes 0.034 and E2 alone 0.056; each part takes some.
+Both partial drops, and the 0.022 between E1 and E2, are smaller than one
+null sd (0.060–0.066), so this n cannot apportion them. (Corrected: an
+earlier version of this paragraph said 0.057, and that every gap in the
+table was within one null sd; A − S1 is 0.090, which is not.) The data lean towards the first case — removing the members'
 own length difference leaves A at 0.590 (p 0.059), so that difference does not
 account for most of the signal — but a lean is all it is. What survives
 unchanged is 9a's reading: a weak within-problem signal (A ≈ 0.6) that this

@@ -562,8 +562,9 @@ A. S1's pooled fit removes two things at once, so each was removed alone:
 | E2: the pair's mean length among problems (within-pair differences unchanged) | 0.567 | [0.466, 0.663] | 0.158 |
 | both (S1) | 0.534 | [0.427, 0.635] | 0.267 |
 
-No clean split: each part takes some of the drop, and every gap is within one
-null sd (~0.065). The data lean towards the members' own length difference not
+No clean split: of the 0.090 that S1 removed, E1 alone removes 0.034 and E2
+alone 0.056, and both, like the 0.022 between them, are smaller than one null
+sd (0.060–0.066), so 89 pairs cannot apportion the drop. The data lean towards the members' own length difference not
 being most of the signal — removing it leaves 0.590 — but a lean is all it is.
 One more number shows why length is hard to remove here: within a pair, length
 explains 31% of the feature differences, although the members differ by a
