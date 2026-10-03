@@ -184,7 +184,8 @@ Draw: 6680 samples over 334 problems; 56.3% compile, 24.9% pass. Eligible:
 the first draw (projected ~117 from the pilot's first 40 problems, which
 turned out richer than average). Every failing member fails an assertion; none
 timed out. Token difference pass − fail: mean +0.00, |d| median 2, max 38.
-178 graphs, none missing (2026-10-01 13:42 → 10-02 20:31, ~13.5 min each).
+178 graphs, none missing: generated 2026-10-01 13:42 → 10-02 20:05, about
+10.2 min each on average; features extracted by 20:31.
 
 | statistic | value | 95% CI | label-swap refits (K = 100) |
 |---|---|---|---|
