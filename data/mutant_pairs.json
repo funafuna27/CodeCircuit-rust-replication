@@ -1,0 +1,2180 @@
+[
+ {
+  "problem": 3,
+  "source_sample": 2,
+  "pass_id": 300,
+  "fail_id": 301,
+  "pass_tokens": 98,
+  "fail_tokens": 98,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 6,
+  "source_sample": 0,
+  "pass_id": 600,
+  "fail_id": 601,
+  "pass_tokens": 100,
+  "fail_tokens": 100,
+  "survivor_edit": {
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 19,
+  "source_sample": 1,
+  "pass_id": 1900,
+  "fail_id": 1901,
+  "pass_tokens": 98,
+  "fail_tokens": 98,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 0,
+  "pass_id": 5800,
+  "fail_id": 5801,
+  "pass_tokens": 64,
+  "fail_tokens": 64,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 62,
+  "source_sample": 0,
+  "pass_id": 6200,
+  "fail_id": 6201,
+  "pass_tokens": 99,
+  "fail_tokens": 99,
+  "survivor_edit": {
+   "line": 4,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 6,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": false
+ },
+ {
+  "problem": 66,
+  "source_sample": 0,
+  "pass_id": 6600,
+  "fail_id": 6601,
+  "pass_tokens": 78,
+  "fail_tokens": 78,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 68,
+  "source_sample": 8,
+  "pass_id": 6800,
+  "fail_id": 6801,
+  "pass_tokens": 128,
+  "fail_tokens": 128,
+  "survivor_edit": {
+   "line": 7,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 69,
+  "source_sample": 6,
+  "pass_id": 6900,
+  "fail_id": 6901,
+  "pass_tokens": 125,
+  "fail_tokens": 125,
+  "survivor_edit": {
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 0,
+  "pass_id": 7100,
+  "fail_id": 7101,
+  "pass_tokens": 120,
+  "fail_tokens": 120,
+  "survivor_edit": {
+   "line": 4,
+   "from": "+",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 75,
+  "source_sample": 4,
+  "pass_id": 7500,
+  "fail_id": 7501,
+  "pass_tokens": 140,
+  "fail_tokens": 140,
+  "survivor_edit": {
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 0,
+  "pass_id": 7700,
+  "fail_id": 7701,
+  "pass_tokens": 48,
+  "fail_tokens": 48,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 79,
+  "source_sample": 0,
+  "pass_id": 7900,
+  "fail_id": 7901,
+  "pass_tokens": 47,
+  "fail_tokens": 47,
+  "survivor_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 80,
+  "source_sample": 7,
+  "pass_id": 8000,
+  "fail_id": 8001,
+  "pass_tokens": 75,
+  "fail_tokens": 75,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 89,
+  "source_sample": 12,
+  "pass_id": 8900,
+  "fail_id": 8901,
+  "pass_tokens": 78,
+  "fail_tokens": 78,
+  "survivor_edit": {
+   "line": 5,
+   "from": "+",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "-",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 90,
+  "source_sample": 1,
+  "pass_id": 9000,
+  "fail_id": 9001,
+  "pass_tokens": 96,
+  "fail_tokens": 96,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 92,
+  "source_sample": 12,
+  "pass_id": 9200,
+  "fail_id": 9201,
+  "pass_tokens": 93,
+  "fail_tokens": 93,
+  "survivor_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 94,
+  "source_sample": 0,
+  "pass_id": 9400,
+  "fail_id": 9401,
+  "pass_tokens": 117,
+  "fail_tokens": 117,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 95,
+  "source_sample": 1,
+  "pass_id": 9500,
+  "fail_id": 9501,
+  "pass_tokens": 102,
+  "fail_tokens": 102,
+  "survivor_edit": {
+   "line": 3,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 96,
+  "source_sample": 0,
+  "pass_id": 9600,
+  "fail_id": 9601,
+  "pass_tokens": 81,
+  "fail_tokens": 81,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 101,
+  "source_sample": 6,
+  "pass_id": 10100,
+  "fail_id": 10101,
+  "pass_tokens": 119,
+  "fail_tokens": 119,
+  "survivor_edit": {
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 105,
+  "source_sample": 1,
+  "pass_id": 10500,
+  "fail_id": 10501,
+  "pass_tokens": 114,
+  "fail_tokens": 114,
+  "survivor_edit": {
+   "line": 10,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "+=",
+   "to": "%=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 113,
+  "source_sample": 5,
+  "pass_id": 11300,
+  "fail_id": 11301,
+  "pass_tokens": 70,
+  "fail_tokens": 70,
+  "survivor_edit": {
+   "line": 3,
+   "from": "..=",
+   "to": "..",
+   "family": "range"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 120,
+  "source_sample": 1,
+  "pass_id": 12000,
+  "fail_id": 12001,
+  "pass_tokens": 118,
+  "fail_tokens": 118,
+  "survivor_edit": {
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 0,
+  "pass_id": 12600,
+  "fail_id": 12601,
+  "pass_tokens": 110,
+  "fail_tokens": 110,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 128,
+  "source_sample": 11,
+  "pass_id": 12800,
+  "fail_id": 12801,
+  "pass_tokens": 103,
+  "fail_tokens": 103,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 133,
+  "source_sample": 0,
+  "pass_id": 13300,
+  "fail_id": 13301,
+  "pass_tokens": 82,
+  "fail_tokens": 82,
+  "survivor_edit": {
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 141,
+  "source_sample": 4,
+  "pass_id": 14100,
+  "fail_id": 14101,
+  "pass_tokens": 110,
+  "fail_tokens": 110,
+  "survivor_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 142,
+  "source_sample": 0,
+  "pass_id": 14200,
+  "fail_id": 14201,
+  "pass_tokens": 126,
+  "fail_tokens": 126,
+  "survivor_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 166,
+  "source_sample": 4,
+  "pass_id": 16600,
+  "fail_id": 16601,
+  "pass_tokens": 130,
+  "fail_tokens": 130,
+  "survivor_edit": {
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 167,
+  "source_sample": 7,
+  "pass_id": 16700,
+  "fail_id": 16701,
+  "pass_tokens": 87,
+  "fail_tokens": 87,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "binary TIMEOUT",
+  "same_family": true
+ },
+ {
+  "problem": 224,
+  "source_sample": 0,
+  "pass_id": 22400,
+  "fail_id": 22401,
+  "pass_tokens": 108,
+  "fail_tokens": 108,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 227,
+  "source_sample": 0,
+  "pass_id": 22700,
+  "fail_id": 22701,
+  "pass_tokens": 92,
+  "fail_tokens": 92,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 248,
+  "source_sample": 3,
+  "pass_id": 24800,
+  "fail_id": 24801,
+  "pass_tokens": 83,
+  "fail_tokens": 83,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 281,
+  "source_sample": 7,
+  "pass_id": 28100,
+  "fail_id": 28101,
+  "pass_tokens": 97,
+  "fail_tokens": 97,
+  "survivor_edit": {
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 8,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 285,
+  "source_sample": 2,
+  "pass_id": 28500,
+  "fail_id": 28501,
+  "pass_tokens": 107,
+  "fail_tokens": 107,
+  "survivor_edit": {
+   "line": 8,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 296,
+  "source_sample": 0,
+  "pass_id": 29600,
+  "fail_id": 29601,
+  "pass_tokens": 109,
+  "fail_tokens": 109,
+  "survivor_edit": {
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 309,
+  "source_sample": 0,
+  "pass_id": 30900,
+  "fail_id": 30901,
+  "pass_tokens": 62,
+  "fail_tokens": 62,
+  "survivor_edit": {
+   "line": 1,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 397,
+  "source_sample": 19,
+  "pass_id": 39700,
+  "fail_id": 39701,
+  "pass_tokens": 89,
+  "fail_tokens": 89,
+  "survivor_edit": {
+   "line": 3,
+   "from": "/",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "/",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 400,
+  "source_sample": 17,
+  "pass_id": 40000,
+  "fail_id": 40001,
+  "pass_tokens": 129,
+  "fail_tokens": 129,
+  "survivor_edit": {
+   "line": 4,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 404,
+  "source_sample": 0,
+  "pass_id": 40400,
+  "fail_id": 40401,
+  "pass_tokens": 62,
+  "fail_tokens": 62,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "<",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 0,
+  "pass_id": 40600,
+  "fail_id": 40601,
+  "pass_tokens": 46,
+  "fail_tokens": 46,
+  "survivor_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 2,
+  "pass_id": 40900,
+  "fail_id": 40901,
+  "pass_tokens": 120,
+  "fail_tokens": 120,
+  "survivor_edit": {
+   "line": 4,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "<",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 412,
+  "source_sample": 0,
+  "pass_id": 41200,
+  "fail_id": 41201,
+  "pass_tokens": 84,
+  "fail_tokens": 84,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 426,
+  "source_sample": 0,
+  "pass_id": 42600,
+  "fail_id": 42601,
+  "pass_tokens": 94,
+  "fail_tokens": 94,
+  "survivor_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 428,
+  "source_sample": 3,
+  "pass_id": 42800,
+  "fail_id": 42801,
+  "pass_tokens": 117,
+  "fail_tokens": 117,
+  "survivor_edit": {
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 434,
+  "source_sample": 7,
+  "pass_id": 43400,
+  "fail_id": 43401,
+  "pass_tokens": 69,
+  "fail_tokens": 69,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 436,
+  "source_sample": 0,
+  "pass_id": 43600,
+  "fail_id": 43601,
+  "pass_tokens": 81,
+  "fail_tokens": 81,
+  "survivor_edit": {
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 443,
+  "source_sample": 4,
+  "pass_id": 44300,
+  "fail_id": 44301,
+  "pass_tokens": 91,
+  "fail_tokens": 91,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 451,
+  "source_sample": 1,
+  "pass_id": 45100,
+  "fail_id": 45101,
+  "pass_tokens": 51,
+  "fail_tokens": 51,
+  "survivor_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 452,
+  "source_sample": 17,
+  "pass_id": 45200,
+  "fail_id": 45201,
+  "pass_tokens": 80,
+  "fail_tokens": 80,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "<=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 455,
+  "source_sample": 2,
+  "pass_id": 45500,
+  "fail_id": 45501,
+  "pass_tokens": 79,
+  "fail_tokens": 79,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 459,
+  "source_sample": 1,
+  "pass_id": 45900,
+  "fail_id": 45901,
+  "pass_tokens": 119,
+  "fail_tokens": 119,
+  "survivor_edit": {
+   "line": 3,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "<=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 460,
+  "source_sample": 7,
+  "pass_id": 46000,
+  "fail_id": 46001,
+  "pass_tokens": 136,
+  "fail_tokens": 136,
+  "survivor_edit": {
+   "line": 1,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 8,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 471,
+  "source_sample": 2,
+  "pass_id": 47100,
+  "fail_id": 47101,
+  "pass_tokens": 105,
+  "fail_tokens": 105,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 472,
+  "source_sample": 3,
+  "pass_id": 47200,
+  "fail_id": 47201,
+  "pass_tokens": 89,
+  "fail_tokens": 89,
+  "survivor_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0",
+  "same_family": true
+ },
+ {
+  "problem": 476,
+  "source_sample": 1,
+  "pass_id": 47600,
+  "fail_id": 47601,
+  "pass_tokens": 94,
+  "fail_tokens": 94,
+  "survivor_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 6,
+   "from": "+",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 479,
+  "source_sample": 8,
+  "pass_id": 47900,
+  "fail_id": 47901,
+  "pass_tokens": 109,
+  "fail_tokens": 109,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 6,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 554,
+  "source_sample": 0,
+  "pass_id": 55400,
+  "fail_id": 55401,
+  "pass_tokens": 86,
+  "fail_tokens": 86,
+  "survivor_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 555,
+  "source_sample": 3,
+  "pass_id": 55500,
+  "fail_id": 55501,
+  "pass_tokens": 134,
+  "fail_tokens": 134,
+  "survivor_edit": {
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 562,
+  "source_sample": 9,
+  "pass_id": 56200,
+  "fail_id": 56201,
+  "pass_tokens": 131,
+  "fail_tokens": 131,
+  "survivor_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 564,
+  "source_sample": 1,
+  "pass_id": 56400,
+  "fail_id": 56401,
+  "pass_tokens": 127,
+  "fail_tokens": 127,
+  "survivor_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 566,
+  "source_sample": 0,
+  "pass_id": 56600,
+  "fail_id": 56601,
+  "pass_tokens": 87,
+  "fail_tokens": 87,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 567,
+  "source_sample": 0,
+  "pass_id": 56700,
+  "fail_id": 56701,
+  "pass_tokens": 104,
+  "fail_tokens": 104,
+  "survivor_edit": {
+   "line": 4,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 569,
+  "source_sample": 1,
+  "pass_id": 56900,
+  "fail_id": 56901,
+  "pass_tokens": 101,
+  "fail_tokens": 101,
+  "survivor_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 576,
+  "source_sample": 18,
+  "pass_id": 57600,
+  "fail_id": 57601,
+  "pass_tokens": 129,
+  "fail_tokens": 129,
+  "survivor_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 583,
+  "source_sample": 11,
+  "pass_id": 58300,
+  "fail_id": 58301,
+  "pass_tokens": 100,
+  "fail_tokens": 100,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 588,
+  "source_sample": 0,
+  "pass_id": 58800,
+  "fail_id": 58801,
+  "pass_tokens": 130,
+  "fail_tokens": 130,
+  "survivor_edit": {
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 593,
+  "source_sample": 1,
+  "pass_id": 59300,
+  "fail_id": 59301,
+  "pass_tokens": 105,
+  "fail_tokens": 105,
+  "survivor_edit": {
+   "line": 5,
+   "from": "+=",
+   "to": "*=",
+   "family": "compound"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 594,
+  "source_sample": 17,
+  "pass_id": 59400,
+  "fail_id": 59401,
+  "pass_tokens": 140,
+  "fail_tokens": 140,
+  "survivor_edit": {
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 598,
+  "source_sample": 4,
+  "pass_id": 59800,
+  "fail_id": 59801,
+  "pass_tokens": 98,
+  "fail_tokens": 98,
+  "survivor_edit": {
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 8,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 600,
+  "source_sample": 0,
+  "pass_id": 60000,
+  "fail_id": 60001,
+  "pass_tokens": 43,
+  "fail_tokens": 43,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 627,
+  "source_sample": 1,
+  "pass_id": 62700,
+  "fail_id": 62701,
+  "pass_tokens": 111,
+  "fail_tokens": 111,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 629,
+  "source_sample": 0,
+  "pass_id": 62900,
+  "fail_id": 62901,
+  "pass_tokens": 83,
+  "fail_tokens": 83,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 633,
+  "source_sample": 0,
+  "pass_id": 63300,
+  "fail_id": 63301,
+  "pass_tokens": 114,
+  "fail_tokens": 114,
+  "survivor_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 637,
+  "source_sample": 2,
+  "pass_id": 63700,
+  "fail_id": 63701,
+  "pass_tokens": 115,
+  "fail_tokens": 115,
+  "survivor_edit": {
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 643,
+  "source_sample": 4,
+  "pass_id": 64300,
+  "fail_id": 64301,
+  "pass_tokens": 114,
+  "fail_tokens": 114,
+  "survivor_edit": {
+   "line": 3,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": false
+ },
+ {
+  "problem": 728,
+  "source_sample": 15,
+  "pass_id": 72800,
+  "fail_id": 72801,
+  "pass_tokens": 132,
+  "fail_tokens": 132,
+  "survivor_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 733,
+  "source_sample": 5,
+  "pass_id": 73300,
+  "fail_id": 73301,
+  "pass_tokens": 96,
+  "fail_tokens": 96,
+  "survivor_edit": {
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 736,
+  "source_sample": 19,
+  "pass_id": 73600,
+  "fail_id": 73601,
+  "pass_tokens": 134,
+  "fail_tokens": 134,
+  "survivor_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": ">=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": false
+ },
+ {
+  "problem": 737,
+  "source_sample": 8,
+  "pass_id": 73700,
+  "fail_id": 73701,
+  "pass_tokens": 115,
+  "fail_tokens": 115,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 741,
+  "source_sample": 1,
+  "pass_id": 74100,
+  "fail_id": 74101,
+  "pass_tokens": 99,
+  "fail_tokens": 99,
+  "survivor_edit": {
+   "line": 7,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 7,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 1,
+  "pass_id": 75100,
+  "fail_id": 75101,
+  "pass_tokens": 121,
+  "fail_tokens": 121,
+  "survivor_edit": {
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0 PANIC 1",
+  "same_family": true
+ },
+ {
+  "problem": 760,
+  "source_sample": 2,
+  "pass_id": 76000,
+  "fail_id": 76001,
+  "pass_tokens": 91,
+  "fail_tokens": 91,
+  "survivor_edit": {
+   "line": 7,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 7,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 762,
+  "source_sample": 17,
+  "pass_id": 76200,
+  "fail_id": 76201,
+  "pass_tokens": 80,
+  "fail_tokens": 80,
+  "survivor_edit": {
+   "line": 1,
+   "from": "||",
+   "to": "&&",
+   "family": "logical"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "||",
+   "to": "&&",
+   "family": "logical"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 766,
+  "source_sample": 4,
+  "pass_id": 76600,
+  "fail_id": 76601,
+  "pass_tokens": 120,
+  "fail_tokens": 120,
+  "survivor_edit": {
+   "line": 1,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 775,
+  "source_sample": 0,
+  "pass_id": 77500,
+  "fail_id": 77501,
+  "pass_tokens": 115,
+  "fail_tokens": 115,
+  "survivor_edit": {
+   "line": 4,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "%",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 777,
+  "source_sample": 9,
+  "pass_id": 77700,
+  "fail_id": 77701,
+  "pass_tokens": 117,
+  "fail_tokens": 117,
+  "survivor_edit": {
+   "line": 8,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 781,
+  "source_sample": 3,
+  "pass_id": 78100,
+  "fail_id": 78101,
+  "pass_tokens": 119,
+  "fail_tokens": 119,
+  "survivor_edit": {
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 7,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 786,
+  "source_sample": 13,
+  "pass_id": 78600,
+  "fail_id": 78601,
+  "pass_tokens": 111,
+  "fail_tokens": 111,
+  "survivor_edit": {
+   "line": 6,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "binary TIMEOUT",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 4,
+  "pass_id": 78700,
+  "fail_id": 78701,
+  "pass_tokens": 62,
+  "fail_tokens": 62,
+  "survivor_edit": {
+   "line": 1,
+   "from": ">=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": ">=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 0,
+  "pass_id": 79000,
+  "fail_id": 79001,
+  "pass_tokens": 95,
+  "fail_tokens": 95,
+  "survivor_edit": {
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 792,
+  "source_sample": 9,
+  "pass_id": 79200,
+  "fail_id": 79201,
+  "pass_tokens": 90,
+  "fail_tokens": 90,
+  "survivor_edit": {
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 4,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 794,
+  "source_sample": 2,
+  "pass_id": 79400,
+  "fail_id": 79401,
+  "pass_tokens": 66,
+  "fail_tokens": 66,
+  "survivor_edit": {
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 797,
+  "source_sample": 1,
+  "pass_id": 79700,
+  "fail_id": 79701,
+  "pass_tokens": 97,
+  "fail_tokens": 97,
+  "survivor_edit": {
+   "line": 2,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 800,
+  "source_sample": 2,
+  "pass_id": 80000,
+  "fail_id": 80001,
+  "pass_tokens": 83,
+  "fail_tokens": 83,
+  "survivor_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 3,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 2,
+  "pass_id": 80400,
+  "fail_id": 80401,
+  "pass_tokens": 75,
+  "fail_tokens": 75,
+  "survivor_edit": {
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 805,
+  "source_sample": 0,
+  "pass_id": 80500,
+  "fail_id": 80501,
+  "pass_tokens": 134,
+  "fail_tokens": 134,
+  "survivor_edit": {
+   "line": 5,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 5,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 806,
+  "source_sample": 1,
+  "pass_id": 80600,
+  "fail_id": 80601,
+  "pass_tokens": 137,
+  "fail_tokens": 137,
+  "survivor_edit": {
+   "line": 9,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "line": 9,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 0,
+  "pass_id": 80700,
+  "fail_id": 80701,
+  "pass_tokens": 72,
+  "fail_tokens": 72,
+  "survivor_edit": {
+   "line": 6,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "line": 2,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ }
+]
