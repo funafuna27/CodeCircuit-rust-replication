@@ -239,13 +239,24 @@ reading rule is in its docstring. It runs after m3.
 
 ## 9. Results
 
-Times in this section are Japan time. The PC's clock, which §8, every log and
-every commit date use, runs 9 h behind it.
+Times in this section are Japan time. The PC's clock came up 9 h slow at the
+boot after the crash (real 10-07 15:34, logged 06:34) and stayed slow until
+Windows' time service stepped it forward by 32,401 s at 01:09 on 10-08 (System
+log: Time-Service event 52). Before the crash and after 01:09 it was right. So
+§8's times for 10-05 (16:07, 16:47) are real, while its times for 10-07 (06:34,
+07:05, 07:08), the "since 2026-10-07 07:08" in `run_mutant_resume.sh`, the
+graph log of that period and the date of commit e630b37 (10-07 15:11) are 9 h
+slow: the PC came back at 15:34 on 10-07, the run resumed at 16:08, and §8 was
+committed at 00:11 on 10-08, before any feature existed. (The same 9 h error
+followed a boot on 2026-09-10 and was corrected that day.)
 
 ### 9a. Pre-registered (`results/mutant/analysis.*`)
 
 197 of the 198 graphs were built; the one given up (§8) drops pair 633, so 98
-pairs were analysed. The graphs finished on 10-08 at 00:15 and m3 at 10:12.
+pairs were analysed. The last graph was featurised at 00:44 on 10-08; m3 ran
+from 00:44 to 01:12, and m4 from 01:16 to 01:35. Every point estimate below
+was recomputed afterwards by separate code that imports neither m3 nor w3; all
+agree to four decimals.
 Token counts are identical within every pair; chars differ by a mean of +0.02
 (at most 2). The killed member has the lower code log-probability in 71.4% of
 pairs: survivor − killed mean +3.03 nats, median +2.78, Wilcoxon p < 0.0001.
@@ -306,3 +317,42 @@ Put together: at identical length, the graph features of a copy that passes
 differ from those of a copy that fails, but the pre-registered analysis could
 not detect it, and the model's own surprise at the edit separates the pairs at
 least as well.
+
+### 9c. Post hoc, decided after 9a and 9b were seen (`m5_mutant_posthoc.py`, 998fa94; `results/mutant/posthoc.*`)
+
+The per-feature differences track the model's surprise. Within pairs, the
+differences in feature nodes, error nodes, total error influence, edges, summed
+edge weight and maximum activation each correlate with the log-probability
+difference (Spearman −0.33 to −0.49): the less probable the killed member, the
+larger its graph. So Ac may be surprise read back through the graph. m5 asks
+whether it is more: A on the centred features after S1's within-pair
+fixed-effects removal of [code log-probability, chars]. It was written after
+9a and 9b were seen, and committed with its reading rule in the docstring
+before it first ran (01:37–01:46).
+
+| statistic | value | 95% CI | label-swap refits (K = 100) |
+|---|---|---|---|
+| S1c, centred features, within-pair surprise removed | 0.5918 | [0.4898, 0.6837] | mean 0.5072, sd 0.0687; p = 0.1386 |
+
+**Reading, by m5's rule:** p ≥ 0.05 → *the centred graph signal cannot be
+separated from the model's surprise at this n.* This is not evidence that the
+graph reads only surprise: the removal is linear, it also strips about f = 0.17
+of any surprise-independent difference (§8), and the drop from Ac, 0.082, is
+about 1.2 null sds. Part of the signal may survive the correction, as in Phase
+3, but 98 pairs cannot show it.
+
+Descriptive, uncorrected, and looked at only after the q-list was seen: in the
+28 pairs whose killed member is not the less probable one, the killed member
+has more feature nodes in 54% (74% over all pairs); a regression of the
+feature-node difference on the log-probability difference, with an intercept,
+leaves −5.0 nodes at no difference in surprise (t −3.0). Leads, not findings.
+
+**Phase 4 in one paragraph.** At identical length, the pre-registered test
+detects nothing: A = 0.469, and its interval, which ends at 0.571, excludes an
+effect as large as Phase 3's 0.62. Compared within each pair, the graph
+features of the passing and the failing copy do differ, but the model's own
+surprise at the edit separates the pair at least as well, and with that
+surprise removed the graph's separation is no longer significant. Whether the
+graph carries anything beyond the surprise is open; a fresh draw,
+pre-registered with the centred, surprise-removed A as its primary statistic,
+could settle it.

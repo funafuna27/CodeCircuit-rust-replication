@@ -34,11 +34,13 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python and extends it to Rust in three
+This fork replicates CodeCircuit on Python and extends it to Rust in four
 phases: reproduce the Python number (finished 2026-09-16); ask the same question
 of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
-and ask it within a problem, on two solutions to the same task
-(`PREREGISTRATION_WITHIN.md`, finished 2026-10-02).
+ask it within a problem, on two solutions to the same task
+(`PREREGISTRATION_WITHIN.md`, finished 2026-10-02); and ask it at identical
+length, on two one-token mutants of one passing solution
+(`PREREGISTRATION_MUTANT.md`, finished 2026-10-08).
 
 ## Where this stands
 
@@ -52,7 +54,13 @@ it does not: a graph taken at the signature, before a line of logic exists,
 predicts execution as well as one over the whole function, while the body does
 help predict what the judge will say. In Rust it does — between problems, and
 weakly between two solutions to the same problem — but in both designs that
-contribution cannot be separated from the code's length at this n. The arms
+contribution cannot be separated from the code's length at this n. Phase 4
+removes length by construction, pairing two one-token mutants of one passing
+solution at identical length, and the pre-registered test detects nothing.
+Compared within each pair (exploratory), the graph features do tell the passing
+copy from the broken one, but the model's own surprise at the edit does so at
+least as well, and with that surprise removed (post hoc) the graph's separation
+is no longer significant. The arms
 differ in more than language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
@@ -64,12 +72,14 @@ attributed to language.
 | Phase 2, Rust, 206 problems | the same C1 | **+0.1350 [+0.0715, +0.2013]**, predicted null. One row on each side: +0.1066 [+0.0321, +0.1810]. That row residualised on length: +0.0320 [−0.0489, +0.1160] (both exploratory) |
 | | graph against the best surface heuristic (C2) | +0.0942 [+0.0248, +0.1650], predicted null (Python: +0.1026 [+0.0408, +0.1658]) |
 | Phase 3, Rust, 89 pairs | of two length-matched solutions to one problem, one passing, does the graph rank the passing one higher? | **A = 0.624 [0.522, 0.719], p 0.020**, predicted null. Features residualised on length: 0.534, p 0.267 |
+| Phase 4, Rust, 98 pairs | the same, for two one-token mutants of one passing solution, identical in length | **A = 0.469 [0.367, 0.571], p 0.723**, predicted null. Centred within each pair (exploratory): 0.674, p 0.010; the model's surprise alone, centred: 0.694, p 0.010; centred with surprise removed (post hoc): 0.592, p 0.139 |
 
-Each "predicted null" was my prediction, written down before the data, and each
-was wrong in the paper's favour. What held: the level is not a length proxy (C4),
-the two arms rank the problems they share alike (ρ +0.758, consistent with both
-reading problem difficulty), and Phase 3's length matching worked (length alone
-scores 0.545).
+Each "predicted null" was my prediction, written down before the data. The
+first three were wrong in the paper's favour; Phase 4's held. What else held:
+the level is not a length proxy (C4), the two arms rank the problems they share
+alike (ρ +0.758, consistent with both reading problem difficulty), Phase 3's
+length matching worked (length alone scores 0.545), and in Phase 4 the broken
+mutant is usually the one the model finds less probable (70 of 98 pairs).
 
 The sections below follow the order the work was done in.
 
@@ -578,6 +588,86 @@ alone would rank about 86% of pairs correctly — it reached A = 0.625. Only
 problems the model sometimes solves can form a pair, so the population is the
 model's frontier; the solutions are sampled, not the greedy ones Phase 2
 graphed; and the 140-token cap keeps only short functions.
+
+## Phase 4: one-token mutants at identical length
+
+Phase 3's signal could not be separated from length: two solutions with the
+same token count still differ in many places, and length reaches the features
+anyway. Phase 4 removes the length difference by construction. It takes one
+passing Phase 3 solution per problem and changes a single token — a comparison,
+arithmetic, compound-assignment, logical or boolean operator, an integer
+literal 0, 1 or 2, or a range operator — keeping Gemma's token count exactly
+equal. A pair is one mutant that still passes every assert (the *survivor*) and
+one that fails (the *killed* mutant). Pre-registered in
+`PREREGISTRATION_MUTANT.md` before any mutant was generated; the pairs were
+committed before any graph was built, and the rules for reading the secondary
+analyses before any feature existed (§8).
+
+```rust
+// task 309, "find the maximum of two numbers": the line each mutant changes in
+// `if a0 > a1 { a0 } else { a1 }`; both members are 62 tokens with the prompt
+  if a0 >= a1 {   // survivor: `>` -> `>=`, passes 3 of 3 asserts
+  if a0 <= a1 {   // killed:   `>` -> `<=`, returns the minimum
+```
+
+**Design.** 4563 mutants judged; 4518 compile, 317 survive, 4201 are killed.
+99 problems yield a pair (gate: 70); in 89 the two edits come from the same
+family, in 57 they sit on the same token. Each member gets its own graph and
+the same 49 features. A is Phase 3's statistic and test, unchanged. S1 removes
+the model's *surprise* at the edit — the within-pair differences in the code's
+log-probability and characters — by a fit inside each pair; S2 is the surprise
+alone. One graph, the killed member of task 633, twice raised a CUDA error, the
+first time followed by a crash of the PC, and was given up, so 98 pairs were
+analysed. The run took from 2026-10-04 16:00 to 10-08 00:44, with the PC down
+from 10-05 16:47 to 10-07 15:34.
+
+| | A | 95% CI | label-swap p |
+|---|---|---|---|
+| **graph features (primary)** | **0.469** | [0.367, 0.571] | **0.723** |
+| S1: within-pair surprise removed | 0.490 | [0.388, 0.592] | 0.683 |
+| S2: surprise alone | 0.551 | [0.454, 0.648] | 0.238 |
+| per-feature paired tests, BH q < 0.1 | 21 of 49 | | |
+| *exploratory* Ac: graph features centred within each pair | 0.674 | [0.582, 0.765] | 0.010 |
+| *exploratory* S2c: surprise centred within each pair | 0.694 | [0.602, 0.786] | 0.010 |
+| *post hoc* S1c: centred, within-pair surprise removed | 0.592 | [0.490, 0.684] | 0.139 |
+
+My prediction for A — p above 0.05 — held, the first of my four predicted
+nulls to do so. By the pre-registered table this reads: **not detectable at
+this n, which is not evidence of absence**; 98 pairs resolve A ≈ 0.63 at 80%
+power (≈ 0.65 by the null's own spread), and the interval's upper end, 0.571,
+lies below Phase 3's 0.62. The prediction for surprise held in
+part: the killed mutant is the less probable one in 70 of 98 pairs (Wilcoxon
+p 2 × 10⁻⁵), but S2's forest does not turn that into a significant ranking.
+
+**Why the primary test missed what the paired tests see.** 21 of the 49
+features differ between survivor and killed mutant, nearly all in one
+direction: the killed mutant's pruned graph is larger, with more feature nodes
+(in 74% of pairs), error nodes and edges. The forest is fed levels, and levels
+vary far more between problems than a one-token edit moves them. An audit
+before the analysis showed this on synthetic pairs (A 0.52 on levels, 0.91 on
+the same values centred within each pair), and a centred version was committed
+as exploratory before any result existed (`m4_mutant_centred.py`). Centred,
+the graph features rank the survivor higher in 67% of pairs and the model's
+surprise in 69%; none of the 100 label-swap refits reached either.
+
+**Is it more than surprise?** The graph differences track the model's
+surprise: the less probable the killed mutant, the larger its graph (Spearman
+−0.34 to −0.49 for those three). A post-hoc analysis, committed with
+its reading rule before it ran (`m5_mutant_posthoc.py`), removes the
+within-pair surprise from the centred features, and A falls from 0.674 to
+0.592 (p 0.139). At this n, the graph's within-pair signal **cannot be
+separated from the model's surprise at the edit**. That is not evidence that
+the graph reads only surprise — the correction is linear and also strips about
+a sixth of any difference unrelated to surprise — but nothing here shows that
+it reads more. A fresh draw, pre-registered with this statistic as its
+primary, could.
+
+**Limits.** The mutants are not the model's own errors, and they are minimal
+ones. "Survives" means passes MBPP's asserts, not "is correct": task 404's
+survivor (`a0 != a1` in place of `a0 < a1`, "find the minimum") returns the
+larger number whenever it comes first, which the asserts never try. The
+centred results are exploratory, the post-hoc one more so; relying on them
+needs a fresh, pre-registered draw.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).

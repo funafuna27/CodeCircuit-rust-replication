@@ -1,0 +1,8 @@
+98 pairs analysed (1 dropped for a missing graph)
+
+=== S1c: centred graph features, within-pair surprise removed (post hoc) ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  centred, surprise removed    A = 0.5918  95% CI [0.4898, 0.6837]   label-swap refits: mean 0.5072, sd 0.0687;  p = 0.1386
