@@ -236,3 +236,73 @@ reading rule is in its docstring. It runs after m3.
 - m1's lexer takes the leading 0 of a hex literal as an integer site. Such
   mutants never compile, so no pair is affected; the audit re-derived all 99
   pairs.
+
+## 9. Results
+
+Times in this section are Japan time. The PC's clock, which §8, every log and
+every commit date use, runs 9 h behind it.
+
+### 9a. Pre-registered (`results/mutant/analysis.*`)
+
+197 of the 198 graphs were built; the one given up (§8) drops pair 633, so 98
+pairs were analysed. The graphs finished on 10-08 at 00:15 and m3 at 10:12.
+Token counts are identical within every pair; chars differ by a mean of +0.02
+(at most 2). The killed member has the lower code log-probability in 71.4% of
+pairs: survivor − killed mean +3.03 nats, median +2.78, Wilcoxon p < 0.0001.
+
+| statistic | value | 95% CI | label-swap refits (K = 100) |
+|---|---|---|---|
+| **A**, graph features | **0.4694** | [0.3673, 0.5714] | mean 0.5080, sd 0.0598; p = 0.7228 |
+| S1, within-pair surprise removed | 0.4898 | [0.3878, 0.5918] | mean 0.5119, sd 0.0649; p = 0.6832 |
+| S2, surprise alone | 0.5510 | [0.4541, 0.6480] | mean 0.5010, sd 0.0624; p = 0.2376 |
+| per-feature Wilcoxon, BH q < 0.1 | 21 of 49 | | |
+
+**Predictions.** A: p above 0.05 — **held** (0.7228), the first predicted null
+of this study to hold. S2, judged in its two parts (§8): the killed member is
+the less probable one in more than half the pairs — **held** (71.4%,
+p < 0.0001); S2's A above 0.5 — 0.5510 is above 0.5 as a point estimate, but
+its interval covers 0.5 (p 0.2376), so S2 itself shows no separation, as §8
+expected of a forest fed levels.
+
+**Reading (§5):** A not significant → *not detectable at this n.* 98 pairs
+resolve A ≈ 0.63 by the normal approximation, ≈ 0.65 by the null's own sd
+(0.0598). §8's rule for S1: f = 0.168, below 0.25, so S1 would be read as
+written; with A not significant it has nothing to choose between.
+
+The descriptive tests do not agree with A. Of the 49 features, 21 differ
+between survivor and killed at q < 0.1: 12 are larger for the killed member
+(for example feature 1, median survivor − killed −9; feature 2, −4.5; feature
+40, −12,560), 4 are smaller, and 5 have a median difference of zero. The
+forest, fed levels, did not use these differences, which is the weakness §8
+described.
+
+### 9b. Exploratory, committed before m3 first ran (`m4_mutant_centred.py`, e630b37; `results/mutant/centred.*`)
+
+| | value | 95% CI | p |
+|---|---|---|---|
+| Ac, graph features centred within each pair | 0.6735 | [0.5816, 0.7653] | 0.0099 |
+| S2c, [code log-probability, chars] centred within each pair | 0.6939 | [0.6020, 0.7857] | 0.0099 |
+
+0.0099 is the floor at K = 100: none of the 100 refits reached either value
+(null means 0.500 and 0.499, sds 0.068 and 0.063). Also from m4, over the 98
+pairs: f = 0.168; same family 89.8%, same site 57.1%; the killed members fail
+by a wrong value (91), a panic in a call (5) or a timeout (2); feature by
+feature, [log-probability, chars] explain a median 4.0% (IQR 2.0–10.4%) of the
+within-pair variance, while m3's pooled 0.168 is feature 40 alone.
+
+**Reading, by the rule in m4's docstring:**
+- Ac significant and A not: the graph carries a within-pair signal at identical
+  length that the pre-registered forest, fed levels, could not use.
+- S2c above 0.5: the model's surprise separates the members.
+- Ac against S2c, descriptive and not tested: surprise separates them a little
+  better, 0.694 against 0.674.
+
+**What this does not settle** is whether the graph's within-pair signal is more
+than the model's surprise at the edit. Ac and S2c were not tested against each
+other, and nothing here removes surprise from the centred features. That needs
+a new analysis, committed before it runs.
+
+Put together: at identical length, the graph features of a copy that passes
+differ from those of a copy that fails, but the pre-registered analysis could
+not detect it, and the model's own surprise at the edit separates the pairs at
+least as well.
