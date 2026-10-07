@@ -217,8 +217,13 @@ alone with the same covariates and the same label-swap null.
 | E2 | the pair's mean length among problems (within-pair differences unchanged, max change 2e-19) | 0.5674 | [0.4663, 0.6629] | 0.1584 |
 | S1 (9a) | both | 0.5337 | [0.4270, 0.6348] | 0.2673 |
 
-Within-pair length explains 31.3% of the within-pair feature variance, even
-though the members differ by a median of two tokens.
+Feature by feature, within-pair length explains a median of 10.5% of the
+within-pair variance (IQR 5.4–16.0%, one feature 95%), even though the members
+differ by a median of two tokens. *(Corrected 2026-10-07: this sentence first
+said 31.3%. That figure pools the raw-scale sums of squares of all 49
+features, and 98.9% of the pool is feature 40, so it is essentially that one
+feature's R², 30.6%. Found by the Phase 4 audit, `PREREGISTRATION_MUTANT.md`
+§8.)*
 
 **Reading, by the rule written beforehand: no clean split.** Of the 0.090 that
 S1 removed, E1 alone removes 0.034 and E2 alone 0.056; each part takes some.

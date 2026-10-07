@@ -3,7 +3,8 @@
 **Version 1, 2026-10-04.** Written and committed before any mutant was generated
 or judged, together with every script it names. One count was made before
 writing it, from labels only: 164 problems have at least one eligible passing
-sample in Phase 3's draw (1,550 samples).
+sample in Phase 3's draw (1,550 samples). On 2026-10-07, before the analysis
+ran, §8 added the deviations and two reading rules found by an audit.
 
 ---
 
@@ -139,4 +140,99 @@ correctly — gave A = 0.625 through the forest (`PREREGISTRATION_WITHIN.md` §6
 
 ## 8. Deviations
 
-None yet.
+**2026-10-07, before the analysis ran.** The graphs were still being built and
+no feature file existed when these were written and committed.
+
+*1. A graph that cannot be built, and the run that produces the analysis.* On
+10-05 at 16:07, graph 147 (id 63301, the killed member of task 633) raised
+`CUDA error: unknown error`. While `run_chunked.sh` was retrying it, the PC
+stopped (Windows logged an unexpected shutdown at 16:47) and stayed down until
+10-07 06:34. On the resume at 07:05, the same graph failed again at once.
+Because the previous retry had come just before the crash, the run was resumed
+again at 07:08 with `MAX_GRAPH_ATTEMPTS=2` (default 3), so the graph is given up
+instead of being tried a third time. Pair 633 therefore has only one graph, and
+§3 drops it: the analysis has 98 pairs. The 147 graphs built before the crash
+were kept, and all of them load.
+
+The committed `run_mutant.sh` stopped before the analysis once any graph was
+given up, because `run_chunked.sh` then exits 4; that contradicts §3. It is
+fixed now. The driver actually running is committed as `run_mutant_resume.sh`.
+Every graph is also hard-linked outside the repository (`~/mutant_graph_keep/`),
+because the pipeline deletes all but the first 50 after featurising them.
+
+*2. How S1 and S2 can be read.* An audit run before the analysis found two
+properties of the secondary analyses. Five independent reviewers read the code
+and ran synthetic data only. Neither property is a coding error:
+`m3_mutant_analysis.py` implements §3 as written. §3 stays as written, and S1
+and S2 are computed and reported unchanged. What is fixed here, before any
+result exists, is what each of them can show.
+
+- **S1 absorbs signal whenever surprise differs systematically between the
+  members.** The within-pair fit has no intercept and uses no label; that is
+  what keeps the label-swap null valid. Let m and s be the mean and sd of the
+  survivor − killed code log-probability. When m is not zero, the fitted slope
+  picks up the product of the two means and removes about f = m² / (m² + s²) of
+  every feature's survivor − killed difference. That includes a difference that
+  has nothing to do with surprise.
+
+  Synthetic check: a feature unrelated to surprise ranks the survivor higher in
+  86% of pairs. After the correction it still does so in 86% of pairs when the
+  killed member is the less probable one in 62% of pairs. It drops to 59% when
+  the killed member is less probable in 89% of pairs (f ≈ 0.5), and to 52% at
+  99%. §4 predicts such a gap.
+
+  Rule: f is reported with S1 (by `m4_mutant_centred.py`). If f < 0.25, §5 is
+  read as written. If f ≥ 0.25, S1 is reported but does not choose between §5's
+  first two rows. A significant A is then read as "a signal at identical length;
+  S1 cannot tell whether it goes beyond the model's surprise", and an S1 below
+  0.5 is an artefact of the correction, not evidence.
+- **S2 has little power for what §1 asks of it.** Its forest sees
+  log-probability levels. These vary between problems far more than within a
+  pair: the sd between pairs is about 15 nats, against a median within-pair
+  difference of about 5. (These figures come from the audit and use no labels.)
+  So the forest can hardly use the within-pair difference. On synthetic pairs
+  whose killed member is the less probable one in 93% of pairs, it scored 0.52
+  on levels and 0.91 on within-pair-centred values.
+
+  Rule: whether the model's surprise separates the members is read from §3's
+  descriptive measure, the share of pairs whose killed member has the lower code
+  log-probability, with its Wilcoxon test. §4's S2 prediction is judged on its
+  two parts separately.
+
+*3. Exploratory, not pre-registered, committed now: `m4_mutant_centred.py`.* A
+has the same weakness. The graph features vary between problems far more than a
+one-token edit can move them. m4 repeats A and S2 on values centred within each
+pair (Ac and S2c). Centring uses no label, so the same null holds. m4 also
+prints f and the descriptive measures that m3 omits.
+
+On synthetic data, the centred forest shows no bias when there is no signal: its
+mean is 0.51 over 12 datasets, with an sd of 0.07–0.08. It recovers a planted
+single-feature signal better than the forest on levels (0.91 against 0.79). Its
+reading rule is in its docstring. It runs after m3.
+
+*4. Smaller items.*
+- m2 computed log-probabilities with the default `sdpa` attention of
+  transformers 4.57.3, which omits Gemma-2's attention-logit soft-capping; the
+  graphs do apply it. The audit estimates a per-member error of about 0.06 nats,
+  against a median within-pair difference of about 4.8. About half a pair is
+  expected to change order. Not recomputed.
+- §3's share of same-family pairs, and the share of pairs whose two edits sit on
+  the same token, are not printed by m3. m4 prints both over the analysed pairs.
+  Of the 99 killed members, 7 fail through a panic or a timeout rather than a
+  wrong value; the judge counts both as failing an assert. m4 prints the
+  breakdown.
+- The pooled within-pair R² that m3 prints ("surprise and chars explain …") is
+  dominated by one raw-scale feature. m4 prints the per-feature median beside
+  it. The same holds for the 31% quoted in §1 from Phase 3: 98.9% of that pooled
+  sum of squares is feature 40. Feature by feature, length explains a median of
+  10.5% of the within-pair variance (IQR 5.4–16.0%). This is corrected in
+  `PREREGISTRATION_WITHIN.md` §9b.
+- The resolvable effect m3 prints uses √(0.25/n). The label-swap null's own sd
+  (0.06–0.07 in Phase 3) implies about 0.65; both are reported. With K = 100, p
+  moves in steps of 1/101, with a Monte Carlo SE of about 0.02 near 0.05.
+- m3's token-count check compares counts that m1 copied from the source.
+  Equality itself was confirmed by recounting all 198 texts (0 mismatches, in
+  the audit).
+- m1's lexer takes the leading 0 of a hex literal as an integer site. Such
+  mutants never compile, so no pair is affected; the audit re-derived all 99
+  pairs.

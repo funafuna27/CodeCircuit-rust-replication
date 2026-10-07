@@ -40,7 +40,9 @@ if [ "$PHASE" = graphs ] || [ "$PHASE" = all ]; then
     export CHUNK_SIZE=200 BATCH_SIZE=64 MAX_PROMPT_CHARS=99999 EMPTY_CACHE=1
     export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.8
     mkdir -p "$GRAPH_DIR"
-    ./run_chunked.sh || exit 1
+    ./run_chunked.sh; rc=$?
+    # 4: a graph was given up after repeated failures; §3 drops its pair
+    [ $rc -eq 0 ] || [ $rc -eq 4 ] || exit 1
 
     stage "analysis"
     mkdir -p results/mutant
