@@ -211,7 +211,55 @@ The target of 250 may not be reached by round 4; the gate is 150.
 
 ## 8. Deviations
 
-None yet.
+**2026-10-08, after the pairs were written and before any graph.** No graph,
+feature or analysis of Phase 5 existed when this was written and committed.
+
+*1. The pairs.* `run_matched.sh PHASE=pairs` ran from 10:58 to 11:38. Round 0:
+624 sources, 6380 mutants judged, 278 usable sources, 224 with a pair within
+1 nat, 186 pairs after the cap. Round 1 (samples 20–39 of 164 problems, drawn
+11:07–11:31): 382 new sources, 183 usable. In all, 1006 sources, 461 usable,
+369 with a pair within the caliper, and **259 pairs over 78 problems** — the
+target, so no further round was drawn. The projection in §6 (about 70 pairs
+from round 0) used Phase 4's 20% usable rate, which was biased low: Phase 4
+stopped at a problem's first usable source, so problems that never yield one
+contributed all their sources. The rate was 45% in round 0 and 48% in round 1.
+Pairs per problem: one in 16 problems, two in 14, three in 9, four in 7, five
+in 32; the 32 problems at the cap hold 160 of the 259 pairs.
+
+Checked by separate code, which does not import the p5 scripts: token counts
+recounted equal in every pair; every member's judged verdict matches its label
+(518 of 518); every member reproduces as a one-token edit of its source; no
+Phase 4 source or pair member is reused, and no member twice; re-deriving the
+matching from the raw files gives the same 259 pairs.
+
+*2. Observations, before any graph.*
+- The gap in code log-probability has a median of 0.182 nats (IQR 0.063–0.383,
+  at most 0.975), against Phase 4's 5. The killed member is the less probable
+  one in 146 of 259 pairs (56.4%).
+- Characters: the survivor is longer by one or two in 66 pairs, shorter by one
+  in 32, equal in 161.
+- A forest on centred values uses only which member is larger, not by how
+  much. S2c may therefore separate the pairs through these two imbalances,
+  although the gaps are a fraction of a nat. If it does, §5's third row applies
+  as written and S1c is read in place of Ac. The rule is not changed.
+- Families, survivor / killed: comparison 145 / 139, integer 79 / 76,
+  arithmetic 29 / 35, compound 2 / 5, boolean 3 / 3, logical 1 / 1. Same
+  family 77.2%, same site 35.9%. The killed members fail by a wrong value
+  (247), a panic in a call (11) or a timeout (1). Tokens per member: median
+  103, from 45 to 140, 30 pairs above 130.
+
+*3. Exploratory, not pre-registered, committed now: `p5_5_edit_baseline.py`
+(E).* The two members carry different edits, and the edit's surface identity —
+which token was replaced, by which, in which family, and where — may tell a
+surviving edit from a killing one without any model. Testing the script on
+Phase 4's 99 pairs (a functional test, run after Phase 4's results were known,
+with K = 20) gave E = 0.667, p at its floor of 0.048: about as high as Phase
+4's centred graph features (Ac 0.674) and centred surprise (S2c 0.694). So
+Phase 4's exploratory Ac is not shown to exceed the edits' surface identity
+either. E uses no graph and no model. It runs on Phase 5's pairs with K = 200
+before the graphs are featurised, and is read beside Ac with the rule in its
+docstring. Phase 4's value is rerun with K = 200 for the record. The
+pre-registered analysis and its reading are unchanged.
 
 ## 9. Results
 

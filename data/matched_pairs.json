@@ -1,0 +1,6218 @@
+[
+ {
+  "problem": 3,
+  "source_sample": 14,
+  "pass_id": 30140,
+  "fail_id": 30141,
+  "tokens": 96,
+  "delta_logprob": -0.010463714599609375,
+  "survivor_edit": {
+   "pos": 67,
+   "line": 2,
+   "from": "false",
+   "to": "true",
+   "family": "boolean"
+  },
+  "killed_edit": {
+   "pos": 195,
+   "line": 9,
+   "from": "false",
+   "to": "true",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 0 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 3,
+  "source_sample": 6,
+  "pass_id": 30060,
+  "fail_id": 30061,
+  "tokens": 99,
+  "delta_logprob": 0.11515045166015625,
+  "survivor_edit": {
+   "pos": 43,
+   "line": 1,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 149,
+   "line": 6,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 3,
+  "source_sample": 7,
+  "pass_id": 30070,
+  "fail_id": 30071,
+  "tokens": 82,
+  "delta_logprob": 0.13855743408203125,
+  "survivor_edit": {
+   "pos": 88,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 66,
+   "line": 2,
+   "from": "<=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 3,
+  "source_sample": 27,
+  "pass_id": 30270,
+  "fail_id": 30271,
+  "tokens": 97,
+  "delta_logprob": -0.1488037109375,
+  "survivor_edit": {
+   "pos": 46,
+   "line": 1,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 84,
+   "line": 4,
+   "from": "2",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2 PANIC 3",
+  "same_family": true
+ },
+ {
+  "problem": 3,
+  "source_sample": 5,
+  "pass_id": 30050,
+  "fail_id": 30051,
+  "tokens": 122,
+  "delta_logprob": -0.1495208740234375,
+  "survivor_edit": {
+   "pos": 201,
+   "line": 9,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 115,
+   "line": 5,
+   "from": "<=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 6,
+  "source_sample": 19,
+  "pass_id": 60190,
+  "fail_id": 60191,
+  "tokens": 118,
+  "delta_logprob": 0.44110870361328125,
+  "survivor_edit": {
+   "pos": 195,
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 195,
+   "line": 5,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 19,
+  "source_sample": 33,
+  "pass_id": 190330,
+  "fail_id": 190331,
+  "tokens": 136,
+  "delta_logprob": 0.03350830078125,
+  "survivor_edit": {
+   "pos": 29,
+   "line": 1,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 301,
+   "line": 13,
+   "from": "false",
+   "to": "true",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": false
+ },
+ {
+  "problem": 19,
+  "source_sample": 2,
+  "pass_id": 190020,
+  "fail_id": 190021,
+  "tokens": 100,
+  "delta_logprob": -0.3223419189453125,
+  "survivor_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 38,
+  "pass_id": 580380,
+  "fail_id": 580381,
+  "tokens": 71,
+  "delta_logprob": -0.001922607421875,
+  "survivor_edit": {
+   "pos": 56,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 78,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 10,
+  "pass_id": 580100,
+  "fail_id": 580101,
+  "tokens": 59,
+  "delta_logprob": 0.0358734130859375,
+  "survivor_edit": {
+   "pos": 64,
+   "line": 1,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 57,
+   "line": 1,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 7,
+  "pass_id": 580070,
+  "fail_id": 580071,
+  "tokens": 71,
+  "delta_logprob": 0.1553802490234375,
+  "survivor_edit": {
+   "pos": 54,
+   "line": 1,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 86,
+   "line": 1,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 26,
+  "pass_id": 580260,
+  "fail_id": 580261,
+  "tokens": 54,
+  "delta_logprob": 0.17650604248046875,
+  "survivor_edit": {
+   "pos": 58,
+   "line": 1,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 58,
+   "line": 1,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 58,
+  "source_sample": 2,
+  "pass_id": 580020,
+  "fail_id": 580021,
+  "tokens": 54,
+  "delta_logprob": 0.8189201354980469,
+  "survivor_edit": {
+   "pos": 63,
+   "line": 1,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 63,
+   "line": 1,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 62,
+  "source_sample": 25,
+  "pass_id": 620250,
+  "fail_id": 620251,
+  "tokens": 79,
+  "delta_logprob": -0.01151275634765625,
+  "survivor_edit": {
+   "pos": 65,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 108,
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 62,
+  "source_sample": 10,
+  "pass_id": 620100,
+  "fail_id": 620101,
+  "tokens": 108,
+  "delta_logprob": -0.419464111328125,
+  "survivor_edit": {
+   "pos": 78,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 107,
+   "line": 4,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 62,
+  "source_sample": 8,
+  "pass_id": 620080,
+  "fail_id": 620081,
+  "tokens": 88,
+  "delta_logprob": -0.4425048828125,
+  "survivor_edit": {
+   "pos": 73,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 58,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 62,
+  "source_sample": 35,
+  "pass_id": 620350,
+  "fail_id": 620351,
+  "tokens": 97,
+  "delta_logprob": -0.4730224609375,
+  "survivor_edit": {
+   "pos": 112,
+   "line": 4,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 149,
+   "line": 6,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 62,
+  "source_sample": 16,
+  "pass_id": 620160,
+  "fail_id": 620161,
+  "tokens": 109,
+  "delta_logprob": -0.5998382568359375,
+  "survivor_edit": {
+   "pos": 77,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 112,
+   "line": 4,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 68,
+  "source_sample": 24,
+  "pass_id": 680240,
+  "fail_id": 680241,
+  "tokens": 138,
+  "delta_logprob": 0.1337738037109375,
+  "survivor_edit": {
+   "pos": 232,
+   "line": 7,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 158,
+   "line": 4,
+   "from": "-",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 69,
+  "source_sample": 14,
+  "pass_id": 690140,
+  "fail_id": 690141,
+  "tokens": 104,
+  "delta_logprob": 0.075592041015625,
+  "survivor_edit": {
+   "pos": 75,
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 75,
+   "line": 1,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 69,
+  "source_sample": 24,
+  "pass_id": 690240,
+  "fail_id": 690241,
+  "tokens": 107,
+  "delta_logprob": 0.081878662109375,
+  "survivor_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": "-",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 117,
+   "line": 2,
+   "from": "+",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 69,
+  "source_sample": 38,
+  "pass_id": 690380,
+  "fail_id": 690381,
+  "tokens": 102,
+  "delta_logprob": 0.14665985107421875,
+  "survivor_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 8,
+  "pass_id": 710080,
+  "fail_id": 710081,
+  "tokens": 135,
+  "delta_logprob": 0.0088348388671875,
+  "survivor_edit": {
+   "pos": 141,
+   "line": 5,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 167,
+   "line": 6,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 25,
+  "pass_id": 710250,
+  "fail_id": 710251,
+  "tokens": 112,
+  "delta_logprob": -0.00960540771484375,
+  "survivor_edit": {
+   "pos": 95,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 120,
+   "line": 3,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 37,
+  "pass_id": 710370,
+  "fail_id": 710371,
+  "tokens": 111,
+  "delta_logprob": 0.0142364501953125,
+  "survivor_edit": {
+   "pos": 103,
+   "line": 3,
+   "from": "+",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 103,
+   "line": 3,
+   "from": "+",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 38,
+  "pass_id": 710380,
+  "fail_id": 710381,
+  "tokens": 112,
+  "delta_logprob": 0.0231781005859375,
+  "survivor_edit": {
+   "pos": 93,
+   "line": 2,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 118,
+   "line": 3,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 71,
+  "source_sample": 18,
+  "pass_id": 710180,
+  "fail_id": 710181,
+  "tokens": 115,
+  "delta_logprob": -0.04444122314453125,
+  "survivor_edit": {
+   "pos": 135,
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 103,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 75,
+  "source_sample": 21,
+  "pass_id": 750210,
+  "fail_id": 750211,
+  "tokens": 137,
+  "delta_logprob": 0.01953887939453125,
+  "survivor_edit": {
+   "pos": 170,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 170,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 75,
+  "source_sample": 6,
+  "pass_id": 750060,
+  "fail_id": 750061,
+  "tokens": 137,
+  "delta_logprob": -0.02127838134765625,
+  "survivor_edit": {
+   "pos": 173,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 156,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 75,
+  "source_sample": 10,
+  "pass_id": 750100,
+  "fail_id": 750101,
+  "tokens": 137,
+  "delta_logprob": 0.02509307861328125,
+  "survivor_edit": {
+   "pos": 189,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 168,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 11,
+  "pass_id": 770110,
+  "fail_id": 770111,
+  "tokens": 83,
+  "delta_logprob": -0.3282012939453125,
+  "survivor_edit": {
+   "pos": 61,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 128,
+   "line": 5,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 3,
+  "pass_id": 770030,
+  "fail_id": 770031,
+  "tokens": 121,
+  "delta_logprob": 0.373260498046875,
+  "survivor_edit": {
+   "pos": 174,
+   "line": 7,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 174,
+   "line": 7,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 1,
+  "pass_id": 770010,
+  "fail_id": 770011,
+  "tokens": 47,
+  "delta_logprob": 0.70281982421875,
+  "survivor_edit": {
+   "pos": 44,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 44,
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 31,
+  "pass_id": 770310,
+  "fail_id": 770311,
+  "tokens": 47,
+  "delta_logprob": -0.8155517578125,
+  "survivor_edit": {
+   "pos": 43,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 43,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 77,
+  "source_sample": 4,
+  "pass_id": 770040,
+  "fail_id": 770041,
+  "tokens": 45,
+  "delta_logprob": -0.8463058471679688,
+  "survivor_edit": {
+   "pos": 40,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 40,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 79,
+  "source_sample": 2,
+  "pass_id": 790020,
+  "fail_id": 790021,
+  "tokens": 81,
+  "delta_logprob": 0.7451019287109375,
+  "survivor_edit": {
+   "pos": 148,
+   "line": 6,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 151,
+   "line": 6,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 79,
+  "source_sample": 23,
+  "pass_id": 790230,
+  "fail_id": 790231,
+  "tokens": 82,
+  "delta_logprob": 0.772369384765625,
+  "survivor_edit": {
+   "pos": 157,
+   "line": 6,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 155,
+   "line": 6,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 89,
+  "source_sample": 25,
+  "pass_id": 890250,
+  "fail_id": 890251,
+  "tokens": 130,
+  "delta_logprob": 0.192901611328125,
+  "survivor_edit": {
+   "pos": 132,
+   "line": 4,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 132,
+   "line": 4,
+   "from": "<",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 89,
+  "source_sample": 28,
+  "pass_id": 890280,
+  "fail_id": 890281,
+  "tokens": 91,
+  "delta_logprob": 0.25293731689453125,
+  "survivor_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 89,
+  "source_sample": 31,
+  "pass_id": 890310,
+  "fail_id": 890311,
+  "tokens": 83,
+  "delta_logprob": 0.8437118530273438,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 4,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 109,
+   "line": 4,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 90,
+  "source_sample": 2,
+  "pass_id": 900020,
+  "fail_id": 900021,
+  "tokens": 96,
+  "delta_logprob": -0.9349517822265625,
+  "survivor_edit": {
+   "pos": 57,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 123,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 94,
+  "source_sample": 16,
+  "pass_id": 940160,
+  "fail_id": 940161,
+  "tokens": 119,
+  "delta_logprob": 0.018035888671875,
+  "survivor_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 93,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 94,
+  "source_sample": 6,
+  "pass_id": 940060,
+  "fail_id": 940061,
+  "tokens": 130,
+  "delta_logprob": 0.15277099609375,
+  "survivor_edit": {
+   "pos": 100,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 74,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 94,
+  "source_sample": 38,
+  "pass_id": 940380,
+  "fail_id": 940381,
+  "tokens": 121,
+  "delta_logprob": -0.18900299072265625,
+  "survivor_edit": {
+   "pos": 82,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 125,
+   "line": 3,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 94,
+  "source_sample": 27,
+  "pass_id": 940270,
+  "fail_id": 940271,
+  "tokens": 134,
+  "delta_logprob": 0.4544830322265625,
+  "survivor_edit": {
+   "pos": 100,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 72,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 94,
+  "source_sample": 36,
+  "pass_id": 940360,
+  "fail_id": 940361,
+  "tokens": 136,
+  "delta_logprob": 0.46817779541015625,
+  "survivor_edit": {
+   "pos": 100,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 72,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 96,
+  "source_sample": 29,
+  "pass_id": 960290,
+  "fail_id": 960291,
+  "tokens": 106,
+  "delta_logprob": 0.2066497802734375,
+  "survivor_edit": {
+   "pos": 137,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 47,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 96,
+  "source_sample": 6,
+  "pass_id": 960060,
+  "fail_id": 960061,
+  "tokens": 116,
+  "delta_logprob": 0.3240509033203125,
+  "survivor_edit": {
+   "pos": 118,
+   "line": 4,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 49,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 96,
+  "source_sample": 4,
+  "pass_id": 960040,
+  "fail_id": 960041,
+  "tokens": 85,
+  "delta_logprob": -0.34783172607421875,
+  "survivor_edit": {
+   "pos": 91,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 101,
+  "source_sample": 22,
+  "pass_id": 1010220,
+  "fail_id": 1010221,
+  "tokens": 116,
+  "delta_logprob": 0.04436492919921875,
+  "survivor_edit": {
+   "pos": 170,
+   "line": 8,
+   "from": "+=",
+   "to": "/=",
+   "family": "compound"
+  },
+  "killed_edit": {
+   "pos": 158,
+   "line": 7,
+   "from": "+=",
+   "to": "*=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 101,
+  "source_sample": 14,
+  "pass_id": 1010140,
+  "fail_id": 1010141,
+  "tokens": 119,
+  "delta_logprob": 0.064788818359375,
+  "survivor_edit": {
+   "pos": 189,
+   "line": 8,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 133,
+   "line": 4,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 105,
+  "source_sample": 18,
+  "pass_id": 1050180,
+  "fail_id": 1050181,
+  "tokens": 76,
+  "delta_logprob": 0.3569488525390625,
+  "survivor_edit": {
+   "pos": 95,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 95,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 113,
+  "source_sample": 36,
+  "pass_id": 1130360,
+  "fail_id": 1130361,
+  "tokens": 114,
+  "delta_logprob": -0.0372772216796875,
+  "survivor_edit": {
+   "pos": 112,
+   "line": 4,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 51,
+   "line": 1,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 113,
+  "source_sample": 16,
+  "pass_id": 1130160,
+  "fail_id": 1130161,
+  "tokens": 65,
+  "delta_logprob": -0.23921966552734375,
+  "survivor_edit": {
+   "pos": 108,
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 108,
+   "line": 2,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 113,
+  "source_sample": 12,
+  "pass_id": 1130120,
+  "fail_id": 1130121,
+  "tokens": 57,
+  "delta_logprob": 0.6806640625,
+  "survivor_edit": {
+   "pos": 104,
+   "line": 2,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 104,
+   "line": 2,
+   "from": "!=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 120,
+  "source_sample": 32,
+  "pass_id": 1200320,
+  "fail_id": 1200321,
+  "tokens": 116,
+  "delta_logprob": 0.0694732666015625,
+  "survivor_edit": {
+   "pos": 162,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 162,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 120,
+  "source_sample": 17,
+  "pass_id": 1200170,
+  "fail_id": 1200171,
+  "tokens": 116,
+  "delta_logprob": 0.12601470947265625,
+  "survivor_edit": {
+   "pos": 156,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 156,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 120,
+  "source_sample": 2,
+  "pass_id": 1200020,
+  "fail_id": 1200021,
+  "tokens": 115,
+  "delta_logprob": 0.1817169189453125,
+  "survivor_edit": {
+   "pos": 165,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 165,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 120,
+  "source_sample": 8,
+  "pass_id": 1200080,
+  "fail_id": 1200081,
+  "tokens": 116,
+  "delta_logprob": 0.19781494140625,
+  "survivor_edit": {
+   "pos": 76,
+   "line": 1,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 130,
+   "line": 3,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 120,
+  "source_sample": 26,
+  "pass_id": 1200260,
+  "fail_id": 1200261,
+  "tokens": 114,
+  "delta_logprob": 0.43958282470703125,
+  "survivor_edit": {
+   "pos": 171,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 171,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 7,
+  "pass_id": 1260070,
+  "fail_id": 1260071,
+  "tokens": 105,
+  "delta_logprob": 0.02567291259765625,
+  "survivor_edit": {
+   "pos": 112,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 97,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 1,
+  "pass_id": 1260010,
+  "fail_id": 1260011,
+  "tokens": 118,
+  "delta_logprob": 0.08924102783203125,
+  "survivor_edit": {
+   "pos": 98,
+   "line": 3,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 170,
+   "line": 4,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 4,
+  "pass_id": 1260040,
+  "fail_id": 1260041,
+  "tokens": 106,
+  "delta_logprob": -0.091766357421875,
+  "survivor_edit": {
+   "pos": 121,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 106,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 12,
+  "pass_id": 1260120,
+  "fail_id": 1260121,
+  "tokens": 106,
+  "delta_logprob": 0.1698760986328125,
+  "survivor_edit": {
+   "pos": 132,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 117,
+   "line": 3,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 126,
+  "source_sample": 19,
+  "pass_id": 1260190,
+  "fail_id": 1260191,
+  "tokens": 106,
+  "delta_logprob": -0.19647979736328125,
+  "survivor_edit": {
+   "pos": 119,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 104,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 128,
+  "source_sample": 28,
+  "pass_id": 1280280,
+  "fail_id": 1280281,
+  "tokens": 109,
+  "delta_logprob": -0.3111419677734375,
+  "survivor_edit": {
+   "pos": 141,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 141,
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 128,
+  "source_sample": 27,
+  "pass_id": 1280270,
+  "fail_id": 1280271,
+  "tokens": 107,
+  "delta_logprob": 0.81951904296875,
+  "survivor_edit": {
+   "pos": 149,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 149,
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 133,
+  "source_sample": 20,
+  "pass_id": 1330200,
+  "fail_id": 1330201,
+  "tokens": 86,
+  "delta_logprob": -0.2618408203125,
+  "survivor_edit": {
+   "pos": 104,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 133,
+  "source_sample": 12,
+  "pass_id": 1330120,
+  "fail_id": 1330121,
+  "tokens": 85,
+  "delta_logprob": 0.3310546875,
+  "survivor_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 92,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 133,
+  "source_sample": 4,
+  "pass_id": 1330040,
+  "fail_id": 1330041,
+  "tokens": 86,
+  "delta_logprob": 0.456298828125,
+  "survivor_edit": {
+   "pos": 96,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 133,
+  "source_sample": 1,
+  "pass_id": 1330010,
+  "fail_id": 1330011,
+  "tokens": 86,
+  "delta_logprob": 0.5958709716796875,
+  "survivor_edit": {
+   "pos": 105,
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 125,
+   "line": 4,
+   "from": "+=",
+   "to": "*=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 133,
+  "source_sample": 10,
+  "pass_id": 1330100,
+  "fail_id": 1330101,
+  "tokens": 86,
+  "delta_logprob": 0.783935546875,
+  "survivor_edit": {
+   "pos": 108,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 106,
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 141,
+  "source_sample": 19,
+  "pass_id": 1410190,
+  "fail_id": 1410191,
+  "tokens": 131,
+  "delta_logprob": -0.674652099609375,
+  "survivor_edit": {
+   "pos": 124,
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 100,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 142,
+  "source_sample": 4,
+  "pass_id": 1420040,
+  "fail_id": 1420041,
+  "tokens": 125,
+  "delta_logprob": 0.0037994384765625,
+  "survivor_edit": {
+   "pos": 101,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 172,
+   "line": 4,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 142,
+  "source_sample": 11,
+  "pass_id": 1420110,
+  "fail_id": 1420111,
+  "tokens": 125,
+  "delta_logprob": 0.00492095947265625,
+  "survivor_edit": {
+   "pos": 101,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 172,
+   "line": 4,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 142,
+  "source_sample": 8,
+  "pass_id": 1420080,
+  "fail_id": 1420081,
+  "tokens": 126,
+  "delta_logprob": 0.0239105224609375,
+  "survivor_edit": {
+   "pos": 101,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 172,
+   "line": 4,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 166,
+  "source_sample": 34,
+  "pass_id": 1660340,
+  "fail_id": 1660341,
+  "tokens": 131,
+  "delta_logprob": 0.04273223876953125,
+  "survivor_edit": {
+   "pos": 168,
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 168,
+   "line": 5,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 166,
+  "source_sample": 11,
+  "pass_id": 1660110,
+  "fail_id": 1660111,
+  "tokens": 130,
+  "delta_logprob": -0.1517181396484375,
+  "survivor_edit": {
+   "pos": 186,
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 186,
+   "line": 5,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 166,
+  "source_sample": 6,
+  "pass_id": 1660060,
+  "fail_id": 1660061,
+  "tokens": 125,
+  "delta_logprob": 0.30556488037109375,
+  "survivor_edit": {
+   "pos": 147,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 147,
+   "line": 4,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 166,
+  "source_sample": 17,
+  "pass_id": 1660170,
+  "fail_id": 1660171,
+  "tokens": 126,
+  "delta_logprob": 0.44310760498046875,
+  "survivor_edit": {
+   "pos": 163,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 163,
+   "line": 4,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 167,
+  "source_sample": 34,
+  "pass_id": 1670340,
+  "fail_id": 1670341,
+  "tokens": 89,
+  "delta_logprob": -0.000293731689453125,
+  "survivor_edit": {
+   "pos": 92,
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 171,
+  "source_sample": 20,
+  "pass_id": 1710200,
+  "fail_id": 1710201,
+  "tokens": 65,
+  "delta_logprob": -0.34850311279296875,
+  "survivor_edit": {
+   "pos": 54,
+   "line": 1,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 82,
+   "line": 2,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 224,
+  "source_sample": 17,
+  "pass_id": 2240170,
+  "fail_id": 2240171,
+  "tokens": 99,
+  "delta_logprob": -0.13555908203125,
+  "survivor_edit": {
+   "pos": 104,
+   "line": 3,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 132,
+   "line": 4,
+   "from": "+=",
+   "to": "-=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 224,
+  "source_sample": 27,
+  "pass_id": 2240270,
+  "fail_id": 2240271,
+  "tokens": 106,
+  "delta_logprob": 0.18224334716796875,
+  "survivor_edit": {
+   "pos": 119,
+   "line": 4,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 165,
+   "line": 7,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 224,
+  "source_sample": 14,
+  "pass_id": 2240140,
+  "fail_id": 2240141,
+  "tokens": 99,
+  "delta_logprob": 0.39003753662109375,
+  "survivor_edit": {
+   "pos": 99,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 99,
+   "line": 3,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 224,
+  "source_sample": 2,
+  "pass_id": 2240020,
+  "fail_id": 2240021,
+  "tokens": 97,
+  "delta_logprob": -0.48712158203125,
+  "survivor_edit": {
+   "pos": 89,
+   "line": 3,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 68,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 224,
+  "source_sample": 31,
+  "pass_id": 2240310,
+  "fail_id": 2240311,
+  "tokens": 106,
+  "delta_logprob": -0.49639129638671875,
+  "survivor_edit": {
+   "pos": 114,
+   "line": 4,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 158,
+   "line": 7,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 227,
+  "source_sample": 24,
+  "pass_id": 2270240,
+  "fail_id": 2270241,
+  "tokens": 122,
+  "delta_logprob": 0.0017852783203125,
+  "survivor_edit": {
+   "pos": 60,
+   "line": 1,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "<=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 227,
+  "source_sample": 17,
+  "pass_id": 2270170,
+  "fail_id": 2270171,
+  "tokens": 127,
+  "delta_logprob": -0.00244140625,
+  "survivor_edit": {
+   "pos": 172,
+   "line": 5,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 160,
+   "line": 5,
+   "from": "<=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 227,
+  "source_sample": 15,
+  "pass_id": 2270150,
+  "fail_id": 2270151,
+  "tokens": 124,
+  "delta_logprob": 0.00534820556640625,
+  "survivor_edit": {
+   "pos": 74,
+   "line": 1,
+   "from": "<=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 74,
+   "line": 1,
+   "from": "<=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 227,
+  "source_sample": 13,
+  "pass_id": 2270130,
+  "fail_id": 2270131,
+  "tokens": 104,
+  "delta_logprob": -0.00579071044921875,
+  "survivor_edit": {
+   "pos": 110,
+   "line": 3,
+   "from": "<=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "<=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 227,
+  "source_sample": 37,
+  "pass_id": 2270370,
+  "fail_id": 2270371,
+  "tokens": 126,
+  "delta_logprob": 0.00628662109375,
+  "survivor_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "<=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 172,
+   "line": 5,
+   "from": "<=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "PANIC 0 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 248,
+  "source_sample": 15,
+  "pass_id": 2480150,
+  "fail_id": 2480151,
+  "tokens": 87,
+  "delta_logprob": 0.01700592041015625,
+  "survivor_edit": {
+   "pos": 71,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 71,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 285,
+  "source_sample": 24,
+  "pass_id": 2850240,
+  "fail_id": 2850241,
+  "tokens": 86,
+  "delta_logprob": 0.01000213623046875,
+  "survivor_edit": {
+   "pos": 139,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 73,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 285,
+  "source_sample": 13,
+  "pass_id": 2850130,
+  "fail_id": 2850131,
+  "tokens": 85,
+  "delta_logprob": 0.45938873291015625,
+  "survivor_edit": {
+   "pos": 127,
+   "line": 1,
+   "from": ">=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": ">=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 285,
+  "source_sample": 27,
+  "pass_id": 2850270,
+  "fail_id": 2850271,
+  "tokens": 105,
+  "delta_logprob": -0.9462127685546875,
+  "survivor_edit": {
+   "pos": 140,
+   "line": 5,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_edit": {
+   "pos": 86,
+   "line": 2,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 285,
+  "source_sample": 34,
+  "pass_id": 2850340,
+  "fail_id": 2850341,
+  "tokens": 71,
+  "delta_logprob": 0.9517364501953125,
+  "survivor_edit": {
+   "pos": 97,
+   "line": 1,
+   "from": ">=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 97,
+   "line": 1,
+   "from": ">=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 296,
+  "source_sample": 27,
+  "pass_id": 2960270,
+  "fail_id": 2960271,
+  "tokens": 110,
+  "delta_logprob": 0.25768280029296875,
+  "survivor_edit": {
+   "pos": 72,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 161,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 296,
+  "source_sample": 21,
+  "pass_id": 2960210,
+  "fail_id": 2960211,
+  "tokens": 116,
+  "delta_logprob": -0.26099395751953125,
+  "survivor_edit": {
+   "pos": 80,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 191,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 296,
+  "source_sample": 19,
+  "pass_id": 2960190,
+  "fail_id": 2960191,
+  "tokens": 115,
+  "delta_logprob": 0.2626190185546875,
+  "survivor_edit": {
+   "pos": 80,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 189,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 14,
+  "pass_id": 4060140,
+  "fail_id": 4060141,
+  "tokens": 51,
+  "delta_logprob": 0.0308074951171875,
+  "survivor_edit": {
+   "pos": 66,
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 66,
+   "line": 2,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 5,
+  "pass_id": 4060050,
+  "fail_id": 4060051,
+  "tokens": 46,
+  "delta_logprob": -0.160888671875,
+  "survivor_edit": {
+   "pos": 47,
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 47,
+   "line": 1,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 17,
+  "pass_id": 4060170,
+  "fail_id": 4060171,
+  "tokens": 59,
+  "delta_logprob": -0.176666259765625,
+  "survivor_edit": {
+   "pos": 46,
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 46,
+   "line": 1,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 7,
+  "pass_id": 4060070,
+  "fail_id": 4060071,
+  "tokens": 46,
+  "delta_logprob": -0.6907196044921875,
+  "survivor_edit": {
+   "pos": 47,
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 47,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 406,
+  "source_sample": 4,
+  "pass_id": 4060040,
+  "fail_id": 4060041,
+  "tokens": 48,
+  "delta_logprob": -0.7091598510742188,
+  "survivor_edit": {
+   "pos": 52,
+   "line": 1,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 52,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 6,
+  "pass_id": 4090060,
+  "fail_id": 4090061,
+  "tokens": 122,
+  "delta_logprob": -0.0102081298828125,
+  "survivor_edit": {
+   "pos": 70,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 80,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 12,
+  "pass_id": 4090120,
+  "fail_id": 4090121,
+  "tokens": 136,
+  "delta_logprob": 0.18450927734375,
+  "survivor_edit": {
+   "pos": 80,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 90,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 9,
+  "pass_id": 4090090,
+  "fail_id": 4090091,
+  "tokens": 104,
+  "delta_logprob": 0.2541351318359375,
+  "survivor_edit": {
+   "pos": 148,
+   "line": 4,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 148,
+   "line": 4,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 7,
+  "pass_id": 4090070,
+  "fail_id": 4090071,
+  "tokens": 115,
+  "delta_logprob": 0.29461669921875,
+  "survivor_edit": {
+   "pos": 169,
+   "line": 4,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 169,
+   "line": 4,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 409,
+  "source_sample": 11,
+  "pass_id": 4090110,
+  "fail_id": 4090111,
+  "tokens": 112,
+  "delta_logprob": 0.49462890625,
+  "survivor_edit": {
+   "pos": 171,
+   "line": 4,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 142,
+   "line": 3,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 412,
+  "source_sample": 28,
+  "pass_id": 4120280,
+  "fail_id": 4120281,
+  "tokens": 73,
+  "delta_logprob": 0.0222625732421875,
+  "survivor_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 83,
+   "line": 2,
+   "from": "%",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 412,
+  "source_sample": 8,
+  "pass_id": 4120080,
+  "fail_id": 4120081,
+  "tokens": 84,
+  "delta_logprob": 0.0495147705078125,
+  "survivor_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 412,
+  "source_sample": 22,
+  "pass_id": 4120220,
+  "fail_id": 4120221,
+  "tokens": 67,
+  "delta_logprob": 0.07242584228515625,
+  "survivor_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 83,
+   "line": 2,
+   "from": "%",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 412,
+  "source_sample": 29,
+  "pass_id": 4120290,
+  "fail_id": 4120291,
+  "tokens": 62,
+  "delta_logprob": 0.08509063720703125,
+  "survivor_edit": {
+   "pos": 72,
+   "line": 1,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 82,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 412,
+  "source_sample": 12,
+  "pass_id": 4120120,
+  "fail_id": 4120121,
+  "tokens": 68,
+  "delta_logprob": 0.10451507568359375,
+  "survivor_edit": {
+   "pos": 79,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 75,
+   "line": 1,
+   "from": "%",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 426,
+  "source_sample": 1,
+  "pass_id": 4260010,
+  "fail_id": 4260011,
+  "tokens": 81,
+  "delta_logprob": -0.0164947509765625,
+  "survivor_edit": {
+   "pos": 121,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 124,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 426,
+  "source_sample": 4,
+  "pass_id": 4260040,
+  "fail_id": 4260041,
+  "tokens": 81,
+  "delta_logprob": -0.0234527587890625,
+  "survivor_edit": {
+   "pos": 127,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 130,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 426,
+  "source_sample": 10,
+  "pass_id": 4260100,
+  "fail_id": 4260101,
+  "tokens": 81,
+  "delta_logprob": 0.31012725830078125,
+  "survivor_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 426,
+  "source_sample": 15,
+  "pass_id": 4260150,
+  "fail_id": 4260151,
+  "tokens": 81,
+  "delta_logprob": -0.4044036865234375,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 112,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 426,
+  "source_sample": 37,
+  "pass_id": 4260370,
+  "fail_id": 4260371,
+  "tokens": 64,
+  "delta_logprob": 0.53546142578125,
+  "survivor_edit": {
+   "pos": 85,
+   "line": 1,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 88,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 428,
+  "source_sample": 17,
+  "pass_id": 4280170,
+  "fail_id": 4280171,
+  "tokens": 132,
+  "delta_logprob": 0.0445098876953125,
+  "survivor_edit": {
+   "pos": 208,
+   "line": 6,
+   "from": "/",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 208,
+   "line": 6,
+   "from": "/",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0",
+  "same_family": true
+ },
+ {
+  "problem": 428,
+  "source_sample": 37,
+  "pass_id": 4280370,
+  "fail_id": 4280371,
+  "tokens": 120,
+  "delta_logprob": -0.7543182373046875,
+  "survivor_edit": {
+   "pos": 135,
+   "line": 4,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 135,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 434,
+  "source_sample": 8,
+  "pass_id": 4340080,
+  "fail_id": 4340081,
+  "tokens": 140,
+  "delta_logprob": 0.00443267822265625,
+  "survivor_edit": {
+   "pos": 186,
+   "line": 4,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 112,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 434,
+  "source_sample": 27,
+  "pass_id": 4340270,
+  "fail_id": 4340271,
+  "tokens": 131,
+  "delta_logprob": 0.0233001708984375,
+  "survivor_edit": {
+   "pos": 147,
+   "line": 4,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 192,
+   "line": 4,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 434,
+  "source_sample": 11,
+  "pass_id": 4340110,
+  "fail_id": 4340111,
+  "tokens": 73,
+  "delta_logprob": 0.02462005615234375,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 1,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 109,
+   "line": 1,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 434,
+  "source_sample": 26,
+  "pass_id": 4340260,
+  "fail_id": 4340261,
+  "tokens": 131,
+  "delta_logprob": 0.14134979248046875,
+  "survivor_edit": {
+   "pos": 194,
+   "line": 5,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 194,
+   "line": 5,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 436,
+  "source_sample": 12,
+  "pass_id": 4360120,
+  "fail_id": 4360121,
+  "tokens": 81,
+  "delta_logprob": -0.0421600341796875,
+  "survivor_edit": {
+   "pos": 105,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 103,
+   "line": 3,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 436,
+  "source_sample": 10,
+  "pass_id": 4360100,
+  "fail_id": 4360101,
+  "tokens": 81,
+  "delta_logprob": -0.05789947509765625,
+  "survivor_edit": {
+   "pos": 98,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 96,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 436,
+  "source_sample": 1,
+  "pass_id": 4360010,
+  "fail_id": 4360011,
+  "tokens": 81,
+  "delta_logprob": 0.09702301025390625,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 107,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 436,
+  "source_sample": 4,
+  "pass_id": 4360040,
+  "fail_id": 4360041,
+  "tokens": 71,
+  "delta_logprob": 0.1074676513671875,
+  "survivor_edit": {
+   "pos": 81,
+   "line": 2,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 81,
+   "line": 2,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 436,
+  "source_sample": 16,
+  "pass_id": 4360160,
+  "fail_id": 4360161,
+  "tokens": 81,
+  "delta_logprob": -0.15399169921875,
+  "survivor_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 92,
+   "line": 3,
+   "from": "<",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 443,
+  "source_sample": 6,
+  "pass_id": 4430060,
+  "fail_id": 4430061,
+  "tokens": 93,
+  "delta_logprob": 0.974853515625,
+  "survivor_edit": {
+   "pos": 61,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 103,
+   "line": 3,
+   "from": "<",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 447,
+  "source_sample": 32,
+  "pass_id": 4470320,
+  "fail_id": 4470321,
+  "tokens": 104,
+  "delta_logprob": -0.09563446044921875,
+  "survivor_edit": {
+   "pos": 32,
+   "line": 1,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 183,
+   "line": 6,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 455,
+  "source_sample": 13,
+  "pass_id": 4550130,
+  "fail_id": 4550131,
+  "tokens": 97,
+  "delta_logprob": 0.0794219970703125,
+  "survivor_edit": {
+   "pos": 88,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 66,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 455,
+  "source_sample": 24,
+  "pass_id": 4550240,
+  "fail_id": 4550241,
+  "tokens": 138,
+  "delta_logprob": 0.4241485595703125,
+  "survivor_edit": {
+   "pos": 157,
+   "line": 3,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 229,
+   "line": 6,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 471,
+  "source_sample": 15,
+  "pass_id": 4710150,
+  "fail_id": 4710151,
+  "tokens": 87,
+  "delta_logprob": 0.25499725341796875,
+  "survivor_edit": {
+   "pos": 119,
+   "line": 3,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "*=",
+   "to": "%=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": false
+ },
+ {
+  "problem": 471,
+  "source_sample": 39,
+  "pass_id": 4710390,
+  "fail_id": 4710391,
+  "tokens": 81,
+  "delta_logprob": -0.36780548095703125,
+  "survivor_edit": {
+   "pos": 114,
+   "line": 3,
+   "from": "%",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 135,
+   "line": 5,
+   "from": "%",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 471,
+  "source_sample": 9,
+  "pass_id": 4710090,
+  "fail_id": 4710091,
+  "tokens": 80,
+  "delta_logprob": -0.410888671875,
+  "survivor_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 132,
+   "line": 5,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 471,
+  "source_sample": 30,
+  "pass_id": 4710300,
+  "fail_id": 4710301,
+  "tokens": 80,
+  "delta_logprob": -0.8102493286132812,
+  "survivor_edit": {
+   "pos": 119,
+   "line": 3,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "*=",
+   "to": "%=",
+   "family": "compound"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": false
+ },
+ {
+  "problem": 472,
+  "source_sample": 27,
+  "pass_id": 4720270,
+  "fail_id": 4720271,
+  "tokens": 119,
+  "delta_logprob": -0.013214111328125,
+  "survivor_edit": {
+   "pos": 62,
+   "line": 1,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 122,
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 472,
+  "source_sample": 13,
+  "pass_id": 4720130,
+  "fail_id": 4720131,
+  "tokens": 96,
+  "delta_logprob": -0.037261962890625,
+  "survivor_edit": {
+   "pos": 86,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 99,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0",
+  "same_family": true
+ },
+ {
+  "problem": 472,
+  "source_sample": 34,
+  "pass_id": 4720340,
+  "fail_id": 4720341,
+  "tokens": 106,
+  "delta_logprob": 0.0432891845703125,
+  "survivor_edit": {
+   "pos": 62,
+   "line": 1,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 140,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 472,
+  "source_sample": 31,
+  "pass_id": 4720310,
+  "fail_id": 4720311,
+  "tokens": 98,
+  "delta_logprob": -0.0610198974609375,
+  "survivor_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 472,
+  "source_sample": 25,
+  "pass_id": 4720250,
+  "fail_id": 4720251,
+  "tokens": 103,
+  "delta_logprob": -0.29782867431640625,
+  "survivor_edit": {
+   "pos": 61,
+   "line": 1,
+   "from": "<=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 138,
+   "line": 5,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 476,
+  "source_sample": 29,
+  "pass_id": 4760290,
+  "fail_id": 4760291,
+  "tokens": 111,
+  "delta_logprob": -0.0131683349609375,
+  "survivor_edit": {
+   "pos": 167,
+   "line": 7,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 167,
+   "line": 7,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 476,
+  "source_sample": 27,
+  "pass_id": 4760270,
+  "fail_id": 4760271,
+  "tokens": 131,
+  "delta_logprob": 0.050506591796875,
+  "survivor_edit": {
+   "pos": 137,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 205,
+   "line": 7,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 476,
+  "source_sample": 14,
+  "pass_id": 4760140,
+  "fail_id": 4760141,
+  "tokens": 131,
+  "delta_logprob": 0.19715118408203125,
+  "survivor_edit": {
+   "pos": 164,
+   "line": 7,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 164,
+   "line": 7,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 476,
+  "source_sample": 2,
+  "pass_id": 4760020,
+  "fail_id": 4760021,
+  "tokens": 131,
+  "delta_logprob": 0.2696380615234375,
+  "survivor_edit": {
+   "pos": 128,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 128,
+   "line": 4,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 479,
+  "source_sample": 11,
+  "pass_id": 4790110,
+  "fail_id": 4790111,
+  "tokens": 90,
+  "delta_logprob": -0.121368408203125,
+  "survivor_edit": {
+   "pos": 79,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "binary TIMEOUT",
+  "same_family": false
+ },
+ {
+  "problem": 479,
+  "source_sample": 18,
+  "pass_id": 4790180,
+  "fail_id": 4790181,
+  "tokens": 93,
+  "delta_logprob": -0.2548828125,
+  "survivor_edit": {
+   "pos": 41,
+   "line": 1,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 112,
+   "line": 5,
+   "from": ">=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 479,
+  "source_sample": 37,
+  "pass_id": 4790370,
+  "fail_id": 4790371,
+  "tokens": 93,
+  "delta_logprob": 0.4259185791015625,
+  "survivor_edit": {
+   "pos": 106,
+   "line": 5,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 41,
+   "line": 1,
+   "from": "<",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 554,
+  "source_sample": 20,
+  "pass_id": 5540200,
+  "fail_id": 5540201,
+  "tokens": 67,
+  "delta_logprob": -0.3172760009765625,
+  "survivor_edit": {
+   "pos": 67,
+   "line": 1,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 77,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 554,
+  "source_sample": 15,
+  "pass_id": 5540150,
+  "fail_id": 5540151,
+  "tokens": 77,
+  "delta_logprob": -0.39147186279296875,
+  "survivor_edit": {
+   "pos": 88,
+   "line": 1,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 98,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 554,
+  "source_sample": 4,
+  "pass_id": 5540040,
+  "fail_id": 5540041,
+  "tokens": 93,
+  "delta_logprob": 0.6616592407226562,
+  "survivor_edit": {
+   "pos": 115,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 118,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 554,
+  "source_sample": 5,
+  "pass_id": 5540050,
+  "fail_id": 5540051,
+  "tokens": 86,
+  "delta_logprob": 0.6995697021484375,
+  "survivor_edit": {
+   "pos": 97,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 100,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 554,
+  "source_sample": 14,
+  "pass_id": 5540140,
+  "fail_id": 5540141,
+  "tokens": 93,
+  "delta_logprob": 0.749176025390625,
+  "survivor_edit": {
+   "pos": 119,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 562,
+  "source_sample": 11,
+  "pass_id": 5620110,
+  "fail_id": 5620111,
+  "tokens": 112,
+  "delta_logprob": 0.2550811767578125,
+  "survivor_edit": {
+   "pos": 71,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 137,
+   "line": 3,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 564,
+  "source_sample": 17,
+  "pass_id": 5640170,
+  "fail_id": 5640171,
+  "tokens": 135,
+  "delta_logprob": 0.09771728515625,
+  "survivor_edit": {
+   "pos": 149,
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 98,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 564,
+  "source_sample": 25,
+  "pass_id": 5640250,
+  "fail_id": 5640251,
+  "tokens": 128,
+  "delta_logprob": 0.17775726318359375,
+  "survivor_edit": {
+   "pos": 111,
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 169,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 565,
+  "source_sample": 36,
+  "pass_id": 5650360,
+  "fail_id": 5650361,
+  "tokens": 130,
+  "delta_logprob": 0.5472259521484375,
+  "survivor_edit": {
+   "pos": 157,
+   "line": 4,
+   "from": ">=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 157,
+   "line": 4,
+   "from": ">=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 566,
+  "source_sample": 12,
+  "pass_id": 5660120,
+  "fail_id": 5660121,
+  "tokens": 105,
+  "delta_logprob": -0.1084747314453125,
+  "survivor_edit": {
+   "pos": 64,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 91,
+   "line": 4,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 566,
+  "source_sample": 37,
+  "pass_id": 5660370,
+  "fail_id": 5660371,
+  "tokens": 107,
+  "delta_logprob": -0.14908599853515625,
+  "survivor_edit": {
+   "pos": 43,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 119,
+   "line": 6,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 566,
+  "source_sample": 4,
+  "pass_id": 5660040,
+  "fail_id": 5660041,
+  "tokens": 77,
+  "delta_logprob": -0.2602081298828125,
+  "survivor_edit": {
+   "pos": 40,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 51,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 566,
+  "source_sample": 16,
+  "pass_id": 5660160,
+  "fail_id": 5660161,
+  "tokens": 134,
+  "delta_logprob": 0.302764892578125,
+  "survivor_edit": {
+   "pos": 64,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 91,
+   "line": 4,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 567,
+  "source_sample": 17,
+  "pass_id": 5670170,
+  "fail_id": 5670171,
+  "tokens": 110,
+  "delta_logprob": -0.03271484375,
+  "survivor_edit": {
+   "pos": 83,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 113,
+   "line": 4,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 567,
+  "source_sample": 5,
+  "pass_id": 5670050,
+  "fail_id": 5670051,
+  "tokens": 92,
+  "delta_logprob": 0.0422515869140625,
+  "survivor_edit": {
+   "pos": 80,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 121,
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 567,
+  "source_sample": 4,
+  "pass_id": 5670040,
+  "fail_id": 5670041,
+  "tokens": 84,
+  "delta_logprob": -0.05269622802734375,
+  "survivor_edit": {
+   "pos": 52,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 64,
+   "line": 1,
+   "from": "-",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "PANIC 0",
+  "same_family": false
+ },
+ {
+  "problem": 567,
+  "source_sample": 20,
+  "pass_id": 5670200,
+  "fail_id": 5670201,
+  "tokens": 133,
+  "delta_logprob": -0.12316131591796875,
+  "survivor_edit": {
+   "pos": 95,
+   "line": 4,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 53,
+   "line": 1,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 567,
+  "source_sample": 2,
+  "pass_id": 5670020,
+  "fail_id": 5670021,
+  "tokens": 97,
+  "delta_logprob": -0.16576385498046875,
+  "survivor_edit": {
+   "pos": 167,
+   "line": 6,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 583,
+  "source_sample": 32,
+  "pass_id": 5830320,
+  "fail_id": 5830321,
+  "tokens": 109,
+  "delta_logprob": 0.071502685546875,
+  "survivor_edit": {
+   "pos": 46,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 165,
+   "line": 6,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 583,
+  "source_sample": 29,
+  "pass_id": 5830290,
+  "fail_id": 5830291,
+  "tokens": 101,
+  "delta_logprob": 0.12781524658203125,
+  "survivor_edit": {
+   "pos": 44,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 147,
+   "line": 6,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 588,
+  "source_sample": 5,
+  "pass_id": 5880050,
+  "fail_id": 5880051,
+  "tokens": 130,
+  "delta_logprob": 0.074432373046875,
+  "survivor_edit": {
+   "pos": 128,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 239,
+   "line": 11,
+   "from": "-",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 588,
+  "source_sample": 15,
+  "pass_id": 5880150,
+  "fail_id": 5880151,
+  "tokens": 130,
+  "delta_logprob": 0.093475341796875,
+  "survivor_edit": {
+   "pos": 184,
+   "line": 7,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 184,
+   "line": 7,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 588,
+  "source_sample": 34,
+  "pass_id": 5880340,
+  "fail_id": 5880341,
+  "tokens": 110,
+  "delta_logprob": -0.23992156982421875,
+  "survivor_edit": {
+   "pos": 116,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 168,
+   "line": 7,
+   "from": "<",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 588,
+  "source_sample": 13,
+  "pass_id": 5880130,
+  "fail_id": 5880131,
+  "tokens": 130,
+  "delta_logprob": -0.518890380859375,
+  "survivor_edit": {
+   "pos": 165,
+   "line": 7,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 165,
+   "line": 7,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 588,
+  "source_sample": 33,
+  "pass_id": 5880330,
+  "fail_id": 5880331,
+  "tokens": 114,
+  "delta_logprob": 0.9645538330078125,
+  "survivor_edit": {
+   "pos": 133,
+   "line": 4,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 133,
+   "line": 4,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 593,
+  "source_sample": 33,
+  "pass_id": 5930330,
+  "fail_id": 5930331,
+  "tokens": 93,
+  "delta_logprob": 0.01868438720703125,
+  "survivor_edit": {
+   "pos": 83,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 119,
+   "line": 4,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 593,
+  "source_sample": 7,
+  "pass_id": 5930070,
+  "fail_id": 5930071,
+  "tokens": 100,
+  "delta_logprob": -0.5672607421875,
+  "survivor_edit": {
+   "pos": 154,
+   "line": 6,
+   "from": "+=",
+   "to": "*=",
+   "family": "compound"
+  },
+  "killed_edit": {
+   "pos": 119,
+   "line": 4,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 627,
+  "source_sample": 11,
+  "pass_id": 6270110,
+  "fail_id": 6270111,
+  "tokens": 115,
+  "delta_logprob": 0.21555328369140625,
+  "survivor_edit": {
+   "pos": 72,
+   "line": 2,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 98,
+   "line": 3,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 627,
+  "source_sample": 22,
+  "pass_id": 6270220,
+  "fail_id": 6270221,
+  "tokens": 97,
+  "delta_logprob": 0.30419158935546875,
+  "survivor_edit": {
+   "pos": 83,
+   "line": 2,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 83,
+   "line": 2,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 629,
+  "source_sample": 1,
+  "pass_id": 6290010,
+  "fail_id": 6290011,
+  "tokens": 83,
+  "delta_logprob": 0.5841293334960938,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 105,
+   "line": 3,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 629,
+  "source_sample": 14,
+  "pass_id": 6290140,
+  "fail_id": 6290141,
+  "tokens": 90,
+  "delta_logprob": -0.8531112670898438,
+  "survivor_edit": {
+   "pos": 121,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 121,
+   "line": 4,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 633,
+  "source_sample": 3,
+  "pass_id": 6330030,
+  "fail_id": 6330031,
+  "tokens": 115,
+  "delta_logprob": 0.20764923095703125,
+  "survivor_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "+",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "+",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 633,
+  "source_sample": 38,
+  "pass_id": 6330380,
+  "fail_id": 6330381,
+  "tokens": 119,
+  "delta_logprob": 0.24106597900390625,
+  "survivor_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "+",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 113,
+   "line": 3,
+   "from": "+",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 633,
+  "source_sample": 6,
+  "pass_id": 6330060,
+  "fail_id": 6330061,
+  "tokens": 118,
+  "delta_logprob": 0.2721405029296875,
+  "survivor_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 637,
+  "source_sample": 5,
+  "pass_id": 6370050,
+  "fail_id": 6370051,
+  "tokens": 121,
+  "delta_logprob": -0.027679443359375,
+  "survivor_edit": {
+   "pos": 52,
+   "line": 1,
+   "from": "true",
+   "to": "false",
+   "family": "boolean"
+  },
+  "killed_edit": {
+   "pos": 208,
+   "line": 6,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 637,
+  "source_sample": 21,
+  "pass_id": 6370210,
+  "fail_id": 6370211,
+  "tokens": 62,
+  "delta_logprob": 0.0550079345703125,
+  "survivor_edit": {
+   "pos": 71,
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 71,
+   "line": 1,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 637,
+  "source_sample": 9,
+  "pass_id": 6370090,
+  "fail_id": 6370091,
+  "tokens": 82,
+  "delta_logprob": 0.172210693359375,
+  "survivor_edit": {
+   "pos": 102,
+   "line": 4,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 4,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 637,
+  "source_sample": 7,
+  "pass_id": 6370070,
+  "fail_id": 6370071,
+  "tokens": 62,
+  "delta_logprob": -0.23606109619140625,
+  "survivor_edit": {
+   "pos": 67,
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 67,
+   "line": 1,
+   "from": "-",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 637,
+  "source_sample": 29,
+  "pass_id": 6370290,
+  "fail_id": 6370291,
+  "tokens": 60,
+  "delta_logprob": 0.4306182861328125,
+  "survivor_edit": {
+   "pos": 67,
+   "line": 1,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": false
+ },
+ {
+  "problem": 643,
+  "source_sample": 10,
+  "pass_id": 6430100,
+  "fail_id": 6430101,
+  "tokens": 114,
+  "delta_logprob": 0.1069793701171875,
+  "survivor_edit": {
+   "pos": 132,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 132,
+   "line": 3,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 643,
+  "source_sample": 12,
+  "pass_id": 6430120,
+  "fail_id": 6430121,
+  "tokens": 117,
+  "delta_logprob": -0.1174468994140625,
+  "survivor_edit": {
+   "pos": 138,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 201,
+   "line": 6,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 643,
+  "source_sample": 20,
+  "pass_id": 6430200,
+  "fail_id": 6430201,
+  "tokens": 115,
+  "delta_logprob": -0.1180267333984375,
+  "survivor_edit": {
+   "pos": 127,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 127,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 643,
+  "source_sample": 6,
+  "pass_id": 6430060,
+  "fail_id": 6430061,
+  "tokens": 118,
+  "delta_logprob": 0.246368408203125,
+  "survivor_edit": {
+   "pos": 162,
+   "line": 3,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 139,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 643,
+  "source_sample": 27,
+  "pass_id": 6430270,
+  "fail_id": 6430271,
+  "tokens": 126,
+  "delta_logprob": 0.6389923095703125,
+  "survivor_edit": {
+   "pos": 191,
+   "line": 6,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 191,
+   "line": 6,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 732,
+  "source_sample": 30,
+  "pass_id": 7320300,
+  "fail_id": 7320301,
+  "tokens": 101,
+  "delta_logprob": -0.05699920654296875,
+  "survivor_edit": {
+   "pos": 114,
+   "line": 2,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 126,
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 732,
+  "source_sample": 26,
+  "pass_id": 7320260,
+  "fail_id": 7320261,
+  "tokens": 102,
+  "delta_logprob": -0.43793487548828125,
+  "survivor_edit": {
+   "pos": 124,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 136,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 733,
+  "source_sample": 21,
+  "pass_id": 7330210,
+  "fail_id": 7330211,
+  "tokens": 100,
+  "delta_logprob": -0.118316650390625,
+  "survivor_edit": {
+   "pos": 159,
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 70,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 741,
+  "source_sample": 13,
+  "pass_id": 7410130,
+  "fail_id": 7410131,
+  "tokens": 97,
+  "delta_logprob": -0.0153045654296875,
+  "survivor_edit": {
+   "pos": 118,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 118,
+   "line": 3,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 741,
+  "source_sample": 22,
+  "pass_id": 7410220,
+  "fail_id": 7410221,
+  "tokens": 91,
+  "delta_logprob": -0.01552581787109375,
+  "survivor_edit": {
+   "pos": 108,
+   "line": 2,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 164,
+   "line": 5,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": false
+ },
+ {
+  "problem": 741,
+  "source_sample": 7,
+  "pass_id": 7410070,
+  "fail_id": 7410071,
+  "tokens": 116,
+  "delta_logprob": -0.244659423828125,
+  "survivor_edit": {
+   "pos": 122,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 184,
+   "line": 6,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 741,
+  "source_sample": 35,
+  "pass_id": 7410350,
+  "fail_id": 7410351,
+  "tokens": 121,
+  "delta_logprob": -0.26711273193359375,
+  "survivor_edit": {
+   "pos": 183,
+   "line": 6,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 183,
+   "line": 6,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 741,
+  "source_sample": 16,
+  "pass_id": 7410160,
+  "fail_id": 7410161,
+  "tokens": 122,
+  "delta_logprob": -0.3764495849609375,
+  "survivor_edit": {
+   "pos": 240,
+   "line": 8,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 240,
+   "line": 8,
+   "from": "!=",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 18,
+  "pass_id": 7510180,
+  "fail_id": 7510181,
+  "tokens": 125,
+  "delta_logprob": -0.04412841796875,
+  "survivor_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 15,
+  "pass_id": 7510150,
+  "fail_id": 7510151,
+  "tokens": 134,
+  "delta_logprob": -0.05075836181640625,
+  "survivor_edit": {
+   "pos": 82,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 137,
+   "line": 3,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 5,
+  "pass_id": 7510050,
+  "fail_id": 7510051,
+  "tokens": 135,
+  "delta_logprob": -0.1551666259765625,
+  "survivor_edit": {
+   "pos": 120,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 120,
+   "line": 3,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 4,
+  "pass_id": 7510040,
+  "fail_id": 7510041,
+  "tokens": 125,
+  "delta_logprob": 0.259765625,
+  "survivor_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 751,
+  "source_sample": 23,
+  "pass_id": 7510230,
+  "fail_id": 7510231,
+  "tokens": 129,
+  "delta_logprob": -0.266845703125,
+  "survivor_edit": {
+   "pos": 107,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 107,
+   "line": 3,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 766,
+  "source_sample": 29,
+  "pass_id": 7660290,
+  "fail_id": 7660291,
+  "tokens": 127,
+  "delta_logprob": 0.3964691162109375,
+  "survivor_edit": {
+   "pos": 122,
+   "line": 2,
+   "from": "-",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 194,
+   "line": 4,
+   "from": "+",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 766,
+  "source_sample": 23,
+  "pass_id": 7660230,
+  "fail_id": 7660231,
+  "tokens": 113,
+  "delta_logprob": 0.5215530395507812,
+  "survivor_edit": {
+   "pos": 125,
+   "line": 3,
+   "from": "<",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 125,
+   "line": 3,
+   "from": "<",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "PANIC 0 PANIC 1 PANIC 2 PANIC 3",
+  "same_family": true
+ },
+ {
+  "problem": 775,
+  "source_sample": 27,
+  "pass_id": 7750270,
+  "fail_id": 7750271,
+  "tokens": 94,
+  "delta_logprob": 0.0684967041015625,
+  "survivor_edit": {
+   "pos": 116,
+   "line": 3,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 775,
+  "source_sample": 8,
+  "pass_id": 7750080,
+  "fail_id": 7750081,
+  "tokens": 89,
+  "delta_logprob": -0.13323974609375,
+  "survivor_edit": {
+   "pos": 78,
+   "line": 2,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 76,
+   "line": 2,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": false
+ },
+ {
+  "problem": 775,
+  "source_sample": 21,
+  "pass_id": 7750210,
+  "fail_id": 7750211,
+  "tokens": 102,
+  "delta_logprob": 0.1478729248046875,
+  "survivor_edit": {
+   "pos": 139,
+   "line": 5,
+   "from": "-",
+   "to": "%",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 139,
+   "line": 5,
+   "from": "-",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 775,
+  "source_sample": 18,
+  "pass_id": 7750180,
+  "fail_id": 7750181,
+  "tokens": 99,
+  "delta_logprob": 0.1736907958984375,
+  "survivor_edit": {
+   "pos": 84,
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 129,
+   "line": 3,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 775,
+  "source_sample": 31,
+  "pass_id": 7750310,
+  "fail_id": 7750311,
+  "tokens": 91,
+  "delta_logprob": -0.2118072509765625,
+  "survivor_edit": {
+   "pos": 107,
+   "line": 2,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 107,
+   "line": 2,
+   "from": "%",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 781,
+  "source_sample": 19,
+  "pass_id": 7810190,
+  "fail_id": 7810191,
+  "tokens": 119,
+  "delta_logprob": -0.09603118896484375,
+  "survivor_edit": {
+   "pos": 55,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 142,
+   "line": 7,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 781,
+  "source_sample": 6,
+  "pass_id": 7810060,
+  "fail_id": 7810061,
+  "tokens": 115,
+  "delta_logprob": -0.1144561767578125,
+  "survivor_edit": {
+   "pos": 139,
+   "line": 7,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 139,
+   "line": 7,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 781,
+  "source_sample": 38,
+  "pass_id": 7810380,
+  "fail_id": 7810381,
+  "tokens": 121,
+  "delta_logprob": 0.2488861083984375,
+  "survivor_edit": {
+   "pos": 57,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 135,
+   "line": 4,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 781,
+  "source_sample": 11,
+  "pass_id": 7810110,
+  "fail_id": 7810111,
+  "tokens": 117,
+  "delta_logprob": -0.41945648193359375,
+  "survivor_edit": {
+   "pos": 57,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 173,
+   "line": 7,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 781,
+  "source_sample": 7,
+  "pass_id": 7810070,
+  "fail_id": 7810071,
+  "tokens": 119,
+  "delta_logprob": -0.5132369995117188,
+  "survivor_edit": {
+   "pos": 146,
+   "line": 7,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 92,
+   "line": 3,
+   "from": "==",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 786,
+  "source_sample": 14,
+  "pass_id": 7860140,
+  "fail_id": 7860141,
+  "tokens": 113,
+  "delta_logprob": -0.0586700439453125,
+  "survivor_edit": {
+   "pos": 112,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 112,
+   "line": 3,
+   "from": ">",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 32,
+  "pass_id": 7870320,
+  "fail_id": 7870321,
+  "tokens": 62,
+  "delta_logprob": -0.051422119140625,
+  "survivor_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 31,
+  "pass_id": 7870310,
+  "fail_id": 7870311,
+  "tokens": 62,
+  "delta_logprob": -0.2420654296875,
+  "survivor_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">=",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 36,
+  "pass_id": 7870360,
+  "fail_id": 7870361,
+  "tokens": 62,
+  "delta_logprob": 0.2743072509765625,
+  "survivor_edit": {
+   "pos": 91,
+   "line": 1,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 91,
+   "line": 1,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 10,
+  "pass_id": 7870100,
+  "fail_id": 7870101,
+  "tokens": 62,
+  "delta_logprob": 0.5144882202148438,
+  "survivor_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 93,
+   "line": 1,
+   "from": ">=",
+   "to": "==",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 787,
+  "source_sample": 27,
+  "pass_id": 7870270,
+  "fail_id": 7870271,
+  "tokens": 69,
+  "delta_logprob": -0.9365005493164062,
+  "survivor_edit": {
+   "pos": 79,
+   "line": 1,
+   "from": "&&",
+   "to": "||",
+   "family": "logical"
+  },
+  "killed_edit": {
+   "pos": 59,
+   "line": 1,
+   "from": "&&",
+   "to": "||",
+   "family": "logical"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 26,
+  "pass_id": 7900260,
+  "fail_id": 7900261,
+  "tokens": 121,
+  "delta_logprob": -0.0069732666015625,
+  "survivor_edit": {
+   "pos": 168,
+   "line": 4,
+   "from": "%",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 75,
+   "line": 2,
+   "from": "%",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 34,
+  "pass_id": 7900340,
+  "fail_id": 7900341,
+  "tokens": 134,
+  "delta_logprob": -0.14279937744140625,
+  "survivor_edit": {
+   "pos": 182,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 85,
+   "line": 2,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 3,
+  "pass_id": 7900030,
+  "fail_id": 7900031,
+  "tokens": 88,
+  "delta_logprob": -0.19884490966796875,
+  "survivor_edit": {
+   "pos": 97,
+   "line": 2,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 97,
+   "line": 2,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 6,
+  "pass_id": 7900060,
+  "fail_id": 7900061,
+  "tokens": 101,
+  "delta_logprob": -0.23187255859375,
+  "survivor_edit": {
+   "pos": 75,
+   "line": 2,
+   "from": "%",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 114,
+   "line": 3,
+   "from": "%",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 790,
+  "source_sample": 4,
+  "pass_id": 7900040,
+  "fail_id": 7900041,
+  "tokens": 117,
+  "delta_logprob": 0.30783843994140625,
+  "survivor_edit": {
+   "pos": 176,
+   "line": 4,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 85,
+   "line": 2,
+   "from": "==",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 792,
+  "source_sample": 31,
+  "pass_id": 7920310,
+  "fail_id": 7920311,
+  "tokens": 86,
+  "delta_logprob": 0.08551025390625,
+  "survivor_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": ">",
+   "to": "!=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 94,
+   "line": 3,
+   "from": ">",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 792,
+  "source_sample": 33,
+  "pass_id": 7920330,
+  "fail_id": 7920331,
+  "tokens": 86,
+  "delta_logprob": 0.224639892578125,
+  "survivor_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 3,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 792,
+  "source_sample": 17,
+  "pass_id": 7920170,
+  "fail_id": 7920171,
+  "tokens": 86,
+  "delta_logprob": 0.44272613525390625,
+  "survivor_edit": {
+   "pos": 100,
+   "line": 3,
+   "from": ">",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 100,
+   "line": 3,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 792,
+  "source_sample": 23,
+  "pass_id": 7920230,
+  "fail_id": 7920231,
+  "tokens": 101,
+  "delta_logprob": -0.49172210693359375,
+  "survivor_edit": {
+   "pos": 135,
+   "line": 3,
+   "from": "!=",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 135,
+   "line": 3,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 794,
+  "source_sample": 31,
+  "pass_id": 7940310,
+  "fail_id": 7940311,
+  "tokens": 71,
+  "delta_logprob": 0.16446685791015625,
+  "survivor_edit": {
+   "pos": 96,
+   "line": 1,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 96,
+   "line": 1,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0",
+  "same_family": true
+ },
+ {
+  "problem": 797,
+  "source_sample": 27,
+  "pass_id": 7970270,
+  "fail_id": 7970271,
+  "tokens": 115,
+  "delta_logprob": -0.039459228515625,
+  "survivor_edit": {
+   "pos": 75,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 127,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 797,
+  "source_sample": 6,
+  "pass_id": 7970060,
+  "fail_id": 7970061,
+  "tokens": 94,
+  "delta_logprob": 0.09772872924804688,
+  "survivor_edit": {
+   "pos": 77,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 101,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 797,
+  "source_sample": 4,
+  "pass_id": 7970040,
+  "fail_id": 7970041,
+  "tokens": 99,
+  "delta_logprob": -0.1223297119140625,
+  "survivor_edit": {
+   "pos": 87,
+   "line": 2,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 85,
+   "line": 2,
+   "from": "+",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 797,
+  "source_sample": 17,
+  "pass_id": 7970170,
+  "fail_id": 7970171,
+  "tokens": 97,
+  "delta_logprob": 0.12242889404296875,
+  "survivor_edit": {
+   "pos": 98,
+   "line": 2,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 103,
+   "line": 2,
+   "from": "2",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 797,
+  "source_sample": 15,
+  "pass_id": 7970150,
+  "fail_id": 7970151,
+  "tokens": 114,
+  "delta_logprob": -0.200775146484375,
+  "survivor_edit": {
+   "pos": 75,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 102,
+   "line": 4,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 800,
+  "source_sample": 14,
+  "pass_id": 8000140,
+  "fail_id": 8000141,
+  "tokens": 77,
+  "delta_logprob": 0.6893463134765625,
+  "survivor_edit": {
+   "pos": 105,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 105,
+   "line": 3,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 800,
+  "source_sample": 26,
+  "pass_id": 8000260,
+  "fail_id": 8000261,
+  "tokens": 77,
+  "delta_logprob": 0.9650650024414062,
+  "survivor_edit": {
+   "pos": 110,
+   "line": 3,
+   "from": "!=",
+   "to": ">",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 110,
+   "line": 3,
+   "from": "!=",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2 FAIL 3",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 28,
+  "pass_id": 8040280,
+  "fail_id": 8040281,
+  "tokens": 76,
+  "delta_logprob": -0.0469207763671875,
+  "survivor_edit": {
+   "pos": 95,
+   "line": 1,
+   "from": "*",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 95,
+   "line": 1,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 10,
+  "pass_id": 8040100,
+  "fail_id": 8040101,
+  "tokens": 73,
+  "delta_logprob": -0.08286285400390625,
+  "survivor_edit": {
+   "pos": 111,
+   "line": 2,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 111,
+   "line": 2,
+   "from": "==",
+   "to": ">=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 4,
+  "pass_id": 8040040,
+  "fail_id": 8040041,
+  "tokens": 72,
+  "delta_logprob": 0.172088623046875,
+  "survivor_edit": {
+   "pos": 92,
+   "line": 1,
+   "from": "*",
+   "to": "/",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 92,
+   "line": 1,
+   "from": "*",
+   "to": "+",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 26,
+  "pass_id": 8040260,
+  "fail_id": 8040261,
+  "tokens": 75,
+  "delta_logprob": 0.20299530029296875,
+  "survivor_edit": {
+   "pos": 109,
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 109,
+   "line": 5,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 804,
+  "source_sample": 25,
+  "pass_id": 8040250,
+  "fail_id": 8040251,
+  "tokens": 79,
+  "delta_logprob": 0.217132568359375,
+  "survivor_edit": {
+   "pos": 126,
+   "line": 5,
+   "from": "==",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_edit": {
+   "pos": 126,
+   "line": 5,
+   "from": "==",
+   "to": "<",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1",
+  "same_family": true
+ },
+ {
+  "problem": 805,
+  "source_sample": 36,
+  "pass_id": 8050360,
+  "fail_id": 8050361,
+  "tokens": 134,
+  "delta_logprob": 0.5506134033203125,
+  "survivor_edit": {
+   "pos": 69,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 181,
+   "line": 5,
+   "from": ">",
+   "to": "<=",
+   "family": "comparison"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": false
+ },
+ {
+  "problem": 806,
+  "source_sample": 26,
+  "pass_id": 8060260,
+  "fail_id": 8060261,
+  "tokens": 126,
+  "delta_logprob": 0.020263671875,
+  "survivor_edit": {
+   "pos": 79,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 149,
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 806,
+  "source_sample": 34,
+  "pass_id": 8060340,
+  "fail_id": 8060341,
+  "tokens": 133,
+  "delta_logprob": 0.05722808837890625,
+  "survivor_edit": {
+   "pos": 62,
+   "line": 1,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 229,
+   "line": 7,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 806,
+  "source_sample": 10,
+  "pass_id": 8060100,
+  "fail_id": 8060101,
+  "tokens": 133,
+  "delta_logprob": -0.202056884765625,
+  "survivor_edit": {
+   "pos": 91,
+   "line": 2,
+   "from": "0",
+   "to": "1",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 177,
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 806,
+  "source_sample": 25,
+  "pass_id": 8060250,
+  "fail_id": 8060251,
+  "tokens": 137,
+  "delta_logprob": 0.22528839111328125,
+  "survivor_edit": {
+   "pos": 60,
+   "line": 1,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 167,
+   "line": 5,
+   "from": "1",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 806,
+  "source_sample": 19,
+  "pass_id": 8060190,
+  "fail_id": 8060191,
+  "tokens": 137,
+  "delta_logprob": -0.485870361328125,
+  "survivor_edit": {
+   "pos": 91,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 177,
+   "line": 5,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 0 FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 12,
+  "pass_id": 8070120,
+  "fail_id": 8070121,
+  "tokens": 73,
+  "delta_logprob": 0.0691070556640625,
+  "survivor_edit": {
+   "pos": 121,
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 74,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 11,
+  "pass_id": 8070110,
+  "fail_id": 8070111,
+  "tokens": 73,
+  "delta_logprob": 0.069793701171875,
+  "survivor_edit": {
+   "pos": 116,
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 78,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 2,
+  "pass_id": 8070020,
+  "fail_id": 8070021,
+  "tokens": 73,
+  "delta_logprob": -0.19268798828125,
+  "survivor_edit": {
+   "pos": 121,
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 74,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 13,
+  "pass_id": 8070130,
+  "fail_id": 8070131,
+  "tokens": 78,
+  "delta_logprob": -0.21724700927734375,
+  "survivor_edit": {
+   "pos": 72,
+   "line": 2,
+   "from": "*",
+   "to": "-",
+   "family": "arithmetic"
+  },
+  "killed_edit": {
+   "pos": 75,
+   "line": 2,
+   "from": "%",
+   "to": "*",
+   "family": "arithmetic"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ },
+ {
+  "problem": 807,
+  "source_sample": 5,
+  "pass_id": 8070050,
+  "fail_id": 8070051,
+  "tokens": 73,
+  "delta_logprob": -0.23650360107421875,
+  "survivor_edit": {
+   "pos": 101,
+   "line": 6,
+   "from": "1",
+   "to": "0",
+   "family": "integer"
+  },
+  "killed_edit": {
+   "pos": 68,
+   "line": 2,
+   "from": "0",
+   "to": "2",
+   "family": "integer"
+  },
+  "killed_error": "FAIL 1 FAIL 2",
+  "same_family": true
+ }
+]
