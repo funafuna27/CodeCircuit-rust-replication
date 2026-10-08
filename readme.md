@@ -60,7 +60,9 @@ solution at identical length, and the pre-registered test detects nothing.
 Compared within each pair (exploratory), the graph features do tell the passing
 copy from the broken one, but the model's own surprise at the edit does so at
 least as well, and with that surprise removed (post hoc) the graph's separation
-is no longer significant. The arms
+is no longer significant; the kind of edit alone separates the pair as well
+(post hoc). Phase 5, now running, matches the members on surprise by design
+(`PREREGISTRATION_MATCHED.md`). The arms
 differ in more than language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
@@ -661,6 +663,15 @@ the graph reads only surprise — the correction is linear and also strips about
 a sixth of any difference unrelated to surprise — but nothing here shows that
 it reads more. A fresh draw, pre-registered with this statistic as its
 primary, could.
+
+**Or more than the kind of edit?** Found later, while preparing Phase 5, and
+post hoc here: the two members carry different edits, and the edit's surface
+identity alone — which token was replaced, by which, and where — ranks the
+survivor higher in 0.667 of the pairs (p 0.005, `p5_5_edit_baseline.py`), as
+often as the graph features do. A boundary change such as `>` → `>=` is often
+harmless. Adding the graph features to the edit identity changes A by +0.036
+[−0.097, +0.168]. So Phase 4's centred graph signal is not shown to exceed the
+kind of edit either.
 
 **Limits.** The mutants are not the model's own errors, and they are minimal
 ones. "Survives" means passes MBPP's asserts, not "is correct": task 404's

@@ -261,6 +261,24 @@ before the graphs are featurised, and is read beside Ac with the rule in its
 docstring. Phase 4's value is rerun with K = 200 for the record. The
 pre-registered analysis and its reading are unchanged.
 
+*4. E's values, and one more exploratory analysis, before any Phase 5 graph is
+featurised (12:30; the graphs started at 11:45 and none was featurised).* On
+Phase 5's pairs, at commit 42aeb24: **E = 0.6757** [0.6033, 0.7429], label-swap
+refits (K = 200) mean 0.5040, sd 0.0405, p = 0.0050 (the floor). On Phase 4's
+99 pairs, K = 200: E = 0.6667 [0.5758, 0.7576], p = 0.0050. The kind of edit
+alone ranks the survivor higher in about two pairs of three. An Ac near or
+below 0.68 would therefore not show that the graph adds to the edits' surface
+identity, whatever its p.
+
+`p5_6_beyond_edit.py`, committed now with its reading rule, fits the forest
+on the graph features (G, whose scores are Ac's), on the edit identity (E) and
+on both (GE), and gives intervals for G − E and GE − E from a bootstrap over
+problems. As a functional test on Phase 4's 98 analysed pairs (post hoc for
+Phase 4): G 0.6735, E 0.6429 (on 98 pairs and their folds, against 0.6667 on
+99), GE 0.6786; GE − E = +0.036 [−0.097, +0.168]. In Phase 4, then, the graph
+features are not shown to add to the edits' surface identity either
+(`PREREGISTRATION_MUTANT.md` §9d).
+
 ## 9. Results
 
 Not yet run.

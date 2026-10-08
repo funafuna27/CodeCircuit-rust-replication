@@ -356,3 +356,22 @@ surprise removed the graph's separation is no longer significant. Whether the
 graph carries anything beyond the surprise is open; a fresh draw,
 pre-registered with the centred, surprise-removed A as its primary statistic,
 could settle it.
+
+### 9d. Post hoc, found while preparing Phase 5: the edits' surface identity
+
+The two members of a pair carry different edits, and the kind of edit may tell
+a surviving one from a killing one without any model: a boundary change such as
+`>` → `>=` is often harmless. `p5_5_edit_baseline.py` (Phase 5, committed in
+42aeb24) fits Phase 3's forest on the centred edit identity — one-hots of the
+replaced token, the new token and the family, and the edit's position as a share
+of the code. On Phase 4's 99 pairs, with K = 200: **E = 0.6667** [0.5758,
+0.7576], label-swap refits mean 0.5035, sd 0.0719, p = 0.0050 (the floor). That
+is about as high as the centred graph features (Ac 0.674) and the centred
+surprise (S2c 0.694).
+
+`p5_6_beyond_edit.py` adds the graph features to the edit identity, on the 98
+analysed pairs: graph features alone 0.6735, edit identity 0.6429, both 0.6786;
+both minus edit identity = +0.036 [−0.097, +0.168], from a bootstrap over
+problems. So Phase 4's centred graph signal is not shown to exceed the edits'
+surface identity, as it is not shown to exceed the model's surprise (§9c).
+`results/mutant/edit_baseline.*`, `results/mutant/beyond_edit_posthoc.*`.
