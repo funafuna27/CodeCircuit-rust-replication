@@ -14,3 +14,5 @@ data/python_graph_repaired/
 data/within_graph/
 data/mutant_graph/
 data/matched_graph/
+data/ownfix_graph/
+data/ownfix_s_graph/
