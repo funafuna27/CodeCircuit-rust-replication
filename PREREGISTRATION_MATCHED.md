@@ -262,7 +262,7 @@ docstring. Phase 4's value is rerun with K = 200 for the record. The
 pre-registered analysis and its reading are unchanged.
 
 *4. E's values, and one more exploratory analysis, before any Phase 5 graph is
-featurised (12:30; the graphs started at 11:45 and none was featurised).* On
+featurised (committed 12:29; the graphs started at 11:45 and none was featurised).* On
 Phase 5's pairs, at commit 42aeb24: **E = 0.6757** [0.6033, 0.7429], label-swap
 refits (K = 200) mean 0.5040, sd 0.0405, p = 0.0050 (the floor). On Phase 4's
 99 pairs, K = 200: E = 0.6667 [0.5758, 0.7576], p = 0.0050. The kind of edit
@@ -281,4 +281,72 @@ features are not shown to add to the edits' surface identity either
 
 ## 9. Results
 
-Not yet run.
+**2026-10-12.** The graphs ran from 10-08 11:45 to 10-12 11:58, all 518 built
+and featurised (0 failed, 0 given up), all 518 kept outside the repository; the
+first chunk's features were extracted 10-10 00:50–01:19. `p5_4_analysis.py` ran
+automatically and finished at 13:39; `p5_6_beyond_edit.py` ran after it. Every
+point estimate below was recomputed by separate code that imports neither the
+p5 scripts nor w3; all agree to four decimals. (A background watcher in the
+Claude Code session was stopped twice by the host for low memory, the Linux
+page cache holding the graph files; the run itself was not affected.)
+
+### 9a. Pre-registered (`results/matched/analysis.*`)
+
+259 pairs over 78 problems, none dropped. Matched gap: |survivor − killed| code
+log-probability median 0.182 nats, mean +0.037; the killed member is the less
+probable in 56.4%; f = 0.011.
+
+| statistic | value | 95% CI (problems) | label-swap refits |
+|---|---|---|---|
+| **Ac**, graph features centred (primary) | **0.6409** | [0.5618, 0.7171] | K = 500, mean 0.4982, sd 0.0390; **p = 0.0040** |
+| S2c, [log-probability, chars] centred (matching check) | 0.5907 | [0.5259, 0.6534] | K = 200, mean 0.5021, sd 0.0365; p = 0.0050 |
+| S2+c, the output distribution centred | 0.6486 | [0.5844, 0.7096] | K = 200, mean 0.5014, sd 0.0380; p = 0.0050 |
+| S1c, centred, within-pair surprise removed | 0.6390 | [0.5675, 0.7096] | K = 200, mean 0.4976, sd 0.0399; p = 0.0050 |
+
+**G:** the killed member has more pruned feature nodes in 60.2% of pairs (equal
+in 5.0%; median difference 4 nodes), Wilcoxon one-sided p = 1.7 × 10⁻⁷;
+Spearman with the matched gap +0.01. Counted per problem (by the direction of
+the majority of its pairs; a check added after the analysis), 45 problems point
+that way and 21 the other, sign test p = 0.002.
+
+Per-feature Wilcoxon: 23 of 49 features at BH q < 0.1, among them pruned feature
+nodes (1), error nodes (2), total error influence (6), edges (40), summed edge
+weight (37) — the killed member's graph larger — and density (41), mean degree
+centrality (43), mean node influence (5) on the other side, as in Phase 4.
+
+**Predictions (§4).** Ac: p above 0.05 — **failed** (0.004), in the paper's
+favour; of my five predicted nulls, four have now failed. S2c near 0.5 —
+**failed** (0.591, p 0.005): as §8 anticipated, the forest used the order of
+gaps a fraction of a nat wide and the character imbalance. G: p above 0.05 —
+**failed**.
+
+**Reading (§5).** S2c is significant, so the third row applies: the matching
+did not neutralise the code log-probability, Ac is not read as going beyond
+it, and S1c is read in its place with Phase 4's f rule. f = 0.011, below 0.25,
+so S1c is read as written: **S1c = 0.639, p 0.005 — the graph tells a passing
+one-token mutant from a failing one at identical length, beyond a linear
+within-pair effect of the code log-probability and characters.** Beside the
+table: S2+c is also significant (0.649), so the graph is shown to go beyond the
+summed log-probability, but not beyond the output distribution as measured here
+(edit-token log-probability, lowest token log-probability, mean entropy), which
+separates the members as well. G: at matched surprise, a failing mutant's graph
+is larger. As §5 says, this is evidence about injected errors.
+
+### 9b. Exploratory (§8; `results/matched/edit_baseline.*`, `beyond_edit.*`)
+
+E, the edit identity alone (no graph, no model), ranked the survivor higher in
+0.6757 of the pairs (p 0.005). By `p5_6_beyond_edit.py` (committed before any
+Phase 5 feature): graph features 0.6409, edit identity 0.6757, both 0.6873;
+G − E = −0.035 [−0.126, +0.055], GE − E = +0.012 [−0.074, +0.098]. By its rule:
+**the graph features are not shown to add to the edits' surface identity.**
+
+**Phase 5 in one paragraph.** At identical length and with the summed code
+log-probability matched to a fifth of a nat, the graph features still separate a
+passing one-token mutant from a failing one (0.64, p 0.004; 0.639 with the
+remaining surprise removed), and the failing one's graph is larger. That is more
+than Phase 4 could show. But three cheaper signals separate the same pairs as
+well or better: what else the model's output distribution says about the code
+(0.649), and the kind of edit, which ranks two pairs in three without any model
+(0.676) and to which the graph adds nothing measurable (+0.012). The graph
+carries information about these injected errors; it is not shown to carry
+information that the output distribution or the edit's surface identity do not.

@@ -34,13 +34,15 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python and extends it to Rust in four
+This fork replicates CodeCircuit on Python and extends it to Rust in five
 phases: reproduce the Python number (finished 2026-09-16); ask the same question
 of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
 ask it within a problem, on two solutions to the same task
-(`PREREGISTRATION_WITHIN.md`, finished 2026-10-02); and ask it at identical
+(`PREREGISTRATION_WITHIN.md`, finished 2026-10-02); ask it at identical
 length, on two one-token mutants of one passing solution
-(`PREREGISTRATION_MUTANT.md`, finished 2026-10-08).
+(`PREREGISTRATION_MUTANT.md`, finished 2026-10-08); and ask it again with the
+model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
+2026-10-12).
 
 ## Where this stands
 
@@ -61,8 +63,13 @@ Compared within each pair (exploratory), the graph features do tell the passing
 copy from the broken one, but the model's own surprise at the edit does so at
 least as well, and with that surprise removed (post hoc) the graph's separation
 is no longer significant; the kind of edit alone separates the pair as well
-(post hoc). Phase 5, now running, matches the members on surprise by design
-(`PREREGISTRATION_MATCHED.md`). The arms
+(post hoc). Phase 5 matches the members on surprise by design as well, and
+there the graph features do separate them (0.64, p 0.004, and 0.64 with the
+remaining surprise removed). But the rest of the model's output distribution
+separates them as well (0.65), and the kind of edit better (0.68), with the
+graph adding nothing measurable to it. In Rust, then, the graph carries
+information about correctness, but it has not been shown to carry information
+that cheaper signals lack. The arms
 differ in more than language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
@@ -75,9 +82,11 @@ attributed to language.
 | | graph against the best surface heuristic (C2) | +0.0942 [+0.0248, +0.1650], predicted null (Python: +0.1026 [+0.0408, +0.1658]) |
 | Phase 3, Rust, 89 pairs | of two length-matched solutions to one problem, one passing, does the graph rank the passing one higher? | **A = 0.624 [0.522, 0.719], p 0.020**, predicted null. Features residualised on length: 0.534, p 0.267 |
 | Phase 4, Rust, 98 pairs | the same, for two one-token mutants of one passing solution, identical in length | **A = 0.469 [0.367, 0.571], p 0.723**, predicted null. Centred within each pair (exploratory): 0.674, p 0.010; the model's surprise alone, centred: 0.694, p 0.010; centred with surprise removed (post hoc): 0.592, p 0.139 |
+| Phase 5, Rust, 259 pairs | the same, with the members' code log-probabilities matched (median gap 0.18 nats) | **centred graph features 0.641 [0.562, 0.717], p 0.004**, predicted null; with the remaining surprise removed 0.639, p 0.005. Output distribution alone 0.649; the kind of edit alone 0.676 (exploratory), graph added to it +0.012 [−0.074, +0.098] |
 
 Each "predicted null" was my prediction, written down before the data. The
-first three were wrong in the paper's favour; Phase 4's held. What else held:
+first three were wrong in the paper's favour; Phase 4's held; Phase 5's failed,
+again in the paper's favour. What else held:
 the level is not a length proxy (C4), the two arms rank the problems they share
 alike (ρ +0.758, consistent with both reading problem difficulty), Phase 3's
 length matching worked (length alone scores 0.545), and in Phase 4 the broken
@@ -679,6 +688,52 @@ survivor (`a0 != a1` in place of `a0 < a1`, "find the minimum") returns the
 larger number whenever it comes first, which the asserts never try. The
 centred results are exploratory, the post-hoc one more so; relying on them
 needs a fresh, pre-registered draw.
+
+## Phase 5: surprise matched as well
+
+Phase 4 left open whether the graph's within-pair signal is more than the
+model's surprise at the edit. Phase 5 removes surprise by design, as Phase 4
+removed length. For each passing source, it takes the survivor and the killed
+mutant whose code log-probabilities are closest, at most 1 nat apart, and keeps
+at most 5 pairs per problem. Pre-registered in `PREREGISTRATION_MATCHED.md`
+before any sample was drawn; the pairs, with every judged mutant and
+log-probability, were committed before any graph was built.
+
+**Design.** 1006 sources (Phase 3's samples and one further round of 20 per
+problem), 461 usable, **259 pairs over 78 problems**. The median gap in code
+log-probability is 0.18 nats, against Phase 4's 5. Graphs ran from 10-08 to
+10-12; all 518 were built.
+
+| | A | 95% CI | label-swap p |
+|---|---|---|---|
+| **Ac: graph features centred within each pair (primary)** | **0.641** | [0.562, 0.717] | **0.004** |
+| S2c: code log-probability and characters (matching check) | 0.591 | [0.526, 0.653] | 0.005 |
+| S1c: Ac with the remaining surprise removed | 0.639 | [0.568, 0.710] | 0.005 |
+| S2+c: the output distribution (edit-token and lowest log-probability, entropy) | 0.649 | [0.584, 0.710] | 0.005 |
+| *exploratory* E: the kind of edit alone, no model | 0.676 | [0.603, 0.743] | 0.005 |
+| *exploratory* graph features added to E | 0.687 | +0.012 [−0.074, +0.098] over E | |
+
+My prediction — Ac's p above 0.05 — failed, in the paper's favour. The
+matching left a residue a forest can use: the killed member is the less
+probable one in 56% of pairs, by a fraction of a nat, and the survivor is a
+character longer more often than shorter. So by the pre-registered table S1c is
+read in Ac's place. It removes the remaining surprise, absorbs almost nothing
+(f = 0.011) and stays at 0.639, p 0.005: **at identical length, the graph tells
+a passing one-token mutant from a failing one beyond the code's log-probability.**
+The failing one's graph is larger: more pruned feature nodes in 60% of pairs
+(p 2 × 10⁻⁷; 45 problems against 21).
+
+**But not beyond cheaper signals.** The rest of the model's output distribution
+separates the same pairs as well (0.649), and the kind of edit, with no model at
+all, better (0.676). Adding the graph features to the kind of edit gains
++0.012 [−0.074, +0.098]. The graph carries information about these injected
+errors; it is not shown to carry information that the output distribution or
+the edit's surface identity lack.
+
+**Limits.** The errors are injected one-token mutants, not the model's own, and
+the population is the plausible-looking ones the matching selects. 32 of the 78
+problems hold the cap of 5 pairs. The comparisons with E and S2+c are
+descriptive, not tests of a difference.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).

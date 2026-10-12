@@ -1,0 +1,6 @@
+=== 2026-10-12 p5_6 at e92096a (exploratory; committed before any Phase 5 feature) ===
+  G   A = 0.6409
+  E   A = 0.6757
+  GE  A = 0.6873
+  G-E   -0.0347  95% CI [-0.1259, +0.0549]
+  GE-E  +0.0116  95% CI [-0.0741, +0.0977]

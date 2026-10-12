@@ -1,0 +1,93 @@
+259 pairs; 259 have both graphs (0 dropped for a missing graph)
+  78 problems, pairs per problem 1..5 (median 4)
+  code log-probability survivor - killed: |d| median 0.182, mean +0.037, killed lower in 0.564; f = 0.011
+  chars survivor - killed: mean +0.139; same family 0.772, same site 0.359; killed by: wrong value 247, panic in a call 11, timeout 1
+
+=== Ac: graph features centred within each pair (PRIMARY) ===
+    25/500 refits
+    50/500 refits
+    75/500 refits
+    100/500 refits
+    125/500 refits
+    150/500 refits
+    175/500 refits
+    200/500 refits
+    225/500 refits
+    250/500 refits
+    275/500 refits
+    300/500 refits
+    325/500 refits
+    350/500 refits
+    375/500 refits
+    400/500 refits
+    425/500 refits
+    450/500 refits
+    475/500 refits
+    500/500 refits
+  graph features, centred        A = 0.6409  95% CI [0.5618, 0.7171]   label-swap refits (K = 500): mean 0.4982, sd 0.0390;  p = 0.0040
+
+=== S2c: matching check, [code log-probability, chars] centred ===
+    25/200 refits
+    50/200 refits
+    75/200 refits
+    100/200 refits
+    125/200 refits
+    150/200 refits
+    175/200 refits
+    200/200 refits
+  surprise, centred              A = 0.5907  95% CI [0.5259, 0.6534]   label-swap refits (K = 200): mean 0.5021, sd 0.0365;  p = 0.0050
+
+=== S2+c: the output distribution after matching ===
+    25/200 refits
+    50/200 refits
+    75/200 refits
+    100/200 refits
+    125/200 refits
+    150/200 refits
+    175/200 refits
+    200/200 refits
+  output distribution, centred   A = 0.6486  95% CI [0.5844, 0.7096]   label-swap refits (K = 200): mean 0.5014, sd 0.0380;  p = 0.0050
+
+=== S1c: centred features, within-pair surprise removed ===
+    25/200 refits
+    50/200 refits
+    75/200 refits
+    100/200 refits
+    125/200 refits
+    150/200 refits
+    175/200 refits
+    200/200 refits
+  centred, surprise removed      A = 0.6390  95% CI [0.5675, 0.7096]   label-swap refits (K = 200): mean 0.4976, sd 0.0399;  p = 0.0050
+
+=== G: pruned feature nodes, killed > survivor ===
+  killed has more nodes in 0.602 of pairs (equal in 0.050); median survivor - killed -4.0; Wilcoxon one-sided p = 0.0000; Spearman with the gap +0.01
+
+=== descriptive: per-feature paired differences (Wilcoxon, BH) ===
+  features with q < 0.1: 23 of 49
+    dim 44  median survivor - killed -1.136e-06  q 1.28e-06
+    dim  1  median survivor - killed -4  q 8.18e-06
+    dim  2  median survivor - killed -2  q 5.35e-05
+    dim 36  median survivor - killed +0  q 6.06e-05
+    dim  5  median survivor - killed +0.0001077  q 0.000171
+    dim 40  median survivor - killed -7175  q 0.000326
+    dim 15  median survivor - killed +0  q 0.000341
+    dim 37  median survivor - killed -69.89  q 0.000341
+    dim  6  median survivor - killed -1.5  q 0.000619
+    dim 11  median survivor - killed -1  q 0.00125
+    dim 43  median survivor - killed +0.0004869  q 0.00239
+    dim 41  median survivor - killed +0.0002434  q 0.00239
+    dim 39  median survivor - killed +0.0005489  q 0.00367
+    dim 45  median survivor - killed +2.131e-07  q 0.00413
+    dim 12  median survivor - killed -1  q 0.00524
+    dim 14  median survivor - killed -1  q 0.00723
+    dim 28  median survivor - killed +0  q 0.00838
+    dim 21  median survivor - killed +0  q 0.01
+    dim  9  median survivor - killed +0  q 0.01
+    dim 30  median survivor - killed +0  q 0.0318
+    dim 13  median survivor - killed -1  q 0.0357
+    dim  4  median survivor - killed +0  q 0.0876
+    dim 17  median survivor - killed +0  q 0.0876
+
+=== reading (PREREGISTRATION_MATCHED.md §5) ===
+  matching did not neutralise the code log-probability: Ac is not read as beyond it; S1c is read in its place, with Phase 4's f rule
+  resolvable at 80% power, one-sided 0.05: A ~ 0.597 from the null's sd; 0.577 by sqrt(0.25/n)
