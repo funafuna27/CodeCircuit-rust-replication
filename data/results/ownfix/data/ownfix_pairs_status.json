@@ -1,0 +1,10 @@
+{
+ "round": 8,
+ "rule": "fallback",
+ "final": false,
+ "n_pairs": 49,
+ "n_problems": 25,
+ "rows_sha256": "b6e9eb431c4afbace1fa2b2421f79049399aaf945eb79778806de23a15b27470",
+ "s_rows_sha256": "c1e7365970fc64984e1f1ad51ba03d55520f1a2f5cbe092363e03961a30200d3",
+ "pairs_sha256": "8aa928aa03187892a5e623f43f63accaf1fbe757ac5d2e7f47274c3051bde4de"
+}

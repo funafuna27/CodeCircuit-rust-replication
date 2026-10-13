@@ -302,8 +302,84 @@ signal's. Pass: ≤ 0.06 in both. If (i) fails, CR3 is used and both are rerun; 
 
 ## 8. Deviations
 
-None yet.
+**2026-10-13, after the gate was missed.** Version 2 was never committed. Its
+analysis script (`p6_4_analysis.py`) and size test (`p6_3c_sizetest.py`) were
+drafted and reviewed while the pairs were being built, but no graph was built,
+so they never ran on Phase 6 data and are not part of the record. Two pieces of
+it are committed now because §9 reports a number they produce: the statistics
+module (`p6_stats.py`) and the Phase 5 reference (`p6_3b_reference.py`). Before
+committing, two findings of the version-2 review were fixed in `p6_stats.py`:
+the score and the sandwich are computed in a numerically stable form (a pair
+with a fitted logit beyond about 37 had turned the p-value into its minimum and
+the interval into NaN), and the CR2 sandwich no longer carries a G/(G − 1)
+factor that §3 does not name.
 
 ## 9. Results
 
-Not yet run.
+**2026-10-13. The gate was missed: no graph was built, and the yield is the
+result** (§2, §5 last row).
+
+`run_ownfix.sh PHASE=pairs` ran from 01:05 to 10:06 (`results/ownfix/pairs.log`;
+the data, gzipped, in `results/ownfix/data/`). Every round was drawn:
+
+| round | stable failing sources | stable repairs | verified | failed the extra inputs | unverifiable | strict pairs (problems) |
+|---|---|---|---|---|---|---|
+| 0 | 1520 | 374 | 90 | 104 | 180 | 5 (4) |
+| 1 | 2178 | 446 | 97 | 106 | 243 | 5 (4) |
+| 2 | 3107 | 616 | 123 | 139 | 354 | 8 (5) |
+| 3 | 3943 | 781 | 161 | 167 | 453 | 10 (5) |
+| 4 | 4770 | 921 | 180 | 190 | 551 | 11 (5) |
+| 5 | 5513 | 1039 | 238 | 230 | 571 | 17 (7) |
+| 6 | 6274 | 1124 | 256 | 238 | 630 | 18 (7) |
+| 7 | 7003 | 1237 | 276 | 258 | 703 | 20 (9) |
+| 8 | 7691 | 1371 | 304 | 275 | 792 | 20 (9) |
+
+After round 8: 525 sources over 78 problems had a stable one-token repair. The
+strict rule gave 20 pairs over 9 problems; the fallback added 29, for 49 pairs
+over 25 problems, short of 150 over 50. Natural pairs: 28 member-unique over 18
+problems (below the §3 threshold); doubly-natural repairs among the pairs: 0.
+
+Where the pairs were lost:
+- **Repairs that pass the asserts by luck.** Of the 579 stable repairs that could
+  be checked, 275 (47%) failed the calibrated extra inputs: they pass MBPP's
+  asserts, usually three, and return a wrong value on a nearby input.
+- **Repairs that could not be checked:** 792. Of the 78 problems with a repair,
+  12 have no passing Gemma sample to calibrate with, and 26 keep fewer than 10
+  extra inputs.
+- **The control.** Among sources with a verified repair, a control that returns
+  S's values on the asserts, sits on a live site, has the same length and the
+  same kind of edit, and lies within 1 nat of the repair was rarely available.
+  More samples barely helped: from round 5 to round 8 the strict pairs went from
+  17 to 20.
+
+Post hoc and descriptive (`p6_yield_whatif.py`, `results/ownfix/yield_whatif.log`):
+the same data under relaxed rules, without graphs.
+
+| caliper | unverifiable repairs allowed | fallback | pairs (problems) |
+|---|---|---|---|
+| 1.0 | no | no | 20 (9) |
+| 1.0 | yes | yes | 116 (51) |
+| 2.0 | yes | yes | 145 (58) |
+| 3.0 | yes | yes | 150 (60) |
+| 5.0 | yes | yes | 164 (62) |
+
+Only by giving up both of this phase's safeguards — verified repairs and
+matched surprise — would the gate have been reached.
+
+**Post hoc, on Phase 5's injected errors** (`p6_3b_reference.py`,
+`results/ownfix/reference.json`): §3's primary model on Phase 5's 259 pairs,
+the survivor as the passing member and the baseline terms Phase 5 recorded
+(surprise, its square terms, edit identity, syntactic context), gives
+β_5 = −0.461, CR2 95% [−0.897, −0.024], score-test p 0.039: the killed member's
+graph is larger beyond a linear adjustment for surprise and the kind of edit.
+This method was designed after Phase 5's results were known, and `p5_6`'s
+forest found no gain over edit identity (+0.012 [−0.074, +0.098]); it is a lead,
+not a finding.
+
+**Phase 6 in one paragraph.** Gemma-2-2b's own failing Rust solutions are often
+one token from passing MBPP's asserts (1371 repairs in 525 of 7691 sources), but
+about half of those repairs are right only on the asserts, and a clean contrast
+— a verified repair against an output-identical, surprise-matched control of the
+same code — exists for only 20 of them. At this scale the question Phase 6
+asked, whether the graph reads the correctness of the model's own errors beyond
+cheaper signals, cannot be answered this way.

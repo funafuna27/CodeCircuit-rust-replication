@@ -1,0 +1,9 @@
+{
+ "natural_combinations": 31,
+ "natural_unique_pairs": 28,
+ "natural_unique_problems": 18,
+ "distinct_failing_codes": 7692,
+ "distinct_passing_codes": 2214,
+ "pairs": 49,
+ "doubly_natural": 0
+}

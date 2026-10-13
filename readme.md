@@ -34,7 +34,7 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python and extends it to Rust in five
+This fork replicates CodeCircuit on Python and extends it to Rust in six
 phases: reproduce the Python number (finished 2026-09-16); ask the same question
 of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
 ask it within a problem, on two solutions to the same task
@@ -42,7 +42,8 @@ ask it within a problem, on two solutions to the same task
 length, on two one-token mutants of one passing solution
 (`PREREGISTRATION_MUTANT.md`, finished 2026-10-08); and ask it again with the
 model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
-2026-10-12).
+2026-10-12); and try it on the model's own errors and their one-token repairs
+(`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13).
 
 ## Where this stands
 
@@ -69,7 +70,10 @@ remaining surprise removed). But the rest of the model's output distribution
 separates them as well (0.65), and the kind of edit better (0.68), with the
 graph adding nothing measurable to it. In Rust, then, the graph carries
 information about correctness, but it has not been shown to carry information
-that cheaper signals lack. The arms
+that cheaper signals lack. Phase 6 tried to settle this on Gemma's own errors, a
+verified one-token repair against a control of the same code, and stopped at
+its pre-registered gate: about half of the repairs that pass MBPP's asserts are
+wrong on nearby inputs, and only 20 clean pairs could be built. The arms
 differ in more than language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
@@ -83,6 +87,7 @@ attributed to language.
 | Phase 3, Rust, 89 pairs | of two length-matched solutions to one problem, one passing, does the graph rank the passing one higher? | **A = 0.624 [0.522, 0.719], p 0.020**, predicted null. Features residualised on length: 0.534, p 0.267 |
 | Phase 4, Rust, 98 pairs | the same, for two one-token mutants of one passing solution, identical in length | **A = 0.469 [0.367, 0.571], p 0.723**, predicted null. Centred within each pair (exploratory): 0.674, p 0.010; the model's surprise alone, centred: 0.694, p 0.010; centred with surprise removed (post hoc): 0.592, p 0.139 |
 | Phase 5, Rust, 259 pairs | the same, with the members' code log-probabilities matched (median gap 0.18 nats) | **centred graph features 0.641 [0.562, 0.717], p 0.004**, predicted null; with the remaining surprise removed 0.639, p 0.005. Output distribution alone 0.649; the kind of edit alone 0.676 (exploratory), graph added to it +0.012 [−0.074, +0.098] |
+| Phase 6, Rust | a verified one-token repair of Gemma's own failing code against a control that keeps the bug | **gate missed: 20 strict pairs (49 with the fallback), against 150; no graph built**. 275 of 579 checkable repairs passed the asserts by luck |
 
 Each "predicted null" was my prediction, written down before the data. The
 first three were wrong in the paper's favour; Phase 4's held; Phase 5's failed,
@@ -734,6 +739,38 @@ the edit's surface identity lack.
 the population is the plausible-looking ones the matching selects. 32 of the 78
 problems hold the cap of 5 pairs. The comparisons with E and S2+c are
 descriptive, not tests of a difference.
+
+## Phase 6: the model's own errors (stopped at the gate)
+
+Phases 4 and 5 used injected errors, and Phase 5's graph-size difference had two
+readings: the failing member was both the incorrect one and the one whose edit
+changed the program's behaviour. Phase 6 pulled them apart with errors Gemma
+made itself. From a failing solution S that Gemma wrote, R replaces one token so
+that S passes every assert and a set of calibrated extra inputs; C replaces one
+other token and returns exactly S's value on every assert, so it keeps Gemma's
+bug. Both are matched on surprise. If the graph reads correctness, R's graph
+should be the smaller; if it reads whether an edit mattered, R's should be the
+larger. Pre-registered in `PREREGISTRATION_OWNFIX.md` (two adversarial reviews
+worked in), with a gate of 150 pairs over 50 problems.
+
+**Result: the gate was missed, so no graph was built.** Over Phase 3's samples
+and eight further rounds of 20 per problem, 7691 failing solutions; 525 of them,
+over 78 problems, are one token from passing the asserts (1371 repairs). But of
+the 579 repairs that could be checked on the extra inputs, **275 (47%) passed
+the asserts by luck** and returned a wrong value on a nearby input; 792 could not
+be checked at all (no passing Gemma sample, or too few usable inputs). With a
+control that keeps the bug, sits on a live site and matches the repair's length,
+kind of edit and surprise, 20 pairs remained (49 with the fallback). Relaxing the
+rules after the fact reaches 150 pairs only by dropping both the verification
+and the matching (`results/ownfix/yield_whatif.log`).
+
+So at this scale, Phase 6's question — whether the graph reads the correctness
+of the model's own errors beyond cheaper signals — cannot be answered this way,
+and the strong form of the claim stays unsupported in Rust. Two side results:
+MBPP's few asserts often accept a wrong one-token repair; and, post hoc on
+Phase 5's injected errors, graph size still differs beyond a linear adjustment
+for surprise and the kind of edit (β = −0.46, CR2 95% [−0.90, −0.02], p 0.039),
+a lead rather than a finding.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).

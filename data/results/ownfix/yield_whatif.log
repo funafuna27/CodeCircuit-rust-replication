@@ -1,0 +1,19 @@
+stable sources 7691 ; sources with a stable repair 525 ; stable repairs 1371 Counter({None: 792, True: 304, False: 275})
+problems with a stable repair 78
+problems with a stable repair but no passing Gemma sample to calibrate: 12 of 78 ; with < 10 kept inputs: 26
+caliper 1.0  unverifiable R allowed False  fallback False:   20 pairs over   9 problems
+caliper 1.0  unverifiable R allowed False  fallback True :   49 pairs over  25 problems
+caliper 1.0  unverifiable R allowed True   fallback False:   57 pairs over  24 problems
+caliper 1.0  unverifiable R allowed True   fallback True :  116 pairs over  51 problems
+caliper 2.0  unverifiable R allowed False  fallback False:   32 pairs over  15 problems
+caliper 2.0  unverifiable R allowed False  fallback True :   61 pairs over  26 problems
+caliper 2.0  unverifiable R allowed True   fallback False:   86 pairs over  33 problems
+caliper 2.0  unverifiable R allowed True   fallback True :  145 pairs over  58 problems
+caliper 3.0  unverifiable R allowed False  fallback False:   38 pairs over  17 problems
+caliper 3.0  unverifiable R allowed False  fallback True :   66 pairs over  28 problems
+caliper 3.0  unverifiable R allowed True   fallback False:   94 pairs over  35 problems
+caliper 3.0  unverifiable R allowed True   fallback True :  150 pairs over  60 problems
+caliper 5.0  unverifiable R allowed False  fallback False:   43 pairs over  18 problems
+caliper 5.0  unverifiable R allowed False  fallback True :   74 pairs over  29 problems
+caliper 5.0  unverifiable R allowed True   fallback False:  106 pairs over  39 problems
+caliper 5.0  unverifiable R allowed True   fallback True :  164 pairs over  62 problems

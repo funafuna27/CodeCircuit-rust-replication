@@ -1,0 +1,190 @@
+=== 2026-10-13 01:05:30 round 0: sources, repairs and controls ===
+1520 failing sources over 220 problems; 0 done before, 1520 new
+  S stable in 3 judgings: 1520 of 1520
+  23977 token-preserving mutants to judge
+  repairs: 374 passing mutants, stable 374; sources with a stable repair: 141
+  controls: 1358 same-failure candidates; output-identical 856, and live 435; harness errors 0
+  usable sources (a stable repair and a control): 121 of 1520
+=== 2026-10-13 01:47:44 round 0: repairs checked on extra inputs ===
+54 problems with a stable repair: calibrated inputs median 9; repairs verified 90, failed 104, unverifiable 180 (of 374)
+=== 2026-10-13 01:48:25 round 0: surprise ===
+141 usable sources; 0 mutants scored before, 1295 to score
+=== 2026-10-13 01:49:45 round 0: pairs ===
+round 0 (strict): 1520 stable sources; stable repairs 374: verified 90, failed the extra inputs 104, unverifiable 180; 5 pairs after the per-problem cap; 4 problems
+  verified repairs by family (all sources): comparison 44, integer 21, arithmetic 14, compound 6, logical 3, boolean 2
+  pairs per problem: 1: 3, 2: 1
+  tiers: 0: 4, 1: 1; strict 5
+  |R - C| code log-probability: median 0.263; R less probable in 0.000; beliefs (S's token was the model's top choice at R's site) 0.600
+  pair R families: comparison 2, arithmetic 2, integer 1
+BELOW TARGET: 5 < 250; draw round 1
+=== 2026-10-13 01:49:48 round 1: 20 more samples per problem ===
+=== 2026-10-13 02:10:44 round 1: labels ===
+=== 2026-10-13 02:11:52 round 1: sources, repairs and controls ===
+2178 failing sources over 220 problems; 1520 done before, 658 new
+  S stable in 3 judgings: 658 of 658
+  11409 token-preserving mutants to judge
+  repairs: 72 passing mutants, stable 72; sources with a stable repair: 28
+  controls: 310 same-failure candidates; output-identical 202, and live 96; harness errors 0
+  usable sources (a stable repair and a control): 22 of 658
+=== 2026-10-13 02:38:31 round 1: repairs checked on extra inputs ===
+59 problems with a stable repair: calibrated inputs median 9; repairs verified 97, failed 106, unverifiable 243 (of 446)
+=== 2026-10-13 02:39:04 round 1: surprise ===
+169 usable sources; 1295 mutants scored before, 274 to score
+=== 2026-10-13 02:39:26 round 1: pairs ===
+round 1 (strict): 2178 stable sources; stable repairs 446: verified 97, failed the extra inputs 106, unverifiable 243; 5 pairs after the per-problem cap; 4 problems
+  verified repairs by family (all sources): comparison 50, integer 22, arithmetic 14, compound 6, logical 3, boolean 2
+  pairs per problem: 1: 3, 2: 1
+  tiers: 0: 4, 1: 1; strict 5
+  |R - C| code log-probability: median 0.263; R less probable in 0.000; beliefs (S's token was the model's top choice at R's site) 0.600
+  pair R families: comparison 2, arithmetic 2, integer 1
+BELOW TARGET: 5 < 250; draw round 2
+=== 2026-10-13 02:39:29 round 2: 20 more samples per problem ===
+=== 2026-10-13 03:12:55 round 2: labels ===
+=== 2026-10-13 03:14:50 round 2: sources, repairs and controls ===
+3107 failing sources over 220 problems; 2178 done before, 929 new
+  S stable in 3 judgings: 929 of 929
+  15456 token-preserving mutants to judge
+  repairs: 170 passing mutants, stable 170; sources with a stable repair: 60
+  controls: 656 same-failure candidates; output-identical 464, and live 243; harness errors 0
+  usable sources (a stable repair and a control): 53 of 929
+=== 2026-10-13 03:43:18 round 2: repairs checked on extra inputs ===
+64 problems with a stable repair: calibrated inputs median 10; repairs verified 123, failed 139, unverifiable 354 (of 616)
+=== 2026-10-13 03:43:56 round 2: surprise ===
+229 usable sources; 1569 mutants scored before, 599 to score
+=== 2026-10-13 03:44:28 round 2: pairs ===
+round 2 (strict): 3107 stable sources; stable repairs 616: verified 123, failed the extra inputs 139, unverifiable 354; 8 pairs after the per-problem cap; 5 problems
+  verified repairs by family (all sources): comparison 62, integer 26, arithmetic 21, compound 6, logical 4, boolean 4
+  pairs per problem: 1: 3, 2: 1, 3: 1
+  tiers: 0: 5, 1: 1, 2: 2; strict 8
+  |R - C| code log-probability: median 0.305; R less probable in 0.000; beliefs (S's token was the model's top choice at R's site) 0.625
+  pair R families: comparison 5, arithmetic 2, integer 1
+BELOW TARGET: 8 < 250; draw round 3
+=== 2026-10-13 03:44:31 round 3: 20 more samples per problem ===
+=== 2026-10-13 04:19:39 round 3: labels ===
+=== 2026-10-13 04:21:44 round 3: sources, repairs and controls ===
+3944 failing sources over 220 problems; 3107 done before, 837 new
+  S stable in 3 judgings: 836 of 837
+  13914 token-preserving mutants to judge
+  repairs: 165 passing mutants, stable 165; sources with a stable repair: 56
+  controls: 665 same-failure candidates; output-identical 427, and live 213; harness errors 0
+  usable sources (a stable repair and a control): 48 of 837
+=== 2026-10-13 04:48:59 round 3: repairs checked on extra inputs ===
+66 problems with a stable repair: calibrated inputs median 10; repairs verified 161, failed 167, unverifiable 453 (of 781)
+=== 2026-10-13 04:49:43 round 3: surprise ===
+285 usable sources; 2168 mutants scored before, 608 to score
+=== 2026-10-13 04:50:15 round 3: pairs ===
+round 3 (strict): 3943 stable sources; stable repairs 781: verified 161, failed the extra inputs 167, unverifiable 453; 10 pairs after the per-problem cap; 5 problems
+  verified repairs by family (all sources): comparison 72, integer 38, arithmetic 27, compound 13, boolean 6, logical 5
+  pairs per problem: 1: 2, 2: 1, 3: 2
+  tiers: 0: 7, 1: 1, 2: 2; strict 10
+  |R - C| code log-probability: median 0.323; R less probable in 0.100; beliefs (S's token was the model's top choice at R's site) 0.700
+  pair R families: comparison 5, arithmetic 2, compound 2, integer 1
+BELOW TARGET: 10 < 250; draw round 4
+=== 2026-10-13 04:50:18 round 4: 20 more samples per problem ===
+=== 2026-10-13 05:25:17 round 4: labels ===
+=== 2026-10-13 05:27:06 round 4: sources, repairs and controls ===
+4771 failing sources over 220 problems; 3944 done before, 827 new
+  S stable in 3 judgings: 827 of 827
+  13843 token-preserving mutants to judge
+  repairs: 140 passing mutants, stable 140; sources with a stable repair: 53
+  controls: 540 same-failure candidates; output-identical 331, and live 179; harness errors 0
+  usable sources (a stable repair and a control): 44 of 827
+=== 2026-10-13 05:55:05 round 4: repairs checked on extra inputs ===
+67 problems with a stable repair: calibrated inputs median 9; repairs verified 180, failed 190, unverifiable 551 (of 921)
+=== 2026-10-13 05:55:50 round 4: surprise ===
+338 usable sources; 2776 mutants scored before, 526 to score
+=== 2026-10-13 05:56:19 round 4: pairs ===
+round 4 (strict): 4770 stable sources; stable repairs 921: verified 180, failed the extra inputs 190, unverifiable 551; 11 pairs after the per-problem cap; 5 problems
+  verified repairs by family (all sources): comparison 77, integer 44, arithmetic 34, compound 13, logical 6, boolean 6
+  pairs per problem: 1: 2, 2: 1, 3: 1, 4: 1
+  tiers: 0: 8, 1: 1, 2: 2; strict 11
+  |R - C| code log-probability: median 0.347; R less probable in 0.091; beliefs (S's token was the model's top choice at R's site) 0.636
+  pair R families: comparison 5, arithmetic 3, compound 2, integer 1
+BELOW TARGET: 11 < 250; draw round 5
+=== 2026-10-13 05:56:22 round 5: 20 more samples per problem ===
+=== 2026-10-13 06:30:51 round 5: labels ===
+=== 2026-10-13 06:32:29 round 5: sources, repairs and controls ===
+5514 failing sources over 220 problems; 4771 done before, 743 new
+  S stable in 3 judgings: 743 of 743
+  12479 token-preserving mutants to judge
+  repairs: 118 passing mutants, stable 118; sources with a stable repair: 47
+  controls: 490 same-failure candidates; output-identical 322, and live 164; harness errors 0
+  usable sources (a stable repair and a control): 40 of 743
+=== 2026-10-13 06:56:33 round 5: repairs checked on extra inputs ===
+72 problems with a stable repair: calibrated inputs median 11; repairs verified 238, failed 230, unverifiable 571 (of 1039)
+=== 2026-10-13 06:57:45 round 5: surprise ===
+385 usable sources; 3302 mutants scored before, 446 to score
+=== 2026-10-13 06:58:20 round 5: pairs ===
+round 5 (strict): 5513 stable sources; stable repairs 1039: verified 238, failed the extra inputs 230, unverifiable 571; 17 pairs after the per-problem cap; 7 problems
+  verified repairs by family (all sources): comparison 112, integer 51, arithmetic 47, compound 16, logical 6, boolean 6
+  pairs per problem: 1: 3, 3: 3, 5: 1
+  tiers: 0: 14, 1: 1, 2: 2; strict 17
+  |R - C| code log-probability: median 0.398; R less probable in 0.118; beliefs (S's token was the model's top choice at R's site) 0.412
+  pair R families: comparison 10, arithmetic 4, compound 2, integer 1
+BELOW TARGET: 17 < 250; draw round 6
+=== 2026-10-13 06:58:24 round 6: 20 more samples per problem ===
+=== 2026-10-13 07:32:33 round 6: labels ===
+=== 2026-10-13 07:34:23 round 6: sources, repairs and controls ===
+6275 failing sources over 220 problems; 5514 done before, 761 new
+  S stable in 3 judgings: 761 of 761
+  12584 token-preserving mutants to judge
+  repairs: 85 passing mutants, stable 85; sources with a stable repair: 38
+  controls: 258 same-failure candidates; output-identical 169, and live 95; harness errors 0
+  usable sources (a stable repair and a control): 29 of 761
+=== 2026-10-13 07:58:35 round 6: repairs checked on extra inputs ===
+73 problems with a stable repair: calibrated inputs median 11; repairs verified 256, failed 238, unverifiable 630 (of 1124)
+=== 2026-10-13 07:59:47 round 6: surprise ===
+423 usable sources; 3748 mutants scored before, 267 to score
+=== 2026-10-13 08:00:11 round 6: pairs ===
+round 6 (strict): 6274 stable sources; stable repairs 1124: verified 256, failed the extra inputs 238, unverifiable 630; 18 pairs after the per-problem cap; 7 problems
+  verified repairs by family (all sources): comparison 120, integer 60, arithmetic 47, compound 16, logical 7, boolean 6
+  pairs per problem: 1: 2, 2: 1, 3: 3, 5: 1
+  tiers: 0: 15, 1: 1, 2: 2; strict 18
+  |R - C| code log-probability: median 0.372; R less probable in 0.111; beliefs (S's token was the model's top choice at R's site) 0.389
+  pair R families: comparison 11, arithmetic 4, compound 2, integer 1
+BELOW TARGET: 18 < 250; draw round 7
+=== 2026-10-13 08:00:15 round 7: 20 more samples per problem ===
+=== 2026-10-13 08:33:53 round 7: labels ===
+=== 2026-10-13 08:36:00 round 7: sources, repairs and controls ===
+7004 failing sources over 220 problems; 6275 done before, 729 new
+  S stable in 3 judgings: 729 of 729
+  12986 token-preserving mutants to judge
+  repairs: 113 passing mutants, stable 113; sources with a stable repair: 51
+  controls: 542 same-failure candidates; output-identical 316, and live 165; harness errors 0
+  usable sources (a stable repair and a control): 43 of 729
+=== 2026-10-13 09:02:32 round 7: repairs checked on extra inputs ===
+76 problems with a stable repair: calibrated inputs median 11; repairs verified 276, failed 258, unverifiable 703 (of 1237)
+=== 2026-10-13 09:03:48 round 7: surprise ===
+474 usable sources; 4015 mutants scored before, 497 to score
+=== 2026-10-13 09:04:25 round 7: pairs ===
+round 7 (strict): 7003 stable sources; stable repairs 1237: verified 276, failed the extra inputs 258, unverifiable 703; 20 pairs after the per-problem cap; 9 problems
+  verified repairs by family (all sources): comparison 132, integer 64, arithmetic 50, compound 16, logical 7, boolean 7
+  pairs per problem: 1: 4, 2: 1, 3: 3, 5: 1
+  tiers: 0: 17, 1: 1, 2: 2; strict 20
+  |R - C| code log-probability: median 0.386; R less probable in 0.150; beliefs (S's token was the model's top choice at R's site) 0.400
+  pair R families: comparison 13, arithmetic 4, compound 2, integer 1
+BELOW TARGET: 20 < 250; draw round 8
+=== 2026-10-13 09:04:29 round 8: 20 more samples per problem ===
+=== 2026-10-13 09:39:58 round 8: labels ===
+=== 2026-10-13 09:42:06 round 8: sources, repairs and controls ===
+7692 failing sources over 220 problems; 7004 done before, 688 new
+  S stable in 3 judgings: 688 of 688
+  11721 token-preserving mutants to judge
+  repairs: 134 passing mutants, stable 134; sources with a stable repair: 51
+  controls: 536 same-failure candidates; output-identical 357, and live 170; harness errors 0
+  usable sources (a stable repair and a control): 42 of 688
+=== 2026-10-13 10:04:47 round 8: repairs checked on extra inputs ===
+78 problems with a stable repair: calibrated inputs median 11; repairs verified 304, failed 275, unverifiable 792 (of 1371)
+=== 2026-10-13 10:06:02 round 8: surprise ===
+525 usable sources; 4512 mutants scored before, 479 to score
+=== 2026-10-13 10:06:33 round 8: pairs ===
+round 8 (fallback): 7691 stable sources; stable repairs 1371: verified 304, failed the extra inputs 275, unverifiable 792; 49 pairs after the per-problem cap; 25 problems
+  verified repairs by family (all sources): comparison 142, integer 72, arithmetic 54, compound 22, logical 7, boolean 7
+  pairs per problem: 1: 15, 2: 3, 3: 2, 4: 3, 5: 2
+  tiers: 0: 28, 1: 2, 2: 6, 3: 13; strict 20
+  |R - C| code log-probability: median 0.388; R less probable in 0.388; beliefs (S's token was the model's top choice at R's site) 0.612
+  pair R families: comparison 19, arithmetic 18, integer 7, compound 4, logical 1
+GATE NOT MET: 49 pairs over 25 problems after round 8, even with the fallback
+=== 2026-10-13 10:06:37 natural pairs (descriptive) ===
+{"natural_combinations": 31, "natural_unique_pairs": 28, "natural_unique_problems": 18, "distinct_failing_codes": 7692, "distinct_passing_codes": 2214, "pairs": 49, "doubly_natural": 0}
+=== 2026-10-13 10:06:45 GATE NOT MET: stopping, as pre-registered ===
