@@ -1,0 +1,71 @@
+{
+ "mode": "full",
+ "limit": 0,
+ "circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer",
+ "phases": {
+  "5": {
+   "pairs": 259,
+   "D_sizes": {
+    "1": 93,
+    "2": 166
+   },
+   "pe_in_D_both": 259,
+   "pe_not_in_D": [],
+   "W_size_median": 5.0,
+   "distance_D_to_end_min": 2,
+   "graphs_read": 518,
+   "prefix_identical_share": 1.0,
+   "n_logits_differ_share": 0.06177606177606178,
+   "b2_zero": 0,
+   "b4_empty": 0,
+   "prefix_attr_edge_mismatch_median": 0.03842697439520357,
+   "prefix_attr_rowsum_rel_diff_median": 0.00016451338888145983,
+   "f4_float32_rel_dev_max": 0.006243319124788852,
+   "seconds_per_pair_median": 4.7203757762908936,
+   "sha256": {
+    "local_matched.jsonl": "36addc5eaa2036c2d8cc6fb9d43b92b1197e43ffe361b357056abcab750e5ac6",
+    "positions_matched.npz": "37ce5ce80d3be20d7cc89e3b9b4d573a8d806b118e1bfa4441a77a3a59c56879",
+    "posmean_matched.npz": "ed083690c164a29f1ff095ff8b7530ebbc70446245c3844cea6bc61dae5dc0d4"
+   }
+  },
+  "4": {
+   "pairs": 98,
+   "D_sizes": {
+    "1": 56,
+    "2": 42
+   },
+   "pe_in_D_both": 97,
+   "pe_not_in_D": [
+    [
+     113,
+     [
+      53,
+      57
+     ],
+     [
+      52,
+      57
+     ]
+    ]
+   ],
+   "W_size_median": 3.0,
+   "distance_D_to_end_min": 2,
+   "graphs_read": 196,
+   "prefix_identical_share": 1.0,
+   "n_logits_differ_share": 0.11224489795918367,
+   "b2_zero": 0,
+   "b4_empty": 0,
+   "prefix_attr_edge_mismatch_median": 0.0387037366449091,
+   "prefix_attr_rowsum_rel_diff_median": 0.0001617707675904967,
+   "f4_float32_rel_dev_max": 0.005952696869338768,
+   "seconds_per_pair_median": 4.728531718254089,
+   "sha256": {
+    "local_mutant.jsonl": "b5917a775439258ad15269de814c52df927dbc63db03d7ea08af1249896be3d3",
+    "positions_mutant.npz": "20cd0188e7be41d9dbc9ef415176718c6caf8d895e7d3c304097b60e2a73e8cd",
+    "posmean_mutant.npz": "052678a647beb6a1d48a75557bc72f66293ba6b51af60ce89f6b6ddcbbd4827c"
+   }
+  }
+ },
+ "gate_G2": "passed",
+ "seconds": 851.9468669891357
+}

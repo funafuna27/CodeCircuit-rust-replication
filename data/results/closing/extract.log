@@ -1,0 +1,22 @@
+[2026-10-14 05:17:56 JST] start extract
+Phase 5: 259 pairs; |D| {1: 93, 2: 166}; p5_2 edit token in D for both members in 259; not: []; |W| median 5.0; min distance from D to the last position 2
+  Phase 5: 25/259 pairs, 73 s
+  Phase 5: 50/259 pairs, 129 s
+  Phase 5: 75/259 pairs, 189 s
+  Phase 5: 100/259 pairs, 249 s
+  Phase 5: 125/259 pairs, 304 s
+  Phase 5: 150/259 pairs, 363 s
+  Phase 5: 175/259 pairs, 423 s
+  Phase 5: 200/259 pairs, 481 s
+  Phase 5: 225/259 pairs, 540 s
+  Phase 5: 250/259 pairs, 598 s
+  Phase 5: 518 graphs read; prefix activations bit-identical in 1.000 of pairs; attribution on the shared prefix differs in 0.0384 of edges (median); logit counts differ in 0.062; b2 = 0 in 0
+Phase 4: 98 pairs; |D| {1: 56, 2: 42}; p5_2 edit token in D for both members in 97; not: [(113, [53, 57], [52, 57])]; |W| median 3.0; min distance from D to the last position 2
+  Phase 4: 25/98 pairs, 684 s
+  Phase 4: 50/98 pairs, 741 s
+  Phase 4: 75/98 pairs, 798 s
+  Phase 4: 196 graphs read; prefix activations bit-identical in 1.000 of pairs; attribution on the shared prefix differs in 0.0387 of edges (median); logit counts differ in 0.112; b2 = 0 in 0
+G2 passed (full); 852 s
+[2026-10-14 05:32:10 JST] end extract, exit 0
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 14:14.15
+	Maximum resident set size (kbytes): 2748300
