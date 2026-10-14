@@ -985,6 +985,213 @@ No test, threshold, block or estimate changed.
 
 sizesim sha256: `7f067d7d0df3b53516930f4eaf0e5d63e518adeb172ebc932ca5033706365a65`
 
+### Recorded after p7_4 ran
+
+**Deviation 2 (computed after the run, descriptive).** §5's verification
+readings need two figures that p7_4 did not print:
+- A_lucky's interval;
+- the verified-only increment against the all-pair one, as a paired difference.
+
+`p7_5_supplement.py` computed them after p7_4, from p7_4's own fixed
+out-of-fold scores, which it checks it reproduces. Its streams:
+- 9 (keys 3, 4) for the subset intervals;
+- 9 (key 5) for the paired difference.
+
+It also prints A(G) − A(G_free)'s interval to more digits. `supplement.json`
+sha256 `fbf0cbdff1840c27e9919608b6a87e973e12b492498a61e9703d7b64117890e5`.
+
+No other change was made, and p7_4 ran once.
+
 ## 9. Results
 
-Not yet.
+p7_4 ran once, 2026-10-14 11:18–11:53 JST, at commit 7fc2a48. Its guard
+passed. `analysis.json` sha256
+`c14a0c6408dd0f33793512e3fda1671308737f43eee629b6ffd6a019b6dd24b2`. Phase 5:
+259 pairs over 78 problems. Intervals are 95%, over problems.
+
+### 9a. The tests
+
+| | tested, given | max \|T\| (leading columns) | p | outcome |
+|---|---|---|---|---|
+| G5a | N45 \| C | 2.34 | 0.55 | passed |
+| G5b | shadow \| C | 2.40 | 0.43 | passed, no note |
+| H1 | G43 \| C | 3.10 (f5 +3.10, f1 −2.32, f36 −2.31) | — | withdrawn |
+| H2 | L \| C | 2.75 (a3 −2.75) | — | withdrawn |
+| S1 | z \| C | T −1.88 | — | withdrawn |
+| S2 | G_attr \| P⁺ | 2.41 (f7 +2.41, f15 −2.24) | — | withdrawn |
+| S3 | G_attr \| C + f0 | 3.19 (f5 +3.19, f1 −2.41) | 0.024 | not rejected (Holm: 0.0167) |
+
+**Descriptive T:**
+- z, the graph size: −2.01 given C + f0, −1.91 given C63, −2.28 given C⁺.
+- L given C + G43: 2.24 (a3).
+- G43 given C + L: 3.19 (f5).
+- G45 given C63: 3.02.
+- G43 given C⁺: 3.23.
+
+Over 10 refits of p̂ with other seeds, H1's max |T| stayed within 3.04–3.11,
+H2's within 2.69–2.77 and S1's within 1.85–1.91.
+
+### 9b. Estimates
+
+| A | value | interval | A | value | interval |
+|---|---|---|---|---|---|
+| C | 0.707 | [0.640, 0.771] | G | 0.641 | [0.561, 0.716] |
+| C63 (approved) | 0.736 | [0.670, 0.797] | G_free | 0.541 | [0.476, 0.604] |
+| C⁺ | 0.730 | [0.661, 0.796] | G_attr | 0.653 | [0.578, 0.724] |
+| E | 0.676 | [0.606, 0.745] | P | 0.685 | [0.614, 0.754] |
+| S2+ | 0.649 | [0.587, 0.708] | P⁺ | 0.691 | [0.620, 0.761] |
+| O | 0.647 | [0.582, 0.711] | P_layer | 0.656 | [0.584, 0.726] |
+| [E, edit-token lp] | 0.714 | [0.649, 0.779] | L | 0.537 | [0.465, 0.608] |
+| N45 | 0.494 | [0.440, 0.548] | L_act / L_attr | 0.587 / 0.506 | |
+
+Increments. "Corrected" subtracts the band's c0 (§6):
+
+| increment | raw | corrected | corrected interval | band |
+|---|---|---|---|---|
+| G \| C | −0.019 | +0.002 | [−0.072, +0.074] | [−0.089, +0.043] |
+| L \| C | −0.015 | −0.006 | [−0.056, +0.043] | [−0.058, +0.043] |
+| N45 \| C | −0.077 | −0.042 | [−0.098, +0.016] | [−0.105, +0.037] |
+| L \| G + C | +0.039 | +0.042 | [−0.007, +0.093] | [−0.043, +0.035] |
+| L_attr \| L_act + C | −0.019 | −0.012 | [−0.064, +0.038] | [−0.047, +0.035] |
+| G \| P + f0 + C | +0.019 | +0.025 | [−0.038, +0.083] | [−0.046, +0.037] |
+| G \| P⁺ | +0.015 | +0.022 | [−0.040, +0.079] | [−0.044, +0.041] |
+| G_attr \| G_free + C | −0.043 | −0.017 | [−0.092, +0.056] | [−0.081, +0.039] |
+
+Other differences, uncorrected:
+
+| difference | value | interval |
+|---|---|---|
+| A(G) − A(G_free) | +0.100 | [+0.000, +0.200]; 2.7% of draws ≤ 0 |
+| A(P) − A(G) | +0.044 | [−0.043, +0.132] |
+| A(P⁺) − A(G) | +0.050 | [−0.042, +0.145] |
+| G \| C63 | −0.044 | [−0.117, +0.028] |
+| L \| C63 | −0.025 | [−0.073, +0.023] |
+| G \| C⁺ | −0.027 | [−0.105, +0.047] |
+| L \| C⁺ | −0.023 | [−0.063, +0.016] |
+
+**Same-site pairs** (93 pairs, 44 problems):
+- G | C: −0.022 [−0.125, +0.085];
+- L | C: −0.022 [−0.113, +0.054].
+
+**Refitting noise** (10 other fold and forest seeds):
+- G | C: always negative, from −0.046 to −0.008 (median −0.033).
+- A(G): 0.633–0.672 (median 0.655).
+- A(G) − A(G_free): +0.100 to +0.139.
+- G | P⁺: +0.008 to +0.044.
+- The main A(C), 0.707, lies below all ten alternatives (0.710–0.738, median
+  0.720), so the main seeds are, if anything, unkind to C.
+
+### 9c. Verification (descriptive)
+
+Lucky survivors are 64 of Phase 5's 193 verifiable ones (33%), and 20 of Phase
+4's 68 (29%). No survivor ended in error, so counting errors as lucky changes
+nothing.
+
+| signal | A, verified (129 pairs, 48 problems) | A, lucky (64, 30) | verified − lucky |
+|---|---|---|---|
+| G | 0.721 [0.612, 0.819] | 0.469 [0.304, 0.629] | +0.252 [+0.051, +0.444] |
+| C | 0.806 [0.713, 0.892] | 0.609 [0.456, 0.759] | +0.197 [+0.013, +0.376] |
+| E | 0.736 [0.627, 0.837] | 0.625 [0.490, 0.758] | +0.111 [−0.075, +0.288] |
+| S2+ | 0.752 [0.667, 0.833] | 0.563 [0.451, 0.677] | +0.189 [+0.059, +0.328] |
+| P | 0.787 [0.696, 0.872] | 0.594 [0.448, 0.724] | +0.193 [+0.033, +0.361] |
+| G_free | 0.504 [0.416, 0.588] | 0.531 [0.400, 0.652] | −0.027 [−0.193, +0.133] |
+| L | 0.558 [0.456, 0.662] | 0.375 [0.270, 0.492] | +0.183 [+0.031, +0.332] |
+| z (killed has more nodes) | 0.705 [0.610, 0.795] | 0.523 [0.386, 0.651] | +0.182 [+0.013, +0.352] |
+
+**Within the 21 problems that hold both kinds,** verified − lucky:
+- G +0.36, E +0.26, C +0.18, z +0.13, P +0.12.
+
+**On the verified pairs:**
+- Δ(G | C) = −0.039 [−0.135, +0.065]; refitted on them alone, −0.031
+  [−0.156, +0.095].
+- Its difference from the all-pair Δ is −0.020 [−0.089, +0.048].
+- H1's max |T| there is 2.61.
+
+### 9d. Phase 4 (descriptive)
+
+**Estimates:**
+- C4 0.668, G 0.674, P 0.755, G + C4 0.725.
+- Δ(G | C4) = +0.056 [−0.020, +0.133].
+- But Δ(N45 | C4) = +0.097 [+0.015, +0.184]: 45 columns of noise raised A as
+  much. At 98 pairs Phase 4's increments are noise, and they are not read.
+
+**T:** H1 3.14, H2 1.81, S1 −2.50.
+
+**Verification:** 48 verified, 20 lucky. G's verified − lucky is +0.30
+[+0.04, +0.55].
+
+### 9e. Predictions (§4)
+
+- **H1 and H2 not rejected:** held, though by withdrawal; no test was run.
+- **S1 not rejected, T negative:** T −1.88, withdrawn.
+- **S2 and S3 not rejected:** held. S3's p of 0.024 lies above Holm's 0.0167.
+- **A(G) − A(G_free) covers 0:** on its edge. The lower bound is exactly 0.
+- **Lucky share 25% or more:** held at 33%. This prediction was not blind.
+
+My record on predicted nulls: H1 is the sixth, and it "held" only because no
+valid test was possible.
+
+### 9f. Reading (§5)
+
+**H1 (withdrawn).** The corrected Δ(G | C) is +0.002 [−0.072, +0.074]. Not
+detected; a gain up to 0.074 is not excluded.
+
+**H2 (withdrawn).** The corrected Δ(L | C) is −0.006 [−0.056, +0.043]. Beyond C,
+the local quantities add less than 0.05 in within-pair accuracy on these pairs.
+
+**Together.** Neither primary test held its size. The closing comparison rests
+on the corrected increments, which are descriptive.
+
+**S1 (withdrawn).** T is −1.88, the sign of β_5; with C⁺, −2.28. β_5's lead is
+neither confirmed nor refuted by a valid test.
+
+**S2 (withdrawn).** A(P⁺) − A(G) is +0.050 [−0.042, +0.145]. No equivalence is
+claimed.
+
+**S3.** Not rejected: attribution is not shown to be needed beyond C and f0.
+
+**A(G) − A(G_free).** Undecided: +0.100 [+0.000, +0.200]. It was +0.10 or more
+in every refit.
+
+**Verification.**
+- G, C, S2+, P, L and z: A_lucky's interval covers 0.5, and verified − lucky
+  lies above 0. The signal follows correctness, not the asserts.
+- E: undecided.
+- Lucky survivors are 33% of the verifiable ones. Phase 5's label is noisy.
+- The verified-only increment does not differ from the all-pair one.
+
+### 9g. What Phase 7 shows
+
+**1. The graph does not add to the cheap signals.** Given the edit's identity
+and the output distribution (A 0.71), the 49 features change within-pair
+accuracy by −0.02: +0.00 [−0.07, +0.07] after the dilution correction. It was
+negative in all ten refits. The same holds:
+- with the approved C (−0.04) and with C⁺ (−0.03);
+- on the same-site pairs;
+- on the verified pairs alone.
+
+**2. A plain-activation probe does at least as well.** Forty-five directions of
+position-averaged transcoder activations, with no attribution, reach 0.685
+against the graph's 0.641. The graph adds +0.02 to P⁺, inside its band.
+
+**3. Within the graph, attribution is what carries Ac.** The three
+attribution-free features reach 0.54. Given C and f0, however, the
+attribution-dependent columns add nothing: S3's p is 0.024 against 0.0167, and
+the corrected increment is −0.02.
+
+**4. The edit's local quantities add nothing beyond C.**
+
+**5. A third of the survivors are wrong beyond MBPP's asserts.**
+- Every signal ranks the verified survivors well (graph 0.72, cheap baseline
+  0.81) and the lucky ones at chance (graph 0.47).
+- The signals follow whether the edit broke the program, not whether it passed
+  three asserts.
+- The label noise dilutes them all alike, and moves no increment.
+
+**6. No conditional-independence test was valid here.** The clustered GCM
+rejected 6–6.5% of true nulls at 5% on these covariates, even for noise, and
+up to 14% under adversarial designs. So "beyond C" rests on descriptive
+intervals. Their upper bound, about +0.07, does not exclude a modest gain.
+
+The limits of §7 apply in full. Above all, this is a second look at the 78
+problems that produced Phase 5's leads.

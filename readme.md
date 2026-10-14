@@ -34,7 +34,7 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python and extends it to Rust in six
+This fork replicates CodeCircuit on Python and extends it to Rust in seven
 phases: reproduce the Python number (finished 2026-09-16); ask the same question
 of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
 ask it within a problem, on two solutions to the same task
@@ -42,8 +42,10 @@ ask it within a problem, on two solutions to the same task
 length, on two one-token mutants of one passing solution
 (`PREREGISTRATION_MUTANT.md`, finished 2026-10-08); and ask it again with the
 model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
-2026-10-12); and try it on the model's own errors and their one-token repairs
-(`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13).
+2026-10-12); try it on the model's own errors and their one-token repairs
+(`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13); and close on
+Phase 5's retained pairs, against cheap signals and a probe of the same forward
+pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14).
 
 ## Where this stands
 
@@ -73,8 +75,15 @@ information about correctness, but it has not been shown to carry information
 that cheaper signals lack. Phase 6 tried to settle this on Gemma's own errors, a
 verified one-token repair against a control of the same code, and stopped at
 its pre-registered gate: about half of the repairs that pass MBPP's asserts are
-wrong on nearby inputs, and only 20 clean pairs could be built. The arms
-differ in more than language (the Python labels lean on name-aliasing for 99 of
+wrong on nearby inputs, and only 20 clean pairs could be built. Phase 7 asked
+the question directly on Phase 5's pairs. Given the kind of edit and the output
+distribution (0.71), the graph's 49 features add nothing (+0.00 [−0.07, +0.07]
+after correcting for dilution). A probe of plain transcoder activations, with no
+attribution, does as well as the graph (0.69 against 0.64). A third of the
+surviving mutants turn out wrong on extra inputs, and every signal, the graph's
+included, ranks those pairs at chance: they track whether the program still
+works, not whether it passed three asserts. The arms differ in more than
+language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
 
@@ -88,10 +97,12 @@ attributed to language.
 | Phase 4, Rust, 98 pairs | the same, for two one-token mutants of one passing solution, identical in length | **A = 0.469 [0.367, 0.571], p 0.723**, predicted null. Centred within each pair (exploratory): 0.674, p 0.010; the model's surprise alone, centred: 0.694, p 0.010; centred with surprise removed (post hoc): 0.592, p 0.139 |
 | Phase 5, Rust, 259 pairs | the same, with the members' code log-probabilities matched (median gap 0.18 nats) | **centred graph features 0.641 [0.562, 0.717], p 0.004**, predicted null; with the remaining surprise removed 0.639, p 0.005. Output distribution alone 0.649; the kind of edit alone 0.676 (exploratory), graph added to it +0.012 [−0.074, +0.098] |
 | Phase 6, Rust | a verified one-token repair of Gemma's own failing code against a control that keeps the bug | **gate missed: 20 strict pairs (49 with the fallback), against 150; no graph built**. 275 of 579 checkable repairs passed the asserts by luck |
+| Phase 7, Rust, Phase 5's 259 pairs | does the graph add to the kind of edit and the output distribution (C, 0.707)? to a probe of plain activations? | **added to C: −0.019, +0.002 [−0.072, +0.074] after the dilution correction**; the pre-registered tests were withdrawn by their size check. Probe 0.685 against graph 0.641. 64 of 193 checkable survivors wrong on extra inputs; on those the graph scores 0.469 |
 
 Each "predicted null" was my prediction, written down before the data. The
 first three were wrong in the paper's favour; Phase 4's held; Phase 5's failed,
-again in the paper's favour. What else held:
+again in the paper's favour; Phase 7's held, but only because its tests could
+not be run at a valid size. What else held:
 the level is not a length proxy (C4), the two arms rank the problems they share
 alike (ρ +0.758, consistent with both reading problem difficulty), Phase 3's
 length matching worked (length alone scores 0.545), and in Phase 4 the broken
@@ -771,6 +782,76 @@ MBPP's few asserts often accept a wrong one-token repair; and, post hoc on
 Phase 5's injected errors, graph size still differs beyond a linear adjustment
 for surprise and the kind of edit (β = −0.46, CR2 95% [−0.90, −0.02], p 0.039),
 a lead rather than a finding.
+
+## Phase 7: the closing comparison
+
+Phase 5 compared the graph with cheaper signals only side by side. Phase 7
+tests the increment directly on Phase 5's 259 pairs, reading the 518 retained
+graphs again. No sample, mutant or graph was made, and no GPU was used.
+Pre-registered in `PREREGISTRATION_CLOSING.md`, written after a design panel and
+three adversarial reviews. It is a second look at pairs that produced Phase 5's
+leads, so a positive answer would have needed new problems.
+
+**The blocks:**
+- **C, the cheap baseline:** the kind of edit, plus the output distribution
+  (code, edit-token and lowest log-probabilities, entropy, the final position's
+  top probability and entropy).
+- **G:** the 49 graph features.
+- **P, a probe of the same forward pass:** every active transcoder feature's
+  activation, averaged over positions and reduced to 45 SVD directions, with no
+  attribution.
+- **L:** eight quantities at the edited tokens, four from activations and four
+  from attribution.
+
+Each pair's survivor and killed member were also checked on Phase 6's extra
+inputs.
+
+**The tests were withdrawn.** The pre-registered tests are clustered
+conditional-independence tests (a GCM with a Rademacher max-|T|). On synthetic
+labels over the real covariates, before any real label was read, they rejected
+6–6.5% of true nulls at 5%, even for columns of pure noise, and up to 14% under
+adversarial designs. By the pre-registered rule, the graph and local tests (and
+graph size, β_5's lead) report T without a p. The comparison rests on
+increments, corrected for the dilution that extra columns cause in a forest:
+
+| within-pair accuracy | A | 95% CI |
+|---|---|---|
+| C, the kind of edit and the output distribution | 0.707 | [0.640, 0.771] |
+| G, the 49 graph features (Phase 5's Ac) | 0.641 | [0.561, 0.716] |
+| P, plain activations, no attribution | 0.685 | [0.614, 0.754] |
+| G's three attribution-free features alone | 0.541 | [0.476, 0.604] |
+| L, the edit's local quantities | 0.537 | [0.465, 0.608] |
+| **G added to C**, corrected | **+0.002** | [−0.072, +0.074] |
+| L added to C, corrected | −0.006 | [−0.056, +0.043] |
+| G added to P + the output distribution, corrected | +0.022 | [−0.040, +0.079] |
+
+Adding the graph to C was negative in all ten refits with other seeds (−0.046
+to −0.008). It was also negative:
+- with the baseline first approved (no final-position columns: −0.044);
+- with the tokens after the edit and the syntactic context added (−0.027);
+- on the 93 pairs edited at the same token.
+
+**The label.** A third of the survivors (64 of 193 checkable) pass MBPP's three
+asserts but return a wrong value on a nearby input:
+
+| signal | verified pairs (129) | lucky pairs (64) | verified − lucky |
+|---|---|---|---|
+| graph | 0.721 | 0.469 | +0.25 [+0.05, +0.44] |
+| C | 0.806 | 0.609 | +0.20 [+0.01, +0.38] |
+| probe | 0.787 | 0.594 | +0.19 [+0.03, +0.36] |
+
+Every signal ranks the lucky pairs near chance. When neither member of a pair is
+truly correct, nothing tells them apart. So the signals follow whether the edit
+broke the program, not whether it passed the asserts. The label noise dilutes
+them alike and does not change the increment.
+
+**What it adds up to.** On these pairs, the attribution graph's summary is not
+shown to know more than the kind of edit and the output distribution. A probe of
+the same forward pass without attribution does as well. Inside the graph,
+attribution is what carries Phase 5's 0.64, but beyond C it adds nothing
+measurable (its one valid test: p 0.024 against Holm's 0.0167). The interval
+does not exclude a gain of up to 0.07. The tests that would have settled it
+could not be run at a valid size, and the pairs are not new.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).
