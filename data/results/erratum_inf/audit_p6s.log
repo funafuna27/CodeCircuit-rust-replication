@@ -1,0 +1,5 @@
+items 120 Counter({248: 58, 137: 33, 82: 20, 85: 9})
+P6 sample {'old reproduces pass': 120, 'still pass': 117, 'NOW FAILS': 3}
+   248 r2 42 truncated False new: (False, 0, 'FAIL 0 FAIL 1 FAIL 2')
+   248 r7 147 truncated False new: (False, 0, 'FAIL 0 FAIL 1 FAIL 2')
+   248 r7 150 truncated False new: (False, 0, 'FAIL 0 FAIL 1 FAIL 2')

@@ -77,7 +77,7 @@ tolerant branch requiring finite values (`data/erratum_inf/`, outputs in
 | 3 | 34 samples | 1 (task 248) | none of the 89 pairs |
 | 4 | 1 survivor | 1 | 1 of 98 pairs (task 248, source 3) has two failing members |
 | 5 | 29 samples, 3 survivors | 3 survivors | 1 of 259 pairs (task 248, source 15) |
-| 6 | 42 repairs | 33 (tasks 137, 248) | verified repairs 304 → 271; repairs right only on the asserts 275 of 546 checkable (50%, was 47%); pairs 49 → 41, all 8 lost being fallback pairs (strict 20 unchanged); the gate is missed either way |
+| 6 | 42 repairs, 120 samples | 33 repairs (tasks 137, 248), 3 samples (task 248) | verified repairs 304 → 271; repairs right only on the asserts 275 of 546 checkable (50%, was 47%); pairs 49 → 41, all 8 lost being fallback pairs (strict 20 unchanged); the gate is missed either way. The 3 samples (added to the audit on 10-15) served only to calibrate the extra inputs, and a calibration without them keeps the same 10 inputs; as failing samples they would have been 3 more sources, never searched |
 | 7 | — | — | inherits Phase 5's pair, and Phase 4's in its descriptive section; the false survivors had been "verified" by the same check (129 → 128 verified) |
 
 Phases 4, 5 and 7 were rerun without the affected pair, their scripts unchanged (Phase 7's

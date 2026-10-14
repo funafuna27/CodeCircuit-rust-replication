@@ -386,4 +386,4 @@ cheaper signals, cannot be answered this way.
 
 ## Erratum (2026-10-14)
 
-The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). 33 of the 304 verified repairs (tasks 137 and 248) only return inf: verified repairs are 271, repairs right only on the asserts 275 of 546 checkable (50%), pairs 41 (strict 20 unchanged). The gate is missed either way. β_5 without Phase 5's affected pair: −0.458 [−0.895, −0.022].
+The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). 33 of the 304 verified repairs (tasks 137 and 248) only return inf: verified repairs are 271, repairs right only on the asserts 275 of 546 checkable (50%), pairs 41 (strict 20 unchanged). Three of its 120 samples labelled passing in these tasks (all task 248) only return inf too; they served only to calibrate the extra inputs, which stay the same without them. The gate is missed either way. β_5 without Phase 5's affected pair: −0.458 [−0.895, −0.022].

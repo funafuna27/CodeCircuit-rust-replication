@@ -1,0 +1,2042 @@
+[
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 82,
+"sample": 40,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 82,
+"sample": 41,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 82,
+"sample": 50,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 82,
+"sample": 53,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 82,
+"sample": 58,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 85,
+"sample": 45,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 85,
+"sample": 47,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 137,
+"sample": 47,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 137,
+"sample": 48,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 137,
+"sample": 52,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 137,
+"sample": 57,
+"truncated": true,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 137,
+"sample": 59,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 40,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 42,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 46,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 47,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 54,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 56,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 57,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "2",
+"task_id": 248,
+"sample": 59,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 60,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 61,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 70,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 72,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 76,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 82,
+"sample": 78,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 85,
+"sample": 77,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 137,
+"sample": 64,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 137,
+"sample": 65,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 137,
+"sample": 73,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 137,
+"sample": 78,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 248,
+"sample": 62,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 248,
+"sample": 67,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 248,
+"sample": 68,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "3",
+"task_id": 248,
+"sample": 71,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 82,
+"sample": 92,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 85,
+"sample": 83,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 85,
+"sample": 85,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 85,
+"sample": 90,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 80,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 81,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 82,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 84,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 88,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 89,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 90,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 93,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 96,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 137,
+"sample": 98,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 80,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 82,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 84,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 85,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 86,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 87,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 89,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 90,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 91,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 92,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 97,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 98,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "4",
+"task_id": 248,
+"sample": 99,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 85,
+"sample": 103,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 85,
+"sample": 118,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 137,
+"sample": 108,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 137,
+"sample": 115,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 106,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 110,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 111,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 112,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 113,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 116,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 118,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "5",
+"task_id": 248,
+"sample": 119,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 82,
+"sample": 126,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 82,
+"sample": 131,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 82,
+"sample": 136,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 85,
+"sample": 120,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 137,
+"sample": 132,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 137,
+"sample": 134,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 137,
+"sample": 137,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 137,
+"sample": 138,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 137,
+"sample": 139,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 120,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 122,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 123,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 126,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 130,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 132,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 135,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 136,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 137,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "6",
+"task_id": 248,
+"sample": 139,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 82,
+"sample": 143,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 137,
+"sample": 145,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 137,
+"sample": 147,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 137,
+"sample": 149,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 137,
+"sample": 150,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 137,
+"sample": 158,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 140,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 143,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 147,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 148,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 149,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 150,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 152,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 153,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 155,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 158,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "7",
+"task_id": 248,
+"sample": 159,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 82,
+"sample": 164,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 82,
+"sample": 174,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 82,
+"sample": 177,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 82,
+"sample": 178,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 137,
+"sample": 162,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 137,
+"sample": 176,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 248,
+"sample": 161,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 248,
+"sample": 165,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 248,
+"sample": 174,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 sample",
+"rnd": "8",
+"task_id": 248,
+"sample": 175,
+"truncated": false,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+}
+]
