@@ -870,10 +870,120 @@ None yet.
 | `~/closing_work/posmean_matched.npz` | `ed083690c164a29f1ff095ff8b7530ebbc70446245c3844cea6bc61dae5dc0d4` |
 | `~/closing_work/posmean_mutant.npz` | `052678a647beb6a1d48a75557bc72f66293ba6b51af60ce89f6b6ddcbbd4827c` |
 
-**Recorded before `p7_4` runs:**
-- the verification counts;
-- the size simulation's results and the versions chosen;
-- the line `sizesim sha256: <hex>`, which p7_4 checks against `sizesim.json`.
+### Recorded after the first commit (554f053) and before `p7_4` runs
+
+Written 2026-10-14 around 11:20 JST. No real label had been read by any Phase 7
+script except G1's reproductions.
+
+**The verification** (p7_1, 08:25–08:26 JST, 67 s).
+- G4 passed: rule A reproduced Phase 6's kept inputs exactly on all 47 shared
+  problems.
+
+| phase | member | verified | lucky | error | unverifiable |
+|---|---|---|---|---|---|
+| 5 (259 pairs) | survivor | 129 | 64 | 0 | 66 |
+| 5 | source | 187 | 6 | 0 | 66 |
+| 5 | survivor, rule A | 132 | 61 | 0 | 66 |
+| 4 (98 pairs) | survivor | 48 | 20 | 0 | 30 |
+| 4 | source | 66 | 2 | 0 | 30 |
+| 4 | survivor, rule A | 49 | 22 | 0 | 27 |
+
+**The preparation** (p7_2, 08:26–08:36 JST).
+- G1 passed again: every value was exact, and C⁺ was usable.
+- P's 45 directions hold 0.737 (Phase 5) and 0.873 (Phase 4) of the pair
+  differences' sum of squares.
+
+**The size simulation** (p7_3, 08:36–11:07 JST, 9082 s, 400 datasets per cell).
+Rejections at nominal 0.05, pooled over each set's cells:
+
+| set | test | version 1 | version 2 | version 2, fresh draws |
+|---|---|---|---|---|
+| C | H1 | 208/3200 (6.5%) | 243/3200 (7.6%) | 110/1600 (6.9%) |
+| C | H2 | 199 (6.2%) | 227 (7.1%) | 98 (6.1%) |
+| C | S1 | 195 (6.1%) | 190 (5.9%) | 90 (5.6%) |
+| C | N45 | 206 (6.4%) | 241 (7.5%) | 113 (7.1%) |
+| C | shadow | 190 (5.9%) | 243 (7.6%) | 128 (8.0%) |
+| C | primary family | 205 (6.4%) | 237 (7.4%) | 103 (6.4%) |
+| P⁺ | S2 | 102/1200 (8.5%) | 113/1200 (9.4%) | 51/600 (8.5%) |
+| C + f0 | S3 | 91/1200 (7.6%) | 79/1200 (6.6%) | 42/600 (7.0%) |
+
+- **Worst cells in version 1:**
+  - H1 under W_G at 0.80: 43/400.
+  - H2 under W_L: 42/400 and 47/400.
+  - S1 under W_G: 37/400 and 48/400, with T means +0.63 and +0.82.
+  - S2 under W: 57/400.
+- **In version 2,** S1's rejections passed, but its T mean under W_L was −0.155
+  (at 0.68) and −0.304 (at 0.80).
+- **Versions:** version 2 for every set, since each failed version 1.
+- **Withdrawn:**
+  - on C: H1, H2, S1, N45, the shadow and the family;
+  - on P⁺: S2.
+
+  S3 passed version 2 (79 ≤ 80) and is the only hypothesis tested with a p.
+
+**Null bands** (c0, 2.5%, 97.5%):
+
+| increment | c0 | 2.5% | 97.5% |
+|---|---|---|---|
+| G \| C | −0.022 | −0.089 | +0.043 |
+| L \| C | −0.010 | −0.058 | +0.043 |
+| N45 \| C | −0.035 | −0.105 | +0.037 |
+| L \| G + C | −0.004 | −0.043 | +0.035 |
+| L_attr \| L_act + C | −0.007 | −0.047 | +0.035 |
+| G \| P + f0 + C | −0.006 | −0.046 | +0.037 |
+| G \| P⁺ | −0.006 | −0.044 | +0.041 |
+| G_attr \| G_free + C | −0.026 | −0.081 | +0.039 |
+
+**Power** (200 datasets each, under the main version):
+- z at β_5's coefficient: H1 0.39 at 0.035; S1 0.62 at 0.0167.
+- z at half of it: H1 0.12; S1 0.24.
+- L's residual direction at +0.04 oracle accuracy: H2 1.00 at 0.015.
+
+**What this means, written before p7_4 runs.** On these covariates the clustered
+GCM is slightly anti-conservative:
+- about 6–6.5% at nominal 5%, even for N45, which is pure noise;
+- 11–14% under the adversarial designs.
+
+Fixing the covariates and redrawing only the labels measures the size given
+these covariates. That size is what matters for this one dataset. Two causes are
+likely:
+- the Bernoulli residuals are skewed, and the sign-flip test assumes symmetry;
+- p̂'s systematic error meets fixed residuals.
+
+Version 2 did not help. By the rules of §3 and §6:
+- H1, H2, S1 and S2 are withdrawn. Their T is reported without a p, and each
+  counts as not rejected.
+- The closing comparison therefore rests on the corrected increments, which are
+  descriptive.
+- S3 alone keeps its test, at Holm's 0.0167 first.
+- The controls G5a and G5b keep their p because their gates need it; their
+  simulated sizes under version 2 were 7.5% and 7.6% at 0.05.
+
+**Deviation 1 (implementation, before any real label was read).** p7_4, as
+committed, still computed and printed a p for a withdrawn test. §3 says such a
+test reports its T without a p. It was changed after the simulation and before
+p7_4 ran:
+- a withdrawn test's p and its Romano–Wolf step are no longer computed;
+- its reading line says it was withdrawn. For a withdrawn primary test it gives
+  §5's not-rejected reading of the corrected increment, and notes when that
+  interval lies wholly above 0 (descriptive);
+- a reading line was added for the case where both primary tests are withdrawn.
+
+No test, threshold, block or estimate changed.
+
+**Hashes:**
+
+| file | sha256 |
+|---|---|
+| `data/results/closing/verify_p45.json` | `65ca821137d0949d75699d1f366bdb9dcee0eadb597866802fe8c2d08a0e97bc` |
+| `data/results/closing/gates.json` | `819a6a80bb69c9e37b9bbdd9c1a5fac52a5f5adaff331deedd4c0991c8161bfd` |
+| `data/results/closing/prepare.json` | `30a0ab45f819d9182e24609a2a5fc9a6c645cef21a8bb79ee215d9837c252886` |
+| `data/results/closing/blocks_matched.npz` | `ca3cdc4bdf8bc1107637eb13baeef08b2ee7da18808fbb0ad93fbda9477c261e` |
+| `data/results/closing/nuisance_matched.npz` | `bdd92819086b42ee3d818865ee9c440d8618d5df11803ab11af9e342b8d3d5bb` |
+| `data/results/closing/blocks_mutant.npz` | `8a83b3039a17f591b05413a8bbb84805905a51a37e6e483e6d9052a36ff5d00f` |
+| `data/results/closing/nuisance_mutant.npz` | `53661181a81ba7ccfa041b68b8b96b2d86687ac12785f4d7811a21b39529f5ff` |
+
+sizesim sha256: `7f067d7d0df3b53516930f4eaf0e5d63e518adeb172ebc932ca5033706365a65`
 
 ## 9. Results
 

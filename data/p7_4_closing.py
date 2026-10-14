@@ -176,6 +176,14 @@ def reading(res, sz):
         rej = prim[h]['rejected']
         e = res['estimates']['inc'][inc]
         lo, hi = e.get('ci_adj', e['ci'])
+        if prim[h]['withdrawn']:
+            lines.append(f"{h}: withdrawn by the size check (§6): no p; max |T| {prim[h]['S']:.2f}, descriptive. "
+                         f"Corrected {inc} increment {e.get('diff_adj', e['diff']):+.3f} [{lo:+.3f}, {hi:+.3f}]: "
+                         + ("beyond C it adds less than 0.05 in within-pair accuracy on these pairs"
+                            if hi < 0.05 else "a gain up to its upper bound is not excluded")
+                         + (" (the interval lies above 0: the forest ranks better with it; descriptive, "
+                            "no valid test of dependence)" if lo > 0 else ""))
+            continue
         if rej and lo > 0:
             lines.append(f"{h}: rejected; the {inc} increment, corrected for dilution, is above 0: it carries "
                          f"information beyond C and the forest ranks better with it. A second look at analysed "
@@ -194,7 +202,11 @@ def reading(res, sz):
             lines.append(f"{h}: the columns named are attribution-free (f0): read as forward-pass information.")
     r1, r2 = prim['H1']['rejected'], prim['H2']['rejected']
     dl = res['descriptive_T'].get('L|CG', {})
-    lines.append({(True, True): "together: information beyond C in the graph's summary and in the local quantities",
+    if prim['H1']['withdrawn'] and prim['H2']['withdrawn']:
+        lines.append("together: neither primary test held its size on these covariates (§6); the closing "
+                     "comparison rests on the corrected increments above, which are descriptive")
+    else:
+        lines.append({(True, True): "together: information beyond C in the graph's summary and in the local quantities",
                   (False, True): "together: L shows dependence beyond C; G43 is not shown to (at the power of §6). "
                                  f"L given C and G43: max |T| {dl.get('S', float('nan')):.2f} (descriptive); "
                                  "'the summary is too coarse' only if that holds up",
@@ -204,7 +216,10 @@ def reading(res, sz):
                                   "more than the edit's identity and the output distribution, at the power of §6"}
                  [(r1, r2)])
     s1 = res['secondary']['S1']
-    if s1['rejected']:
+    if s1['withdrawn']:
+        lines.append(f"S1: withdrawn by the size check: T {s1['T'][0]:+.2f} (descriptive; negative means the killed "
+                     "member's graph is the larger); beta_5's lead is neither confirmed nor refuted by a valid test")
+    elif s1['rejected']:
         lines.append(f"S1: rejected with T {s1['T'][0]:+.2f}: " + (
             "beta_5's lead survives a nonlinear adjustment for C; graph size carries information beyond C "
             "(a second test on the pairs that produced the lead, not a confirmation)" if s1['T'][0] < 0 else
@@ -213,12 +228,20 @@ def reading(res, sz):
         lines.append("S1: not rejected: beta_5's result is not reproduced under a nonlinear adjustment for C "
                      "(its baseline differed; power in sizesim.json)")
     s2, s3 = res['secondary']['S2'], res['secondary']['S3']
-    lines.append("S2: " + ("rejected: the attribution-dependent columns carry what the forward-pass probe P+ does not"
-                           if s2['rejected'] else "not rejected: beyond P+ the attribution is not shown to add; "
-                           f"A(PP) - A(G) {res['estimates']['inc']['PP-G']['diff']:+.3f} "
-                           f"{fmt(res['estimates']['inc']['PP-G']['ci'])} (no equivalence is claimed)"))
-    lines.append("S3: " + ("rejected: the attribution-dependent columns add to C and f0; feature 1 is a known lead"
-                           if s3['rejected'] else "not rejected: attribution is not shown to be needed beyond C and f0"))
+    ppg = (f"A(PP) - A(G) {res['estimates']['inc']['PP-G']['diff']:+.3f} "
+           f"{fmt(res['estimates']['inc']['PP-G']['ci'])} (no equivalence is claimed)")
+    if s2['withdrawn']:
+        lines.append(f"S2: withdrawn by the size check: max |T| {s2['S']:.2f} (descriptive); {ppg}")
+    else:
+        lines.append("S2: " + ("rejected: the attribution-dependent columns carry what the forward-pass probe P+ "
+                               "does not" if s2['rejected'] else
+                               f"not rejected: beyond P+ the attribution is not shown to add; {ppg}"))
+    if s3['withdrawn']:
+        lines.append(f"S3: withdrawn by the size check: max |T| {s3['S']:.2f} (descriptive)")
+    else:
+        lines.append("S3: " + ("rejected: the attribution-dependent columns add to C and f0; feature 1 is a known "
+                               "lead" if s3['rejected'] else
+                               "not rejected: attribution is not shown to be needed beyond C and f0"))
     g = res['estimates']['inc']['G-Gfree']
     if g['ci'][0] > 0:
         lines.append(f"A(G) - A(Gfree) {g['diff']:+.3f} {fmt(g['ci'])}: above 0: the attribution-dependent "
@@ -339,10 +362,19 @@ def main():
         ph[s] = pc.phat(pc.centred(Z[perm]), pc.live_levels(Z), groups[perm], problems, version=ver[s])[0]
     print(f"p-hat fitted on {sorted(ph)}: {time.time() - t0:.0f} s", flush=True)
 
-    def T(s, b, rw=False):
-        r = run_test(ph[s], nu, s, b, o, ver[s], eps, pprob, problems, rw)
+    def T(s, b, rw=False, withdrawn=False):
+        """A withdrawn test (§6) gets its T only: no p is computed."""
+        r = run_test(ph[s], nu, s, b, o, ver[s], None if withdrawn else eps, pprob, problems,
+                     rw and not withdrawn)
         r['names'] = name_cols(b, r['cols'])
+        r['withdrawn'] = withdrawn
         return r
+
+    def wdn(s, h):
+        return h in withdrawn.get(s, [])
+
+    def pstr(r):
+        return 'withdrawn (no p)' if r['withdrawn'] else f"p {r['p']:.4f}"
 
     # G5: controls
     res['G5a_N45'] = T('C', 'N45')
@@ -356,28 +388,25 @@ def main():
                        if res['G5b_shadow']['p'] < 0.01 else '')
 
     # primary family
-    prim = {'H1': T('C', 'G43', rw=True), 'H2': T('C', 'L', rw=True)}
-    p1 = None if 'H1' in withdrawn.get('C', []) else prim['H1']['p']
-    p2 = None if 'H2' in withdrawn.get('C', []) else prim['H2']['p']
-    r1, r2 = pc.weighted_holm2(p1, p2)
+    prim = {'H1': T('C', 'G43', rw=True, withdrawn=wdn('C', 'H1')),
+            'H2': T('C', 'L', rw=True, withdrawn=wdn('C', 'H2'))}
+    r1, r2 = pc.weighted_holm2(prim['H1'].get('p'), prim['H2'].get('p'))
     for h, rej in (('H1', r1), ('H2', r2)):
         prim[h]['rejected'] = rej
-        prim[h]['withdrawn'] = (p1 if h == 'H1' else p2) is None
         if rej:
             prim[h]['named'] = [n for n, q in zip(prim[h]['names'], prim[h]['rw_p']) if q <= 0.05]
     res['primary'] = prim
-    print(f"H1 G43|C: max|T| {prim['H1']['S']:.3f} p {prim['H1']['p']:.4f} rejected {r1}; "
-          f"H2 L|C: max|T| {prim['H2']['S']:.3f} p {prim['H2']['p']:.4f} rejected {r2}", flush=True)
+    print(f"H1 G43|C: max|T| {prim['H1']['S']:.3f} {pstr(prim['H1'])} rejected {r1}; "
+          f"H2 L|C: max|T| {prim['H2']['S']:.3f} {pstr(prim['H2'])} rejected {r2}", flush=True)
 
     # secondary family
-    sec = {'S1': T('C', 'z'), 'S2': T('PP', 'GATTR'), 'S3': T('CF', 'GATTR')}
-    wd = {'S1': 'S1' in withdrawn.get('C', []), 'S2': 'S2' in withdrawn.get('PP', []),
-          'S3': 'S3' in withdrawn.get('CF', [])}
-    rej = pc.holm([None if wd[k] else sec[k]['p'] for k in ('S1', 'S2', 'S3')])
+    sec = {'S1': T('C', 'z', withdrawn=wdn('C', 'S1')), 'S2': T('PP', 'GATTR', withdrawn=wdn('PP', 'S2')),
+           'S3': T('CF', 'GATTR', withdrawn=wdn('CF', 'S3'))}
+    rej = pc.holm([sec[k].get('p') for k in ('S1', 'S2', 'S3')])
     for k, rr in zip(('S1', 'S2', 'S3'), rej):
-        sec[k]['rejected'], sec[k]['withdrawn'] = rr, wd[k]
+        sec[k]['rejected'] = rr
     res['secondary'] = sec
-    print("secondary: " + "; ".join(f"{k} max|T| {sec[k]['S']:.3f} p {sec[k]['p']:.4f} rejected {sec[k]['rejected']}"
+    print("secondary: " + "; ".join(f"{k} max|T| {sec[k]['S']:.3f} {pstr(sec[k])} rejected {sec[k]['rejected']}"
                                     for k in sec), flush=True)
 
     # descriptive T (no p is read)
@@ -398,10 +427,11 @@ def main():
         rs = int(pc.rng(8, j).integers(2 ** 31))
         phj = pc.phat(pc.centred(B['C'][perm]), pc.live_levels(B['C']), groups[perm], problems,
                       version=ver['C'], perm_seed=ps, rf_seed=rs)[0]
-        alt.append({h: run_test(phj, nu, 'C', b, o, ver['C'], eps, pprob, problems)
+        alt.append({h: run_test(phj, nu, 'C', b, o, ver['C'], None if wdn('C', h) else eps, pprob, problems)
                     for h, b in (('H1', 'G43'), ('H2', 'L'), ('S1', 'z'))})
     res['phat_seed_sensitivity'] = {h: {'S': [min(a[h]['S'] for a in alt), max(a[h]['S'] for a in alt)],
-                                        'p': [min(a[h]['p'] for a in alt), max(a[h]['p'] for a in alt)]}
+                                        'p': None if wdn('C', h) else [min(a[h]['p'] for a in alt),
+                                                                       max(a[h]['p'] for a in alt)]}
                                     for h in ('H1', 'H2', 'S1')}
     print(f"tests done: {time.time() - t0:.0f} s", flush=True)
 

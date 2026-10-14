@@ -1,0 +1,27 @@
+[2026-10-14 08:25:09 JST] start verify; C: free 421 GB
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+358 pairs over 103 problems; rustc 1.98.1 (48a229cea 2026-09-01); 6 workers
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+Using the latest cached version of the dataset since mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'sanitized' at /home/user1/.cache/huggingface/datasets/mbpp/sanitized/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Thu Sep 17 16:01:38 2026).
+  references and 923 calibration/source runs: 34 s
+  survivors judged: 67 s
+  Phase 5: 259 pairs: survivors {'verified': 129, 'lucky': 64, 'error': 0, 'unverifiable': 66}; sources {'verified': 187, 'lucky': 6, 'error': 0, 'unverifiable': 66}; rule A survivors {'verified': 132, 'lucky': 61, 'error': 0, 'unverifiable': 66}
+  Phase 4: 98 pairs: survivors {'verified': 48, 'lucky': 20, 'error': 0, 'unverifiable': 30}; sources {'verified': 66, 'lucky': 2, 'error': 0, 'unverifiable': 30}; rule A survivors {'verified': 49, 'lucky': 22, 'error': 0, 'unverifiable': 27}
+G4: rule A compared on 47 problems; count mismatches []; identical kept inputs 47; passed; 67 s
+[2026-10-14 08:26:26 JST] end verify, exit 0
+               total        used        free      shared  buff/cache   available
+Mem:             106           1         102           0           2         104
+C:\                 953G  533G      421G  56% /mnt/c

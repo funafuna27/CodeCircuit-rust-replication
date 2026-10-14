@@ -1,0 +1,18 @@
+[2026-10-14 08:26:26 JST] start prepare; C: free 421 GB
+  G1 Phase 5 G: A 0.640927, published 0.640927, equal True
+  G1 Phase 5 E: A 0.675676, published 0.675676, equal True
+  G1 Phase 5 GE: A 0.687259, published 0.687259, equal True
+  G1 Phase 5 S2P: A 0.648649, published 0.648649, equal True
+  G1 seeded forest equals w3.oof: True
+  G1 Phase 4 G: A 0.673469, published 0.673469, equal True
+  G1 Phase 4 E: A 0.642857, published 0.642857, equal True
+  G1 Phase 4 GE: A 0.678571, published 0.678571, equal True
+  C+ gate: c 0.00491733 beta_5 -0.4606 [-0.8970, -0.0242] S_U -13.183; 55 columns; reproduces reference.json: True
+G1 passed; C+ usable; 47 s
+  Phase 5: blocks and 16 nuisance sets saved; P's 45 directions hold 0.737 of the differences' sum of squares; 535 s
+  Phase 4: blocks and 3 nuisance sets saved; P's 45 directions hold 0.873 of the differences' sum of squares; 576 s
+done; 577 s
+[2026-10-14 08:36:03 JST] end prepare, exit 0
+               total        used        free      shared  buff/cache   available
+Mem:             106           1         102           0           2         104
+C:\                 953G  533G      421G  56% /mnt/c
