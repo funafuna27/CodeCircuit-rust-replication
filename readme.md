@@ -1,3 +1,15 @@
+> **This is not the authors' repository.** It is a fork of
+> [bruno686/CodeCircuit](https://github.com/bruno686/CodeCircuit), the code
+> for He et al. 2026 ([arXiv:2602.07080](https://arxiv.org/abs/2602.07080)),
+> extended with an independent replication. The replication starts at
+> [Replication log (this fork)](#replication-log-this-fork). The sections above
+> that heading are the upstream README as it was, and "we" there means the
+> paper's authors. The upstream code remains its authors' work; the upstream
+> repository states no license. The OpenAI keys that came with the upstream
+> `data/1_code_correct.py` have been removed from the whole history, so commit
+> hashes here differ from the ones cited in the pre-registrations; see
+> [PUBLIC_COPY.md](PUBLIC_COPY.md).
+
 # CodeCircuit 🔍
 
 ### Toward Inferring LLM-Generated Code Correctness via Attribution Graphs
