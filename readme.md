@@ -59,6 +59,56 @@ model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
 Phase 5's retained pairs, against cheap signals and a probe of the same forward
 pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14).
 
+## Erratum (2026-10-14): the Rust judge passed infinite results
+
+The Rust judge (`data/1_rust_correct.py`) applies MBPP's `math.isclose` rule to an f64 result as
+`v == e || (v - e).abs() <= 1e-3 * v.abs().max(e.abs())`. When the program returns ±inf, both
+sides are infinite and the assert passes; Python's `isclose` fails it. Only the 11 typeable
+tasks that return f64 and use `isclose` are exposed (82, 85, 137, 139, 163, 233, 246, 248, 276,
+300, 312). The bug was found while designing Phase 8. Every item a phase labelled passing in those
+tasks was judged again, with the judge unchanged (it reproduced every stored label) and with the
+tolerant branch requiring finite values (`data/erratum_inf/`, outputs in
+`data/results/erratum_inf/`):
+
+| phase | labelled passing in the 11 tasks | false passes | effect on the analysed set |
+|---|---|---|---|
+| 1 (Python) | — | — | none: Python's own `isclose` |
+| 2 | 4 responses | 0 | none |
+| 3 | 34 samples | 1 (task 248) | none of the 89 pairs |
+| 4 | 1 survivor | 1 | 1 of 98 pairs (task 248, source 3) has two failing members |
+| 5 | 29 samples, 3 survivors | 3 survivors | 1 of 259 pairs (task 248, source 15) |
+| 6 | 42 repairs | 33 (tasks 137, 248) | verified repairs 304 → 271; repairs right only on the asserts 275 of 546 checkable (50%, was 47%); pairs 49 → 41, all 8 lost being fallback pairs (strict 20 unchanged); the gate is missed either way |
+| 7 | — | — | inherits Phase 5's pair, and Phase 4's in its descriptive section; the false survivors had been "verified" by the same check (129 → 128 verified) |
+
+Phases 4, 5 and 7 were rerun without the affected pair, their scripts unchanged (Phase 7's
+reproduction gates and provenance guard bypassed by a wrapper, its size simulation reused).
+Dropping a pair reassigns the grouped folds, so the forest-based numbers move by about as much as
+Phase 7's refits did. No pre-registered reading changes:
+
+| | published | without the pair |
+|---|---|---|
+| Phase 4 A (primary) | 0.469 [0.367, 0.571], p 0.723 | 0.500 [0.402, 0.598], p 0.426 |
+| Phase 4 centred graph features | 0.674, p 0.010 | 0.722, p 0.010 |
+| Phase 4 surprise alone, centred | 0.694, p 0.010 | 0.680, p 0.020 |
+| Phase 4 centred, surprise removed (post hoc) | 0.592, p 0.139 | 0.598, p 0.069 |
+| Phase 5 centred graph features | 0.641 [0.562, 0.717], p 0.004 | 0.669 [0.594, 0.742], p 0.002 |
+| Phase 5 with the remaining surprise removed | 0.639, p 0.005 | 0.655, p 0.005 |
+| Phase 5 surprise alone, centred | 0.591, p 0.005 | 0.574, p 0.040 |
+| Phase 5 output distribution / edit identity | 0.649 / 0.676 | 0.643 / 0.667 |
+| Phase 5 graph added to edit identity | +0.012 [−0.074, +0.098] | +0.023 [−0.072, +0.113] |
+| Phase 6 β_5 (post hoc, on Phase 5's pairs) | −0.461 [−0.897, −0.024] | −0.458 [−0.895, −0.022] |
+| Phase 7 C / graph / probe P | 0.707 / 0.641 / 0.685 | 0.729 / 0.669 / 0.733 |
+| Phase 7 graph added to C, corrected | +0.002 [−0.072, +0.074] | −0.015 [−0.095, +0.061] |
+| Phase 7 S3 | p 0.024, not rejected | p 0.052, not rejected |
+| Phase 7 A(G) − A(G_free) | +0.100 [+0.000, +0.200], undecided | +0.134 [+0.030, +0.236], above 0 |
+| Phase 7 graph, verified − lucky survivors | +0.25 [+0.05, +0.44] | +0.19 [+0.00, +0.37] |
+
+One descriptive reading changes: without the pair, the attribution-dependent graph columns
+contribute to the centred accuracy (A(G) − A(G_free) above 0), where the published run left it
+undecided. The rest stands: the graph adds nothing measurable to the cheap signals, the probe does
+as well as the graph, Phase 4 is null and Phase 6 misses its gate. The numbers in the sections
+below are as published; Phase 8 uses the finite-aware judge throughout.
+
 ## Where this stands
 
 The paper's number reproduces — 79.73% against 79.89% — but it is a row-level

@@ -1,0 +1,55 @@
+98 pairs; 97 have both graphs (1 dropped for a missing graph)
+  chars survivor - killed: mean +0.02
+  code log-probability, killed - survivor: mean -3.060, median -2.847, killed lower in 0.72 of pairs, Wilcoxon p 0.0000
+
+=== A: within-pair accuracy (primary) ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  graph features               A = 0.5000  95% CI [0.4021, 0.5979]   label-swap refits: mean 0.4924, sd 0.0592;  p = 0.4257
+
+=== S1: within-pair surprise removed ===
+  surprise and chars explain 0.170 of the within-pair feature variance
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  surprise removed             A = 0.5000  95% CI [0.4021, 0.5979]   label-swap refits: mean 0.4865, sd 0.0587;  p = 0.3861
+
+=== S2: the model's surprise alone ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  surprise only                A = 0.5567  95% CI [0.4588, 0.6546]   label-swap refits: mean 0.4956, sd 0.0620;  p = 0.1980
+
+=== descriptive: per-feature paired differences (Wilcoxon, BH) ===
+  features with q < 0.1: 23 of 49
+    dim  9  median survivor - killed -1  q 3.52e-05
+    dim  1  median survivor - killed -9  q 0.000231
+    dim 44  median survivor - killed -2.073e-06  q 0.000231
+    dim 17  median survivor - killed -1  q 0.000587
+    dim  2  median survivor - killed -5  q 0.000729
+    dim 45  median survivor - killed +4.501e-07  q 0.00108
+    dim  6  median survivor - killed -3.431  q 0.0014
+    dim 43  median survivor - killed +0.001142  q 0.00254
+    dim 41  median survivor - killed +0.000571  q 0.00254
+    dim 40  median survivor - killed -1.172e+04  q 0.00328
+    dim 11  median survivor - killed -2  q 0.00541
+    dim 12  median survivor - killed -1  q 0.00541
+    dim 37  median survivor - killed -122  q 0.0145
+    dim 14  median survivor - killed -1  q 0.0298
+    dim  5  median survivor - killed +8.982e-05  q 0.036
+    dim 25  median survivor - killed +0  q 0.0418
+    dim 26  median survivor - killed +0  q 0.0547
+    dim 32  median survivor - killed +0  q 0.0547
+    dim 18  median survivor - killed +0  q 0.06
+    dim 13  median survivor - killed -1  q 0.0673
+    dim 29  median survivor - killed +0  q 0.0724
+    dim 36  median survivor - killed +0  q 0.0774
+    dim  8  median survivor - killed +0  q 0.0774
+
+=== reading (PREREGISTRATION_MUTANT.md §5) ===
+  not detectable at this n -- not evidence of absence
+  resolvable at 80% power, one-sided 0.05: A ~ 0.626 (normal approximation, n = 97 pairs)

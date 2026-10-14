@@ -1,0 +1,15 @@
+matched: local 518 -> 516 rows; posmean (518, 425984) -> (516, 425984); extra keys []
+mutant: local 196 -> 194 rows; posmean (196, 425984) -> (194, 425984); extra keys []
+  G1 Phase 5 G: A 0.668605, published 0.640927, equal False
+  G1 Phase 5 E: A 0.666667, published 0.675676, equal False
+  G1 Phase 5 GE: A 0.689922, published 0.687259, equal False
+  G1 Phase 5 S2P: A 0.643411, published 0.648649, equal False
+  G1 seeded forest equals w3.oof: True
+  G1 Phase 4 G: A 0.721649, published 0.673469, equal False
+  G1 Phase 4 E: A 0.649485, published 0.642857, equal False
+  G1 Phase 4 GE: A 0.701031, published 0.678571, equal False
+  C+ gate: c 0.00492606 beta_5 -0.4583 [-0.8952, -0.0215] S_U -13.036; 55 columns; reproduces reference.json: False
+G1 passed; C+ usable; 58 s
+  Phase 5: blocks and 16 nuisance sets saved; P's 45 directions hold 0.738 of the differences' sum of squares; 553 s
+  Phase 4: blocks and 3 nuisance sets saved; P's 45 directions hold 0.875 of the differences' sum of squares; 592 s
+done; 592 s

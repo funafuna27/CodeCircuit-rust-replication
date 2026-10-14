@@ -375,3 +375,7 @@ both minus edit identity = +0.036 [−0.097, +0.168], from a bootstrap over
 problems. So Phase 4's centred graph signal is not shown to exceed the edits'
 surface identity, as it is not shown to exceed the model's surprise (§9c).
 `results/mutant/edit_baseline.*`, `results/mutant/beyond_edit_posthoc.*`.
+
+## Erratum (2026-10-14)
+
+The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). One of the 98 analysed pairs (task 248, source 3) has a survivor that only returns inf, so both members fail. Without it (`data/results/erratum_inf/`): A 0.500 [0.402, 0.598], p 0.426 (published 0.469, p 0.723); the reading is unchanged.

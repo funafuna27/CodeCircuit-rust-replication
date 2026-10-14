@@ -1,0 +1,6 @@
+97 pairs over 97 problems (exploratory)
+  G   A = 0.7216
+  E   A = 0.6495
+  GE  A = 0.7010
+  G-E   +0.0722  95% CI [-0.0619, +0.2062]
+  GE-E  +0.0515  95% CI [-0.0825, +0.1856]

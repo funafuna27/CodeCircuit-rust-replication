@@ -1,0 +1,18 @@
+97 pairs analysed (1 dropped for a missing graph)
+  code log-probability, survivor - killed: mean +3.060, sd 6.765, killed lower in 0.722; S1 absorbs about f = 0.170
+  same family 0.897, same site 0.567; killed by: wrong value 90, panic in a call 5, timeout 2
+  within-pair R^2 of [log-prob, chars]: pooled 0.170 (feature 40 holds 1.000 of the pooled sum of squares); per feature median 0.040, IQR 0.020-0.104
+
+=== Ac: graph features centred within each pair ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  graph features, centred      A = 0.7216  95% CI [0.6289, 0.8044]   label-swap refits: mean 0.4918, sd 0.0618;  p = 0.0099
+
+=== S2c: [code log-probability, chars] centred within each pair ===
+    25/100 refits
+    50/100 refits
+    75/100 refits
+    100/100 refits
+  surprise, centred            A = 0.6804  95% CI [0.5876, 0.7732]   label-swap refits: mean 0.5048, sd 0.0703;  p = 0.0198

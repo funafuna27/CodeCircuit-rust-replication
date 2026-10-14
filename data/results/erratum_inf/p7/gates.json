@@ -1,0 +1,57 @@
+{
+ "G1_phase5": {
+  "G": {
+   "A": 0.6686046511627907,
+   "published": 0.640926640926641,
+   "equal": false
+  },
+  "E": {
+   "A": 0.6666666666666666,
+   "published": 0.6756756756756757,
+   "equal": false
+  },
+  "GE": {
+   "A": 0.689922480620155,
+   "published": 0.6872586872586872,
+   "equal": false
+  },
+  "S2P": {
+   "A": 0.6434108527131783,
+   "published": 0.6486486486486487,
+   "equal": false
+  },
+  "self_test": true,
+  "erratum": "recorded only: the 259-pair reproduction gate cannot hold on 258 pairs"
+ },
+ "G1_phase4": {
+  "G": {
+   "A": 0.7216494845360825,
+   "published": 0.673469387755102,
+   "equal": false
+  },
+  "E": {
+   "A": 0.6494845360824743,
+   "published": 0.6428571428571429,
+   "equal": false
+  },
+  "GE": {
+   "A": 0.7010309278350515,
+   "published": 0.6785714285714286,
+   "equal": false
+  },
+  "erratum": "recorded only: the 259-pair reproduction gate cannot hold on 258 pairs"
+ },
+ "G1": "passed",
+ "cplus": {
+  "c": 0.00492606096023287,
+  "beta_5": -0.4583281824876349,
+  "beta_5_ci": [
+   -0.8951759835761026,
+   -0.021480381399167248
+  ],
+  "S_U": -13.036192885284134,
+  "columns": 55,
+  "erratum": "recorded only (reproduces reference.json: False)"
+ },
+ "cplus_ok": true
+}

@@ -1,0 +1,1835 @@
+[
+{
+"phase": "P2 response",
+"task_id": 82,
+"sample": null,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P2 response",
+"task_id": 137,
+"sample": null,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P2 response",
+"task_id": 139,
+"sample": null,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P2 response",
+"task_id": 248,
+"sample": null,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 82,
+"sample": 12,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 82,
+"sample": 18,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 85,
+"sample": 16,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 137,
+"sample": 7,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 137,
+"sample": 10,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 0,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 1,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 2,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 3,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 4,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 5,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 6,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 7,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 8,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 10,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 11,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 12,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 13,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 14,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 15,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 16,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 17,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 18,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 139,
+"sample": 19,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 233,
+"sample": 14,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 233,
+"sample": 15,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 3,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 4,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 7,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 9,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 12,
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 14,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 15,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P3 sample",
+"task_id": 248,
+"sample": 17,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 85,
+"sample": 23,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 137,
+"sample": 22,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 137,
+"sample": 25,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 137,
+"sample": 34,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 20,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 21,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 22,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 23,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 24,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 25,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 26,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 27,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 28,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 30,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 31,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 32,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 34,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 35,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 36,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 38,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 139,
+"sample": 39,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 23,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 24,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 25,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 26,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 28,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 31,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 33,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P5 sample",
+"task_id": 248,
+"sample": 36,
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P4 mutant",
+"task_id": 248,
+"sample": 3,
+"pos": 66,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P5 mutant",
+"task_id": 248,
+"sample": 12,
+"pos": 95,
+"frm": "+=",
+"to": "-=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P5 mutant",
+"task_id": 248,
+"sample": 15,
+"pos": 71,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P5 mutant",
+"task_id": 248,
+"sample": 36,
+"pos": 70,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 11,
+"pos": 109,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 11,
+"pos": 128,
+"frm": "+=",
+"to": "*=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 11,
+"pos": 128,
+"frm": "+=",
+"to": "/=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 11,
+"pos": 128,
+"frm": "+=",
+"to": "%=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 11,
+"pos": 131,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 18,
+"pos": 264,
+"frm": "+",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 0,
+"pos": 66,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 0,
+"pos": 66,
+"frm": "2",
+"to": "1",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 5,
+"pos": 64,
+"frm": "-",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 20,
+"pos": 66,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 20,
+"pos": 66,
+"frm": "2",
+"to": "1",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 49,
+"pos": 106,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 60,
+"pos": 119,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 60,
+"pos": 144,
+"frm": "+=",
+"to": "*=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 60,
+"pos": 144,
+"frm": "+=",
+"to": "/=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 60,
+"pos": 144,
+"frm": "+=",
+"to": "%=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 60,
+"pos": 147,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 66,
+"pos": 60,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 66,
+"pos": 99,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 76,
+"pos": 67,
+"frm": "-",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 88,
+"pos": 70,
+"frm": "-",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 119,
+"pos": 123,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 119,
+"pos": 148,
+"frm": "+=",
+"to": "*=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 119,
+"pos": 148,
+"frm": "+=",
+"to": "/=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 119,
+"pos": 148,
+"frm": "+=",
+"to": "%=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 119,
+"pos": 151,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 103,
+"pos": 65,
+"frm": "*",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 107,
+"pos": 98,
+"frm": "-",
+"to": "%",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 124,
+"pos": 64,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 124,
+"pos": 64,
+"frm": "2",
+"to": "1",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 142,
+"pos": 75,
+"frm": "2",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 248,
+"sample": 142,
+"pos": 75,
+"frm": "2",
+"to": "1",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 167,
+"pos": 123,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 167,
+"pos": 142,
+"frm": "+=",
+"to": "*=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 167,
+"pos": 142,
+"frm": "+=",
+"to": "/=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 167,
+"pos": 142,
+"frm": "+=",
+"to": "%=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 167,
+"pos": 145,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 168,
+"pos": 141,
+"frm": "==",
+"to": "!=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+true,
+3,
+""
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 168,
+"pos": 166,
+"frm": "+=",
+"to": "*=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 168,
+"pos": 166,
+"frm": "+=",
+"to": "/=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 168,
+"pos": 166,
+"frm": "+=",
+"to": "%=",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+},
+{
+"phase": "P6 mutant",
+"task_id": 137,
+"sample": 168,
+"pos": 169,
+"frm": "1",
+"to": "0",
+"old": [
+true,
+3,
+""
+],
+"new": [
+false,
+0,
+"FAIL 0 FAIL 1 FAIL 2"
+]
+}
+]

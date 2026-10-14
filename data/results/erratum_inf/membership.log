@@ -1,0 +1,11 @@
+Phase 3 pairs with a false passing member: []
+Phase 4 pairs with a false survivor: [(248, 3, 24800, {'line': 2, 'from': '1', 'to': '0', 'family': 'integer'})]
+   Phase 4 sources that are false-passing samples: []
+Phase 5 pairs with a false survivor: [(248, 15, 2480150, {'pos': 71, 'line': 2, 'from': '1', 'to': '0', 'family': 'integer'})]
+   Phase 5 sources that are false-passing samples: []
+Phase 6 pairs with a false repair: [(137, 168, 'fallback', 0, {'pos': 169, 'line': 5, 'from': '1', 'to': '0', 'family': 'integer'}), (137, 11, 'fallback', 3, {'pos': 128, 'line': 5, 'from': '+=', 'to': '*=', 'family': 'compound'}), (137, 60, 'fallback', 3, {'pos': 144, 'line': 5, 'from': '+=', 'to': '/=', 'family': 'compound'}), (137, 18, 'fallback', 3, {'pos': 264, 'line': 10, 'from': '+', 'to': '%', 'family': 'arithmetic'}), (248, 66, 'fallback', 0, {'pos': 99, 'line': 2, 'from': '2', 'to': '0', 'family': 'integer'}), (248, 76, 'fallback', 2, {'pos': 67, 'line': 1, 'from': '-', 'to': '%', 'family': 'arithmetic'}), (248, 88, 'fallback', 2, {'pos': 70, 'line': 1, 'from': '-', 'to': '%', 'family': 'arithmetic'}), (248, 107, 'fallback', 2, {'pos': 98, 'line': 2, 'from': '-', 'to': '%', 'family': 'arithmetic'})]
+   by rule: {'strict': 0, 'fallback': 8} of 49 pairs
+Phase 6 verify status of the false repairs: Counter({'True': 33, 'None': 4})
+verify_p45 top-level keys: ['rustc', 'workers', 'seconds', 'only', 'gate_G4', 'summary', 'problems', 'pairs']
+   P7 entry mentions pass_id 2480150 : True
+   P7 entry mentions P4 pass_id 24800 : True

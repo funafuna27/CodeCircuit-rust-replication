@@ -1195,3 +1195,7 @@ intervals. Their upper bound, about +0.07, does not exclude a modest gain.
 
 The limits of §7 apply in full. Above all, this is a second look at the 78
 problems that produced Phase 5's leads.
+
+## Erratum (2026-10-14)
+
+The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). Phase 5's pair 2480150/2480151 (and Phase 4's 24800/24801) has a survivor that only returns inf; it had been "verified" by the same check. Rerun without them, scripts unchanged except a wrapper that bypasses the 259-pair reproduction gates and the guard (`data/erratum_inf/e7_rerun.py`, outputs in `data/results/erratum_inf/p7/`): G added to C, corrected, −0.015 [−0.095, +0.061]; S3 p 0.052, not rejected; A(G) − A(G_free) +0.134 [+0.030, +0.236], which now reads "above 0" instead of "undecided". Every other reading is unchanged.

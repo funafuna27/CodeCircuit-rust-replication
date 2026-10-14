@@ -1,0 +1,5 @@
+verify statuses (BAD = inf-only): {'False': 275, 'True': 271, 'None': 792, 'BAD True': 33}
+verified 304 -> 271; lucky 275; unverifiable 792; checkable 579 -> 546; lucky share 0.475 -> 0.504
+stable repairs 1371 -> 1338
+sources with a stable repair 525 -> 517 ; problems 78 -> 78
+pairs 49 -> 41 ; problems 25 -> 23 ; strict 20 -> 20

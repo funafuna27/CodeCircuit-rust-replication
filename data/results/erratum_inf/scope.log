@@ -1,0 +1,13 @@
+typeable 350 f64 21 f64 with an isclose case 11 [82, 85, 137, 139, 163, 233, 246, 248, 276, 300, 312]
+inf -> true
+-inf -> true
+NaN -> false
+5.0 -> true
+5.004 -> true
+
+gemma_mbpp_rust_correctness.jsonl: rows 350 keys ['compiles', 'error', 'graded_all_tests', 'n_assert', 'n_mbpp_asserts', 'n_pass', 'passes', 'stage', 'task_id'] | id task_id pass-key passes | rows in isclose tasks 11, passing 4 [(82, 1), (85, 1), (137, 1), (139, 1), (163, 1), (233, 1), (246, 1), (248, 1), (276, 1), (300, 1), (312, 1)]
+within_labels.jsonl: rows 6680 keys ['compiles', 'error', 'n_pass', 'passes', 'sample', 'stage', 'task_id'] | id task_id pass-key passes | rows in isclose tasks 220, passing 34 [(82, 20), (85, 20), (137, 20), (139, 20), (163, 20), (233, 20), (246, 20), (248, 20), (276, 20), (300, 20), (312, 20)]
+mutants_judged.jsonl: rows 4563 keys ['code', 'compiles', 'error', 'family', 'from', 'line', 'n_pass', 'passes', 'pos', 'sample', 'stage', 'task_id', 'to', 'tokens'] | id task_id pass-key passes | rows in isclose tasks 265, passing 1 [(139, 152), (82, 40), (137, 27), (233, 24), (85, 12), (248, 10)]
+matched_labels_r1.jsonl: rows 3280 keys ['compiles', 'error', 'n_pass', 'passes', 'sample', 'stage', 'task_id'] | id task_id pass-key passes | rows in isclose tasks 120, passing 29 [(82, 20), (85, 20), (137, 20), (139, 20), (233, 20), (248, 20)]
+matched_mutants.jsonl: rows 10481 keys ['code', 'compiles', 'error', 'family', 'from', 'line', 'n_pass', 'passes', 'pos', 'sample', 'stage', 'task_id', 'to', 'tokens'] | id task_id pass-key passes | rows in isclose tasks 215, passing 3 [(137, 61), (139, 56), (248, 30), (85, 24), (233, 24), (82, 20)]
+results/ownfix/data/ownfix_mutants.jsonl.gz: rows 128369 keys ['code', 'compiles', 'error', 'family', 'from', 'is_c', 'is_r', 'line', 'live', 'n_pass', 'output_identical', 'passes', 'pos', 'sample'] | id task_id pass-key passes | rows in isclose tasks 2615, passing 42 [(163, 810), (300, 536), (312, 402), (248, 302), (137, 241), (82, 184), (85, 104), (233, 36)]

@@ -350,3 +350,7 @@ well or better: what else the model's output distribution says about the code
 (0.676) and to which the graph adds nothing measurable (+0.012). The graph
 carries information about these injected errors; it is not shown to carry
 information that the output distribution or the edit's surface identity do not.
+
+## Erratum (2026-10-14)
+
+The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). One of the 259 pairs (task 248, source 15) has a survivor that only returns inf. Without it (`data/results/erratum_inf/`): Ac 0.669, p 0.002; S1c 0.655, p 0.005; S2c 0.574, p 0.040 (published 0.641, 0.639, 0.591); the §5 reading is unchanged.

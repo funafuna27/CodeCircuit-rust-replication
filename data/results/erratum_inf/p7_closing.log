@@ -1,0 +1,21 @@
+matched: local 518 -> 516 rows; posmean (518, 425984) -> (516, 425984); extra keys []
+mutant: local 196 -> 194 rows; posmean (196, 425984) -> (194, 425984); extra keys []
+p-hat fitted on ['C', 'C63', 'CF', 'CG', 'CL', 'CPL', 'PP']: 40 s
+G5a N45|C p 0.4039; G5b shadow|C p 0.0990
+H1 G43|C: max|T| 2.924 withdrawn (no p) rejected False; H2 L|C: max|T| 2.487 withdrawn (no p) rejected False
+secondary: S1 max|T| 1.763 withdrawn (no p) rejected False; S2 max|T| 2.324 withdrawn (no p) rejected False; S3 max|T| 3.002 p 0.0516 rejected False
+tests done: 97 s
+estimates done: 268 s
+refit sensitivity done: 1971 s
+verification readout: used; 1990 s
+
+=== reading (PREREGISTRATION_CLOSING.md §5) ===
+  H1: withdrawn by the size check (§6): no p; max |T| 2.92, descriptive. Corrected G|C increment -0.015 [-0.095, +0.061]: a gain up to its upper bound is not excluded
+  H2: withdrawn by the size check (§6): no p; max |T| 2.49, descriptive. Corrected L|C increment -0.002 [-0.046, +0.042]: beyond C it adds less than 0.05 in within-pair accuracy on these pairs
+  together: neither primary test held its size on these covariates (§6); the closing comparison rests on the corrected increments above, which are descriptive
+  S1: withdrawn by the size check: T -1.76 (descriptive; negative means the killed member's graph is the larger); beta_5's lead is neither confirmed nor refuted by a valid test
+  S2: withdrawn by the size check: max |T| 2.32 (descriptive); A(PP) - A(G) +0.041 [-0.047, +0.130] (no equivalence is claimed)
+  S3: not rejected: attribution is not shown to be needed beyond C and f0
+  A(G) - A(Gfree) +0.134 [+0.030, +0.236]: above 0: the attribution-dependent columns contribute to Ac
+
+analysis.json sha256 7de47b38f51bdfe2875bea9e36714983745c6f748c8456c06af6894d8445de95; 2098 s

@@ -383,3 +383,7 @@ about half of those repairs are right only on the asserts, and a clean contrast
 same code — exists for only 20 of them. At this scale the question Phase 6
 asked, whether the graph reads the correctness of the model's own errors beyond
 cheaper signals, cannot be answered this way.
+
+## Erratum (2026-10-14)
+
+The Rust judge passed ±inf on its `isclose` branch (readme, "Erratum"). 33 of the 304 verified repairs (tasks 137 and 248) only return inf: verified repairs are 271, repairs right only on the asserts 275 of 546 checkable (50%), pairs 41 (strict 20 unchanged). The gate is missed either way. β_5 without Phase 5's affected pair: −0.458 [−0.895, −0.022].
