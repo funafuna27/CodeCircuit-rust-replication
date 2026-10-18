@@ -1,0 +1,159 @@
+{
+ "site_id": "266|155|76",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "1..a0 {\n        area += 2 * a0 * a0;\n    }\n    return area;\n}",
+   "tokens": 28,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": "1..=a0 {\n        area += 2 * i * (a0 - i);\n    }\n    return area;\n}",
+   "tokens": 31,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": "1..=6 {\n        area += 2 * a0 * a0;\n    }\n    return area;\n}",
+   "tokens": 28,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "0..4 {\n        area += 2 * a0 * a0;\n    }\n    return area;\n}",
+   "tokens": 27,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 88,
+ "collateral": {
+  "repair_to": "2",
+  "repair_label": "unverifiable",
+  "repair_token": 235284,
+  "positions": 25,
+  "G": 2,
+  "G_k": 193,
+  "RNDk": [
+   1,
+   1,
+   0,
+   0,
+   1,
+   0,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   1,
+   0
+  ],
+  "teacher_agree_clean": 21
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 13,
+  "t_star_id": 235274,
+  "t_star_piece": "1",
+  "margin_at_kstar": -0.5482692718505859,
+  "scan_replay_disagree": 1,
+  "n_candidates": 27013,
+  "K": 1024,
+  "ablated": [
+   [
+    20,
+    50,
+    639,
+    26.125
+   ],
+   [
+    24,
+    50,
+    201,
+    70.0
+   ],
+   [
+    21,
+    50,
+    1311,
+    17.25
+   ],
+   [
+    21,
+    50,
+    12377,
+    29.625
+   ],
+   [
+    18,
+    50,
+    8309,
+    23.625
+   ],
+   [
+    20,
+    50,
+    3488,
+    26.0
+   ],
+   [
+    24,
+    50,
+    16054,
+    11.5625
+   ],
+   [
+    23,
+    50,
+    12597,
+    19.625
+   ],
+   [
+    22,
+    50,
+    7479,
+    8.625
+   ],
+   [
+    25,
+    51,
+    13757,
+    23.375
+   ],
+   [
+    22,
+    50,
+    1576,
+    27.375
+   ],
+   [
+    23,
+    51,
+    13382,
+    83.5
+   ],
+   [
+    17,
+    50,
+    7126,
+    46.75
+   ]
+  ],
+  "completion": "..=6 {\n",
+  "fullvocab_t": 235274
+ },
+ "contrast_repair": {
+  "to": "2",
+  "token": 235284,
+  "label": "unverifiable",
+  "n_candidates": 1
+ },
+ "seconds": 22.345027923583984
+}

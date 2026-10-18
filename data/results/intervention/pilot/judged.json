@@ -1,0 +1,573 @@
+{
+ "sites_file": "/home/user1/CodeCircuit-rust/data/results/intervention/pilot_sites.jsonl",
+ "sites_sha256": "48d8a84596d3d1931e0e19ddc72d6e6b80c6bf193b49fb12f6e9580b091da804",
+ "n_sites": 30,
+ "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run",
+ "run_files": {
+  "A": 30,
+  "B": 30,
+  "C": 30
+ },
+ "sites_with_runs": 30,
+ "ignored_files": [],
+ "judge_tag": "3b71d30231dc1a5b6c63f54bbb3b4324dc187047d3bb0634c76426b76ee570a5",
+ "judge_module_sha256": "2db06ad8f027fc31b81bd1006acdfef5eb5d2020f28b5a52967fd60634e02624",
+ "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+ "script_sha256": "c868033e184fe7b2e58fa9600134b6ab4eee26fbea84e16143876e4fc0fbe6b5",
+ "rows": 1044,
+ "labels_by_arm": {
+  "NULL": {
+   "no_flip": 28,
+   "excluded": 2
+  },
+  "BAN": {
+   "fail": 14,
+   "unverifiable": 14,
+   "excluded": 2
+  },
+  "GxA": {
+   "no_flip": 7,
+   "unverifiable": 8,
+   "fail": 9,
+   "excluded": 2,
+   "no_compile": 4
+  },
+  "DE": {
+   "no_flip": 17,
+   "unverifiable": 5,
+   "fail": 5,
+   "excluded": 2,
+   "no_compile": 1
+  },
+  "G": {
+   "unverifiable": 9,
+   "fail": 6,
+   "no_flip": 7,
+   "excluded": 2,
+   "no_compile": 6
+  },
+  "G_LP": {
+   "no_flip": 7,
+   "unverifiable": 9,
+   "fail": 9,
+   "excluded": 2,
+   "no_compile": 3
+  },
+  "G1": {
+   "no_flip": 27,
+   "excluded": 2,
+   "unverifiable": 1
+  },
+  "G_mid": {
+   "no_flip": 15,
+   "unverifiable": 4,
+   "excluded": 2,
+   "fail": 7,
+   "no_compile": 2
+  },
+  "RND1": {
+   "no_flip": 27,
+   "fail": 1,
+   "excluded": 2
+  },
+  "RND2": {
+   "no_flip": 26,
+   "excluded": 2,
+   "unverifiable": 1,
+   "fail": 1
+  },
+  "RND3": {
+   "no_flip": 27,
+   "excluded": 2,
+   "fail": 1
+  },
+  "RND4": {
+   "no_flip": 26,
+   "excluded": 2,
+   "unverifiable": 1,
+   "fail": 1
+  },
+  "RND5": {
+   "no_flip": 26,
+   "unverifiable": 1,
+   "excluded": 2,
+   "fail": 1
+  },
+  "ORC": {
+   "no_flip": 3,
+   "unverifiable": 13,
+   "fail": 12,
+   "excluded": 2
+  },
+  "CONTRAST": {
+   "unverifiable": 17,
+   "fail": 9,
+   "no_flip": 2
+  },
+  "RNDk:1": {
+   "no_flip": 20,
+   "unverifiable": 1
+  },
+  "RNDk:2": {
+   "no_flip": 21
+  },
+  "RNDk:3": {
+   "no_flip": 21
+  },
+  "RNDk:4": {
+   "no_flip": 21
+  },
+  "RNDk:5": {
+   "no_flip": 20,
+   "unverifiable": 1
+  },
+  "RNDk:6": {
+   "no_flip": 21
+  },
+  "RNDk:7": {
+   "no_flip": 21
+  },
+  "RNDk:8": {
+   "no_flip": 21
+  },
+  "RNDk:9": {
+   "no_flip": 21
+  },
+  "RNDk:10": {
+   "no_flip": 21
+  },
+  "RNDk:11": {
+   "no_flip": 20,
+   "unverifiable": 1
+  },
+  "RNDk:12": {
+   "no_flip": 20,
+   "unverifiable": 1
+  },
+  "RNDk:13": {
+   "no_flip": 20,
+   "unverifiable": 1
+  },
+  "RNDk:14": {
+   "no_flip": 21
+  },
+  "RNDk:15": {
+   "no_flip": 21
+  },
+  "RNDk:16": {
+   "no_flip": 21
+  },
+  "RNDk:17": {
+   "no_flip": 21
+  },
+  "RNDk:18": {
+   "no_flip": 21
+  },
+  "RNDk:19": {
+   "no_flip": 21
+  },
+  "RNDk:20": {
+   "no_flip": 21
+  },
+  "exist:G": {
+   "no_flip": 28
+  },
+  "exist:RND": {
+   "no_flip": 28
+  },
+  "gen:G": {
+   "unverifiable": 4,
+   "fail": 16,
+   "excluded": 2,
+   "no_compile": 7,
+   "unscorable": 1
+  },
+  "gen:G_every": {
+   "fail": 14,
+   "unverifiable": 2,
+   "unscorable": 1,
+   "excluded": 2,
+   "no_compile": 11
+  },
+  "gen:BAN": {
+   "fail": 16,
+   "unverifiable": 6,
+   "excluded": 2,
+   "no_compile": 5,
+   "unscorable": 1
+  },
+  "gen:NULL": {
+   "fail": 23,
+   "excluded": 2,
+   "no_compile": 5
+  }
+ },
+ "Y_by_arm": {
+  "NULL": 0,
+  "BAN": 0,
+  "GxA": 0,
+  "DE": 0,
+  "G": 0,
+  "G_LP": 0,
+  "G1": 0,
+  "G_mid": 0,
+  "RND1": 0,
+  "RND2": 0,
+  "RND3": 0,
+  "RND4": 0,
+  "RND5": 0,
+  "ORC": 0,
+  "CONTRAST": 0,
+  "RNDk:1": 0,
+  "RNDk:2": 0,
+  "RNDk:3": 0,
+  "RNDk:4": 0,
+  "RNDk:5": 0,
+  "RNDk:6": 0,
+  "RNDk:7": 0,
+  "RNDk:8": 0,
+  "RNDk:9": 0,
+  "RNDk:10": 0,
+  "RNDk:11": 0,
+  "RNDk:12": 0,
+  "RNDk:13": 0,
+  "RNDk:14": 0,
+  "RNDk:15": 0,
+  "RNDk:16": 0,
+  "RNDk:17": 0,
+  "RNDk:18": 0,
+  "RNDk:19": 0,
+  "RNDk:20": 0,
+  "exist:G": 0,
+  "exist:RND": 0,
+  "gen:G": 0,
+  "gen:G_every": 0,
+  "gen:BAN": 0,
+  "gen:NULL": 0
+ },
+ "how": {
+  "none": 752,
+  "lexeme": 137,
+  "completion": 155
+ },
+ "neutralizing_rows": [
+  [
+   "238|52|114",
+   "G",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "238|52|114",
+   "CONTRAST",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "238|52|114",
+   "gen:G",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "238|52|114",
+   "gen:G_every",
+   "fail",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "252|70|127",
+   "BAN",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "GxA",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "DE",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "G",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "G_LP",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "G_mid",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "ORC",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "CONTRAST",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "gen:G",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "252|70|127",
+   "gen:BAN",
+   "fail",
+   [
+    "x/x"
+   ]
+  ],
+  [
+   "420|86|106",
+   "G",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "420|86|106",
+   "G_LP",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "420|86|106",
+   "CONTRAST",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "420|86|106",
+   "gen:G",
+   "unverifiable",
+   [
+    "+0"
+   ]
+  ]
+ ],
+ "cache": {
+  "file": "/home/user1/CodeCircuit-rust/data/results/intervention/blind_judge_cache.jsonl",
+  "entries_used": 0,
+  "stale_ignored": 0,
+  "duplicates_ignored": 0,
+  "programs_needed": 104,
+  "judged_now": 104,
+  "work_order": "ascending cache key (sha256 of [task, lexer stream])"
+ },
+ "worker_rlimit_as": 8589934592,
+ "judge_error_scored_fail": [],
+ "audit_blind_vs_stored": {
+  "n": 5,
+  "agree": 5,
+  "disagree": []
+ },
+ "audit_neutralizing": {
+  "n_with_site_flag": 93,
+  "agree": 93,
+  "disagree": [],
+  "rebuild_mismatch": 0
+ },
+ "anomalies": {
+  "gen_is_S": 5
+ },
+ "missing_arms": [],
+ "n_missing_arms": 0,
+ "undefined_arms": [],
+ "stage_C_excluded": [],
+ "unscorable_by_reason": {
+  "gen_cap": {
+   "n": 3,
+   "rows": [
+    [
+     "406|111|78",
+     "gen:G_every"
+    ],
+    [
+     "397|35|87",
+     "gen:G"
+    ],
+    [
+     "72|165|68",
+     "gen:BAN"
+    ]
+   ]
+  }
+ },
+ "existence_tokens": {
+  "238|52|114": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "138|19|140": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "406|111|78": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "287|32|121": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "455|162|156": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "438|7|199": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "80|14|146": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "252|70|127": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "420|86|106": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "311|103|86": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "643|128|133": {
+   "exist:G": {
+    "ban_lexeme": 5
+   },
+   "exist:RND": {}
+  },
+  "434|13|106": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "790|21|54": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "610|37|112": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "563|136|154": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "228|164|97": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "89|46|159": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "16|179|162": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "266|155|76": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "92|43|134": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "741|27|140": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "20|39|44": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "631|145|85": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "397|35|87": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "135|94|55": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "72|165|68": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "787|127|166": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "113|35|92": {
+   "exist:G": {},
+   "exist:RND": {}
+  }
+ },
+ "completion_path": {
+  "rows": 43,
+  "unscorable": 0
+ }
+}

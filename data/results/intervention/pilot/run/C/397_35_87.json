@@ -1,0 +1,135 @@
+{
+ "site_id": "397|35|87",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": ".lt(smallest) {\n    smallest = a1;\n  }\n  if a2.lt(smallest) {\n    smallest = a2;\n  }\n  let mut largest = a0;\n  if a1.gt(largest) {\n    largest = a1;\n  }\n  if a2.gt(largest) {\n    largest = a2;\n  }\n  let median = (smallest + largest) / 2.0;\n  return median;\n",
+   "tokens": 110,
+   "stopped": "cap",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " < smallest {\n    smallest = a1;\n  }\n  if a2 < smallest {\n    smallest = a2;\n  }\n  let mut largest = a0;\n  if a1 > largest {\n    largest = a1;\n  }\n  if a2 > largest {\n    largest = a2;\n  }\n  let mut median = (smallest + largest) / 2;\n  return median;\n}",
+   "tokens": 98,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " <= smallest {\n    smallest = a1;\n  }\n  if a2 <= smallest {\n    smallest = a2;\n  }\n  let median = smallest;\n  return median;\n}",
+   "tokens": 45,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " < smallest {\n    smallest = a1;\n  }\n  if a2 < smallest {\n    smallest = a2;\n  }\n  let mut largest = a0;\n  if a1 > largest {\n    largest = a1;\n  }\n  if a2 > largest {\n    largest = a2;\n  }\n  let median = (smallest + largest) / 2.0;\n  return median;\n}",
+   "tokens": 99,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 110,
+ "collateral": {
+  "repair_to": ">",
+  "repair_label": "unverifiable",
+  "repair_token": 1562,
+  "positions": 47,
+  "G": 2,
+  "G_k": 8,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 42
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 9,
+  "t_star_id": 1562,
+  "t_star_piece": " >",
+  "margin_at_kstar": -0.13039684295654297,
+  "scan_replay_disagree": 0,
+  "n_candidates": 28129,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    56,
+    11005,
+    30.375
+   ],
+   [
+    22,
+    56,
+    13145,
+    43.0
+   ],
+   [
+    23,
+    56,
+    4820,
+    48.5
+   ],
+   [
+    19,
+    56,
+    2245,
+    28.375
+   ],
+   [
+    19,
+    56,
+    11699,
+    40.5
+   ],
+   [
+    22,
+    56,
+    13673,
+    53.0
+   ],
+   [
+    20,
+    56,
+    8428,
+    30.75
+   ],
+   [
+    20,
+    56,
+    9213,
+    44.25
+   ],
+   [
+    19,
+    56,
+    10289,
+    10.0
+   ]
+  ],
+  "completion": " smallest {\n",
+  "fullvocab_t": 1562
+ },
+ "contrast_repair": {
+  "to": ">",
+  "token": 1562,
+  "label": "unverifiable",
+  "n_candidates": 2
+ },
+ "seconds": 43.09292149543762
+}

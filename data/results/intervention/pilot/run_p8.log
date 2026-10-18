@@ -1,0 +1,155 @@
+2026-10-15 08:00:06 run_p8.sh: SITES=pilot_sites.jsonl RUN_DIR=pilot/run P8_OUT=results/intervention STAGES=A B C
+2026-10-15 08:00:06 stage A: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2800.01it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 161.14it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+08:00:47 A 238|52|114 21.4s
+08:01:00 A 138|19|140 13.1s
+08:01:10 A 406|111|78 10.7s
+08:01:24 A 287|32|121 13.3s
+08:01:24 A 737|41|65 0.4s excluded: a: best E logit leads the best non-E logit by 0.101016 < 2 delta
+08:01:45 A 455|162|156 20.8s
+08:02:18 A 438|7|199 33.2s
+08:02:29 A 80|14|146 10.3s
+08:02:38 A 252|70|127 9.6s
+08:02:57 A 420|86|106 19.0s
+2026-10-15 08:02:58 stage A: process exit 10
+2026-10-15 08:02:58 stage A: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2955.66it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 167.83it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+08:03:27 A 311|103|86 10.2s
+08:03:38 A 643|128|133 11.0s
+08:03:38 A 167|135|92 0.4s excluded: a: best E logit leads the best non-E logit by 0.153778 < 2 delta
+08:03:54 A 434|13|106 15.4s
+08:04:02 A 790|21|54 8.4s
+08:04:24 A 610|37|112 22.4s
+08:04:35 A 563|136|154 10.3s
+08:04:47 A 228|164|97 11.9s
+08:04:55 A 89|46|159 8.3s
+08:05:14 A 16|179|162 19.1s
+2026-10-15 08:05:15 stage A: process exit 10
+2026-10-15 08:05:15 stage A: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2983.47it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 157.03it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+08:05:44 A 266|155|76 9.9s
+08:06:10 A 92|43|134 25.3s
+08:06:17 A 741|27|140 7.7s
+08:06:47 A 20|39|44 29.4s
+08:06:57 A 631|145|85 10.8s
+08:07:05 A 397|35|87 7.7s
+08:07:22 A 135|94|55 16.3s
+08:07:46 A 72|165|68 24.9s
+08:08:00 A 787|127|166 13.7s
+08:08:13 A 113|35|92 12.6s
+2026-10-15 08:08:14 stage A: process exit 0
+2026-10-15 08:08:14 stage B: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2618.67it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 155.10it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+08:13:34 B 238|52|114 301.2s
+08:21:19 B 138|19|140 465.0s
+08:24:23 B 406|111|78 184.9s
+08:29:46 B 287|32|121 323.0s
+08:29:47 B 737|41|65 0.1s excluded: a: best E logit leads the best non-E logit by 0.101016 < 2 delta
+08:34:25 B 455|162|156 278.0s
+08:43:36 B 438|7|199 551.6s
+08:48:26 B 80|14|146 290.1s
+08:54:09 B 252|70|127 342.4s
+08:58:03 B 420|86|106 234.6s
+2026-10-15 08:58:04 stage B: process exit 10
+2026-10-15 08:58:04 stage B: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 3038.59it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 155.47it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+09:01:39 B 311|103|86 195.2s
+09:06:55 B 643|128|133 316.4s
+09:06:55 B 167|135|92 0.1s excluded: a: best E logit leads the best non-E logit by 0.153778 < 2 delta
+09:10:48 B 434|13|106 233.1s
+09:12:40 B 790|21|54 111.8s
+09:19:54 B 610|37|112 433.6s
+09:24:26 B 563|136|154 271.8s
+09:30:16 B 228|164|97 350.4s
+09:34:30 B 89|46|159 254.2s
+09:39:55 B 16|179|162 324.5s
+2026-10-15 09:39:56 stage B: process exit 10
+2026-10-15 09:39:56 stage B: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2871.90it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 168.19it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+09:42:45 B 266|155|76 150.4s
+09:47:28 B 92|43|134 282.4s
+09:52:01 B 741|27|140 272.8s
+09:54:32 B 20|39|44 150.8s
+09:58:05 B 631|145|85 213.7s
+10:00:54 B 397|35|87 168.2s
+10:02:37 B 135|94|55 103.0s
+10:08:12 B 72|165|68 335.1s
+10:18:37 B 787|127|166 625.7s
+10:20:58 B 113|35|92 140.9s
+2026-10-15 10:20:59 stage B: process exit 0
+2026-10-15 10:20:59 stage C: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2925.68it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 171.62it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+10:22:04 C 238|52|114 45.7s
+10:22:37 C 138|19|140 32.4s
+10:23:05 C 406|111|78 28.8s
+10:23:30 C 287|32|121 24.9s
+10:23:30 C 737|41|65 0.1s excluded: a: best E logit leads the best non-E logit by 0.101016 < 2 delta
+10:23:56 C 455|162|156 25.1s
+10:24:20 C 438|7|199 24.0s
+10:24:38 C 80|14|146 18.9s
+10:24:53 C 252|70|127 14.5s
+10:25:15 C 420|86|106 21.9s
+2026-10-15 10:25:16 stage C: process exit 10
+2026-10-15 10:25:16 stage C: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 3036.98it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 167.79it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+10:25:54 C 311|103|86 19.7s
+10:26:27 C 643|128|133 33.0s
+10:26:27 C 167|135|92 0.1s excluded: a: best E logit leads the best non-E logit by 0.153778 < 2 delta
+10:26:39 C 434|13|106 11.2s
+10:27:08 C 790|21|54 29.1s
+10:27:52 C 610|37|112 44.2s
+10:28:13 C 563|136|154 20.7s
+10:28:36 C 228|164|97 23.2s
+10:28:53 C 89|46|159 16.7s
+10:29:19 C 16|179|162 26.0s
+2026-10-15 10:29:19 stage C: process exit 10
+2026-10-15 10:29:19 stage C: starting a process
+Fetching 26 files:   0%|          | 0/26 [00:00<?, ?it/s]Fetching 26 files: 100%|██████████| 26/26 [00:00<00:00, 2799.43it/s]
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 167.16it/s]
+Loaded pretrained model google/gemma-2-2b-it into HookedTransformer
+Moving model to device:  cuda
+WARNING UserWarning: Full backward hook is firing when gradients are computed with respect to module outputs since no inputs require gradients. See https://docs.pytorch.org/docs/main/generated/torch.nn.Module.html#torch.n
+10:30:00 C 266|155|76 22.3s
+10:30:27 C 92|43|134 27.1s
+10:30:44 C 741|27|140 16.2s
+10:30:52 C 20|39|44 8.3s
+10:31:14 C 631|145|85 22.1s
+10:31:57 C 397|35|87 43.1s
+10:32:43 C 135|94|55 46.0s
+10:33:28 C 72|165|68 44.8s
+10:33:46 C 787|127|166 17.7s
+10:33:52 C 113|35|92 6.7s
+2026-10-15 10:33:53 stage C: process exit 0
+2026-10-15 10:33:53 all stages complete

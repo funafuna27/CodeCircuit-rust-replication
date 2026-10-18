@@ -1,0 +1,228 @@
+{
+ "site_id": "610|37|112",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "0;\n    for (let mut i = 0; i < a0.len(); i++) {\n        if (i == a1) {\n            continue;\n        }\n        result.push(a0[i]);\n    }\n    result;\n}",
+   "tokens": 60,
+   "stopped": "braces",
+   "first_matches_t_star": null
+  },
+  "G_every": {
+   "text": "0;\n    while (index < a0.len()) {\n        if (index == a1) {\n            result.push(a0[index]);\n        } else {\n            result.push(a0[index]);\n        }\n        index += 1;\n    }\n    return result;\n}",
+   "tokens": 71,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": "1;\n    for element in a0 {\n        if index != a1 {\n            result.push(element);\n        }\n        index += 1;\n    }\n    result\n}",
+   "tokens": 44,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "0;\n    for element in a0 {\n        if index != a1 {\n            result.push(element);\n        }\n        index += 1;\n    }\n    result\n}",
+   "tokens": 44,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 110,
+ "collateral": {
+  "repair_to": "1",
+  "repair_label": "unverifiable",
+  "repair_token": 235274,
+  "positions": 47,
+  "G": 2,
+  "G_k": 1024,
+  "RNDk": [],
+  "teacher_agree_clean": 44
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 28,
+  "t_star_id": 235274,
+  "t_star_piece": "1",
+  "margin_at_kstar": -0.10715866088867188,
+  "scan_replay_disagree": 0,
+  "n_candidates": 41684,
+  "K": 1024,
+  "ablated": [
+   [
+    24,
+    73,
+    201,
+    95.5
+   ],
+   [
+    20,
+    73,
+    639,
+    24.5
+   ],
+   [
+    20,
+    73,
+    6613,
+    43.25
+   ],
+   [
+    21,
+    73,
+    12377,
+    35.5
+   ],
+   [
+    20,
+    73,
+    3488,
+    37.75
+   ],
+   [
+    18,
+    73,
+    10704,
+    33.25
+   ],
+   [
+    23,
+    73,
+    12597,
+    34.25
+   ],
+   [
+    21,
+    73,
+    10837,
+    19.625
+   ],
+   [
+    22,
+    73,
+    1576,
+    44.25
+   ],
+   [
+    23,
+    74,
+    13382,
+    91.5
+   ],
+   [
+    25,
+    74,
+    13757,
+    31.125
+   ],
+   [
+    21,
+    73,
+    1311,
+    7.15625
+   ],
+   [
+    18,
+    73,
+    10785,
+    25.25
+   ],
+   [
+    21,
+    73,
+    4981,
+    17.5
+   ],
+   [
+    20,
+    74,
+    3012,
+    55.25
+   ],
+   [
+    19,
+    73,
+    9829,
+    15.875
+   ],
+   [
+    25,
+    74,
+    15920,
+    182.0
+   ],
+   [
+    17,
+    73,
+    12552,
+    16.875
+   ],
+   [
+    25,
+    74,
+    14744,
+    91.0
+   ],
+   [
+    18,
+    73,
+    5626,
+    18.25
+   ],
+   [
+    19,
+    73,
+    4943,
+    29.0
+   ],
+   [
+    3,
+    71,
+    14667,
+    32.75
+   ],
+   [
+    23,
+    73,
+    2949,
+    21.25
+   ],
+   [
+    19,
+    73,
+    4331,
+    10.4375
+   ],
+   [
+    18,
+    73,
+    7604,
+    16.125
+   ],
+   [
+    17,
+    73,
+    9135,
+    27.75
+   ],
+   [
+    19,
+    73,
+    11718,
+    17.625
+   ],
+   [
+    16,
+    73,
+    15578,
+    20.875
+   ]
+  ],
+  "completion": ";\n",
+  "fullvocab_t": 235274
+ },
+ "contrast_repair": {
+  "to": "1",
+  "token": 235274,
+  "label": "unverifiable",
+  "n_candidates": 1
+ },
+ "seconds": 44.17291736602783
+}

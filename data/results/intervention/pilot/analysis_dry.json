@@ -1,0 +1,2675 @@
+{
+ "created": "2026-10-15 10:34:20 JST",
+ "dry_run": true,
+ "kind": "pilot",
+ "script_sha256": "adb63a0290ead358e83633f6ef51b38513a4384f37e6d8e69a63e4620f19cf58",
+ "common_sha256": "0452d67c1eb48c1396a80654fe1eb9a15d3c5d620a41c039d675abe9666d1876",
+ "inputs": {
+  "/home/user1/CodeCircuit-rust/data/results/intervention/pilot_sites.jsonl": "48d8a84596d3d1931e0e19ddc72d6e6b80c6bf193b49fb12f6e9580b091da804",
+  "/home/user1/CodeCircuit-rust/data/results/intervention/pilot/judged.jsonl": "02342978ad41de6418a4631476ed07faba282394ec2a44e24d59e222ee30feda"
+ },
+ "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run",
+ "run_files": {
+  "A": 30,
+  "B": 30,
+  "C": 30
+ },
+ "alpha": {
+  "value": 0.03,
+  "source": "p8_common.ALPHA (no alpha.json)"
+ },
+ "confirmatory": {
+  "method": "one-sided problem-level sign flip on the integer statistic; fixed sequence S1 -> S2 -> S3",
+  "sequence": [
+   {
+    "step": "S1",
+    "test": "G > RND1",
+    "alpha": 0.03,
+    "n_sites": 28,
+    "n_problems": 28,
+    "L": 1,
+    "D": 0.0,
+    "G": 28,
+    "m": 0,
+    "T": 0,
+    "p_exact": 1.0,
+    "exact_count": 1,
+    "exact_of": 1,
+    "p_mc": 1.0,
+    "p": 1.0,
+    "how": "exact over 2^0 sign vectors",
+    "min_attainable_p": 1.0,
+    "D_ci95": [
+     0.0,
+     0.0
+    ],
+    "reached": true,
+    "decision": "not rejected"
+   },
+   {
+    "step": "S2",
+    "test": "G > BAN",
+    "alpha": 0.03,
+    "n_sites": 28,
+    "n_problems": 28,
+    "L": 1,
+    "D": 0.0,
+    "G": 28,
+    "m": 0,
+    "T": 0,
+    "D_ci95": [
+     0.0,
+     0.0
+    ],
+    "reached": false,
+    "decision": "not tested",
+    "p_descriptive_not_tested": {
+     "p": 1.0,
+     "p_exact": 1.0,
+     "p_mc": 1.0,
+     "exact_count": 1,
+     "exact_of": 1,
+     "how": "exact over 2^0 sign vectors",
+     "min_attainable_p": 1.0
+    }
+   },
+   {
+    "step": "S3",
+    "test": "G > GxA",
+    "alpha": 0.03,
+    "n_sites": 28,
+    "n_problems": 28,
+    "L": 1,
+    "D": 0.0,
+    "G": 28,
+    "m": 0,
+    "T": 0,
+    "D_ci95": [
+     0.0,
+     0.0
+    ],
+    "reached": false,
+    "decision": "not tested",
+    "p_descriptive_not_tested": {
+     "p": 1.0,
+     "p_exact": 1.0,
+     "p_mc": 1.0,
+     "exact_count": 1,
+     "exact_of": 1,
+     "how": "exact over 2^0 sign vectors",
+     "min_attainable_p": 1.0
+    }
+   }
+  ],
+  "summary": [
+   "S1 (G > RND1) does not reject: D = +0.000, m = 0, p = 1 > 0.03; the advantage was not detected (80% MDE: see descriptive.mde80), never read as equivalence",
+   "S2 (G > BAN) not tested (the sequence stopped)",
+   "S3 (G > GxA) not tested (the sequence stopped)"
+  ]
+ },
+ "descriptive": {
+  "note": "Descriptive only: nothing in this block can change S1-S3.",
+  "analysis_set": {
+   "belief_sites": 30,
+   "status_counts": {
+    "complete": 28,
+    "excluded": 2
+   },
+   "rounds": 1,
+   "rounds_complete": 1,
+   "order_is_round_robin": true,
+   "excluded": [
+    "167|135|92",
+    "737|41|65"
+   ],
+   "run_but_in_incomplete_round": [],
+   "not_run": 0,
+   "excluded_in_complete_rounds": 2,
+   "exclusion_reasons": {
+    "167|135|92": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.153778 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.153778 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.153778 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.153778 < 2 delta",
+     "in_analysis_set": false
+    },
+    "737|41|65": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.101016 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.101016 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.101016 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.101016 < 2 delta",
+     "in_analysis_set": false
+    }
+   },
+   "exclusion_rule": "registered (design \u00a72 a-d) reason in the stage-A or stage-B file; stage-C and '<stage>: failed in two fresh processes' reasons are not exclusions",
+   "unregistered_exclusions": {},
+   "registered_but_judged_rows_not_excluded": [],
+   "n_sites": 28,
+   "n_problems": 28,
+   "L": 1,
+   "per_problem_sites": {
+    "16": 1,
+    "20": 1,
+    "72": 1,
+    "80": 1,
+    "89": 1,
+    "92": 1,
+    "113": 1,
+    "135": 1,
+    "138": 1,
+    "228": 1,
+    "238": 1,
+    "252": 1,
+    "266": 1,
+    "287": 1,
+    "311": 1,
+    "397": 1,
+    "406": 1,
+    "420": 1,
+    "434": 1,
+    "438": 1,
+    "455": 1,
+    "563": 1,
+    "610": 1,
+    "631": 1,
+    "643": 1,
+    "741": 1,
+    "787": 1,
+    "790": 1
+   },
+   "per_problem_sorted": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "tier_counts": {
+    "1": 28
+   },
+   "sites": [
+    "113|35|92",
+    "135|94|55",
+    "138|19|140",
+    "16|179|162",
+    "20|39|44",
+    "228|164|97",
+    "238|52|114",
+    "252|70|127",
+    "266|155|76",
+    "287|32|121",
+    "311|103|86",
+    "397|35|87",
+    "406|111|78",
+    "420|86|106",
+    "434|13|106",
+    "438|7|199",
+    "455|162|156",
+    "563|136|154",
+    "610|37|112",
+    "631|145|85",
+    "643|128|133",
+    "72|165|68",
+    "741|27|140",
+    "787|127|166",
+    "790|21|54",
+    "80|14|146",
+    "89|46|159",
+    "92|43|134"
+   ]
+  },
+  "arm_rates": {
+   "G": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.75,
+    "labels": {
+     "no_compile": 6,
+     "no_flip": 7,
+     "unverifiable": 9,
+     "fail": 6
+    },
+    "how": {
+     "completion": 9,
+     "none": 7,
+     "lexeme": 12
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "GxA": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.75,
+    "labels": {
+     "fail": 9,
+     "no_flip": 7,
+     "unverifiable": 8,
+     "no_compile": 4
+    },
+    "how": {
+     "completion": 9,
+     "none": 7,
+     "lexeme": 12
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND1": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.03571428571428571,
+    "labels": {
+     "no_flip": 27,
+     "fail": 1
+    },
+    "how": {
+     "none": 27,
+     "lexeme": 1
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND2": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.07142857142857142,
+    "labels": {
+     "no_flip": 26,
+     "unverifiable": 1,
+     "fail": 1
+    },
+    "how": {
+     "none": 26,
+     "lexeme": 2
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND3": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.03571428571428571,
+    "labels": {
+     "no_flip": 27,
+     "fail": 1
+    },
+    "how": {
+     "none": 27,
+     "lexeme": 1
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND4": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.07142857142857142,
+    "labels": {
+     "no_flip": 26,
+     "unverifiable": 1,
+     "fail": 1
+    },
+    "how": {
+     "none": 26,
+     "lexeme": 2
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND5": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.07142857142857142,
+    "labels": {
+     "no_flip": 26,
+     "unverifiable": 1,
+     "fail": 1
+    },
+    "how": {
+     "none": 26,
+     "lexeme": 2
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G_LP": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.75,
+    "labels": {
+     "unverifiable": 9,
+     "no_flip": 7,
+     "fail": 9,
+     "no_compile": 3
+    },
+    "how": {
+     "lexeme": 15,
+     "none": 7,
+     "completion": 6
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G1": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.03571428571428571,
+    "labels": {
+     "no_flip": 27,
+     "unverifiable": 1
+    },
+    "how": {
+     "none": 27,
+     "lexeme": 1
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G_mid": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.4642857142857143,
+    "labels": {
+     "no_compile": 2,
+     "no_flip": 15,
+     "unverifiable": 4,
+     "fail": 7
+    },
+    "how": {
+     "completion": 3,
+     "none": 15,
+     "lexeme": 10
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "DE": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.39285714285714285,
+    "labels": {
+     "no_compile": 1,
+     "no_flip": 17,
+     "unverifiable": 5,
+     "fail": 5
+    },
+    "how": {
+     "completion": 4,
+     "none": 17,
+     "lexeme": 7
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "ORC": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.8928571428571429,
+    "labels": {
+     "unverifiable": 13,
+     "no_flip": 3,
+     "fail": 12
+    },
+    "how": {
+     "lexeme": 21,
+     "none": 3,
+     "completion": 4
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "CONTRAST": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.9285714285714286,
+    "labels": {
+     "unverifiable": 17,
+     "no_flip": 2,
+     "fail": 9
+    },
+    "how": {
+     "lexeme": 22,
+     "none": 2,
+     "completion": 4
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "BAN": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "unverifiable": 14,
+     "fail": 14
+    },
+    "how": {
+     "lexeme": 24,
+     "completion": 4
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "NULL": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 28
+    },
+    "how": {
+     "none": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:G": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 28
+    },
+    "how": {
+     "none": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:RND": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 28
+    },
+    "how": {
+     "none": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:BAN": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "unverifiable": 6,
+     "fail": 16,
+     "no_compile": 5,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "no_compile": 7,
+     "fail": 16,
+     "unverifiable": 4,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G_every": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "no_compile": 11,
+     "fail": 14,
+     "unverifiable": 2,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:NULL": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 23,
+     "no_compile": 5
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   }
+  },
+  "RNDk_draws_pooled": {
+   "n_sites": 21,
+   "n_problems": 21,
+   "sum": 0.0,
+   "equal_weight": 0.0,
+   "per_site": 0.0,
+   "equal_weight_ci95": [
+    0.0,
+    0.0
+   ],
+   "per_site_ci95": [
+    0.0,
+    0.0
+   ],
+   "draws": 420,
+   "changed_share_of_draws": 0.011904761904761904,
+   "labels": {
+    "no_flip": 415,
+    "unverifiable": 5
+   }
+  },
+  "decomposition_G_BAN": {
+   "NF": 0.0,
+   "R": 0.0,
+   "Bk": 0.0,
+   "D": 0.0,
+   "R_minus_Bk": 0.0,
+   "identity_exact": true,
+   "n_sites": {
+    "NF": 0,
+    "R": 0,
+    "Bk": 0
+   },
+   "NF_ci95": [
+    0.0,
+    0.0
+   ],
+   "R_ci95": [
+    0.0,
+    0.0
+   ],
+   "Bk_ci95": [
+    0.0,
+    0.0
+   ],
+   "R_minus_Bk_ci95": [
+    0.0,
+    0.0
+   ],
+   "neutralizing_rescues": 0
+  },
+  "rescue_break_vs_BAN": {
+   "G": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 7,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 21
+    },
+    "neutralizing_rescues": 0
+   },
+   "GxA": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 7,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 21
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND1": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 27,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 1
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND2": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 26,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 2
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND3": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 27,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 1
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND4": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 26,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 2
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND5": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 26,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 2
+    },
+    "neutralizing_rescues": 0
+   },
+   "G_LP": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 7,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 21
+    },
+    "neutralizing_rescues": 0
+   },
+   "G1": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 27,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 1
+    },
+    "neutralizing_rescues": 0
+   },
+   "G_mid": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 15,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 13
+    },
+    "neutralizing_rescues": 0
+   },
+   "DE": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 17,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 11
+    },
+    "neutralizing_rescues": 0
+   },
+   "ORC": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 3,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 25
+    },
+    "neutralizing_rescues": 0
+   },
+   "CONTRAST": {
+    "n_sites": 28,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 0,
+     "no_flip & BAN fails": 2,
+     "flip & both fix": 0,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 26
+    },
+    "neutralizing_rescues": 0
+   }
+  },
+  "landing": {
+   "G": {
+    "n_sites": 28,
+    "n_flips": 21,
+    "counts": {
+     "no_flip": 7,
+     "ban_lexeme": 9,
+     "other_family": 4,
+     "outside_family": 8,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.42857142857142855,
+     "other_family": 0.19047619047619047,
+     "outside_family": 0.38095238095238093,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.42857142857142855,
+     "other_family": 0.19047619047619047,
+     "outside_family": 0.38095238095238093,
+     "unscorable": 0.0
+    }
+   },
+   "GxA": {
+    "n_sites": 28,
+    "n_flips": 21,
+    "counts": {
+     "no_flip": 7,
+     "ban_lexeme": 13,
+     "other_family": 1,
+     "outside_family": 7,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.6190476190476191,
+     "other_family": 0.047619047619047616,
+     "outside_family": 0.3333333333333333,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.6190476190476191,
+     "other_family": 0.047619047619047616,
+     "outside_family": 0.3333333333333333,
+     "unscorable": 0.0
+    }
+   },
+   "RND1": {
+    "n_sites": 28,
+    "n_flips": 1,
+    "counts": {
+     "no_flip": 27,
+     "ban_lexeme": 1,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "RND2": {
+    "n_sites": 28,
+    "n_flips": 2,
+    "counts": {
+     "no_flip": 26,
+     "ban_lexeme": 2,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "RND3": {
+    "n_sites": 28,
+    "n_flips": 1,
+    "counts": {
+     "no_flip": 27,
+     "ban_lexeme": 1,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "RND4": {
+    "n_sites": 28,
+    "n_flips": 2,
+    "counts": {
+     "no_flip": 26,
+     "ban_lexeme": 2,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "RND5": {
+    "n_sites": 28,
+    "n_flips": 2,
+    "counts": {
+     "no_flip": 26,
+     "ban_lexeme": 2,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "G_LP": {
+    "n_sites": 28,
+    "n_flips": 21,
+    "counts": {
+     "no_flip": 7,
+     "ban_lexeme": 15,
+     "other_family": 2,
+     "outside_family": 4,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.7142857142857143,
+     "other_family": 0.09523809523809523,
+     "outside_family": 0.19047619047619047,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.7142857142857143,
+     "other_family": 0.09523809523809523,
+     "outside_family": 0.19047619047619047,
+     "unscorable": 0.0
+    }
+   },
+   "G1": {
+    "n_sites": 28,
+    "n_flips": 1,
+    "counts": {
+     "no_flip": 27,
+     "ban_lexeme": 1,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "G_mid": {
+    "n_sites": 28,
+    "n_flips": 13,
+    "counts": {
+     "no_flip": 15,
+     "ban_lexeme": 11,
+     "other_family": 0,
+     "outside_family": 2,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8461538461538461,
+     "other_family": 0.0,
+     "outside_family": 0.15384615384615385,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8461538461538461,
+     "other_family": 0.0,
+     "outside_family": 0.15384615384615385,
+     "unscorable": 0.0
+    }
+   },
+   "DE": {
+    "n_sites": 28,
+    "n_flips": 11,
+    "counts": {
+     "no_flip": 17,
+     "ban_lexeme": 9,
+     "other_family": 1,
+     "outside_family": 1,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8181818181818182,
+     "other_family": 0.09090909090909091,
+     "outside_family": 0.09090909090909091,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8181818181818182,
+     "other_family": 0.09090909090909091,
+     "outside_family": 0.09090909090909091,
+     "unscorable": 0.0
+    }
+   },
+   "ORC": {
+    "n_sites": 28,
+    "n_flips": 25,
+    "counts": {
+     "no_flip": 3,
+     "ban_lexeme": 24,
+     "other_family": 1,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.96,
+     "other_family": 0.04,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.96,
+     "other_family": 0.04,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "CONTRAST": {
+    "n_sites": 28,
+    "n_flips": 26,
+    "counts": {
+     "no_flip": 2,
+     "ban_lexeme": 21,
+     "other_family": 5,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8076923076923077,
+     "other_family": 0.19230769230769232,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.0,
+     "other_family": 0.0,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8076923076923077,
+     "other_family": 0.19230769230769232,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "BAN": {
+    "n_sites": 28,
+    "n_flips": 28,
+    "counts": {
+     "no_flip": 0,
+     "ban_lexeme": 28,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": null,
+     "ban_lexeme": 0.0,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   }
+  },
+  "fix_given_both_flip_G_vs_GxA": {
+   "n_sites": 18,
+   "G": {
+    "n_sites": 18,
+    "n_problems": 18,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "GxA": {
+    "n_sites": 18,
+    "n_problems": 18,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "sensitivity": {
+   "note": "Descriptive only: nothing in this block can change S1-S3. p values here are descriptive.",
+   "tier1_only": {
+    "S1": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S2": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   },
+   "without_rule_b": {
+    "S1": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S2": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   },
+   "unscorable_excluded": {
+    "S1": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S2": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   },
+   "neutralizing_rescues_scored_0": {
+    "S1": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S2": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   },
+   "both_tokens_in_judged_family": {
+    "S1": {
+     "n_sites": 0,
+     "n_problems": null,
+     "D": null,
+     "D_ci95": null,
+     "m": null,
+     "p": null,
+     "how": null
+    },
+    "S2": {
+     "n_sites": 12,
+     "n_problems": 12,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 10,
+     "n_problems": 10,
+     "D": 0.0,
+     "D_ci95": [
+      0.0,
+      0.0
+     ],
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   },
+   "sqrt_n_weights": {
+    "S1": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D_sqrt_n": 0.0,
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S2": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D_sqrt_n": 0.0,
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    },
+    "S3": {
+     "n_sites": 28,
+     "n_problems": 28,
+     "D_sqrt_n": 0.0,
+     "m": 0,
+     "p": 1.0,
+     "how": "exact over 2^0 sign vectors"
+    }
+   }
+  },
+  "run_outputs": {
+   "files": {
+    "A": 30,
+    "B": 30,
+    "C": 30
+   },
+   "k_star": {
+    "G": {
+     "n_sites_with_output": 28,
+     "n_flips": 21,
+     "flip_rate_per_site": 0.75,
+     "k_star_median": 57.0,
+     "k_star_q25_q75": [
+      13.0,
+      193.0
+     ],
+     "k_star_max": 973,
+     "scan_replay_disagree_total": 8,
+     "margin_at_kstar_median": -0.14501571655273438
+    },
+    "GxA": {
+     "n_sites_with_output": 28,
+     "n_flips": 21,
+     "flip_rate_per_site": 0.75,
+     "k_star_median": 24.0,
+     "k_star_q25_q75": [
+      8.0,
+      93.0
+     ],
+     "k_star_max": 343,
+     "scan_replay_disagree_total": 9,
+     "margin_at_kstar_median": -0.12118339538574219
+    },
+    "RND1": {
+     "n_sites_with_output": 28,
+     "n_flips": 1,
+     "flip_rate_per_site": 0.03571428571428571,
+     "k_star_median": 57.0,
+     "k_star_q25_q75": [
+      57.0,
+      57.0
+     ],
+     "k_star_max": 57,
+     "scan_replay_disagree_total": 1,
+     "margin_at_kstar_median": -0.37381649017333984
+    },
+    "RND2": {
+     "n_sites_with_output": 28,
+     "n_flips": 2,
+     "flip_rate_per_site": 0.07142857142857142,
+     "k_star_median": 130.0,
+     "k_star_q25_q75": [
+      76.0,
+      184.0
+     ],
+     "k_star_max": 238,
+     "scan_replay_disagree_total": 1,
+     "margin_at_kstar_median": -0.2722158432006836
+    },
+    "RND3": {
+     "n_sites_with_output": 28,
+     "n_flips": 1,
+     "flip_rate_per_site": 0.03571428571428571,
+     "k_star_median": 275.0,
+     "k_star_q25_q75": [
+      275.0,
+      275.0
+     ],
+     "k_star_max": 275,
+     "scan_replay_disagree_total": 1,
+     "margin_at_kstar_median": -0.023326873779296875
+    },
+    "RND4": {
+     "n_sites_with_output": 28,
+     "n_flips": 2,
+     "flip_rate_per_site": 0.07142857142857142,
+     "k_star_median": 263.5,
+     "k_star_q25_q75": [
+      141.25,
+      385.75
+     ],
+     "k_star_max": 508,
+     "scan_replay_disagree_total": 3,
+     "margin_at_kstar_median": -0.020232200622558594
+    },
+    "RND5": {
+     "n_sites_with_output": 28,
+     "n_flips": 2,
+     "flip_rate_per_site": 0.07142857142857142,
+     "k_star_median": 998.0,
+     "k_star_q25_q75": [
+      993.5,
+      1002.5
+     ],
+     "k_star_max": 1007,
+     "scan_replay_disagree_total": 5,
+     "margin_at_kstar_median": -0.030486106872558594
+    },
+    "G_LP": {
+     "n_sites_with_output": 28,
+     "n_flips": 21,
+     "flip_rate_per_site": 0.75,
+     "k_star_median": 12.0,
+     "k_star_q25_q75": [
+      2.0,
+      57.0
+     ],
+     "k_star_max": 973,
+     "scan_replay_disagree_total": 5,
+     "margin_at_kstar_median": -0.11391639709472656
+    },
+    "G1": {
+     "n_sites_with_output": 28,
+     "n_flips": 1,
+     "flip_rate_per_site": 0.03571428571428571,
+     "k_star_median": 1.0,
+     "k_star_q25_q75": [
+      1.0,
+      1.0
+     ],
+     "k_star_max": 1,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": -0.7317495346069336
+    },
+    "G_mid": {
+     "n_sites_with_output": 28,
+     "n_flips": 13,
+     "flip_rate_per_site": 0.4642857142857143,
+     "k_star_median": 28.0,
+     "k_star_q25_q75": [
+      21.0,
+      42.0
+     ],
+     "k_star_max": 157,
+     "scan_replay_disagree_total": 4,
+     "margin_at_kstar_median": -0.13083267211914062
+    },
+    "DE": {
+     "n_sites_with_output": 28,
+     "n_flips": 11,
+     "flip_rate_per_site": 0.39285714285714285,
+     "k_star_median": 20.0,
+     "k_star_q25_q75": [
+      11.0,
+      40.5
+     ],
+     "k_star_max": 86,
+     "scan_replay_disagree_total": 5,
+     "margin_at_kstar_median": -0.10837554931640625
+    },
+    "ORC": {
+     "n_sites_with_output": 28,
+     "n_flips": 25,
+     "flip_rate_per_site": 0.8928571428571429,
+     "k_star_median": 5.0,
+     "k_star_q25_q75": [
+      2.0,
+      10.0
+     ],
+     "k_star_max": 35,
+     "scan_replay_disagree_total": 2,
+     "margin_at_kstar_median": -0.15709304809570312
+    },
+    "CONTRAST": {
+     "n_sites_with_output": 28,
+     "n_flips": 26,
+     "flip_rate_per_site": 0.9285714285714286,
+     "k_star_median": 11.5,
+     "k_star_q25_q75": [
+      5.25,
+      37.75
+     ],
+     "k_star_max": 340,
+     "scan_replay_disagree_total": 4,
+     "margin_at_kstar_median": -0.11429691314697266
+    },
+    "BAN": {
+     "n_sites_with_output": 28,
+     "n_flips": 28,
+     "flip_rate_per_site": 1.0,
+     "k_star_median": 0.0,
+     "k_star_q25_q75": [
+      0.0,
+      0.0
+     ],
+     "k_star_max": 0,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": 2.9198789596557617
+    },
+    "NULL": {
+     "n_sites_with_output": 28,
+     "n_flips": 0,
+     "flip_rate_per_site": 0.0,
+     "k_star_median": null,
+     "k_star_q25_q75": null,
+     "k_star_max": null,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": null
+    }
+   },
+   "run_vs_judged_flip": {
+    "agree": 420
+   },
+   "G_first_feature_layer18plus_at_h_minus_1": {
+    "n_sites": 28,
+    "n_analysis_set": 28,
+    "n_sites_without_a_candidate": 0,
+    "share_per_site": 0.4642857142857143,
+    "source": "stage-B e_top: first row with e > 0 and pos >= 1 (G's ranking), every analysis-set site"
+   },
+   "margin_terciles": {
+    "cuts": [
+     1.9856481552124023,
+     4.5162811279296875
+    ],
+    "terciles": {
+     "0": {
+      "n_sites": 10,
+      "Y_G_per_site": 0.0,
+      "Y_RND1_per_site": 0.0,
+      "Y_BAN_per_site": 0.0,
+      "Y_GxA_per_site": 0.0,
+      "D_G_BAN_equal_weight": 0.0
+     },
+     "1": {
+      "n_sites": 9,
+      "Y_G_per_site": 0.0,
+      "Y_RND1_per_site": 0.0,
+      "Y_BAN_per_site": 0.0,
+      "Y_GxA_per_site": 0.0,
+      "D_G_BAN_equal_weight": 0.0
+     },
+     "2": {
+      "n_sites": 9,
+      "Y_G_per_site": 0.0,
+      "Y_RND1_per_site": 0.0,
+      "Y_BAN_per_site": 0.0,
+      "Y_GxA_per_site": 0.0,
+      "D_G_BAN_equal_weight": 0.0
+     }
+    }
+   },
+   "faithfulness": {
+    "n_sites": 28,
+    "n_sites_finite": 28,
+    "site_median_spearman": 0.15615514823233542,
+    "median_qualifying_features": 77.0
+   },
+   "RNDk_changed": {
+    "n_sites": 21,
+    "mean_share_of_draws": 0.011904761904761904
+   },
+   "collateral": {
+    "G": {
+     "n_sites": 28,
+     "share_sites_gt_0": 0.6785714285714286,
+     "median": 1.0
+    },
+    "G_k": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 106.5
+    },
+    "RNDk": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "positions": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 28.0
+    },
+    "repair_label": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "repair_to": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "repair_token": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 235274.0
+    },
+    "teacher_agree_clean": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 26.5
+    }
+   },
+   "collateral_sites": {
+    "definition": "positions >= h when S's best repair is teacher-forced with G's ablation, RNDk: the same per RND-k draw}.\nG: a site counts when G > 0, over sites with a collateral record (a best repair exists). RND-k: a site\ncounts when more than half of its draws are > 0, over sites with >= 1 draw (RND-k needs G to flip).\n'both' = the two on the sites that have both. Per site (the \u00a76 check) and equal-weight over problems.",
+    "n_analysis_set": 28,
+    "n_with_collateral_record": 28,
+    "G": {
+     "n_sites": 28,
+     "share_per_site": 0.6785714285714286,
+     "share_equal_weight": 0.6785714285714286
+    },
+    "RNDk_majority_of_draws": {
+     "n_sites": 21,
+     "share_per_site": 0.14285714285714285,
+     "share_equal_weight": 0.14285714285714285
+    },
+    "on_sites_with_both": {
+     "G": {
+      "n_sites": 21,
+      "share_per_site": 0.6666666666666666,
+      "share_equal_weight": 0.6666666666666666
+     },
+     "RNDk_majority_of_draws": {
+      "n_sites": 21,
+      "share_per_site": 0.14285714285714285,
+      "share_equal_weight": 0.14285714285714285
+     }
+    }
+   },
+   "existence_run_fields": {
+    "flips": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "n_single": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 326.0
+    },
+    "random_flips": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "random_kind": {
+     "n_sites": 28,
+     "note": "not numeric; not summarised"
+    },
+    "random_n": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 128.0
+    },
+    "replay_guard": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 0.7527923583984375
+    },
+    "screen_batch": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 64.0
+    },
+    "seconds_singles": {
+     "n_sites": 28,
+     "share_sites_gt_0": 1.0,
+     "median": 4.558961629867554
+    }
+   },
+   "generation_stops": {
+    "G": {
+     "braces": 27,
+     "cap": 1,
+     "cap_share": 0.03571428571428571
+    },
+    "G_every": {
+     "braces": 27,
+     "cap": 1,
+     "cap_share": 0.03571428571428571
+    },
+    "BAN": {
+     "braces": 27,
+     "cap": 1,
+     "cap_share": 0.03571428571428571
+    },
+    "NULL": {
+     "braces": 28,
+     "cap_share": 0.0
+    }
+   },
+   "graph": {
+    "n_sites": 28,
+    "n_sel": {
+     "n": 28,
+     "median": 8192.0,
+     "q25_q75": [
+      8192.0,
+      8192.0
+     ],
+     "share_positive": 1.0
+    },
+    "seconds": {
+     "n": 28,
+     "median": 162.82139241695404,
+     "q25_q75": [
+      64.19097012281418,
+      203.547180891037
+     ],
+     "share_positive": 1.0
+    },
+    "node0_in_logit_ids": 28
+   },
+   "seconds_per_site": {
+    "A": {
+     "n": 28,
+     "median": 12.834001064300537,
+     "q25_q75": [
+      10.26545786857605,
+      19.502633035182953
+     ],
+     "share_positive": 1.0
+    },
+    "B": {
+     "n": 28,
+     "median": 275.3962060213089,
+     "q25_q75": [
+      192.64193069934845,
+      327.1516168117523
+     ],
+     "share_positive": 1.0
+    }
+   }
+  },
+  "program_fix": {
+   "gen:BAN": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "unverifiable": 6,
+     "fail": 16,
+     "no_compile": 5,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "no_compile": 7,
+     "fail": 16,
+     "unverifiable": 4,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G_every": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "no_compile": 11,
+     "fail": 14,
+     "unverifiable": 2,
+     "unscorable": 1
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:NULL": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 23,
+     "no_compile": 5
+    },
+    "how": {
+     "completion": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   }
+  },
+  "existence": {
+   "exist:G": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 28
+    },
+    "how": {
+     "none": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:RND": {
+    "n_sites": 28,
+    "n_problems": 28,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 28
+    },
+    "how": {
+     "none": 28
+    },
+    "excluded_rows_in_analysis_set": 0
+   }
+  },
+  "family": {
+   "arithmetic": {
+    "n_sites": 2,
+    "Y_G_per_site": 0.0,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 0.0,
+    "Y_GxA_per_site": 0.0
+   },
+   "comparison": {
+    "n_sites": 8,
+    "Y_G_per_site": 0.0,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 0.0,
+    "Y_GxA_per_site": 0.0
+   },
+   "integer": {
+    "n_sites": 17,
+    "Y_G_per_site": 0.0,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 0.0,
+    "Y_GxA_per_site": 0.0
+   },
+   "logical": {
+    "n_sites": 1,
+    "Y_G_per_site": 0.0,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 0.0,
+    "Y_GxA_per_site": 0.0
+   }
+  },
+  "slips_NULL": {
+   "slip_sites": 0,
+   "with_NULL_row": 0,
+   "n_sites": 0,
+   "n_problems": 0,
+   "equal_weight": null,
+   "per_site": null,
+   "labels": {},
+   "verified_sites": []
+  },
+  "hf_comparison": {
+   "hf_runner_up_x_TL_BAN_per_site": {
+    "HF runner-up known, not verified | TL BAN Y=0": 23,
+    "HF runner-up unknown | TL BAN Y=0": 5
+   },
+   "TL_BAN_lexeme_vs_HF_runner_up": {
+    "n_known": 23,
+    "same": 23,
+    "differ": 0,
+    "share_differ": 0.0,
+    "no_BAN_output": 0,
+    "undecodable": [],
+    "differ_sites": []
+   }
+  },
+  "mde80": "sim_power.json not found",
+  "predictions": [
+   {
+    "prediction": "exclusions (belief sites)",
+    "value": 2,
+    "range": [
+     0,
+     4
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "BAN fix rate (TL)",
+    "value": 0.0,
+    "range": [
+     0.5,
+     0.7
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "TL BAN lexeme differs from the HF runner-up, share of sites with a known runner-up",
+    "value": 0.0,
+    "range": [
+     null,
+     0.1
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G flips, per site",
+    "value": 0.75,
+    "range": [
+     0.9,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G median k*",
+    "value": 57.0,
+    "range": [
+     2,
+     20
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G first feature at layer >= 18 and h-1, per site",
+    "value": 0.4642857142857143,
+    "range": [
+     0.6,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "t*_G equals BAN's lexeme, share of flips per site",
+    "value": 0.42857142857142855,
+    "range": [
+     0.6,
+     0.85
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "m of S2",
+    "value": 0,
+    "range": [
+     6,
+     16
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G fix rate",
+    "value": 0.0,
+    "range": [
+     0.4,
+     0.65
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-BAN)",
+    "value": 0.0,
+    "range": [
+     -0.15,
+     0.03
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "NF",
+    "value": 0.0,
+    "range": [
+     0,
+     0.08
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "R - Bk",
+    "value": 0.0,
+    "range": [
+     -0.1,
+     0.05
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "GxA flips, per site",
+    "value": 0.75,
+    "range": [
+     0.9,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "GxA fix rate",
+    "value": 0.0,
+    "range": [
+     0.4,
+     0.65
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-GxA)",
+    "value": 0.0,
+    "range": [
+     -0.06,
+     0.06
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 flips, per site",
+    "value": 0.03571428571428571,
+    "range": [
+     0.3,
+     0.9
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 median k* among flips",
+    "value": 57.0,
+    "range": [
+     100,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 fix rate",
+    "value": 0.0,
+    "range": [
+     0.05,
+     0.35
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-RND1)",
+    "value": 0.0,
+    "range": [
+     0.15,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "decisions: S1 rejects, S2 does not, S3 not reached",
+    "value": null,
+    "range": [
+     null,
+     null
+    ],
+    "inside": false,
+    "note": "not rejected / not tested / not tested"
+   },
+   {
+    "prediction": "G_LP fix rate minus G",
+    "value": 0.0,
+    "range": [
+     -0.1,
+     0.1
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "ORC fix rate minus G",
+    "value": 0.0,
+    "range": [
+     -0.1,
+     0.1
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "CONTRAST fix rate minus G",
+    "value": 0.0,
+    "range": [
+     0.1,
+     null
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G1 flips, per site",
+    "value": 0.03571428571428571,
+    "range": [
+     0.05,
+     0.25
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G_mid flips, per site",
+    "value": 0.4642857142857143,
+    "range": [
+     null,
+     0.4
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "faithfulness: site median Spearman",
+    "value": 0.15615514823233542,
+    "range": [
+     0.3,
+     0.7
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "program fix gen:G / site fix G",
+    "value": null,
+    "range": [
+     0.6,
+     1.0
+    ],
+    "inside": null,
+    "note": ""
+   },
+   {
+    "prediction": "gen:G_every minus gen:G",
+    "value": 0.0,
+    "range": [
+     null,
+     0
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "gen:NULL fix rate",
+    "value": 0.0,
+    "range": [
+     null,
+     0.05
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "existence rate, exist:G, per site",
+    "value": 0.0,
+    "range": [
+     0.05,
+     0.25
+    ],
+    "inside": false,
+    "note": "{\"exist:G\": 0.0, \"exist:RND\": 0.0}"
+   },
+   {
+    "prediction": "existence rate, exist:RND (random features), per site",
+    "value": 0.0,
+    "range": [
+     null,
+     0.05
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "collateral: G changes an argmax, share of sites (per site)",
+    "value": 0.6785714285714286,
+    "range": [
+     0.2,
+     0.6
+    ],
+    "inside": false,
+    "note": "positions >= h when S's best repair is teacher-forced with G's ablation, RNDk: the same per RND-k draw}.\nG: a site counts when G > 0, over sites with a collateral record (a best repair exists). RND-k: a site\ncounts when more than half of its draws are > 0, over sites with >= 1 draw (RND-k needs G to flip).\n'both' = the two on the sites that have both. Per site (the \u00a76 check) and equal-weight over problems. Equal weight: G 0.6785714285714286, RND-k 0.14285714285714285; on sites with both: G 0.6666666666666666, RND-k 0.14285714285714285"
+   },
+   {
+    "prediction": "collateral: RND-k changes an argmax in most draws, share of sites (per site)",
+    "value": 0.14285714285714285,
+    "range": [
+     0.05,
+     0.3
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "slips: NULL fix count minus the HF-computed fix count",
+    "value": null,
+    "range": [
+     -3,
+     3
+    ],
+    "inside": null,
+    "note": "no hf_runner_up on slip rows"
+   }
+  ]
+ },
+ "seconds": 2.864253282546997
+}
