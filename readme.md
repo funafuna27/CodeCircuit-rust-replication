@@ -46,7 +46,7 @@ Simply run the scripts in order using `python x.py`.
 
 # Replication log (this fork)
 
-This fork replicates CodeCircuit on Python and extends it to Rust in seven
+This fork replicates CodeCircuit on Python and extends it to Rust in eight
 phases: reproduce the Python number (finished 2026-09-16); ask the same question
 of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
 ask it within a problem, on two solutions to the same task
@@ -57,7 +57,9 @@ model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
 2026-10-12); try it on the model's own errors and their one-token repairs
 (`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13); and close on
 Phase 5's retained pairs, against cheap signals and a probe of the same forward
-pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14).
+pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14); and test the paper's
+causal claim by zeroing graph-ranked features at the model's own bugs
+(`PREREGISTRATION_P8_INTERVENTION.md`, finished 2026-10-19).
 
 ## Erratum (2026-10-14): the Rust judge passed infinite results
 
@@ -149,6 +151,16 @@ language (the Python labels lean on name-aliasing for 99 of
 114 positives; the Rust prompt carries the signature), so the difference is not
 attributed to language.
 
+Phase 8 tested the paper's other claim, that zeroing features the graph picks
+can fix a bug. At 142 of Gemma's own one-token bugs, zeroing the graph's
+top-ranked features changes the model's choice at 91% of sites, where matched
+random features do so at 10%, and repairs 34% of them (equal weight over
+problems). Forbidding the wrong token repairs 56%. Most of the graph's repairs
+are the token the ban gives anyway; where the ablation sends the model
+elsewhere, the code usually breaks. Gradient × activation, without the graph,
+does as well as the graph. For prediction and for repair alike, the graph is
+not shown to do more than cheap methods.
+
 | | question | result, 95% CI |
 |---|---|---|
 | Phase 1, Python, 256 problems | does the paper's number reproduce? | 79.73% on its own protocol; **0.7269 [0.6619, 0.7901]** at the problem level against execution |
@@ -160,11 +172,13 @@ attributed to language.
 | Phase 5, Rust, 259 pairs | the same, with the members' code log-probabilities matched (median gap 0.18 nats) | **centred graph features 0.641 [0.562, 0.717], p 0.004**, predicted null; with the remaining surprise removed 0.639, p 0.005. Output distribution alone 0.649; the kind of edit alone 0.676 (exploratory), graph added to it +0.012 [−0.074, +0.098] |
 | Phase 6, Rust | a verified one-token repair of Gemma's own failing code against a control that keeps the bug | **gate missed: 20 strict pairs (49 with the fallback), against 150; no graph built**. 275 of 579 checkable repairs passed the asserts by luck |
 | Phase 7, Rust, Phase 5's 259 pairs | does the graph add to the kind of edit and the output distribution (C, 0.707)? to a probe of plain activations? | **added to C: −0.019, +0.002 [−0.072, +0.074] after the dilution correction**; the pre-registered tests were withdrawn by their size check. Probe 0.685 against graph 0.641. 64 of 193 checkable survivors wrong on extra inputs; on those the graph scores 0.469 |
+| Phase 8, Rust, 142 of Gemma's own one-token bugs (30 problems) | does zeroing the graph's top-ranked features repair the bug more often than matched random features (S1), than forbidding the wrong token (S2), than gradient × activation without the graph (S3)? | **S1 rejected: D +0.287 [+0.141, +0.441], p 0.0004; S2 not rejected: D −0.224 [−0.369, −0.086]**, both as predicted; S3 not tested. Repair rates: ban 0.56, graph 0.34, gradient × activation 0.40, random 0.05 |
 
 Each "predicted null" was my prediction, written down before the data. The
 first three were wrong in the paper's favour; Phase 4's held; Phase 5's failed,
 again in the paper's favour; Phase 7's held, but only because its tests could
-not be run at a valid size. What else held:
+not be run at a valid size; Phase 8's held, with S2 on the other side of zero.
+What else held:
 the level is not a length proxy (C4), the two arms rank the problems they share
 alike (ρ +0.758, consistent with both reading problem difficulty), Phase 3's
 length matching worked (length alone scores 0.545), and in Phase 4 the broken
@@ -914,6 +928,98 @@ attribution is what carries Phase 5's 0.64, but beyond C it adds nothing
 measurable (its one valid test: p 0.024 against Holm's 0.0167). The interval
 does not exclude a gain of up to 0.07. The tests that would have settled it
 could not be run at a valid size, and the pairs are not new.
+
+## Phase 8: zeroing graph-ranked features at the model's own bugs
+
+The paper's second claim (§4.4) is causal: zeroing one transcoder feature picked
+from the graph fixed a bug (`high = mid`). It reports that one case, with no rate
+and no control. Phase 8 measures the rate at Gemma's own one-token bugs, against
+controls. Each site is a failing solution from Phase 6 where Gemma's wrong token
+was its top choice and a one-token repair is verified: it passes the asserts and
+the calibrated extra inputs. At the decision position, the features ranked
+highest for the wrong token's logit are zeroed, cumulatively, until the model's
+top token changes (at most 1024). The new token is spliced in. Where that edit
+was not among the judged mutants, the model completes the line under the same
+ablation. The program is then judged blind. Pre-registered in
+`PREREGISTRATION_P8_INTERVENTION.md` after a pilot on 30 sites from other
+problems; the design is in `data/intervention_design/`.
+
+**The arms:**
+- **G:** the graph's ranking, by each feature's linearised effect on the wrong
+  token's logit.
+- **RND1 (S1):** for each of G's features, a random feature at the same layer
+  and position, of similar size.
+- **BAN (S2):** no ablation; forbid the wrong token and take the next one.
+- **GxA (S3):** gradient × activation from one backward pass, without the graph.
+- **Descriptive:**
+  - four more random draws;
+  - the graph's ranking on the log-probability (G_LP);
+  - G's single top feature (G1);
+  - middle layers only (G_mid);
+  - direct effects only (DE);
+  - features ordered by their measured single ablations (ORC);
+  - a ranking that uses the repair (CONTRAST);
+  - whole-program generation.
+
+**Result: the graph's features beat random ones, but not the ban.** The analysis
+covers 142 sites over 30 problems. 4 sites were excluded by a registered rule:
+there the model preferred the wrong token by less than the noise floor. Repair
+rates are equal-weight over problems:
+
+| arm | repair rate | 95% CI | top token changed | median features zeroed |
+|---|---|---|---|---|
+| BAN, forbid the wrong token | 0.561 | [0.404, 0.715] | 100% | — |
+| G, the graph's ranking | 0.337 | [0.203, 0.481] | 91% | 20 |
+| GxA, no graph | 0.395 | [0.256, 0.547] | 91% | 14 |
+| RND1, matched random | 0.049 | [0.007, 0.125] | 10% | 264 |
+| ORC, measured single ablations | 0.518 | [0.357, 0.673] | 92% | 4 |
+| CONTRAST, uses the repair | 0.614 | [0.469, 0.756] | 87% | 9.5 |
+
+| step | test | D | 95% CI | m | p | decision |
+|---|---|---|---|---|---|---|
+| S1 | G > RND1 | +0.287 | [+0.141, +0.441] | 15 | 0.0004 | rejected |
+| S2 | G > BAN | −0.224 | [−0.369, −0.086] | 15 | 0.998 | not rejected |
+| S3 | G > GxA | −0.059 | [−0.175, +0.041] | 9 | — | not tested |
+
+**Why the graph loses to the ban.**
+- When G's ablation changes the top token, the new token is the ban's in 70 of
+  129 flips. Those flips give 48 of G's 57 repairs.
+- In the other 59 flips the model moves to a token that is usually wrong (9
+  repairs).
+- So D(G − BAN) = −0.22 comes from breaks. At 39 sites G flips to a failing
+  token where the ban's token passes. Only 7 sites are rescues, and at 4 G never
+  flips.
+- Gradient × activation, without the graph, does as well. Where both flip, it
+  repairs 0.45 against G's 0.40.
+- Ordering features by their measured single ablations does better than either
+  (0.52).
+
+**The paper's single feature (post hoc).** Zeroing one of the top 384 features:
+- changes the top token at 27 sites (19%); one matched random feature does so
+  at 5;
+- yields a verified repair at 22 sites (15%), but at 20 of them the repair is
+  the ban's token;
+- gives a repair the ban does not give at only 2 sites.
+
+**Side effects.** G's ablation also changes the model's top token at some later
+position of the repaired program (teacher-forced) at 60% of sites. Random
+features ablated in the same number do so at 9%.
+
+**Predictions.** Of 34 predictions written before any GPU data, 21 held; of 10
+revised after the pilot (label-free), 9 held. The decisions held: S1 rejects, S2
+does not, S3 is not reached. G's repair rate (0.34) and D(G − BAN) (−0.22) fell
+below the original ranges, and inside the revised ones.
+
+**What it adds up to.** The graph's ranking is not arbitrary: it finds features
+whose removal changes the decision, where random features rarely do. But its
+repairs are mostly the runner-up token, which forbidding the wrong token gives
+for free, and where it moves the model elsewhere it mostly breaks the code. No
+advantage over a single backward pass was found either. The phase used 21.6 of
+its 28 GPU-h. Its limits:
+- one-token substitutions at known sites;
+- the wrong token's logit as the target;
+- Gemma-2-2b-it with its transcoders;
+- 30 MBPP problems in Rust.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).

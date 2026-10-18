@@ -1,0 +1,87 @@
+{
+ "site_id": "576|160|70",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " == 0 || a1.len() == 0 {\n        return false;\n    }\n    for i in 0..a1.len() {\n        if a1[i] == a0[i] {\n            continue;\n        }\n        return false;\n    }\n    return true;\n}",
+   "tokens": 72,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " == 0 || a1.len() == 0 {\n        return false;\n    }\n    let mut a0_iter = a0.iter();\n    let mut a1_iter = a1.iter();\n    let mut a0_index = 0;\n    let mut a1_index = 0;\n    while a0_index < a0.len() && a1_index < a1.len() {\n        if a0_iter.next() == a1_iter.next() {\n            a1_",
+   "tokens": 122,
+   "stopped": "cap"
+  },
+  "BAN": {
+   "text": " == 0 || a1.len() == 0 {\n        return false;\n    }\n    for i in 0..a1.len() {\n        if a1[i] == a0[i] {\n            continue;\n        }\n        break;\n    }\n    return true;\n}",
+   "tokens": 71,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " < a1.len() {\n        return false;\n    }\n    for i in 0..a0.len() {\n        for j in i + 1..a0.len() {\n            if a0[i..j].contains(&a1[0..a1.len()]) {\n                return true;\n            }\n        }\n    }\n    return false;\n}",
+   "tokens": 89,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 122,
+ "collateral": {
+  "repair_to": "!=",
+  "repair_label": "verified",
+  "repair_token": 1864,
+  "positions": 59,
+  "G": 3,
+  "G_k": 4,
+  "RNDk": [
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 54
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 1,
+  "t_star_id": 1159,
+  "t_star_piece": " ==",
+  "margin_at_kstar": -0.0068111419677734375,
+  "scan_replay_disagree": 1,
+  "n_candidates": 29729,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    53,
+    11005,
+    52.25
+   ]
+  ],
+  "completion": " 0 || a1.len() == 0 {\n",
+  "fullvocab_t": 1159
+ },
+ "contrast_repair": {
+  "to": "!=",
+  "token": 1864,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 39.762277126312256
+}

@@ -1,0 +1,80 @@
+{
+ "site_id": "471|1|71",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "1;\n    for i in 0..a0.len() {\n        result = (result * a0[i]) % n;\n    }\n    return result;\n}\n\n```\n\n**Explanation:**\n\n1. **Function Signature:**\n   - `fn find_remainder(a0: Vec<i64>, a1: i64) -> i64`: This defines a function named `find_remainder` that takes two arguments:\n     - `a0`: A vector of `i64` (64-bit integer) values.\n     - `a1`: An `i64` value.\n   - The function returns an `i64` value,",
+   "tokens": 152,
+   "stopped": "cap",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": "0;\n    for (let i = 0; i < a0.len(); i++) {\n        result = (result + a0[i] * a1) % n;\n    }\n    return result;\n}\n```\n\n**Explanation:**\n\n1. **Function Signature:**\n   - `fn find_remainder(a0: Vec<i64>, a1: i64) -> i64`: This defines a function named `find_remainder` that takes two arguments:\n     - `a0`: A vector of `i64` (64-bit signed integers) representing the array elements.\n     - `a1`: An `i64` representing the",
+   "tokens": 152,
+   "stopped": "cap"
+  },
+  "BAN": {
+   "text": "1;\n    for i in 0..a0.len() {\n        result = (result * a0[i]) % n;\n    }\n    result\n}\n\nfn main() {\n    let a = vec![1, 2, 3];\n    let n = 5;\n    let product = find_remainder(a, 2);\n    println!(\"Product modulo n: {}\", product);\n}",
+   "tokens": 94,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "0;\n    for i in 0..a0.len() {\n        result = (result + a0[i] * a1) % n;\n    }\n    result\n}\n\nfn main() {\n    let a = vec![1, 2, 3];\n    let n = 5;\n    let product = find_remainder(a, 3);\n    println!(\"Product modulo {} is: {}\", n, product);\n}",
+   "tokens": 101,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 152,
+ "collateral": {
+  "repair_to": "1",
+  "repair_label": "verified",
+  "repair_token": 235274,
+  "positions": 89,
+  "G": 2,
+  "G_k": 56,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 80
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": false,
+  "k_star": null,
+  "t_star_id": null,
+  "t_star_piece": null,
+  "margin_at_kstar": null,
+  "scan_replay_disagree": 0,
+  "n_candidates": 25976,
+  "K": 1024,
+  "ablated": [],
+  "completion": null,
+  "fullvocab_t": null
+ },
+ "contrast_repair": {
+  "to": "1",
+  "token": 235274,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 85.78396415710449
+}

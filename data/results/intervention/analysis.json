@@ -1,0 +1,3428 @@
+{
+ "created": "2026-10-19 05:14:38 JST",
+ "dry_run": false,
+ "kind": "belief",
+ "script_sha256": "adb63a0290ead358e83633f6ef51b38513a4384f37e6d8e69a63e4620f19cf58",
+ "common_sha256": "0452d67c1eb48c1396a80654fe1eb9a15d3c5d620a41c039d675abe9666d1876",
+ "inputs": {
+  "/home/user1/CodeCircuit-rust/data/results/intervention/sites.jsonl": "3fe80119aaf4bde0c6235b330b38cc435e49b59f3571fec309861493ee24b794",
+  "/home/user1/CodeCircuit-rust/data/results/intervention/judged.jsonl": "0f9bed86417efa33432dcf97fd681ebb01b92d20ab14291551e8e1e0b32e38cb",
+  "/home/user1/CodeCircuit-rust/data/results/intervention/alpha.json": "5336db604d50903ffe2fd65a829d5badf21ed0527bddd8c9f951cda60d4c8176",
+  "/home/user1/CodeCircuit-rust/data/results/intervention/sim_power.json": "8c7af3640dffe74d86489f24cd134bfa56769ff5fb3ed43f031808cc86302f11"
+ },
+ "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/run",
+ "run_files": {
+  "A": 191,
+  "B": 146,
+  "C": 146
+ },
+ "alpha": {
+  "value": 0.03,
+  "source": "alpha.json (p8_sim post-pilot rule)",
+  "sha256": "5336db604d50903ffe2fd65a829d5badf21ed0527bddd8c9f951cda60d4c8176",
+  "q": {
+   "pilot_sites": 30,
+   "sites_sha256": "48d8a84596d3d1931e0e19ddc72d6e6b80c6bf193b49fb12f6e9580b091da804",
+   "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run",
+   "missing": [],
+   "excluded": [
+    "167|135|92",
+    "737|41|65"
+   ],
+   "undecodable": [],
+   "differ": [
+    "113|35|92",
+    "135|94|55",
+    "20|39|44",
+    "228|164|97",
+    "238|52|114",
+    "287|32|121",
+    "311|103|86",
+    "397|35|87",
+    "406|111|78",
+    "420|86|106",
+    "438|7|199",
+    "455|162|156",
+    "563|136|154",
+    "610|37|112",
+    "631|145|85",
+    "741|27|140",
+    "790|21|54",
+    "89|46|159",
+    "92|43|134"
+   ],
+   "same": [
+    "138|19|140",
+    "16|179|162",
+    "252|70|127",
+    "266|155|76",
+    "434|13|106",
+    "643|128|133",
+    "72|165|68",
+    "787|127|166",
+    "80|14|146"
+   ],
+   "futility": {
+    "rule": "G flips at fewer than 15 of the 30 pilot sites -> build no main graphs; run BAN, GxA and NULL descriptively (design \u00a79)",
+    "counted_as_not_flipped": "excluded sites, sites without a stage-B file, flips whose t* is in E",
+    "flipped": [
+     "113|35|92",
+     "138|19|140",
+     "16|179|162",
+     "20|39|44",
+     "228|164|97",
+     "238|52|114",
+     "252|70|127",
+     "266|155|76",
+     "397|35|87",
+     "406|111|78",
+     "420|86|106",
+     "434|13|106",
+     "631|145|85",
+     "643|128|133",
+     "72|165|68",
+     "741|27|140",
+     "787|127|166",
+     "790|21|54",
+     "80|14|146",
+     "89|46|159",
+     "92|43|134"
+    ],
+    "no_flip": [
+     "135|94|55",
+     "287|32|121",
+     "311|103|86",
+     "438|7|199",
+     "455|162|156",
+     "563|136|154",
+     "610|37|112"
+    ],
+    "t_star_in_E": [],
+    "excluded": [
+     "167|135|92",
+     "737|41|65"
+    ],
+    "no_stage_B": [],
+    "undecodable_flip": [],
+    "n_flips": 21,
+    "denominator": 30,
+    "pilot_size_is_30": true,
+    "fires": false
+   },
+   "q": 0.6785714285714286,
+   "numerator": 19,
+   "denominator": 28,
+   "source": "pilot run outputs",
+   "run_dir_found_by": "searched ['/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run', '/home/user1/CodeCircuit-rust/data/results/intervention/run']"
+  },
+  "worst_size": {
+   "0.05": {
+    "size": 0.066,
+    "cell": {
+     "section": "A",
+     "mode": "skew-",
+     "q": 0.4,
+     "rho": 0.0,
+     "q_targets": [
+      0.5786,
+      0.6286,
+      0.6786,
+      0.7286,
+      0.7786
+     ],
+     "capped": true,
+     "E_D": 0.001720303550439374
+    }
+   },
+   "0.04": {
+    "size": 0.056,
+    "cell": {
+     "section": "A",
+     "mode": "skew-",
+     "q": 0.4,
+     "rho": 0.0,
+     "q_targets": [
+      0.5786,
+      0.6286,
+      0.6786,
+      0.7286,
+      0.7786
+     ],
+     "capped": true,
+     "E_D": 0.001720303550439374
+    }
+   },
+   "0.03": {
+    "size": 0.045,
+    "cell": {
+     "section": "A",
+     "mode": "skew-",
+     "q": 0.4,
+     "rho": 0.0,
+     "q_targets": [
+      0.5786,
+      0.6286,
+      0.6786,
+      0.7286,
+      0.7786
+     ],
+     "capped": true,
+     "E_D": 0.001720303550439374
+    }
+   },
+   "0.025": {
+    "size": 0.039,
+    "cell": {
+     "section": "A",
+     "mode": "skew-",
+     "q": 0.4,
+     "rho": 0.0,
+     "q_targets": [
+      0.5786,
+      0.6286,
+      0.6786,
+      0.7286,
+      0.7786
+     ],
+     "capped": true,
+     "E_D": 0.001720303550439374
+    }
+   },
+   "0.02": {
+    "size": 0.032,
+    "cell": {
+     "section": "A",
+     "mode": "skew-",
+     "q": 0.4,
+     "rho": 1.0,
+     "q_targets": [
+      0.5786,
+      0.6286,
+      0.6786,
+      0.7286,
+      0.7786
+     ],
+     "capped": true,
+     "E_D": 0.0022377755026524123
+    }
+   }
+  },
+  "rule": "worst size at 0.03 is 0.045 <= 0.05: alpha stays 0.03",
+  "futility": {
+   "rule": "G flips at fewer than 15 of the 30 pilot sites -> build no main graphs; run BAN, GxA and NULL descriptively (design \u00a79)",
+   "counted_as_not_flipped": "excluded sites, sites without a stage-B file, flips whose t* is in E",
+   "flipped": [
+    "113|35|92",
+    "138|19|140",
+    "16|179|162",
+    "20|39|44",
+    "228|164|97",
+    "238|52|114",
+    "252|70|127",
+    "266|155|76",
+    "397|35|87",
+    "406|111|78",
+    "420|86|106",
+    "434|13|106",
+    "631|145|85",
+    "643|128|133",
+    "72|165|68",
+    "741|27|140",
+    "787|127|166",
+    "790|21|54",
+    "80|14|146",
+    "89|46|159",
+    "92|43|134"
+   ],
+   "no_flip": [
+    "135|94|55",
+    "287|32|121",
+    "311|103|86",
+    "438|7|199",
+    "455|162|156",
+    "563|136|154",
+    "610|37|112"
+   ],
+   "t_star_in_E": [],
+   "excluded": [
+    "167|135|92",
+    "737|41|65"
+   ],
+   "no_stage_B": [],
+   "undecodable_flip": [],
+   "n_flips": 21,
+   "denominator": 30,
+   "pilot_size_is_30": true,
+   "fires": false
+  }
+ },
+ "confirmatory": {
+  "method": "one-sided problem-level sign flip on the integer statistic; fixed sequence S1 -> S2 -> S3",
+  "sequence": [
+   {
+    "step": "S1",
+    "test": "G > RND1",
+    "alpha": 0.03,
+    "n_sites": 142,
+    "n_problems": 30,
+    "L": 360360,
+    "D": 0.2874196174196174,
+    "G": 30,
+    "m": 15,
+    "T": 3107236,
+    "p_exact": 0.00042724609375,
+    "exact_count": 14,
+    "exact_of": 32768,
+    "p_mc": 0.00048,
+    "p": 0.00042724609375,
+    "how": "exact over 2^15 sign vectors",
+    "min_attainable_p": 3.0517578125e-05,
+    "D_ci95": [
+     0.14118284493284491,
+     0.4406067867317866
+    ],
+    "reached": true,
+    "decision": "reject"
+   },
+   {
+    "step": "S2",
+    "test": "G > BAN",
+    "alpha": 0.03,
+    "n_sites": 142,
+    "n_problems": 30,
+    "L": 360360,
+    "D": -0.22425528175528175,
+    "G": 30,
+    "m": 15,
+    "T": -2424379,
+    "p_exact": 0.997894287109375,
+    "exact_count": 32699,
+    "exact_of": 32768,
+    "p_mc": 0.99786,
+    "p": 0.997894287109375,
+    "how": "exact over 2^15 sign vectors",
+    "min_attainable_p": 3.0517578125e-05,
+    "D_ci95": [
+     -0.36916437266437263,
+     -0.08594647944647955
+    ],
+    "reached": true,
+    "decision": "not rejected"
+   },
+   {
+    "step": "S3",
+    "test": "G > GxA",
+    "alpha": 0.03,
+    "n_sites": 142,
+    "n_problems": 30,
+    "L": 360360,
+    "D": -0.05875901875901876,
+    "G": 30,
+    "m": 9,
+    "T": -635232,
+    "D_ci95": [
+     -0.17514357864357863,
+     0.04143037518037516
+    ],
+    "reached": false,
+    "decision": "not tested",
+    "p_descriptive_not_tested": {
+     "p": 0.837890625,
+     "p_exact": 0.837890625,
+     "p_mc": 0.83955,
+     "exact_count": 429,
+     "exact_of": 512,
+     "how": "exact over 2^9 sign vectors",
+     "min_attainable_p": 0.001953125
+    }
+   }
+  ],
+  "summary": [
+   "S1 (G > RND1) rejects: D = +0.287, m = 15, p = 0.0004272 <= 0.03",
+   "S2 (G > BAN) does not reject: D = -0.224, m = 15, p = 0.9979 > 0.03; the advantage was not detected (80% MDE: see descriptive.mde80), never read as equivalence",
+   "S3 (G > GxA) not tested (the sequence stopped)"
+  ]
+ },
+ "descriptive": {
+  "note": "Descriptive only: nothing in this block can change S1-S3.",
+  "analysis_set": {
+   "belief_sites": 146,
+   "status_counts": {
+    "complete": 142,
+    "excluded": 4
+   },
+   "rounds": 19,
+   "rounds_complete": 19,
+   "order_is_round_robin": true,
+   "excluded": [
+    "171|35|77",
+    "576|97|98",
+    "68|0|292",
+    "775|40|152"
+   ],
+   "run_but_in_incomplete_round": [],
+   "not_run": 0,
+   "excluded_in_complete_rounds": 4,
+   "exclusion_reasons": {
+    "171|35|77": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.144577 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.144577 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.144577 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.144577 < 2 delta",
+     "in_analysis_set": false
+    },
+    "576|97|98": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.142402 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.142402 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.142402 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.142402 < 2 delta",
+     "in_analysis_set": false
+    },
+    "68|0|292": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.0604019 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.0604019 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.0604019 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.0604019 < 2 delta",
+     "in_analysis_set": false
+    },
+    "775|40|152": {
+     "stages": {
+      "A": "a: best E logit leads the best non-E logit by 0.0894527 < 2 delta",
+      "B": "a: best E logit leads the best non-E logit by 0.0894527 < 2 delta",
+      "C": "a: best E logit leads the best non-E logit by 0.0894527 < 2 delta"
+     },
+     "registered": true,
+     "reason": "a: best E logit leads the best non-E logit by 0.0894527 < 2 delta",
+     "in_analysis_set": false
+    }
+   },
+   "exclusion_rule": "registered (design \u00a72 a-d) reason in the stage-A or stage-B file; stage-C and '<stage>: failed in two fresh processes' reasons are not exclusions",
+   "unregistered_exclusions": {},
+   "registered_but_judged_rows_not_excluded": [],
+   "n_sites": 142,
+   "n_problems": 30,
+   "L": 360360,
+   "per_problem_sites": {
+    "6": 7,
+    "56": 1,
+    "58": 1,
+    "68": 3,
+    "71": 1,
+    "93": 2,
+    "101": 1,
+    "137": 5,
+    "226": 2,
+    "244": 4,
+    "428": 1,
+    "443": 13,
+    "452": 8,
+    "471": 7,
+    "472": 13,
+    "479": 5,
+    "556": 1,
+    "562": 2,
+    "564": 2,
+    "576": 11,
+    "598": 1,
+    "599": 8,
+    "625": 1,
+    "627": 10,
+    "637": 3,
+    "751": 1,
+    "762": 8,
+    "775": 18,
+    "786": 1,
+    "792": 1
+   },
+   "per_problem_sorted": [
+    18,
+    13,
+    13,
+    11,
+    10,
+    8,
+    8,
+    8,
+    7,
+    7,
+    5,
+    5,
+    4,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "tier_counts": {
+    "1": 90,
+    "2": 52
+   },
+   "sites": [
+    "101|55|148",
+    "137|119|123",
+    "137|11|109",
+    "137|167|123",
+    "137|168|141",
+    "137|60|119",
+    "226|0|123",
+    "226|0|126",
+    "244|104|103",
+    "244|115|205",
+    "244|24|138",
+    "244|24|147",
+    "428|1|202",
+    "443|10|167",
+    "443|13|109",
+    "443|141|172",
+    "443|152|115",
+    "443|175|115",
+    "443|1|115",
+    "443|24|116",
+    "443|25|103",
+    "443|2|124",
+    "443|39|101",
+    "443|48|99",
+    "443|67|103",
+    "443|8|120",
+    "452|0|50",
+    "452|100|94",
+    "452|109|52",
+    "452|128|135",
+    "452|144|147",
+    "452|4|142",
+    "452|5|175",
+    "452|89|50",
+    "471|152|72",
+    "471|159|72",
+    "471|175|76",
+    "471|18|71",
+    "471|1|71",
+    "471|71|71",
+    "471|7|71",
+    "472|154|122",
+    "472|22|154",
+    "472|24|168",
+    "472|24|232",
+    "472|24|235",
+    "472|51|130",
+    "472|61|168",
+    "472|61|232",
+    "472|61|235",
+    "472|66|122",
+    "472|78|168",
+    "472|78|232",
+    "472|78|235",
+    "479|103|142",
+    "479|107|123",
+    "479|145|144",
+    "479|24|110",
+    "479|88|144",
+    "556|0|179",
+    "562|51|191",
+    "562|7|194",
+    "564|119|131",
+    "564|119|145",
+    "56|23|141",
+    "576|125|67",
+    "576|128|65",
+    "576|160|70",
+    "576|175|67",
+    "576|26|67",
+    "576|2|67",
+    "576|32|124",
+    "576|32|70",
+    "576|83|67",
+    "576|90|181",
+    "576|97|101",
+    "58|9|52",
+    "598|105|103",
+    "599|108|91",
+    "599|10|91",
+    "599|133|91",
+    "599|142|122",
+    "599|165|115",
+    "599|165|117",
+    "599|29|101",
+    "599|87|91",
+    "625|10|113",
+    "627|107|151",
+    "627|116|169",
+    "627|166|224",
+    "627|166|226",
+    "627|16|217",
+    "627|50|148",
+    "627|59|106",
+    "627|59|118",
+    "627|59|120",
+    "627|80|226",
+    "637|113|62",
+    "637|33|92",
+    "637|86|62",
+    "68|23|254",
+    "68|25|169",
+    "68|28|255",
+    "6|103|150",
+    "6|10|91",
+    "6|116|96",
+    "6|118|153",
+    "6|132|102",
+    "6|132|105",
+    "6|17|93",
+    "71|144|105",
+    "751|43|80",
+    "762|3|102",
+    "762|45|101",
+    "762|45|139",
+    "762|50|96",
+    "762|66|111",
+    "762|76|103",
+    "762|76|141",
+    "762|9|96",
+    "775|104|111",
+    "775|104|118",
+    "775|111|144",
+    "775|111|147",
+    "775|13|209",
+    "775|13|212",
+    "775|13|84",
+    "775|14|88",
+    "775|14|91",
+    "775|2|111",
+    "775|40|155",
+    "775|4|97",
+    "775|5|113",
+    "775|67|97",
+    "775|73|152",
+    "775|73|155",
+    "775|73|84",
+    "775|82|93",
+    "786|147|131",
+    "792|164|141",
+    "93|124|57",
+    "93|44|57"
+   ]
+  },
+  "arm_rates": {
+   "G": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 57.0,
+    "equal_weight": 0.3367185592185592,
+    "per_site": 0.4014084507042254,
+    "equal_weight_ci95": [
+     0.2027777777777778,
+     0.48056051587301574
+    ],
+    "per_site_ci95": [
+     0.2242926816812216,
+     0.5789545585274661
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.9084507042253521,
+    "labels": {
+     "verified": 57,
+     "no_compile": 28,
+     "no_flip": 13,
+     "fail": 35,
+     "lucky": 9
+    },
+    "how": {
+     "lexeme": 71,
+     "completion": 58,
+     "none": 13
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "GxA": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 57.0,
+    "equal_weight": 0.395477577977578,
+    "per_site": 0.4014084507042254,
+    "equal_weight_ci95": [
+     0.2556175491175491,
+     0.54695936008436
+    ],
+    "per_site_ci95": [
+     0.25489733629300776,
+     0.5461574074074073
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.9084507042253521,
+    "labels": {
+     "verified": 57,
+     "no_compile": 27,
+     "fail": 33,
+     "no_flip": 13,
+     "lucky": 12
+    },
+    "how": {
+     "lexeme": 76,
+     "completion": 53,
+     "none": 13
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND1": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 8.0,
+    "equal_weight": 0.0492989417989418,
+    "per_site": 0.056338028169014086,
+    "equal_weight_ci95": [
+     0.006666666666666667,
+     0.12465641534391535
+    ],
+    "per_site_ci95": [
+     0.014181899910098892,
+     0.11643835616438356
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.09859154929577464,
+    "labels": {
+     "no_flip": 128,
+     "fail": 6,
+     "verified": 8
+    },
+    "how": {
+     "none": 128,
+     "lexeme": 11,
+     "completion": 3
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND2": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 15.0,
+    "equal_weight": 0.06256206756206756,
+    "per_site": 0.1056338028169014,
+    "equal_weight_ci95": [
+     0.020685515873015876,
+     0.1192708333333333
+    ],
+    "per_site_ci95": [
+     0.0450425144245369,
+     0.16666666666666666
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.14084507042253522,
+    "labels": {
+     "no_flip": 122,
+     "fail": 4,
+     "verified": 15,
+     "no_compile": 1
+    },
+    "how": {
+     "none": 122,
+     "lexeme": 15,
+     "completion": 5
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND3": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 10.0,
+    "equal_weight": 0.04968050468050468,
+    "per_site": 0.07042253521126761,
+    "equal_weight_ci95": [
+     0.012037037037037037,
+     0.10426020044770042
+    ],
+    "per_site_ci95": [
+     0.029758597883597884,
+     0.11627906976744186
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.11971830985915492,
+    "labels": {
+     "no_flip": 125,
+     "fail": 5,
+     "verified": 10,
+     "no_compile": 2
+    },
+    "how": {
+     "none": 125,
+     "lexeme": 12,
+     "completion": 5
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND4": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 12.0,
+    "equal_weight": 0.06495828245828246,
+    "per_site": 0.08450704225352113,
+    "equal_weight_ci95": [
+     0.016553571428571428,
+     0.1432589285714285
+    ],
+    "per_site_ci95": [
+     0.0380952380952381,
+     0.14434233913970831
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.1267605633802817,
+    "labels": {
+     "no_flip": 124,
+     "fail": 4,
+     "verified": 12,
+     "no_compile": 1,
+     "lucky": 1
+    },
+    "how": {
+     "none": 124,
+     "lexeme": 12,
+     "completion": 6
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "RND5": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 19.0,
+    "equal_weight": 0.08748066748066748,
+    "per_site": 0.13380281690140844,
+    "equal_weight_ci95": [
+     0.03383597883597884,
+     0.15287454212454205
+    ],
+    "per_site_ci95": [
+     0.06451036866359447,
+     0.20270506520506518
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.176056338028169,
+    "labels": {
+     "no_flip": 117,
+     "fail": 5,
+     "verified": 19,
+     "no_compile": 1
+    },
+    "how": {
+     "none": 117,
+     "lexeme": 20,
+     "completion": 5
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G_LP": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 64.0,
+    "equal_weight": 0.42551605801605796,
+    "per_site": 0.4507042253521127,
+    "equal_weight_ci95": [
+     0.2783329772079772,
+     0.5796099779849778
+    ],
+    "per_site_ci95": [
+     0.29059139784946236,
+     0.6096035523566286
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.8098591549295775,
+    "labels": {
+     "verified": 64,
+     "no_compile": 15,
+     "no_flip": 27,
+     "fail": 27,
+     "lucky": 9
+    },
+    "how": {
+     "lexeme": 78,
+     "completion": 37,
+     "none": 27
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G1": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 4.0,
+    "equal_weight": 0.010313390313390314,
+    "per_site": 0.028169014084507043,
+    "equal_weight_ci95": [
+     0.0,
+     0.023903133903133904
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.056966546112115664
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.04225352112676056,
+    "labels": {
+     "no_flip": 136,
+     "verified": 4,
+     "no_compile": 2
+    },
+    "how": {
+     "none": 136,
+     "lexeme": 3,
+     "completion": 3
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "G_mid": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 37.0,
+    "equal_weight": 0.22956367706367706,
+    "per_site": 0.2605633802816901,
+    "equal_weight_ci95": [
+     0.12140127927627926,
+     0.3594456168831166
+    ],
+    "per_site_ci95": [
+     0.13513098988559114,
+     0.3840026490066225
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.39436619718309857,
+    "labels": {
+     "verified": 37,
+     "no_flip": 86,
+     "fail": 15,
+     "no_compile": 4
+    },
+    "how": {
+     "lexeme": 39,
+     "none": 86,
+     "completion": 17
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "DE": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 39.0,
+    "equal_weight": 0.2620372220372221,
+    "per_site": 0.2746478873239437,
+    "equal_weight_ci95": [
+     0.15072787860287856,
+     0.39084356615606597
+    ],
+    "per_site_ci95": [
+     0.17741649508121712,
+     0.3795666635868058
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.5774647887323944,
+    "labels": {
+     "no_flip": 60,
+     "fail": 27,
+     "verified": 39,
+     "no_compile": 8,
+     "lucky": 8
+    },
+    "how": {
+     "none": 60,
+     "lexeme": 49,
+     "completion": 33
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "ORC": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 87.0,
+    "equal_weight": 0.5180076405076405,
+    "per_site": 0.6126760563380281,
+    "equal_weight_ci95": [
+     0.35672411616161614,
+     0.6729174922299921
+    ],
+    "per_site_ci95": [
+     0.46052109440267336,
+     0.7480393179329404
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.9225352112676056,
+    "labels": {
+     "verified": 87,
+     "no_flip": 11,
+     "fail": 31,
+     "lucky": 1,
+     "no_compile": 12
+    },
+    "how": {
+     "lexeme": 96,
+     "none": 11,
+     "completion": 35
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "CONTRAST": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 94.0,
+    "equal_weight": 0.6137780737780738,
+    "per_site": 0.6619718309859155,
+    "equal_weight_ci95": [
+     0.4692491883116883,
+     0.7564576048951048
+    ],
+    "per_site_ci95": [
+     0.5420542912178069,
+     0.7662368005825949
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.8732394366197183,
+    "labels": {
+     "verified": 94,
+     "fail": 18,
+     "no_flip": 18,
+     "no_compile": 10,
+     "lucky": 2
+    },
+    "how": {
+     "lexeme": 101,
+     "completion": 23,
+     "none": 18
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "BAN": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 93.0,
+    "equal_weight": 0.560973840973841,
+    "per_site": 0.6549295774647887,
+    "equal_weight_ci95": [
+     0.40352777777777776,
+     0.7148434343434343
+    ],
+    "per_site_ci95": [
+     0.5223814555540879,
+     0.771815024137525
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "verified": 93,
+     "fail": 42,
+     "no_compile": 7
+    },
+    "how": {
+     "lexeme": 113,
+     "completion": 29
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "NULL": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 142
+    },
+    "how": {
+     "none": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:G": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 2.0,
+    "equal_weight": 0.006730769230769231,
+    "per_site": 0.014084507042253521,
+    "equal_weight_ci95": [
+     0.0,
+     0.017628205128205128
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.03361344537815126
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.014084507042253521,
+    "labels": {
+     "no_flip": 140,
+     "verified": 2
+    },
+    "how": {
+     "none": 140,
+     "lexeme": 2
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:RND": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 142
+    },
+    "how": {
+     "none": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:BAN": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 59.0,
+    "equal_weight": 0.4194851444851445,
+    "per_site": 0.4154929577464789,
+    "equal_weight_ci95": [
+     0.2709478021978022,
+     0.5713032661782661
+    ],
+    "per_site_ci95": [
+     0.2666546762589928,
+     0.5714285714285714
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 46,
+     "verified": 59,
+     "no_compile": 28,
+     "unscorable": 5,
+     "lucky": 4
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 42.0,
+    "equal_weight": 0.2622115847115847,
+    "per_site": 0.29577464788732394,
+    "equal_weight_ci95": [
+     0.14454209679209679,
+     0.3956156204906204
+    ],
+    "per_site_ci95": [
+     0.16482820976491863,
+     0.42056260198783557
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 34,
+     "no_compile": 53,
+     "lucky": 11,
+     "verified": 42,
+     "unscorable": 2
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G_every": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 37.0,
+    "equal_weight": 0.21677146927146929,
+    "per_site": 0.2605633802816901,
+    "equal_weight_ci95": [
+     0.104048254985755,
+     0.3421319444444444
+    ],
+    "per_site_ci95": [
+     0.13569980694980693,
+     0.37762626262626253
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 37,
+     "no_compile": 52,
+     "verified": 37,
+     "lucky": 12,
+     "unscorable": 4
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:NULL": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 13.0,
+    "equal_weight": 0.12333333333333334,
+    "per_site": 0.09154929577464789,
+    "equal_weight_ci95": [
+     0.029999999999999995,
+     0.25
+    ],
+    "per_site_ci95": [
+     0.008547008547008548,
+     0.20994823343702115
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 101,
+     "verified": 13,
+     "no_compile": 28
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   }
+  },
+  "RNDk_draws_pooled": {
+   "n_sites": 129,
+   "n_problems": 30,
+   "sum": 0.15000000000000002,
+   "equal_weight": 0.0008888888888888888,
+   "per_site": 0.0011627906976744188,
+   "equal_weight_ci95": [
+    0.0,
+    0.0023333333333333335
+   ],
+   "per_site_ci95": [
+    0.0,
+    0.0030701754385964912
+   ],
+   "draws": 2580,
+   "changed_share_of_draws": 0.0031007751937984496,
+   "labels": {
+    "no_flip": 2572,
+    "fail": 1,
+    "verified": 3,
+    "unscorable": 4
+   }
+  },
+  "decomposition_G_BAN": {
+   "NF": 0.029393939393939392,
+   "R": 0.03311965811965812,
+   "Bk": 0.22798100048100048,
+   "D": -0.22425528175528175,
+   "R_minus_Bk": -0.19486134236134237,
+   "identity_exact": true,
+   "n_sites": {
+    "NF": 4,
+    "R": 7,
+    "Bk": 39
+   },
+   "NF_ci95": [
+    0.0,
+    0.0693939393939394
+   ],
+   "R_ci95": [
+    0.006730769230769231,
+    0.07339743589743589
+   ],
+   "Bk_ci95": [
+    0.11033444564694565,
+    0.35820613876863866
+   ],
+   "R_minus_Bk_ci95": [
+    -0.33532849326599323,
+    -0.06412306674806681
+   ],
+   "neutralizing_rescues": 3
+  },
+  "rescue_break_vs_BAN": {
+   "G": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 4,
+     "no_flip & BAN fails": 9,
+     "flip & both fix": 50,
+     "flip & rescue (arm fixes, BAN fails)": 7,
+     "flip & break (arm fails, BAN fixes)": 39,
+     "flip & both fail": 33
+    },
+    "neutralizing_rescues": 3
+   },
+   "GxA": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 3,
+     "no_flip & BAN fails": 10,
+     "flip & both fix": 52,
+     "flip & rescue (arm fixes, BAN fails)": 5,
+     "flip & break (arm fails, BAN fixes)": 38,
+     "flip & both fail": 34
+    },
+    "neutralizing_rescues": 2
+   },
+   "RND1": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 83,
+     "no_flip & BAN fails": 45,
+     "flip & both fix": 8,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 2,
+     "flip & both fail": 4
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND2": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 77,
+     "no_flip & BAN fails": 45,
+     "flip & both fix": 15,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 1,
+     "flip & both fail": 4
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND3": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 81,
+     "no_flip & BAN fails": 44,
+     "flip & both fix": 10,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 2,
+     "flip & both fail": 5
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND4": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 79,
+     "no_flip & BAN fails": 45,
+     "flip & both fix": 12,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 2,
+     "flip & both fail": 4
+    },
+    "neutralizing_rescues": 0
+   },
+   "RND5": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 71,
+     "no_flip & BAN fails": 46,
+     "flip & both fix": 19,
+     "flip & rescue (arm fixes, BAN fails)": 0,
+     "flip & break (arm fails, BAN fixes)": 3,
+     "flip & both fail": 3
+    },
+    "neutralizing_rescues": 0
+   },
+   "G_LP": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 9,
+     "no_flip & BAN fails": 18,
+     "flip & both fix": 59,
+     "flip & rescue (arm fixes, BAN fails)": 5,
+     "flip & break (arm fails, BAN fixes)": 25,
+     "flip & both fail": 26
+    },
+    "neutralizing_rescues": 1
+   },
+   "G1": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 90,
+     "no_flip & BAN fails": 46,
+     "flip & both fix": 3,
+     "flip & rescue (arm fixes, BAN fails)": 1,
+     "flip & break (arm fails, BAN fixes)": 0,
+     "flip & both fail": 2
+    },
+    "neutralizing_rescues": 0
+   },
+   "G_mid": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 54,
+     "no_flip & BAN fails": 32,
+     "flip & both fix": 34,
+     "flip & rescue (arm fixes, BAN fails)": 3,
+     "flip & break (arm fails, BAN fixes)": 5,
+     "flip & both fail": 14
+    },
+    "neutralizing_rescues": 0
+   },
+   "DE": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 35,
+     "no_flip & BAN fails": 25,
+     "flip & both fix": 38,
+     "flip & rescue (arm fixes, BAN fails)": 1,
+     "flip & break (arm fails, BAN fixes)": 20,
+     "flip & both fail": 23
+    },
+    "neutralizing_rescues": 0
+   },
+   "ORC": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 3,
+     "no_flip & BAN fails": 8,
+     "flip & both fix": 83,
+     "flip & rescue (arm fixes, BAN fails)": 4,
+     "flip & break (arm fails, BAN fixes)": 7,
+     "flip & both fail": 37
+    },
+    "neutralizing_rescues": 1
+   },
+   "CONTRAST": {
+    "n_sites": 142,
+    "per_site_counts": {
+     "no_flip & BAN fixes (NF)": 9,
+     "no_flip & BAN fails": 9,
+     "flip & both fix": 79,
+     "flip & rescue (arm fixes, BAN fails)": 15,
+     "flip & break (arm fails, BAN fixes)": 5,
+     "flip & both fail": 25
+    },
+    "neutralizing_rescues": 6
+   }
+  },
+  "landing": {
+   "G": {
+    "n_sites": 142,
+    "n_flips": 129,
+    "counts": {
+     "no_flip": 13,
+     "ban_lexeme": 70,
+     "other_family": 22,
+     "outside_family": 37,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.5426356589147286,
+     "other_family": 0.17054263565891473,
+     "outside_family": 0.2868217054263566,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.6857142857142857,
+     "other_family": 0.2727272727272727,
+     "outside_family": 0.08108108108108109,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.6193253968253969,
+     "other_family": 0.14955840455840455,
+     "outside_family": 0.23111619861619864,
+     "unscorable": 0.0
+    }
+   },
+   "GxA": {
+    "n_sites": 142,
+    "n_flips": 129,
+    "counts": {
+     "no_flip": 13,
+     "ban_lexeme": 75,
+     "other_family": 23,
+     "outside_family": 31,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.5813953488372093,
+     "other_family": 0.17829457364341086,
+     "outside_family": 0.24031007751937986,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.6533333333333333,
+     "other_family": 0.17391304347826086,
+     "outside_family": 0.12903225806451613,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.7131288251977907,
+     "other_family": 0.11947391688770997,
+     "outside_family": 0.16739725791449928,
+     "unscorable": 0.0
+    }
+   },
+   "RND1": {
+    "n_sites": 142,
+    "n_flips": 14,
+    "counts": {
+     "no_flip": 128,
+     "ban_lexeme": 8,
+     "other_family": 5,
+     "outside_family": 1,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.5714285714285714,
+     "other_family": 0.35714285714285715,
+     "outside_family": 0.07142857142857142,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.5625,
+     "other_family": 0.375,
+     "outside_family": 0.0625,
+     "unscorable": 0.0
+    }
+   },
+   "RND2": {
+    "n_sites": 142,
+    "n_flips": 20,
+    "counts": {
+     "no_flip": 122,
+     "ban_lexeme": 17,
+     "other_family": 2,
+     "outside_family": 1,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.85,
+     "other_family": 0.1,
+     "outside_family": 0.05,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.8823529411764706,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8333333333333334,
+     "other_family": 0.125,
+     "outside_family": 0.041666666666666664,
+     "unscorable": 0.0
+    }
+   },
+   "RND3": {
+    "n_sites": 142,
+    "n_flips": 17,
+    "counts": {
+     "no_flip": 125,
+     "ban_lexeme": 14,
+     "other_family": 3,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8235294117647058,
+     "other_family": 0.17647058823529413,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.7142857142857143,
+     "other_family": 0.0,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.7727272727272727,
+     "other_family": 0.22727272727272727,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "RND4": {
+    "n_sites": 142,
+    "n_flips": 18,
+    "counts": {
+     "no_flip": 124,
+     "ban_lexeme": 13,
+     "other_family": 2,
+     "outside_family": 3,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.7222222222222222,
+     "other_family": 0.1111111111111111,
+     "outside_family": 0.16666666666666666,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.9230769230769231,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.75,
+     "other_family": 0.125,
+     "outside_family": 0.125,
+     "unscorable": 0.0
+    }
+   },
+   "RND5": {
+    "n_sites": 142,
+    "n_flips": 25,
+    "counts": {
+     "no_flip": 117,
+     "ban_lexeme": 19,
+     "other_family": 4,
+     "outside_family": 2,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.76,
+     "other_family": 0.16,
+     "outside_family": 0.08,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.6538461538461539,
+     "other_family": 0.23076923076923078,
+     "outside_family": 0.11538461538461539,
+     "unscorable": 0.0
+    }
+   },
+   "G_LP": {
+    "n_sites": 142,
+    "n_flips": 115,
+    "counts": {
+     "no_flip": 27,
+     "ban_lexeme": 79,
+     "other_family": 14,
+     "outside_family": 22,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.6869565217391305,
+     "other_family": 0.12173913043478261,
+     "outside_family": 0.19130434782608696,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.7468354430379747,
+     "other_family": 0.2857142857142857,
+     "outside_family": 0.045454545454545456,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.724047619047619,
+     "other_family": 0.08438644688644688,
+     "outside_family": 0.19156593406593408,
+     "unscorable": 0.0
+    }
+   },
+   "G1": {
+    "n_sites": 142,
+    "n_flips": 6,
+    "counts": {
+     "no_flip": 136,
+     "ban_lexeme": 5,
+     "other_family": 1,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8333333333333334,
+     "other_family": 0.16666666666666666,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.6,
+     "other_family": 1.0,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.875,
+     "other_family": 0.125,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   },
+   "G_mid": {
+    "n_sites": 142,
+    "n_flips": 56,
+    "counts": {
+     "no_flip": 86,
+     "ban_lexeme": 40,
+     "other_family": 10,
+     "outside_family": 6,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.7142857142857143,
+     "other_family": 0.17857142857142858,
+     "outside_family": 0.10714285714285714,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.825,
+     "other_family": 0.2,
+     "outside_family": 0.3333333333333333,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.637218045112782,
+     "other_family": 0.1829573934837093,
+     "outside_family": 0.17982456140350878,
+     "unscorable": 0.0
+    }
+   },
+   "DE": {
+    "n_sites": 142,
+    "n_flips": 82,
+    "counts": {
+     "no_flip": 60,
+     "ban_lexeme": 54,
+     "other_family": 13,
+     "outside_family": 15,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.6585365853658537,
+     "other_family": 0.15853658536585366,
+     "outside_family": 0.18292682926829268,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.6111111111111112,
+     "other_family": 0.07692307692307693,
+     "outside_family": 0.3333333333333333,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.7193333333333333,
+     "other_family": 0.14666666666666667,
+     "outside_family": 0.134,
+     "unscorable": 0.0
+    }
+   },
+   "ORC": {
+    "n_sites": 142,
+    "n_flips": 131,
+    "counts": {
+     "no_flip": 11,
+     "ban_lexeme": 116,
+     "other_family": 4,
+     "outside_family": 11,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.8854961832061069,
+     "other_family": 0.030534351145038167,
+     "outside_family": 0.08396946564885496,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.7155172413793104,
+     "other_family": 0.75,
+     "outside_family": 0.09090909090909091,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8802380952380953,
+     "other_family": 0.043055555555555555,
+     "outside_family": 0.0767063492063492,
+     "unscorable": 0.0
+    }
+   },
+   "CONTRAST": {
+    "n_sites": 142,
+    "n_flips": 124,
+    "counts": {
+     "no_flip": 18,
+     "ban_lexeme": 96,
+     "other_family": 17,
+     "outside_family": 11,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 0.7741935483870968,
+     "other_family": 0.13709677419354838,
+     "outside_family": 0.08870967741935484,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": 0.0,
+     "ban_lexeme": 0.8333333333333334,
+     "other_family": 0.8235294117647058,
+     "outside_family": 0.0,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 0.8147222222222222,
+     "other_family": 0.14453703703703702,
+     "outside_family": 0.040740740740740744,
+     "unscorable": 0.0
+    }
+   },
+   "BAN": {
+    "n_sites": 142,
+    "n_flips": 142,
+    "counts": {
+     "no_flip": 0,
+     "ban_lexeme": 142,
+     "other_family": 0,
+     "outside_family": 0,
+     "unscorable": 0
+    },
+    "share_of_flips_per_site": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    },
+    "fix_rate_per_site_by_landing": {
+     "no_flip": null,
+     "ban_lexeme": 0.6549295774647887,
+     "other_family": null,
+     "outside_family": null,
+     "unscorable": null
+    },
+    "share_of_flips_equal_weight": {
+     "ban_lexeme": 1.0,
+     "other_family": 0.0,
+     "outside_family": 0.0,
+     "unscorable": 0.0
+    }
+   }
+  },
+  "fix_given_both_flip_G_vs_GxA": {
+   "n_sites": 123,
+   "G": {
+    "n_sites": 123,
+    "n_problems": 29,
+    "sum": 55.0,
+    "equal_weight": 0.40174466338259446,
+    "per_site": 0.44715447154471544,
+    "equal_weight_ci95": [
+     0.2495853858784893,
+     0.5672485632183907
+    ],
+    "per_site_ci95": [
+     0.24835841313269494,
+     0.6363636363636364
+    ]
+   },
+   "GxA": {
+    "n_sites": 123,
+    "n_problems": 29,
+    "sum": 56.0,
+    "equal_weight": 0.4481663929939792,
+    "per_site": 0.45528455284552843,
+    "equal_weight_ci95": [
+     0.2969896004378763,
+     0.6092056650246304
+    ],
+    "per_site_ci95": [
+     0.2751567224721587,
+     0.6300108695652172
+    ]
+   }
+  },
+  "sensitivity": {
+   "note": "Descriptive only: nothing in this block can change S1-S3. p values here are descriptive.",
+   "tier1_only": {
+    "S1": {
+     "n_sites": 90,
+     "n_problems": 30,
+     "D": 0.238488455988456,
+     "D_ci95": [
+      0.08154356060606059,
+      0.3960688131313131
+     ],
+     "m": 13,
+     "p": 0.003662109375,
+     "how": "exact over 2^13 sign vectors"
+    },
+    "S2": {
+     "n_sites": 90,
+     "n_problems": 30,
+     "D": -0.2503823953823954,
+     "D_ci95": [
+      -0.3948344155844156,
+      -0.11171158008658016
+     ],
+     "m": 14,
+     "p": 0.99932861328125,
+     "how": "exact over 2^14 sign vectors"
+    },
+    "S3": {
+     "n_sites": 90,
+     "n_problems": 30,
+     "D": -0.09871572871572871,
+     "D_ci95": [
+      -0.2098311688311688,
+      -0.008080808080808083
+     ],
+     "m": 8,
+     "p": 0.96875,
+     "how": "exact over 2^8 sign vectors"
+    }
+   },
+   "without_rule_b": {
+    "S1": {
+     "n_sites": 137,
+     "n_problems": 29,
+     "D": 0.2985621658035451,
+     "D_ci95": [
+      0.15542108753315648,
+      0.45102795671761187
+     ],
+     "m": 15,
+     "p": 0.000244140625,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S2": {
+     "n_sites": 137,
+     "n_problems": 29,
+     "D": -0.1911425739011946,
+     "D_ci95": [
+      -0.32468287459666767,
+      -0.062480608471987796
+     ],
+     "m": 14,
+     "p": 0.9952392578125,
+     "how": "exact over 2^14 sign vectors"
+    },
+    "S3": {
+     "n_sites": 137,
+     "n_problems": 29,
+     "D": -0.011524108075832214,
+     "D_ci95": [
+      -0.10976003881176295,
+      0.07632557098074337
+     ],
+     "m": 7,
+     "p": 0.6015625,
+     "how": "exact over 2^7 sign vectors"
+    }
+   },
+   "unscorable_excluded": {
+    "S1": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": 0.2874196174196174,
+     "D_ci95": [
+      0.14118284493284491,
+      0.4406067867317866
+     ],
+     "m": 15,
+     "p": 0.00042724609375,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S2": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": -0.22425528175528175,
+     "D_ci95": [
+      -0.36916437266437263,
+      -0.08594647944647955
+     ],
+     "m": 15,
+     "p": 0.997894287109375,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S3": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": -0.05875901875901876,
+     "D_ci95": [
+      -0.17514357864357863,
+      0.04143037518037516
+     ],
+     "m": 9,
+     "p": 0.837890625,
+     "how": "exact over 2^9 sign vectors"
+    }
+   },
+   "neutralizing_rescues_scored_0": {
+    "S1": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": 0.2818640618640619,
+     "D_ci95": [
+      0.13733628408628407,
+      0.43345436507936497
+     ],
+     "m": 15,
+     "p": 0.00048828125,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S2": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": -0.22981083731083732,
+     "D_ci95": [
+      -0.3738977272727272,
+      -0.09292592592592595
+     ],
+     "m": 15,
+     "p": 0.9984130859375,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S3": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D": -0.06061087061087061,
+     "D_ci95": [
+      -0.17667941317941316,
+      0.03941798941798942
+     ],
+     "m": 9,
+     "p": 0.845703125,
+     "how": "exact over 2^9 sign vectors"
+    }
+   },
+   "both_tokens_in_judged_family": {
+    "S1": {
+     "n_sites": 10,
+     "n_problems": 7,
+     "D": -0.07142857142857142,
+     "D_ci95": [
+      -0.21428571428571427,
+      0.0
+     ],
+     "m": 1,
+     "p": 1.0,
+     "how": "exact over 2^1 sign vectors"
+    },
+    "S2": {
+     "n_sites": 70,
+     "n_problems": 22,
+     "D": -0.05032467532467533,
+     "D_ci95": [
+      -0.1829004329004329,
+      0.0633116883116883
+     ],
+     "m": 8,
+     "p": 0.77734375,
+     "how": "exact over 2^8 sign vectors"
+    },
+    "S3": {
+     "n_sites": 60,
+     "n_problems": 21,
+     "D": 0.031746031746031744,
+     "D_ci95": [
+      -0.047619047619047616,
+      0.14285714285714285
+     ],
+     "m": 2,
+     "p": 0.5,
+     "how": "exact over 2^2 sign vectors"
+    }
+   },
+   "sqrt_n_weights": {
+    "S1": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D_sqrt_n": 0.3180439437161338,
+     "m": 15,
+     "p": 0.000335693359375,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S2": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D_sqrt_n": -0.24617667353847242,
+     "m": 15,
+     "p": 0.99737548828125,
+     "how": "exact over 2^15 sign vectors"
+    },
+    "S3": {
+     "n_sites": 142,
+     "n_problems": 30,
+     "D_sqrt_n": -0.024997959056356725,
+     "m": 9,
+     "p": 0.701171875,
+     "how": "exact over 2^9 sign vectors"
+    }
+   }
+  },
+  "run_outputs": {
+   "files": {
+    "A": 191,
+    "B": 146,
+    "C": 146
+   },
+   "k_star": {
+    "G": {
+     "n_sites_with_output": 142,
+     "n_flips": 129,
+     "flip_rate_per_site": 0.9084507042253521,
+     "k_star_median": 20.0,
+     "k_star_q25_q75": [
+      8.0,
+      74.0
+     ],
+     "k_star_max": 928,
+     "scan_replay_disagree_total": 41,
+     "margin_at_kstar_median": -0.1533222198486328
+    },
+    "GxA": {
+     "n_sites_with_output": 142,
+     "n_flips": 129,
+     "flip_rate_per_site": 0.9084507042253521,
+     "k_star_median": 14.0,
+     "k_star_q25_q75": [
+      4.0,
+      60.0
+     ],
+     "k_star_max": 952,
+     "scan_replay_disagree_total": 42,
+     "margin_at_kstar_median": -0.18523788452148438
+    },
+    "RND1": {
+     "n_sites_with_output": 142,
+     "n_flips": 14,
+     "flip_rate_per_site": 0.09859154929577464,
+     "k_star_median": 264.0,
+     "k_star_q25_q75": [
+      135.25,
+      690.75
+     ],
+     "k_star_max": 971,
+     "scan_replay_disagree_total": 12,
+     "margin_at_kstar_median": -0.026658058166503906
+    },
+    "RND2": {
+     "n_sites_with_output": 142,
+     "n_flips": 20,
+     "flip_rate_per_site": 0.14084507042253522,
+     "k_star_median": 237.5,
+     "k_star_q25_q75": [
+      39.25,
+      405.5
+     ],
+     "k_star_max": 767,
+     "scan_replay_disagree_total": 23,
+     "margin_at_kstar_median": -0.040762901306152344
+    },
+    "RND3": {
+     "n_sites_with_output": 142,
+     "n_flips": 17,
+     "flip_rate_per_site": 0.11971830985915492,
+     "k_star_median": 154.0,
+     "k_star_q25_q75": [
+      46.0,
+      347.0
+     ],
+     "k_star_max": 954,
+     "scan_replay_disagree_total": 31,
+     "margin_at_kstar_median": -0.03735160827636719
+    },
+    "RND4": {
+     "n_sites_with_output": 142,
+     "n_flips": 18,
+     "flip_rate_per_site": 0.1267605633802817,
+     "k_star_median": 254.0,
+     "k_star_q25_q75": [
+      108.0,
+      694.0
+     ],
+     "k_star_max": 1015,
+     "scan_replay_disagree_total": 27,
+     "margin_at_kstar_median": -0.04229545593261719
+    },
+    "RND5": {
+     "n_sites_with_output": 142,
+     "n_flips": 25,
+     "flip_rate_per_site": 0.176056338028169,
+     "k_star_median": 120.0,
+     "k_star_q25_q75": [
+      70.0,
+      512.0
+     ],
+     "k_star_max": 996,
+     "scan_replay_disagree_total": 25,
+     "margin_at_kstar_median": -0.041233062744140625
+    },
+    "G_LP": {
+     "n_sites_with_output": 142,
+     "n_flips": 115,
+     "flip_rate_per_site": 0.8098591549295775,
+     "k_star_median": 8.0,
+     "k_star_q25_q75": [
+      2.0,
+      35.5
+     ],
+     "k_star_max": 923,
+     "scan_replay_disagree_total": 28,
+     "margin_at_kstar_median": -0.22106266021728516
+    },
+    "G1": {
+     "n_sites_with_output": 142,
+     "n_flips": 6,
+     "flip_rate_per_site": 0.04225352112676056,
+     "k_star_median": 1.0,
+     "k_star_q25_q75": [
+      1.0,
+      1.0
+     ],
+     "k_star_max": 1,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": -0.2596402168273926
+    },
+    "G_mid": {
+     "n_sites_with_output": 142,
+     "n_flips": 56,
+     "flip_rate_per_site": 0.39436619718309857,
+     "k_star_median": 22.0,
+     "k_star_q25_q75": [
+      8.0,
+      114.25
+     ],
+     "k_star_max": 696,
+     "scan_replay_disagree_total": 36,
+     "margin_at_kstar_median": -0.09812211990356445
+    },
+    "DE": {
+     "n_sites_with_output": 142,
+     "n_flips": 82,
+     "flip_rate_per_site": 0.5774647887323944,
+     "k_star_median": 9.0,
+     "k_star_q25_q75": [
+      3.0,
+      24.5
+     ],
+     "k_star_max": 349,
+     "scan_replay_disagree_total": 21,
+     "margin_at_kstar_median": -0.19617509841918945
+    },
+    "ORC": {
+     "n_sites_with_output": 142,
+     "n_flips": 131,
+     "flip_rate_per_site": 0.9225352112676056,
+     "k_star_median": 4.0,
+     "k_star_q25_q75": [
+      2.0,
+      11.5
+     ],
+     "k_star_max": 253,
+     "scan_replay_disagree_total": 19,
+     "margin_at_kstar_median": -0.21696090698242188
+    },
+    "CONTRAST": {
+     "n_sites_with_output": 142,
+     "n_flips": 124,
+     "flip_rate_per_site": 0.8732394366197183,
+     "k_star_median": 9.5,
+     "k_star_q25_q75": [
+      3.0,
+      48.5
+     ],
+     "k_star_max": 426,
+     "scan_replay_disagree_total": 35,
+     "margin_at_kstar_median": -0.2012033462524414
+    },
+    "BAN": {
+     "n_sites_with_output": 142,
+     "n_flips": 142,
+     "flip_rate_per_site": 1.0,
+     "k_star_median": 0.0,
+     "k_star_q25_q75": [
+      0.0,
+      0.0
+     ],
+     "k_star_max": 0,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": 3.3156981468200684
+    },
+    "NULL": {
+     "n_sites_with_output": 142,
+     "n_flips": 0,
+     "flip_rate_per_site": 0.0,
+     "k_star_median": null,
+     "k_star_q25_q75": null,
+     "k_star_max": null,
+     "scan_replay_disagree_total": 0,
+     "margin_at_kstar_median": null
+    }
+   },
+   "run_vs_judged_flip": {
+    "agree": 2175
+   },
+   "G_first_feature_layer18plus_at_h_minus_1": {
+    "n_sites": 142,
+    "n_analysis_set": 142,
+    "n_sites_without_a_candidate": 0,
+    "share_per_site": 0.647887323943662,
+    "source": "stage-B e_top: first row with e > 0 and pos >= 1 (G's ranking), every analysis-set site"
+   },
+   "margin_terciles": {
+    "cuts": [
+     2.352537155151367,
+     5.318735122680664
+    ],
+    "terciles": {
+     "0": {
+      "n_sites": 48,
+      "Y_G_per_site": 0.5625,
+      "Y_RND1_per_site": 0.16666666666666666,
+      "Y_BAN_per_site": 0.7708333333333334,
+      "Y_GxA_per_site": 0.6875,
+      "D_G_BAN_equal_weight": -0.26851851851851855
+     },
+     "1": {
+      "n_sites": 47,
+      "Y_G_per_site": 0.425531914893617,
+      "Y_RND1_per_site": 0.0,
+      "Y_BAN_per_site": 0.7659574468085106,
+      "Y_GxA_per_site": 0.44680851063829785,
+      "D_G_BAN_equal_weight": -0.14166666666666666
+     },
+     "2": {
+      "n_sites": 47,
+      "Y_G_per_site": 0.2127659574468085,
+      "Y_RND1_per_site": 0.0,
+      "Y_BAN_per_site": 0.425531914893617,
+      "Y_GxA_per_site": 0.06382978723404255,
+      "D_G_BAN_equal_weight": -0.22032967032967032
+     }
+    }
+   },
+   "faithfulness": {
+    "n_sites": 142,
+    "n_sites_finite": 142,
+    "site_median_spearman": 0.22419504393188605,
+    "median_qualifying_features": 39.0
+   },
+   "RNDk_changed": {
+    "n_sites": 129,
+    "mean_share_of_draws": 0.0031007751937984496
+   },
+   "collateral": {
+    "G": {
+     "n_sites": 142,
+     "share_sites_gt_0": 0.5985915492957746,
+     "median": 1.0
+    },
+    "G_k": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 24.0
+    },
+    "RNDk": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "positions": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 29.0
+    },
+    "repair_label": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "repair_to": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "repair_token": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 1864.0
+    },
+    "teacher_agree_clean": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 26.5
+    }
+   },
+   "collateral_sites": {
+    "definition": "positions >= h when S's best repair is teacher-forced with G's ablation, RNDk: the same per RND-k draw}.\nG: a site counts when G > 0, over sites with a collateral record (a best repair exists). RND-k: a site\ncounts when more than half of its draws are > 0, over sites with >= 1 draw (RND-k needs G to flip).\n'both' = the two on the sites that have both. Per site (the \u00a76 check) and equal-weight over problems.",
+    "n_analysis_set": 142,
+    "n_with_collateral_record": 142,
+    "G": {
+     "n_sites": 142,
+     "share_per_site": 0.5985915492957746,
+     "share_equal_weight": 0.5737332112332112
+    },
+    "RNDk_majority_of_draws": {
+     "n_sites": 129,
+     "share_per_site": 0.09302325581395349,
+     "share_equal_weight": 0.07907407407407407
+    },
+    "on_sites_with_both": {
+     "G": {
+      "n_sites": 129,
+      "share_per_site": 0.5658914728682171,
+      "share_equal_weight": 0.5568162393162392
+     },
+     "RNDk_majority_of_draws": {
+      "n_sites": 129,
+      "share_per_site": 0.09302325581395349,
+      "share_equal_weight": 0.07907407407407407
+     }
+    }
+   },
+   "existence_run_fields": {
+    "flips": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "n_single": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 318.0
+    },
+    "random_flips": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "random_kind": {
+     "n_sites": 142,
+     "note": "not numeric; not summarised"
+    },
+    "random_n": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 128.0
+    },
+    "replay_guard": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 0.7527923583984375
+    },
+    "screen_batch": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 64.0
+    },
+    "seconds_singles": {
+     "n_sites": 142,
+     "share_sites_gt_0": 1.0,
+     "median": 4.673737168312073
+    }
+   },
+   "generation_stops": {
+    "G": {
+     "braces": 140,
+     "cap": 2,
+     "cap_share": 0.014084507042253521
+    },
+    "G_every": {
+     "braces": 138,
+     "cap": 4,
+     "cap_share": 0.028169014084507043
+    },
+    "BAN": {
+     "braces": 137,
+     "cap": 5,
+     "cap_share": 0.035211267605633804
+    },
+    "NULL": {
+     "braces": 142,
+     "cap_share": 0.0
+    }
+   },
+   "graph": {
+    "n_sites": 142,
+    "n_sel": {
+     "n": 142,
+     "median": 8192.0,
+     "q25_q75": [
+      8192.0,
+      8192.0
+     ],
+     "share_positive": 1.0
+    },
+    "seconds": {
+     "n": 142,
+     "median": 236.86333179473877,
+     "q25_q75": [
+      149.3783237338066,
+      371.4078841805458
+     ],
+     "share_positive": 1.0
+    },
+    "node0_in_logit_ids": 142
+   },
+   "seconds_per_site": {
+    "A": {
+     "n": 142,
+     "median": 11.63375973701477,
+     "q25_q75": [
+      8.869458198547363,
+      19.153139233589172
+     ],
+     "share_positive": 1.0
+    },
+    "B": {
+     "n": 142,
+     "median": 345.03547728061676,
+     "q25_q75": [
+      242.18060839176178,
+      506.9967259168625
+     ],
+     "share_positive": 1.0
+    }
+   }
+  },
+  "program_fix": {
+   "gen:BAN": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 59.0,
+    "equal_weight": 0.4194851444851445,
+    "per_site": 0.4154929577464789,
+    "equal_weight_ci95": [
+     0.2709478021978022,
+     0.5713032661782661
+    ],
+    "per_site_ci95": [
+     0.2666546762589928,
+     0.5714285714285714
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 46,
+     "verified": 59,
+     "no_compile": 28,
+     "unscorable": 5,
+     "lucky": 4
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 42.0,
+    "equal_weight": 0.2622115847115847,
+    "per_site": 0.29577464788732394,
+    "equal_weight_ci95": [
+     0.14454209679209679,
+     0.3956156204906204
+    ],
+    "per_site_ci95": [
+     0.16482820976491863,
+     0.42056260198783557
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 34,
+     "no_compile": 53,
+     "lucky": 11,
+     "verified": 42,
+     "unscorable": 2
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G_every": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 37.0,
+    "equal_weight": 0.21677146927146929,
+    "per_site": 0.2605633802816901,
+    "equal_weight_ci95": [
+     0.104048254985755,
+     0.3421319444444444
+    ],
+    "per_site_ci95": [
+     0.13569980694980693,
+     0.37762626262626253
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 37,
+     "no_compile": 52,
+     "verified": 37,
+     "lucky": 12,
+     "unscorable": 4
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:NULL": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 13.0,
+    "equal_weight": 0.12333333333333334,
+    "per_site": 0.09154929577464789,
+    "equal_weight_ci95": [
+     0.029999999999999995,
+     0.25
+    ],
+    "per_site_ci95": [
+     0.008547008547008548,
+     0.20994823343702115
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 1.0,
+    "labels": {
+     "fail": 101,
+     "verified": 13,
+     "no_compile": 28
+    },
+    "how": {
+     "completion": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "gen:G_over_site_fix_G": 0.7787262612435535
+  },
+  "existence": {
+   "exist:G": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 2.0,
+    "equal_weight": 0.006730769230769231,
+    "per_site": 0.014084507042253521,
+    "equal_weight_ci95": [
+     0.0,
+     0.017628205128205128
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.03361344537815126
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.014084507042253521,
+    "labels": {
+     "no_flip": 140,
+     "verified": 2
+    },
+    "how": {
+     "none": 140,
+     "lexeme": 2
+    },
+    "excluded_rows_in_analysis_set": 0
+   },
+   "exist:RND": {
+    "n_sites": 142,
+    "n_problems": 30,
+    "sum": 0.0,
+    "equal_weight": 0.0,
+    "per_site": 0.0,
+    "equal_weight_ci95": [
+     0.0,
+     0.0
+    ],
+    "per_site_ci95": [
+     0.0,
+     0.0
+    ],
+    "coverage_of_analysis_set": 1.0,
+    "flip_rate_per_site": 0.0,
+    "labels": {
+     "no_flip": 142
+    },
+    "how": {
+     "none": 142
+    },
+    "excluded_rows_in_analysis_set": 0
+   }
+  },
+  "family": {
+   "arithmetic": {
+    "n_sites": 18,
+    "Y_G_per_site": 0.3333333333333333,
+    "Y_RND1_per_site": 0.1111111111111111,
+    "Y_BAN_per_site": 0.3888888888888889,
+    "Y_GxA_per_site": 0.3333333333333333
+   },
+   "boolean": {
+    "n_sites": 7,
+    "Y_G_per_site": 0.14285714285714285,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 1.0,
+    "Y_GxA_per_site": 0.14285714285714285
+   },
+   "comparison": {
+    "n_sites": 62,
+    "Y_G_per_site": 0.3548387096774194,
+    "Y_RND1_per_site": 0.04838709677419355,
+    "Y_BAN_per_site": 0.7419354838709677,
+    "Y_GxA_per_site": 0.43548387096774194
+   },
+   "compound": {
+    "n_sites": 4,
+    "Y_G_per_site": 0.75,
+    "Y_RND1_per_site": 0.0,
+    "Y_BAN_per_site": 0.75,
+    "Y_GxA_per_site": 0.75
+   },
+   "integer": {
+    "n_sites": 46,
+    "Y_G_per_site": 0.5217391304347826,
+    "Y_RND1_per_site": 0.021739130434782608,
+    "Y_BAN_per_site": 0.6086956521739131,
+    "Y_GxA_per_site": 0.391304347826087
+   },
+   "logical": {
+    "n_sites": 5,
+    "Y_G_per_site": 0.2,
+    "Y_RND1_per_site": 0.4,
+    "Y_BAN_per_site": 0.4,
+    "Y_GxA_per_site": 0.4
+   }
+  },
+  "slips_NULL": {
+   "slip_sites": 45,
+   "with_NULL_row": 45,
+   "n_sites": 45,
+   "n_problems": 14,
+   "sum": 30.0,
+   "equal_weight": 0.573015873015873,
+   "per_site": 0.6666666666666666,
+   "equal_weight_ci95": [
+    0.32059523809523816,
+    0.8095238095238095
+   ],
+   "per_site_ci95": [
+    0.3888888888888889,
+    0.8780672579453065
+   ],
+   "labels": {
+    "verified": 30,
+    "fail": 6,
+    "lucky": 7,
+    "no_flip": 1,
+    "no_compile": 1
+   },
+   "verified_sites": [
+    "244|115|209",
+    "244|16|95",
+    "244|31|102",
+    "244|98|96",
+    "248|0|66",
+    "248|124|64",
+    "248|142|75",
+    "248|20|66",
+    "472|162|101",
+    "472|22|111",
+    "627|107|149",
+    "627|116|167",
+    "627|16|215",
+    "627|50|146",
+    "627|80|224",
+    "637|67|57",
+    "6|155|117",
+    "6|92|73",
+    "736|136|88",
+    "736|2|88",
+    "775|104|121",
+    "775|13|87",
+    "775|2|110",
+    "775|4|96",
+    "775|5|111",
+    "775|67|96",
+    "775|73|87",
+    "775|82|91",
+    "792|139|106",
+    "792|28|106"
+   ]
+  },
+  "hf_comparison": {
+   "hf_runner_up_x_TL_BAN_per_site": {
+    "HF runner-up known, not verified | TL BAN Y=0": 16,
+    "HF runner-up unknown | TL BAN Y=0": 33,
+    "HF runner-up unknown | TL BAN Y=1": 16,
+    "HF runner-up verified | TL BAN Y=1": 77
+   },
+   "TL_BAN_lexeme_vs_HF_runner_up": {
+    "n_known": 93,
+    "same": 93,
+    "differ": 0,
+    "share_differ": 0.0,
+    "no_BAN_output": 0,
+    "undecodable": [],
+    "differ_sites": []
+   },
+   "slips": {
+    "slip_sites": 45,
+    "hf_computed_fix": 19,
+    "NULL_fix": 30,
+    "both": 19,
+    "only_HF": [],
+    "only_NULL": [
+     "627|107|149",
+     "627|116|167",
+     "627|16|215",
+     "627|50|146",
+     "627|80|224",
+     "6|155|117",
+     "775|2|110",
+     "775|4|96",
+     "775|5|111",
+     "775|67|96",
+     "775|82|91"
+    ],
+    "NULL_minus_HF": 11
+   }
+  },
+  "mde80": {
+   "mde80": {
+    "alpha=0.03 b=0.0 sd=0": 0.1358,
+    "alpha=0.03 b=0.0 sd=1": 0.1399,
+    "alpha=0.03 b=0.05 sd=0": 0.1875,
+    "alpha=0.03 b=0.05 sd=1": 0.214,
+    "alpha=0.03 b=0.1 sd=0": 0.2236,
+    "alpha=0.03 b=0.1 sd=1": 0.2438
+   },
+   "alpha": {
+    "value": 0.03,
+    "source": "alpha.json (p8_sim post-pilot rule)",
+    "sha256": "5336db604d50903ffe2fd65a829d5badf21ed0527bddd8c9f951cda60d4c8176",
+    "q": {
+     "pilot_sites": 30,
+     "sites_sha256": "48d8a84596d3d1931e0e19ddc72d6e6b80c6bf193b49fb12f6e9580b091da804",
+     "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run",
+     "missing": [],
+     "excluded": [
+      "167|135|92",
+      "737|41|65"
+     ],
+     "undecodable": [],
+     "differ": [
+      "113|35|92",
+      "135|94|55",
+      "20|39|44",
+      "228|164|97",
+      "238|52|114",
+      "287|32|121",
+      "311|103|86",
+      "397|35|87",
+      "406|111|78",
+      "420|86|106",
+      "438|7|199",
+      "455|162|156",
+      "563|136|154",
+      "610|37|112",
+      "631|145|85",
+      "741|27|140",
+      "790|21|54",
+      "89|46|159",
+      "92|43|134"
+     ],
+     "same": [
+      "138|19|140",
+      "16|179|162",
+      "252|70|127",
+      "266|155|76",
+      "434|13|106",
+      "643|128|133",
+      "72|165|68",
+      "787|127|166",
+      "80|14|146"
+     ],
+     "futility": {
+      "rule": "G flips at fewer than 15 of the 30 pilot sites -> build no main graphs; run BAN, GxA and NULL descriptively (design \u00a79)",
+      "counted_as_not_flipped": "excluded sites, sites without a stage-B file, flips whose t* is in E",
+      "flipped": [
+       "113|35|92",
+       "138|19|140",
+       "16|179|162",
+       "20|39|44",
+       "228|164|97",
+       "238|52|114",
+       "252|70|127",
+       "266|155|76",
+       "397|35|87",
+       "406|111|78",
+       "420|86|106",
+       "434|13|106",
+       "631|145|85",
+       "643|128|133",
+       "72|165|68",
+       "741|27|140",
+       "787|127|166",
+       "790|21|54",
+       "80|14|146",
+       "89|46|159",
+       "92|43|134"
+      ],
+      "no_flip": [
+       "135|94|55",
+       "287|32|121",
+       "311|103|86",
+       "438|7|199",
+       "455|162|156",
+       "563|136|154",
+       "610|37|112"
+      ],
+      "t_star_in_E": [],
+      "excluded": [
+       "167|135|92",
+       "737|41|65"
+      ],
+      "no_stage_B": [],
+      "undecodable_flip": [],
+      "n_flips": 21,
+      "denominator": 30,
+      "pilot_size_is_30": true,
+      "fires": false
+     },
+     "q": 0.6785714285714286,
+     "numerator": 19,
+     "denominator": 28,
+     "source": "pilot run outputs",
+     "run_dir_found_by": "searched ['/home/user1/CodeCircuit-rust/data/results/intervention/pilot/run', '/home/user1/CodeCircuit-rust/data/results/intervention/run']"
+    },
+    "worst_size": {
+     "0.05": {
+      "size": 0.066,
+      "cell": {
+       "section": "A",
+       "mode": "skew-",
+       "q": 0.4,
+       "rho": 0.0,
+       "q_targets": [
+        0.5786,
+        0.6286,
+        0.6786,
+        0.7286,
+        0.7786
+       ],
+       "capped": true,
+       "E_D": 0.001720303550439374
+      }
+     },
+     "0.04": {
+      "size": 0.056,
+      "cell": {
+       "section": "A",
+       "mode": "skew-",
+       "q": 0.4,
+       "rho": 0.0,
+       "q_targets": [
+        0.5786,
+        0.6286,
+        0.6786,
+        0.7286,
+        0.7786
+       ],
+       "capped": true,
+       "E_D": 0.001720303550439374
+      }
+     },
+     "0.03": {
+      "size": 0.045,
+      "cell": {
+       "section": "A",
+       "mode": "skew-",
+       "q": 0.4,
+       "rho": 0.0,
+       "q_targets": [
+        0.5786,
+        0.6286,
+        0.6786,
+        0.7286,
+        0.7786
+       ],
+       "capped": true,
+       "E_D": 0.001720303550439374
+      }
+     },
+     "0.025": {
+      "size": 0.039,
+      "cell": {
+       "section": "A",
+       "mode": "skew-",
+       "q": 0.4,
+       "rho": 0.0,
+       "q_targets": [
+        0.5786,
+        0.6286,
+        0.6786,
+        0.7286,
+        0.7786
+       ],
+       "capped": true,
+       "E_D": 0.001720303550439374
+      }
+     },
+     "0.02": {
+      "size": 0.032,
+      "cell": {
+       "section": "A",
+       "mode": "skew-",
+       "q": 0.4,
+       "rho": 1.0,
+       "q_targets": [
+        0.5786,
+        0.6286,
+        0.6786,
+        0.7286,
+        0.7786
+       ],
+       "capped": true,
+       "E_D": 0.0022377755026524123
+      }
+     }
+    },
+    "rule": "worst size at 0.03 is 0.045 <= 0.05: alpha stays 0.03",
+    "futility": {
+     "rule": "G flips at fewer than 15 of the 30 pilot sites -> build no main graphs; run BAN, GxA and NULL descriptively (design \u00a79)",
+     "counted_as_not_flipped": "excluded sites, sites without a stage-B file, flips whose t* is in E",
+     "flipped": [
+      "113|35|92",
+      "138|19|140",
+      "16|179|162",
+      "20|39|44",
+      "228|164|97",
+      "238|52|114",
+      "252|70|127",
+      "266|155|76",
+      "397|35|87",
+      "406|111|78",
+      "420|86|106",
+      "434|13|106",
+      "631|145|85",
+      "643|128|133",
+      "72|165|68",
+      "741|27|140",
+      "787|127|166",
+      "790|21|54",
+      "80|14|146",
+      "89|46|159",
+      "92|43|134"
+     ],
+     "no_flip": [
+      "135|94|55",
+      "287|32|121",
+      "311|103|86",
+      "438|7|199",
+      "455|162|156",
+      "563|136|154",
+      "610|37|112"
+     ],
+     "t_star_in_E": [],
+     "excluded": [
+      "167|135|92",
+      "737|41|65"
+     ],
+     "no_stage_B": [],
+     "undecodable_flip": [],
+     "n_flips": 21,
+     "denominator": 30,
+     "pilot_size_is_30": true,
+     "fires": false
+    }
+   },
+   "test_run": false,
+   "sites_sha256": "3fe80119aaf4bde0c6235b330b38cc435e49b59f3571fec309861493ee24b794",
+   "same_site_table": true
+  },
+  "predictions": [
+   {
+    "prediction": "exclusions (belief sites)",
+    "value": 4,
+    "range": [
+     0,
+     4
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "BAN fix rate (TL)",
+    "value": 0.560973840973841,
+    "range": [
+     0.5,
+     0.7
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "TL BAN lexeme differs from the HF runner-up, share of sites with a known runner-up",
+    "value": 0.0,
+    "range": [
+     null,
+     0.1
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G flips, per site",
+    "value": 0.9084507042253521,
+    "range": [
+     0.9,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G median k*",
+    "value": 20.0,
+    "range": [
+     2,
+     20
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G first feature at layer >= 18 and h-1, per site",
+    "value": 0.647887323943662,
+    "range": [
+     0.6,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "t*_G equals BAN's lexeme, share of flips per site",
+    "value": 0.5426356589147286,
+    "range": [
+     0.6,
+     0.85
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "m of S2",
+    "value": 15,
+    "range": [
+     6,
+     16
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G fix rate",
+    "value": 0.3367185592185592,
+    "range": [
+     0.4,
+     0.65
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-BAN)",
+    "value": -0.22425528175528175,
+    "range": [
+     -0.15,
+     0.03
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "NF",
+    "value": 0.029393939393939392,
+    "range": [
+     0,
+     0.08
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "R - Bk",
+    "value": -0.19486134236134237,
+    "range": [
+     -0.1,
+     0.05
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "GxA flips, per site",
+    "value": 0.9084507042253521,
+    "range": [
+     0.9,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "GxA fix rate",
+    "value": 0.395477577977578,
+    "range": [
+     0.4,
+     0.65
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-GxA)",
+    "value": -0.05875901875901876,
+    "range": [
+     -0.06,
+     0.06
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 flips, per site",
+    "value": 0.09859154929577464,
+    "range": [
+     0.3,
+     0.9
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 median k* among flips",
+    "value": 264.0,
+    "range": [
+     100,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "RND1 fix rate",
+    "value": 0.0492989417989418,
+    "range": [
+     0.05,
+     0.35
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "D(G-RND1)",
+    "value": 0.2874196174196174,
+    "range": [
+     0.15,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "decisions: S1 rejects, S2 does not, S3 not reached",
+    "value": null,
+    "range": [
+     null,
+     null
+    ],
+    "inside": true,
+    "note": "reject / not rejected / not tested"
+   },
+   {
+    "prediction": "G_LP fix rate minus G",
+    "value": 0.08879749879749876,
+    "range": [
+     -0.1,
+     0.1
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "ORC fix rate minus G",
+    "value": 0.18128908128908128,
+    "range": [
+     -0.1,
+     0.1
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "CONTRAST fix rate minus G",
+    "value": 0.2770595145595146,
+    "range": [
+     0.1,
+     null
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "G1 flips, per site",
+    "value": 0.04225352112676056,
+    "range": [
+     0.05,
+     0.25
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "G_mid flips, per site",
+    "value": 0.39436619718309857,
+    "range": [
+     null,
+     0.4
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "faithfulness: site median Spearman",
+    "value": 0.22419504393188605,
+    "range": [
+     0.3,
+     0.7
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "program fix gen:G / site fix G",
+    "value": 0.7787262612435535,
+    "range": [
+     0.6,
+     1.0
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "gen:G_every minus gen:G",
+    "value": -0.04544011544011539,
+    "range": [
+     null,
+     0
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "gen:NULL fix rate",
+    "value": 0.12333333333333334,
+    "range": [
+     null,
+     0.05
+    ],
+    "inside": false,
+    "note": ""
+   },
+   {
+    "prediction": "existence rate, exist:G, per site",
+    "value": 0.014084507042253521,
+    "range": [
+     0.05,
+     0.25
+    ],
+    "inside": false,
+    "note": "{\"exist:G\": 0.014084507042253521, \"exist:RND\": 0.0}"
+   },
+   {
+    "prediction": "existence rate, exist:RND (random features), per site",
+    "value": 0.0,
+    "range": [
+     null,
+     0.05
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "collateral: G changes an argmax, share of sites (per site)",
+    "value": 0.5985915492957746,
+    "range": [
+     0.2,
+     0.6
+    ],
+    "inside": true,
+    "note": "positions >= h when S's best repair is teacher-forced with G's ablation, RNDk: the same per RND-k draw}.\nG: a site counts when G > 0, over sites with a collateral record (a best repair exists). RND-k: a site\ncounts when more than half of its draws are > 0, over sites with >= 1 draw (RND-k needs G to flip).\n'both' = the two on the sites that have both. Per site (the \u00a76 check) and equal-weight over problems. Equal weight: G 0.5737332112332112, RND-k 0.07907407407407407; on sites with both: G 0.5658914728682171, RND-k 0.09302325581395349"
+   },
+   {
+    "prediction": "collateral: RND-k changes an argmax in most draws, share of sites (per site)",
+    "value": 0.09302325581395349,
+    "range": [
+     0.05,
+     0.3
+    ],
+    "inside": true,
+    "note": ""
+   },
+   {
+    "prediction": "slips: NULL fix count minus the HF-computed fix count",
+    "value": 11,
+    "range": [
+     -3,
+     3
+    ],
+    "inside": false,
+    "note": ""
+   }
+  ]
+ },
+ "seconds": 3.143434762954712
+}

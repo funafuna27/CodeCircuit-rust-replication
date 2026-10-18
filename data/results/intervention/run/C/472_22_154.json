@@ -1,0 +1,177 @@
+{
+ "site_id": "472|22|154",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "0 {\n            return false;\n        }\n        i += 1;\n    }\n    return true;\n}",
+   "tokens": 27,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": "0 {\n            return false;\n        }\n        i += 1;\n    }\n    return true;\n}",
+   "tokens": 27,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": "0 {\n            return false;\n        }\n        i += 1;\n    }\n    true\n}",
+   "tokens": 25,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "1 {\n            return false;\n        }\n        i += 1;\n    }\n    true\n}",
+   "tokens": 25,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 88,
+ "collateral": {
+  "repair_to": "0",
+  "repair_label": "verified",
+  "repair_token": 235276,
+  "positions": 25,
+  "G": 2,
+  "G_k": 106,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 24
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 16,
+  "t_star_id": 235276,
+  "t_star_piece": "0",
+  "margin_at_kstar": -0.030179977416992188,
+  "scan_replay_disagree": 1,
+  "n_candidates": 39497,
+  "K": 1024,
+  "ablated": [
+   [
+    24,
+    80,
+    10639,
+    31.375
+   ],
+   [
+    20,
+    80,
+    10639,
+    13.0
+   ],
+   [
+    23,
+    80,
+    3452,
+    8.375
+   ],
+   [
+    21,
+    80,
+    1248,
+    11.5
+   ],
+   [
+    24,
+    81,
+    10639,
+    22.0
+   ],
+   [
+    24,
+    80,
+    2425,
+    5.5625
+   ],
+   [
+    24,
+    81,
+    2425,
+    8.4375
+   ],
+   [
+    24,
+    81,
+    14176,
+    126.5
+   ],
+   [
+    24,
+    81,
+    483,
+    110.0
+   ],
+   [
+    24,
+    81,
+    15454,
+    46.25
+   ],
+   [
+    22,
+    80,
+    4198,
+    11.125
+   ],
+   [
+    20,
+    80,
+    7417,
+    20.25
+   ],
+   [
+    19,
+    80,
+    10196,
+    11.4375
+   ],
+   [
+    23,
+    80,
+    13859,
+    13.875
+   ],
+   [
+    22,
+    80,
+    12597,
+    21.25
+   ],
+   [
+    22,
+    81,
+    8117,
+    15.4375
+   ]
+  ],
+  "completion": " {\n",
+  "fullvocab_t": 235276
+ },
+ "contrast_repair": {
+  "to": "0",
+  "token": 235276,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 22.03886103630066
+}

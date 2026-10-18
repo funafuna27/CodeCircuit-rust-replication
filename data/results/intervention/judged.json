@@ -1,0 +1,1379 @@
+{
+ "sites_file": "/home/user1/CodeCircuit-rust/data/results/intervention/sites.jsonl",
+ "sites_sha256": "3fe80119aaf4bde0c6235b330b38cc435e49b59f3571fec309861493ee24b794",
+ "n_sites": 191,
+ "run_dir": "/home/user1/CodeCircuit-rust/data/results/intervention/run",
+ "run_files": {
+  "A": 191,
+  "B": 146,
+  "C": 146
+ },
+ "sites_with_runs": 191,
+ "ignored_files": [],
+ "judge_tag": "3b71d30231dc1a5b6c63f54bbb3b4324dc187047d3bb0634c76426b76ee570a5",
+ "judge_module_sha256": "2db06ad8f027fc31b81bd1006acdfef5eb5d2020f28b5a52967fd60634e02624",
+ "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+ "script_sha256": "c868033e184fe7b2e58fa9600134b6ab4eee26fbea84e16143876e4fc0fbe6b5",
+ "rows": 5679,
+ "labels_by_arm": {
+  "NULL": {
+   "no_flip": 143,
+   "excluded": 4,
+   "verified": 30,
+   "fail": 6,
+   "lucky": 7,
+   "no_compile": 1
+  },
+  "BAN": {
+   "verified": 93,
+   "excluded": 4,
+   "fail": 42,
+   "no_compile": 7
+  },
+  "GxA": {
+   "verified": 57,
+   "fail": 33,
+   "excluded": 4,
+   "no_compile": 27,
+   "no_flip": 13,
+   "lucky": 12
+  },
+  "DE": {
+   "verified": 39,
+   "no_flip": 60,
+   "fail": 27,
+   "excluded": 4,
+   "no_compile": 8,
+   "lucky": 8
+  },
+  "G": {
+   "no_compile": 28,
+   "fail": 35,
+   "excluded": 4,
+   "verified": 57,
+   "no_flip": 13,
+   "lucky": 9
+  },
+  "G_LP": {
+   "verified": 64,
+   "excluded": 4,
+   "fail": 27,
+   "no_compile": 15,
+   "no_flip": 27,
+   "lucky": 9
+  },
+  "G1": {
+   "no_flip": 136,
+   "excluded": 4,
+   "verified": 4,
+   "no_compile": 2
+  },
+  "G_mid": {
+   "no_flip": 86,
+   "excluded": 4,
+   "fail": 15,
+   "verified": 37,
+   "no_compile": 4
+  },
+  "RND1": {
+   "no_flip": 128,
+   "fail": 6,
+   "excluded": 4,
+   "verified": 8
+  },
+  "RND2": {
+   "no_flip": 122,
+   "fail": 4,
+   "excluded": 4,
+   "verified": 15,
+   "no_compile": 1
+  },
+  "RND3": {
+   "no_flip": 125,
+   "fail": 5,
+   "excluded": 4,
+   "verified": 10,
+   "no_compile": 2
+  },
+  "RND4": {
+   "no_flip": 124,
+   "fail": 4,
+   "excluded": 4,
+   "verified": 12,
+   "no_compile": 1,
+   "lucky": 1
+  },
+  "RND5": {
+   "no_flip": 117,
+   "fail": 5,
+   "excluded": 4,
+   "verified": 19,
+   "no_compile": 1
+  },
+  "ORC": {
+   "verified": 87,
+   "excluded": 4,
+   "fail": 31,
+   "no_compile": 12,
+   "no_flip": 11,
+   "lucky": 1
+  },
+  "CONTRAST": {
+   "verified": 94,
+   "fail": 18,
+   "no_compile": 10,
+   "no_flip": 18,
+   "lucky": 2
+  },
+  "RNDk:1": {
+   "no_flip": 129
+  },
+  "RNDk:2": {
+   "no_flip": 127,
+   "unscorable": 1,
+   "verified": 1
+  },
+  "RNDk:3": {
+   "no_flip": 129
+  },
+  "RNDk:4": {
+   "no_flip": 129
+  },
+  "RNDk:5": {
+   "no_flip": 129
+  },
+  "RNDk:6": {
+   "no_flip": 129
+  },
+  "RNDk:7": {
+   "no_flip": 128,
+   "fail": 1
+  },
+  "RNDk:8": {
+   "no_flip": 128,
+   "unscorable": 1
+  },
+  "RNDk:9": {
+   "no_flip": 127,
+   "verified": 1,
+   "unscorable": 1
+  },
+  "RNDk:10": {
+   "no_flip": 129
+  },
+  "RNDk:11": {
+   "no_flip": 129
+  },
+  "RNDk:12": {
+   "no_flip": 128,
+   "verified": 1
+  },
+  "RNDk:13": {
+   "no_flip": 129
+  },
+  "RNDk:14": {
+   "no_flip": 129
+  },
+  "RNDk:15": {
+   "no_flip": 129
+  },
+  "RNDk:16": {
+   "no_flip": 129
+  },
+  "RNDk:17": {
+   "no_flip": 129
+  },
+  "RNDk:18": {
+   "no_flip": 129
+  },
+  "RNDk:19": {
+   "no_flip": 128,
+   "unscorable": 1
+  },
+  "RNDk:20": {
+   "no_flip": 129
+  },
+  "exist:G": {
+   "no_flip": 140,
+   "verified": 2
+  },
+  "exist:RND": {
+   "no_flip": 142
+  },
+  "gen:G": {
+   "no_compile": 53,
+   "fail": 34,
+   "excluded": 4,
+   "verified": 42,
+   "unscorable": 2,
+   "lucky": 11
+  },
+  "gen:G_every": {
+   "no_compile": 52,
+   "fail": 37,
+   "excluded": 4,
+   "verified": 37,
+   "unscorable": 4,
+   "lucky": 12
+  },
+  "gen:BAN": {
+   "fail": 46,
+   "excluded": 4,
+   "no_compile": 28,
+   "verified": 59,
+   "unscorable": 5,
+   "lucky": 4
+  },
+  "gen:NULL": {
+   "fail": 101,
+   "excluded": 4,
+   "no_compile": 28,
+   "verified": 13
+  }
+ },
+ "Y_by_arm": {
+  "NULL": 30,
+  "BAN": 93,
+  "GxA": 57,
+  "DE": 39,
+  "G": 57,
+  "G_LP": 64,
+  "G1": 4,
+  "G_mid": 37,
+  "RND1": 8,
+  "RND2": 15,
+  "RND3": 10,
+  "RND4": 12,
+  "RND5": 19,
+  "ORC": 87,
+  "CONTRAST": 94,
+  "RNDk:1": 0,
+  "RNDk:2": 1,
+  "RNDk:3": 0,
+  "RNDk:4": 0,
+  "RNDk:5": 0,
+  "RNDk:6": 0,
+  "RNDk:7": 0,
+  "RNDk:8": 0,
+  "RNDk:9": 1,
+  "RNDk:10": 0,
+  "RNDk:11": 0,
+  "RNDk:12": 1,
+  "RNDk:13": 0,
+  "RNDk:14": 0,
+  "RNDk:15": 0,
+  "RNDk:16": 0,
+  "RNDk:17": 0,
+  "RNDk:18": 0,
+  "RNDk:19": 0,
+  "RNDk:20": 0,
+  "exist:G": 2,
+  "exist:RND": 0,
+  "gen:G": 42,
+  "gen:G_every": 37,
+  "gen:BAN": 59,
+  "gen:NULL": 13
+ },
+ "how": {
+  "none": 4053,
+  "lexeme": 731,
+  "completion": 895
+ },
+ "neutralizing_rows": [
+  [
+   "775|5|113",
+   "GxA",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|5|113",
+   "G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|5|113",
+   "CONTRAST",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|5|113",
+   "gen:G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|5|113",
+   "gen:G_every",
+   "fail",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "GxA",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "ORC",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "CONTRAST",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "gen:G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|82|93",
+   "gen:G_every",
+   "fail",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "244|24|138",
+   "CONTRAST",
+   "verified",
+   [
+    "x%x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "GxA",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "DE",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "ORC",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "CONTRAST",
+   "verified",
+   [
+    "%1"
+   ]
+  ],
+  [
+   "472|24|168",
+   "gen:G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "gen:G_every",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|24|168",
+   "gen:BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "627|59|120",
+   "gen:G_every",
+   "fail",
+   [
+    "+0"
+   ]
+  ],
+  [
+   "472|78|168",
+   "BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "GxA",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "DE",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "ORC",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "CONTRAST",
+   "verified",
+   [
+    "%1"
+   ]
+  ],
+  [
+   "472|78|168",
+   "gen:G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "gen:G_every",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|78|168",
+   "gen:BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "GxA",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "DE",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "ORC",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "CONTRAST",
+   "verified",
+   [
+    "%1"
+   ]
+  ],
+  [
+   "472|61|168",
+   "gen:G",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "gen:G_every",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "472|61|168",
+   "gen:BAN",
+   "fail",
+   [
+    "x-x"
+   ]
+  ],
+  [
+   "775|2|111",
+   "G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|2|111",
+   "G_LP",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|2|111",
+   "gen:G",
+   "verified",
+   [
+    "-0"
+   ]
+  ],
+  [
+   "775|2|111",
+   "gen:G_every",
+   "fail",
+   [
+    "-0"
+   ]
+  ]
+ ],
+ "cache": {
+  "file": "/home/user1/CodeCircuit-rust/data/results/intervention/blind_judge_cache.jsonl",
+  "entries_used": 104,
+  "stale_ignored": 0,
+  "duplicates_ignored": 0,
+  "programs_needed": 456,
+  "judged_now": 456,
+  "work_order": "ascending cache key (sha256 of [task, lexer stream])"
+ },
+ "worker_rlimit_as": 8589934592,
+ "judge_error_scored_fail": [],
+ "audit_blind_vs_stored": {
+  "n": 58,
+  "agree": 58,
+  "disagree": []
+ },
+ "audit_neutralizing": {
+  "n_with_site_flag": 696,
+  "agree": 696,
+  "disagree": [],
+  "rebuild_mismatch": 0
+ },
+ "anomalies": {
+  "gen_is_S": 55,
+  "completion_is_S": 3
+ },
+ "missing_arms": [],
+ "n_missing_arms": 0,
+ "undefined_arms": [],
+ "stage_C_excluded": [],
+ "unscorable_by_reason": {
+  "gen_cap": {
+   "n": 11,
+   "rows": [
+    [
+     "576|90|181",
+     "gen:G"
+    ],
+    [
+     "576|90|181",
+     "gen:G_every"
+    ],
+    [
+     "576|90|181",
+     "gen:BAN"
+    ],
+    [
+     "576|160|70",
+     "gen:G_every"
+    ],
+    [
+     "576|128|65",
+     "gen:BAN"
+    ],
+    [
+     "6|17|93",
+     "gen:BAN"
+    ],
+    [
+     "471|1|71",
+     "gen:G"
+    ],
+    [
+     "471|1|71",
+     "gen:G_every"
+    ],
+    [
+     "576|83|67",
+     "gen:BAN"
+    ],
+    [
+     "576|125|67",
+     "gen:BAN"
+    ],
+    [
+     "576|32|70",
+     "gen:G_every"
+    ]
+   ]
+  },
+  "lexeme_not_judged": {
+   "n": 4,
+   "rows": [
+    [
+     "762|45|101",
+     "RNDk:2"
+    ],
+    [
+     "762|45|101",
+     "RNDk:8"
+    ],
+    [
+     "762|45|101",
+     "RNDk:9"
+    ],
+    [
+     "762|45|101",
+     "RNDk:19"
+    ]
+   ]
+  }
+ },
+ "existence_tokens": {
+  "6|10|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "137|60|119": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "244|104|103": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "56|23|141": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "598|105|103": {
+   "exist:G": {
+    "ban_lexeme": 2
+   },
+   "exist:RND": {}
+  },
+  "751|43|80": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "101|55|148": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "786|147|131": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|128|135": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "762|3|102": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "471|152|72": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "58|9|52": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|5|113": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "93|44|57": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "637|33|92": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "599|29|101": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "428|1|202": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "226|0|123": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "479|145|144": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|90|181": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|66|122": {
+   "exist:G": {
+    "verified": 1,
+    "repeat": 2
+   },
+   "exist:RND": {}
+  },
+  "562|51|191": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "625|10|113": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|107|151": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "68|25|169": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|10|167": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "792|164|141": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "564|119|131": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "556|0|179": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "71|144|105": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "6|132|105": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "137|168|141": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "244|24|147": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|100|94": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "762|50|96": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "471|175|76": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|13|84": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "637|86|62": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|165|115": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "226|0|126": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|97|101": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|154|122": {
+   "exist:G": {
+    "ban_lexeme": 13
+   },
+   "exist:RND": {}
+  },
+  "627|16|217": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "68|28|255": {
+   "exist:G": {
+    "ban_lexeme": 6
+   },
+   "exist:RND": {
+    "ban_lexeme": 3
+   }
+  },
+  "443|67|103": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "6|116|96": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "137|119|123": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "244|115|205": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "762|45|101": {
+   "exist:G": {
+    "ban_lexeme": 4
+   },
+   "exist:RND": {
+    "ban_lexeme": 1
+   }
+  },
+  "471|18|71": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|82|93": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|142|122": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|160|70": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "472|78|232": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|166|226": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|25|103": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "6|103|150": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "137|11|109": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "244|24|138": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|13|209": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|165|117": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|2|67": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|24|168": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|116|169": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|152|115": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "6|132|102": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "137|167|123": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|111|144": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|10|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|128|65": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|51|130": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|166|224": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|2|124": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "6|17|93": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|111|147": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|78|235": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|59|106": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|24|116": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "6|118|153": {
+   "exist:G": {
+    "ban_lexeme": 3
+   },
+   "exist:RND": {}
+  },
+  "775|104|111": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|22|154": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|59|118": {
+   "exist:G": {
+    "ban_lexeme": 4
+   },
+   "exist:RND": {}
+  },
+  "443|48|99": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|104|118": {
+   "exist:G": {
+    "ban_lexeme": 4
+   },
+   "exist:RND": {}
+  },
+  "627|59|120": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|13|109": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|67|97": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|8|120": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|13|212": {
+   "exist:G": {
+    "ban_lexeme": 10
+   },
+   "exist:RND": {
+    "ban_lexeme": 2
+   }
+  },
+  "775|73|155": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|109|52": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "762|76|103": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {
+    "ban_lexeme": 1
+   }
+  },
+  "471|7|71": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|73|84": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "93|124|57": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "637|113|62": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|108|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "479|88|144": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|26|67": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|78|168": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "562|7|194": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|80|226": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "68|23|254": {
+   "exist:G": {
+    "ban_lexeme": 4
+   },
+   "exist:RND": {
+    "ban_lexeme": 1
+   }
+  },
+  "443|39|101": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "564|119|145": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|4|142": {
+   "exist:G": {
+    "verified": 1,
+    "ban_lexeme": 1,
+    "repeat": 1
+   },
+   "exist:RND": {}
+  },
+  "762|76|141": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "471|1|71": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|14|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|87|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "479|103|142": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|32|124": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|61|232": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "627|50|148": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|1|115": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|144|147": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "762|45|139": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "471|71|71": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|4|97": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "599|133|91": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "479|107|123": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|83|67": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|24|232": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|175|115": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|0|50": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "762|9|96": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "471|159|72": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "775|40|155": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "479|24|110": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|125|67": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|24|235": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "443|141|172": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|89|50": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "762|66|111": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|73|152": {
+   "exist:G": {
+    "ban_lexeme": 4
+   },
+   "exist:RND": {}
+  },
+  "576|175|67": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "472|61|235": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "452|5|175": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|14|88": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "576|32|70": {
+   "exist:G": {
+    "ban_lexeme": 1
+   },
+   "exist:RND": {}
+  },
+  "472|61|168": {
+   "exist:G": {},
+   "exist:RND": {}
+  },
+  "775|2|111": {
+   "exist:G": {},
+   "exist:RND": {}
+  }
+ },
+ "completion_path": {
+  "rows": 327,
+  "unscorable": 0
+ }
+}

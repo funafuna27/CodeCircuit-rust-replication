@@ -1,0 +1,129 @@
+{
+ "site_id": "137|167|123",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " is 0 {\n      count += 1;\n      zero_count += 1.0;\n    }\n  }\n  return zero_count / count;\n}",
+   "tokens": 39,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " is 0 {\n      count += 1;\n      zero_count += 1.0;\n    }\n  }\n  return zero_count / count;\n}",
+   "tokens": 39,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " != 0 {\n      count += 1;\n    } else {\n      zero_count += 1.0;\n    }\n  }\n  zero_count / count;\n}",
+   "tokens": 43,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " == 0 {\n      count += 1;\n    } else {\n      zero_count += 1.0;\n    }\n  }\n  let ratio = zero_count / count;\n  return ratio;\n}",
+   "tokens": 51,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 115,
+ "collateral": {
+  "repair_to": "!=",
+  "repair_label": "verified",
+  "repair_token": 1864,
+  "positions": 52,
+  "G": 2,
+  "G_k": 398,
+  "RNDk": [
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   1,
+   0,
+   0,
+   1,
+   2,
+   1,
+   0
+  ],
+  "teacher_agree_clean": 46
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 8,
+  "t_star_id": 1864,
+  "t_star_piece": " !=",
+  "margin_at_kstar": -0.15360260009765625,
+  "scan_replay_disagree": 0,
+  "n_candidates": 37440,
+  "K": 1024,
+  "ablated": [
+   [
+    18,
+    73,
+    14458,
+    30.625
+   ],
+   [
+    20,
+    73,
+    6613,
+    65.0
+   ],
+   [
+    20,
+    73,
+    13466,
+    31.125
+   ],
+   [
+    19,
+    73,
+    9891,
+    38.0
+   ],
+   [
+    21,
+    73,
+    4996,
+    33.75
+   ],
+   [
+    21,
+    73,
+    15415,
+    22.75
+   ],
+   [
+    18,
+    73,
+    2996,
+    24.75
+   ],
+   [
+    20,
+    73,
+    7924,
+    24.125
+   ]
+  ],
+  "completion": " 0 {\n",
+  "fullvocab_t": 1864
+ },
+ "contrast_repair": {
+  "to": "!=",
+  "token": 1864,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 28.244425773620605
+}

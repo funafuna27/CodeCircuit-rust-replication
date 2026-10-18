@@ -1,0 +1,117 @@
+{
+ "site_id": "101|55|148",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "1 {\n            return a0[i];\n        }\n        if a0[i] > k {\n            break;\n        }\n        i += 1;\n    }\n    return -1;\n}",
+   "tokens": 49,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": "0 {\n            return a0[i];\n        }\n        if a0[i] > k {\n            k -= a0[i];\n        } else {\n            i += 1;\n        }\n    }\n    return -1;\n}",
+   "tokens": 59,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": "1 {\n            return a0[i];\n        }\n        if a0[i] > k {\n            break;\n        }\n        i += 1;\n    }\n    return -1;\n}",
+   "tokens": 49,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "0 {\n            return a0[i];\n        }\n        if a0[i] > k {\n            k -= a0[i];\n        } else {\n            i += 1;\n        }\n    }\n    return -1;\n}",
+   "tokens": 59,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 106,
+ "collateral": {
+  "repair_to": "1",
+  "repair_label": "verified",
+  "repair_token": 235274,
+  "positions": 43,
+  "G": 0,
+  "G_k": 49,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 37
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 6,
+  "t_star_id": 235274,
+  "t_star_piece": "1",
+  "margin_at_kstar": -0.059783935546875,
+  "scan_replay_disagree": 1,
+  "n_candidates": 47148,
+  "K": 1024,
+  "ablated": [
+   [
+    20,
+    91,
+    6613,
+    44.25
+   ],
+   [
+    24,
+    91,
+    201,
+    71.0
+   ],
+   [
+    21,
+    91,
+    10837,
+    27.875
+   ],
+   [
+    18,
+    91,
+    15623,
+    24.75
+   ],
+   [
+    23,
+    91,
+    12597,
+    25.625
+   ],
+   [
+    23,
+    92,
+    13382,
+    74.5
+   ]
+  ],
+  "completion": " {\n",
+  "fullvocab_t": 235274
+ },
+ "contrast_repair": {
+  "to": "1",
+  "token": 235274,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 34.645912885665894
+}

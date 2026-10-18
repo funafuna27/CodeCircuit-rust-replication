@@ -1,0 +1,189 @@
+{
+ "site_id": "452|5|175",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " - a0 < 0 {\n    return 0;\n  } else {\n    return a1 - a0;\n  }\n}",
+   "tokens": 32,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " - a0 > 0 {\n    return a1 - a0;\n  } else {\n    return 0;\n  }\n}",
+   "tokens": 32,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " <= a0 {\n    return a1 - a0;\n  } else {\n    return 0;\n  }\n}",
+   "tokens": 29,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " < a0 {\n    return a1 - a0;\n  } else {\n    return 0;\n  }\n}",
+   "tokens": 29,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 87,
+ "collateral": {
+  "repair_to": ">",
+  "repair_label": "verified",
+  "repair_token": 1562,
+  "positions": 24,
+  "G": 0,
+  "G_k": 8,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 22
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 18,
+  "t_star_id": 728,
+  "t_star_piece": " -",
+  "margin_at_kstar": -0.3534088134765625,
+  "scan_replay_disagree": 1,
+  "n_candidates": 47769,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    103,
+    11005,
+    34.0
+   ],
+   [
+    23,
+    103,
+    4820,
+    34.75
+   ],
+   [
+    22,
+    103,
+    13673,
+    57.25
+   ],
+   [
+    22,
+    103,
+    13145,
+    20.25
+   ],
+   [
+    19,
+    103,
+    11699,
+    30.875
+   ],
+   [
+    20,
+    103,
+    9213,
+    26.5
+   ],
+   [
+    25,
+    103,
+    9221,
+    47.75
+   ],
+   [
+    24,
+    103,
+    13541,
+    66.5
+   ],
+   [
+    0,
+    6,
+    12533,
+    13.4375
+   ],
+   [
+    24,
+    103,
+    9992,
+    28.625
+   ],
+   [
+    24,
+    103,
+    11641,
+    25.875
+   ],
+   [
+    19,
+    103,
+    1230,
+    40.75
+   ],
+   [
+    19,
+    103,
+    9667,
+    9.0625
+   ],
+   [
+    10,
+    103,
+    12810,
+    16.625
+   ],
+   [
+    23,
+    103,
+    1932,
+    5.53125
+   ],
+   [
+    12,
+    103,
+    4063,
+    23.125
+   ],
+   [
+    20,
+    103,
+    8921,
+    41.75
+   ],
+   [
+    18,
+    103,
+    12353,
+    12.3125
+   ]
+  ],
+  "completion": " a0 < 0 {\n",
+  "fullvocab_t": 728
+ },
+ "contrast_repair": {
+  "to": ">",
+  "token": 1562,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 23.822646617889404
+}

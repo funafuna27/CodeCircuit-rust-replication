@@ -1,0 +1,147 @@
+{
+ "site_id": "751|43|80",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " != i + 1 {\n      return false;\n    }\n  }\n  return true;\n}",
+   "tokens": 24,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " != i + 1 {\n      return false;\n    }\n  }\n  return true;\n}",
+   "tokens": 24,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " >= a0[i/2] {\n      return false;\n    }\n  }\n  return true;\n}",
+   "tokens": 27,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " > a0[parent(i)] {\n      return false;\n    }\n  }\n  return true;\n}",
+   "tokens": 27,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 92,
+ "collateral": {
+  "repair_to": "<",
+  "repair_label": "verified",
+  "repair_token": 968,
+  "positions": 29,
+  "G": 0,
+  "G_k": 5,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 23
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 11,
+  "t_star_id": 968,
+  "t_star_piece": " <",
+  "margin_at_kstar": -0.13640594482421875,
+  "scan_replay_disagree": 0,
+  "n_candidates": 47901,
+  "K": 1024,
+  "ablated": [
+   [
+    19,
+    89,
+    7908,
+    38.0
+   ],
+   [
+    23,
+    89,
+    12802,
+    17.75
+   ],
+   [
+    24,
+    89,
+    2204,
+    26.0
+   ],
+   [
+    22,
+    89,
+    2767,
+    22.5
+   ],
+   [
+    18,
+    89,
+    13575,
+    12.3125
+   ],
+   [
+    18,
+    89,
+    5964,
+    37.25
+   ],
+   [
+    23,
+    89,
+    15847,
+    53.75
+   ],
+   [
+    23,
+    89,
+    14747,
+    21.875
+   ],
+   [
+    18,
+    89,
+    2996,
+    35.75
+   ],
+   [
+    24,
+    89,
+    483,
+    80.5
+   ],
+   [
+    22,
+    89,
+    8049,
+    48.5
+   ]
+  ],
+  "completion": " a0[parent(i)] {\n",
+  "fullvocab_t": 968
+ },
+ "contrast_repair": {
+  "to": "<",
+  "token": 968,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 18.89849019050598
+}

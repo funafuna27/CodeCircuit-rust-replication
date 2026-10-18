@@ -1,0 +1,87 @@
+{
+ "site_id": "71|144|105",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " true;\n    for j in 0..a.len() - i - 1 {\n      if a[j] > a[j + 1] {\n        a.swap(j, j + 1);\n        swapped = false;\n      }\n    }\n    if swapped {\n      break;\n    }\n  }\n  return a;\n}",
+   "tokens": 84,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " true;\n    for j in 0..a.len() - i - 1 {\n      if a[j] > a[j + 1] {\n        a.swap(j, j + 1);\n        swapped = false;\n      }\n    }\n    if swapped {\n      break;\n    }\n  }\n  return a;\n}",
+   "tokens": 84,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " true;\n    for j in 0..a.len() - i - 1 {\n      if a[j] > a[j + 1] {\n        a.swap(j, j + 1);\n        swapped = false;\n      }\n    }\n    if swapped {\n      break;\n    }\n  }\n  return a;\n}",
+   "tokens": 84,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " false;\n    for j in 0..a.len() - i - 1 {\n      if a[j] > a[j + 1] {\n        a.swap(j, j + 1);\n        swapped = true;\n      }\n    }\n    if !swapped {\n      break;\n    }\n  }\n  return a;\n}",
+   "tokens": 86,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 138,
+ "collateral": {
+  "repair_to": "true",
+  "repair_label": "verified",
+  "repair_token": 1382,
+  "positions": 75,
+  "G": 0,
+  "G_k": 5,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 71
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 1,
+  "t_star_id": 1382,
+  "t_star_piece": " true",
+  "margin_at_kstar": -1.4568586349487305,
+  "scan_replay_disagree": 0,
+  "n_candidates": 31140,
+  "K": 1024,
+  "ablated": [
+   [
+    18,
+    60,
+    6735,
+    34.5
+   ]
+  ],
+  "completion": ";\n",
+  "fullvocab_t": 1382
+ },
+ "contrast_repair": {
+  "to": "true",
+  "token": 1382,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 41.63545060157776
+}

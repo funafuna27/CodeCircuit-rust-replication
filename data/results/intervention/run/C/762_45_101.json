@@ -1,0 +1,153 @@
+{
+ "site_id": "762|45|101",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " or month_number == 2 {\n      return true;\n    }\n    if month_number == 4 or month_number == 6 or month_number == 9 or month_number == 11 {\n      return true;\n    }\n    return false;\n}",
+   "tokens": 63,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " or month_number == 2 {\n      return true;\n    }\n    if month_number == 4 or month_number == 6 or month_number == 9 or month_number == 11 {\n      return true;\n    }\n    return false;\n}",
+   "tokens": 63,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " or month_number == 2 {\n      return true;\n    }\n    if month_number == 4 or month_number == 6 or month_number == 9 or month_number == 11 {\n      return true;\n    }\n    return false;\n}",
+   "tokens": 63,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " || month_number == 2 {\n      return true;\n    }\n    if month_number == 4 || month_number == 6 || month_number == 9 || month_number == 11 {\n      return true;\n    }\n    return false;\n}",
+   "tokens": 63,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 126,
+ "collateral": {
+  "repair_to": "&&",
+  "repair_label": "verified",
+  "repair_token": 2732,
+  "positions": 63,
+  "G": 0,
+  "G_k": 1,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 60
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 12,
+  "t_star_id": 689,
+  "t_star_piece": " or",
+  "margin_at_kstar": -0.061553955078125,
+  "scan_replay_disagree": 0,
+  "n_candidates": 35848,
+  "K": 1024,
+  "ablated": [
+   [
+    21,
+    69,
+    6743,
+    61.5
+   ],
+   [
+    19,
+    69,
+    3143,
+    35.0
+   ],
+   [
+    24,
+    69,
+    11484,
+    23.375
+   ],
+   [
+    17,
+    69,
+    12777,
+    18.0
+   ],
+   [
+    20,
+    69,
+    3833,
+    27.375
+   ],
+   [
+    25,
+    69,
+    8459,
+    13.5
+   ],
+   [
+    19,
+    69,
+    2076,
+    10.75
+   ],
+   [
+    24,
+    69,
+    11442,
+    20.5
+   ],
+   [
+    25,
+    69,
+    4717,
+    204.0
+   ],
+   [
+    20,
+    69,
+    454,
+    33.0
+   ],
+   [
+    17,
+    67,
+    12777,
+    7.28125
+   ],
+   [
+    23,
+    69,
+    4361,
+    27.375
+   ]
+  ],
+  "completion": " month_number == 2 {\n",
+  "fullvocab_t": 689
+ },
+ "contrast_repair": {
+  "to": "&&",
+  "token": 2732,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 34.216652631759644
+}

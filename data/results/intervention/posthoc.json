@@ -1,0 +1,208 @@
+{
+ "note": "Post hoc, descriptive; not pre-registered. Phase 8, post hoc (decided after analysis.json was read; not in PREREGISTRATION_P8_INTERVENTION.md).",
+ "inputs": {
+  "analysis.json": "5d9c99b67de18167eab7288463063feb9269c391be2e98757c2450fd91774b35",
+  "judged.json": "b6fd7461aaff9f1361e1a28cf46cd8dd6c205f3b60c7b9be86740ebc13deb249",
+  "judged.jsonl": "0f9bed86417efa33432dcf97fd681ebb01b92d20ab14291551e8e1e0b32e38cb",
+  "sites.jsonl": "3fe80119aaf4bde0c6235b330b38cc435e49b59f3571fec309861493ee24b794"
+ },
+ "single": {
+  "flip_G": {
+   "count": 27,
+   "n_sites": 142,
+   "per_site": 0.19014084507042253,
+   "equal_weight": 0.18092426092426092
+  },
+  "flip_RND": {
+   "count": 5,
+   "n_sites": 142,
+   "per_site": 0.035211267605633804,
+   "equal_weight": 0.032407407407407406
+  },
+  "to_ban": {
+   "count": 26,
+   "n_sites": 142,
+   "per_site": 0.18309859154929578,
+   "equal_weight": 0.17836015836015837
+  },
+  "fix_via_ban": {
+   "count": 20,
+   "n_sites": 142,
+   "per_site": 0.14084507042253522,
+   "equal_weight": 0.12646621896621896
+  },
+  "fix_other": {
+   "count": 2,
+   "n_sites": 142,
+   "per_site": 0.014084507042253521,
+   "equal_weight": 0.006730769230769231
+  },
+  "fix_any": {
+   "count": 22,
+   "n_sites": 142,
+   "per_site": 0.15492957746478872,
+   "equal_weight": 0.1331969881969882
+  },
+  "token_counts_pooled": {
+   "exist:G": {
+    "ban_lexeme": 70,
+    "verified": 2,
+    "repeat": 3
+   },
+   "exist:RND": {
+    "ban_lexeme": 8
+   }
+  }
+ },
+ "G_fix": {
+  "verified": 57,
+  "at_ban_lexeme": 48,
+  "elsewhere": 9,
+  "neutralizing_elsewhere": 3
+ },
+ "slips": {
+  "n": 45,
+  "table": [
+   {
+    "hf": "HF known",
+    "hf_label": "lucky",
+    "NULL_label": "lucky",
+    "NULL_how": "lexeme",
+    "sites": 7
+   },
+   {
+    "hf": "HF known",
+    "hf_label": "verified",
+    "NULL_label": "verified",
+    "NULL_how": "lexeme",
+    "sites": 19
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "fail",
+    "NULL_how": "completion",
+    "sites": 4
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "fail",
+    "NULL_how": "lexeme",
+    "sites": 2
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "no_compile",
+    "NULL_how": "completion",
+    "sites": 1
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "no_flip",
+    "NULL_how": "none",
+    "sites": 1
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "verified",
+    "NULL_how": "completion",
+    "sites": 10
+   },
+   {
+    "hf": "HF unknown",
+    "hf_label": "None",
+    "NULL_label": "verified",
+    "NULL_how": "lexeme",
+    "sites": 1
+   }
+  ]
+ },
+ "gen_NULL": {
+  "verified": 13,
+  "starts_with_wrong_piece": 13,
+  "sites": [
+   {
+    "site": "137|119|123",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581==",
+    "gen_head": " == 0 {\n            zeroes += 1;\n        } else {\n          "
+   },
+   {
+    "site": "58|9|52",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581>",
+    "gen_head": " > 0 && a1 < 0) || (a0 < 0 && a1 > 0)\n}"
+   },
+   {
+    "site": "625|10|113",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581-",
+    "gen_head": " - 1];\n    let first = a[0];\n    a[0] = last;\n    a[len - 1]"
+   },
+   {
+    "site": "71|144|105",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581false",
+    "gen_head": " false;\n    for j in 0..a.len() - i - 1 {\n      if a[j] > a["
+   },
+   {
+    "site": "775|111|144",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581!=",
+    "gen_head": " != 0 {\n            return true;\n        }\n    }\n    return "
+   },
+   {
+    "site": "775|111|147",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "0",
+    "gen_head": "0 {\n            return true;\n        }\n    }\n    return fals"
+   },
+   {
+    "site": "775|13|209",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581!=",
+    "gen_head": " != 0 {\n                return true\n            }\n        }\n"
+   },
+   {
+    "site": "775|13|212",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "0",
+    "gen_head": "0 {\n                return true\n            }\n        }\n    "
+   },
+   {
+    "site": "775|13|84",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581==",
+    "gen_head": " == 0 {\n            // Check if the element at the odd index"
+   },
+   {
+    "site": "775|40|155",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "0",
+    "gen_head": "0 {\n                return true;\n            }\n        }\n   "
+   },
+   {
+    "site": "775|73|152",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581!=",
+    "gen_head": " != 0 {\n                return true;\n            }\n        }"
+   },
+   {
+    "site": "775|73|155",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "0",
+    "gen_head": "0 {\n                return true;\n            }\n        }\n   "
+   },
+   {
+    "site": "775|73|84",
+    "starts_with_wrong_piece": true,
+    "wrong_piece": "\u2581==",
+    "gen_head": " == 0 {\n            // Check if the element at the odd index"
+   }
+  ]
+ }
+}

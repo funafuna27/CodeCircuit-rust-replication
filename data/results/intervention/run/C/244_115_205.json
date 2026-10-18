@@ -1,0 +1,129 @@
+{
+ "site_id": "244|115|205",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " <= a0 {\n        if i * i > a0 {\n            return i * i;\n        }\n        i += 1;\n    }\n    return a0;\n}",
+   "tokens": 42,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " <= a0 {\n        let mut square_i = i as f64.sqrt().floor() as i64;\n        if square_i * square_i > a0 {\n            return square_i * square_i;\n        }\n        i += 1;\n    }\n    return a0;\n}",
+   "tokens": 73,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " <= a0 {\n        if i * i > a0 {\n            break;\n        }\n        square = i as f64;\n        square = square.sqrt().floor() as i64;\n        if square * square == a0 {\n            return square * square;\n        }\n        i += 1;\n    }\n    return square * square;\n}",
+   "tokens": 85,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " * i <= a0 {\n        if i * i == a0 {\n            return i * i;\n        }\n        i += 1;\n    }\n    return square * square;\n}",
+   "tokens": 45,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 86,
+ "collateral": {
+  "repair_to": "-",
+  "repair_label": "verified",
+  "repair_token": 728,
+  "positions": 23,
+  "G": 0,
+  "G_k": 6,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 17
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 8,
+  "t_star_id": 5718,
+  "t_star_piece": " <=",
+  "margin_at_kstar": -0.16025733947753906,
+  "scan_replay_disagree": 0,
+  "n_candidates": 48536,
+  "K": 1024,
+  "ablated": [
+   [
+    24,
+    93,
+    14265,
+    16.25
+   ],
+   [
+    23,
+    93,
+    9102,
+    19.875
+   ],
+   [
+    21,
+    93,
+    9056,
+    38.5
+   ],
+   [
+    17,
+    63,
+    958,
+    37.5
+   ],
+   [
+    23,
+    93,
+    9031,
+    7.21875
+   ],
+   [
+    24,
+    93,
+    14688,
+    11.5625
+   ],
+   [
+    21,
+    93,
+    6049,
+    41.25
+   ],
+   [
+    20,
+    93,
+    3062,
+    34.25
+   ]
+  ],
+  "completion": " a0 {\n",
+  "fullvocab_t": 5718
+ },
+ "contrast_repair": {
+  "to": "-",
+  "token": 728,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 35.652793884277344
+}

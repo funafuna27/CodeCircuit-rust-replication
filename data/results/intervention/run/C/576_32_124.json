@@ -1,0 +1,59 @@
+{
+ "site_id": "576|32|124",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": "0..a0.len() {\n        if a0[i] != a1[i] {\n            return false;\n        }\n    }\n    return true;\n}",
+   "tokens": 41,
+   "stopped": "braces",
+   "first_matches_t_star": null
+  },
+  "G_every": {
+   "text": "\n    {\n        if a0.get(i) == a1.get(i) {\n            return true;\n        }\n    }\n    return false;\n}",
+   "tokens": 40,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": "1..a0.len() {\n        if a0[i] == a1[i - 1] {\n            return true;\n        }\n    }\n    return false;\n}",
+   "tokens": 44,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": "0..a0.len() {\n        for j in i + 1..a0.len() {\n            if a0[i..j].contains(&a1[0..a1.len()]) {\n                return true;\n            }\n        }\n    }\n    return false;\n}",
+   "tokens": 68,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 110,
+ "collateral": {
+  "repair_to": "1",
+  "repair_label": "verified",
+  "repair_token": 235274,
+  "positions": 47,
+  "G": 1,
+  "G_k": 1024,
+  "RNDk": [],
+  "teacher_agree_clean": 42
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": false,
+  "k_star": null,
+  "t_star_id": null,
+  "t_star_piece": null,
+  "margin_at_kstar": null,
+  "scan_replay_disagree": 1,
+  "n_candidates": 38042,
+  "K": 1024,
+  "ablated": [],
+  "completion": null,
+  "fullvocab_t": null
+ },
+ "contrast_repair": {
+  "to": "1",
+  "token": 235274,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 43.09920573234558
+}

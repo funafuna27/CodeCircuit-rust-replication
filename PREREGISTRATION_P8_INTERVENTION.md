@@ -361,3 +361,213 @@ python p8_4_stats.py                               # analysis.json
 | `data/p8_sim.py` | `a46e1e32f46333bb` |
 | `data/intervention_design/final_design.md` | `8f10ccd4315e3a36` |
 | `data/intervention_design/SPEC.md` | `eafd72f75422002a` |
+
+## 11. Results (added 2026-10-19; §1–§10 unchanged)
+
+### 11a. Execution
+
+- **The main run.** It ran from 10-18 11:16 to 10-19 05:13 JST, and `run_p8.sh` exited 0 with all stages complete.
+  - Every process recorded this file's committed hash (`5ac20c221c6124ca`, commit 7f04e70) and the site table's.
+  - No script changed after the commit; every hash in §10 still matches.
+  - There were no crashes, no repeated sites and no site needing a person.
+  - All 50 canaries were bitwise (largest deviation 0).
+- **Cost.** The phase used 21.55 of its 28 GPU-h; the main run took 17.9 of them, against the 13 expected (§7). Stage B took 345 s per site (median), against 275 s in the pilot.
+- **Exclusions.** 4 belief sites, all by rule (a), with margins 0.060, 0.089, 0.142 and 0.145 (< 2δ = 0.380).
+  - One of them was its problem's only site.
+  - **The analysis set is 142 sites over 30 problems** (L = 360360). All 19 round-robin rounds completed.
+- **The blind judge** (`p8_3_judge.py`) scored 5679 rows.
+  - 456 distinct programs were judged and 104 were reused from the cache.
+  - Blind and stored labels agree on all 58 programs judged both ways, and there were no judge errors.
+  - Unscorable: 11 generations stopped at the cap, and 4 RND-k lexemes had no judged label.
+- **Scan/replay disagreements** (every decision was taken at batch 1): G 41, GxA 42, G_mid 36, CONTRAST 35, G_LP 28, DE 21, ORC 19, RND1–5 12–31.
+- **Outputs.** `results/intervention/` holds `run/` (per-site JSON and the ledger), `judged.jsonl` (`0f9bed86417efa33`), `judged.json`, `analysis.json` (`5d9c99b67de18167`) and `run_p8.log`.
+
+### 11b. Confirmatory (§3)
+
+| step | test | D | 95% CI (bootstrap) | m | p | decision |
+|---|---|---|---|---|---|---|
+| S1 | G > RND1 | +0.287 | [+0.141, +0.441] | 15 | 0.00043 (exact) | **rejected** |
+| S2 | G > BAN | −0.224 | [−0.369, −0.086] | 15 | 0.998 (exact) | **not rejected** |
+| S3 | G > GxA | −0.059 | [−0.175, +0.041] | 9 | — | not tested (descriptive p 0.84) |
+
+**S2.** G's advantage over BAN was not detected; the 80% MDE was 0.14–0.24 (§6). The estimate lies on the other side of 0: G fixed fewer sites than BAN, and the bootstrap interval excludes 0. That is descriptive, since no test of G < BAN was registered.
+
+**Decomposition:** D(G − BAN) = −NF + (R − Bk) = −0.029 + (0.033 − 0.228).
+
+| term | value | 95% CI | sites |
+|---|---|---|---|
+| NF (G does not flip, BAN fixes) | 0.029 | [0.000, 0.069] | 4 |
+| R (G fixes, BAN fails) | 0.033 | [0.007, 0.073] | 7, 3 of them neutralizing |
+| Bk (G fails, BAN fixes) | 0.228 | [0.110, 0.358] | 39 |
+
+The deficit comes from breaks: G flips, but to a token that fails where BAN's token fixes.
+
+### 11c. Descriptive (registered; nothing here changes S1–S3)
+
+| arm | fix rate, equal weight [95% CI] | per site | flips (per site) | median k* [IQR] |
+|---|---|---|---|---|
+| BAN | 0.561 [0.404, 0.715] | 0.655 | 1.000 | — |
+| G | 0.337 [0.203, 0.481] | 0.401 | 0.908 | 20 [8, 74] |
+| GxA | 0.395 [0.256, 0.547] | 0.401 | 0.908 | 14 [4, 60] |
+| G_LP | 0.426 [0.278, 0.580] | 0.451 | 0.810 | 8 [2, 35.5] |
+| ORC | 0.518 [0.357, 0.673] | 0.613 | 0.923 | 4 [2, 11.5] |
+| CONTRAST (label-using) | 0.614 [0.469, 0.756] | 0.662 | 0.873 | 9.5 [3, 48.5] |
+| DE | 0.262 [0.151, 0.391] | 0.275 | 0.577 | 9 [3, 24.5] |
+| G_mid | 0.230 [0.121, 0.359] | 0.261 | 0.394 | 22 [8, 114] |
+| G1 | 0.010 [0.000, 0.024] | 0.028 | 0.042 | 1 |
+| RND1 | 0.049 [0.007, 0.125] | 0.056 | 0.099 | 264 [135, 691] |
+| RND2–RND5 | 0.050–0.087 | 0.070–0.134 | 0.120–0.176 | 120–254 |
+| RND-k (2580 draws at G's k*) | 0.001 [0.000, 0.002] | 0.001 | 0.003 of draws | — |
+| NULL | 0 | 0 | 0 | — |
+
+**Landing.** Of G's 129 flips:
+- 70 land on BAN's lexeme (54% of flips), and they fix at 0.69 per site;
+- 22 land on another family member, which fixes at 0.27;
+- 37 land outside the family, which fixes at 0.08.
+
+GxA: 75 / 23 / 31, fixing at 0.65 / 0.17 / 0.13. ORC: 116 of its 131 flips land on BAN's lexeme. CONTRAST: 96 of 124.
+
+**Rescues and breaks against BAN, in sites:**
+
+| arm | rescues | breaks | NF |
+|---|---|---|---|
+| G | 7 | 39 | 4 |
+| GxA | 5 | 38 | 3 |
+| G_LP | 5 | 25 | 9 |
+| ORC | 4 | 7 | 3 |
+| CONTRAST | 15 | 5 | 9 |
+
+**P(fix | both flip), G against GxA** (123 sites, 29 problems): 0.402 [0.250, 0.567] against 0.448 [0.297, 0.609].
+
+**Existence.** exist:G fixes at 2 of 142 sites (0.007 equal weight); exist:RND at 0.
+
+**G's ranking.**
+- Faithfulness: site-median Spearman 0.224, over a median of 39 qualifying features.
+- G's first feature is at layer ≥ 18 and h−1 at 65% of sites.
+- All 142 graphs hit the 8192-feature cap.
+
+**Program fix by generation** (equal weight): gen:BAN 0.419, gen:G 0.262, gen:G_every 0.217, gen:NULL 0.123. gen:G is 0.78 of G's fix rate (equal weight). G's generations stopped on braces at 140 of 142 sites.
+
+**Collateral.** Teacher-forcing S's best repair with G's ablation changes the argmax at some later position at 60% of sites (median 1 position). RND-k changes it in most draws at 9% of sites.
+
+**Margin terciles** (cuts 2.35 and 5.32), fix rates per site:
+
+| tercile | G | BAN | GxA | RND1 | D(G − BAN), equal weight |
+|---|---|---|---|---|---|
+| low | 0.56 | 0.77 | 0.69 | 0.17 | −0.27 |
+| middle | 0.43 | 0.77 | 0.45 | 0.00 | −0.14 |
+| high | 0.21 | 0.43 | 0.06 | 0.00 | −0.22 |
+
+**Family**, fix rates per site:
+
+| family | sites | G | BAN | GxA |
+|---|---|---|---|---|
+| comparison | 62 | 0.35 | 0.74 | 0.44 |
+| integer | 46 | 0.52 | 0.61 | 0.39 |
+| arithmetic | 18 | 0.33 | 0.39 | 0.33 |
+| boolean | 7 | 0.14 | 1.00 | 0.14 |
+| logical | 5 | 0.20 | 0.40 | 0.40 |
+| compound | 4 | 0.75 | 0.75 | 0.75 |
+
+**Slips.** NULL fixes 30 of 45 (equal weight 0.573 [0.321, 0.810]). The HF-computed set has 19, all among NULL's 30.
+
+**TL against HF.** BAN's TL lexeme equals the HF runner-up at 93 of the 93 sites where it is known.
+
+**Sensitivity** (descriptive p). S1 rejects and S2 does not in every set but one, and S3's D stays at or below about 0:
+
+| set | sites | S1 | S2 | S3 |
+|---|---|---|---|---|
+| tier 1 only | 90 | D +0.238, p 0.004 | D −0.250, p 0.999 | D −0.099 |
+| without rule-B sites | 137 | D +0.299, p 0.0002 | D −0.191, p 0.995 | D −0.012 |
+| unscorable excluded | 142 | as the main set | as the main set | as the main set |
+| neutralizing rescues scored 0 | 142 | D +0.282, p 0.0005 | D −0.230, p 0.998 | D −0.061 |
+| √n weights | 142 | D +0.318, p 0.0003 | D −0.246, p 0.997 | D −0.025 |
+
+The exception is the set where both tokens are in the judged family:
+- S1 cannot be decided there: 10 sites, m 1.
+- S2's D is −0.050 [−0.183, +0.063] over 70 sites.
+- S3's D is +0.032 over 60 sites.
+
+### 11d. Predictions (§4)
+
+**Written on 10-14, before any GPU data: 21 of 34 held** (`analysis.json`, `descriptive.predictions`).
+
+Held:
+- exclusions 4 (0–4);
+- BAN fix rate 0.561;
+- TL BAN differs from the HF runner-up at 0%;
+- G flips 0.908 (≥ 0.90), with median k* 20 (2–20);
+- G's first feature 0.648 (≥ 0.60);
+- m of S2 15 (6–16);
+- NF 0.029;
+- GxA flips 0.908;
+- D(G − GxA) −0.0588 (±0.06);
+- RND1's median k* 264 (≥ 100);
+- D(G − RND1) +0.287 (≥ +0.15);
+- the decisions;
+- G_LP − G +0.089 (±0.10);
+- CONTRAST − G +0.277 (≥ +0.10);
+- G_mid flips 0.394 (≤ 0.40);
+- gen:G / G 0.78 (0.6–1.0);
+- gen:G_every − gen:G −0.045 (≤ 0);
+- exist:RND 0 (≤ 0.05);
+- collateral for G 0.599 (0.20–0.60);
+- collateral for RND-k 0.093 (0.05–0.30).
+
+Several held only at the edge of their range: exclusions, k*, G's flips, D(G − GxA), G_mid and collateral.
+
+Missed:
+- t*_G equals BAN's lexeme at 0.543 (0.60–0.85);
+- G fix rate 0.337 (0.40–0.65);
+- D(G − BAN) −0.224 ([−0.15, +0.03]);
+- R − Bk −0.195 ([−0.10, +0.05]);
+- GxA fix rate 0.395 (0.40–0.65);
+- RND1 flips 0.099 (0.30–0.90);
+- RND1 fix rate 0.049 (0.05–0.35);
+- ORC − G +0.181 (±0.10);
+- G1 flips 0.042 (0.05–0.25);
+- Spearman 0.224 (0.3–0.7);
+- gen:NULL 0.123 (≤ 0.05);
+- exist:G 0.014 per site (0.05–0.25);
+- slips: NULL − HF +11 (±3; see 11f).
+
+**Revised on 10-15 after the pilot, label-free: 9 of 10 held.** The miss: G flips 0.908 (0.65–0.88).
+
+Held:
+- median k* 20 (20–150);
+- G's first feature 0.648 (0.30–0.65);
+- t*_G = BAN's lexeme 0.543 (0.30–0.60);
+- RND1 flips 0.099 (≤ 0.15);
+- faithfulness 0.224 (0.05–0.30);
+- collateral 0.599 (0.45–0.85);
+- G fix rate 0.337 (0.25–0.55);
+- D(G − BAN) −0.224 ([−0.30, 0.00]);
+- the decisions.
+
+### 11e. Reading (§5)
+
+**S1 only.**
+- **The ranking matters.** Zeroing G's top features flips the decision at 91% of sites, with a median of 20 features. Matched random features flip it at 10%, with a median of 264.
+- **No advantage over banning the wrong token was detected; G does worse.** 48 of G's 57 fixes land on BAN's lexeme, so they are token suppression. In the other 59 flips the model moves to a token that is usually wrong: 9 fixes, 6 of them where BAN fails.
+- **The 7 rescues.** The seventh lands on BAN's lexeme: its line completion, made under G's ablation, passes where BAN's does not. 3 of the 7 rescues are neutralizing.
+- **GxA.** S3 was not reached. Descriptively, GxA does as well as G: D −0.06, and P(fix | both flip) 0.40 against 0.45. So the graph's multi-hop paths and pruning are not shown to matter.
+- **Other orderings do better than G:** ORC, which orders by measured single ablations (0.52), and the label-using CONTRAST (0.61).
+- **D(G − BAN) < 0.** The decomposition puts it in breaks (Bk 0.23), not in failures to flip (NF 0.03).
+
+Together with Phase 7, the study's reading stands: the graph is not shown to do more than cheap methods.
+
+### 11f. Post hoc (`data/p8_5_posthoc.py`, decided after `analysis.json` was read; `results/intervention/posthoc.json`)
+
+**One feature, as in the paper's §4.4 example.** The registered existence rate skips BAN's lexeme; here it is counted. The candidates are 384 single ablations per site: GxA's top 256 and G's top 128.
+- One top feature flips the decision at 27 of 142 sites (19%). One matched random feature does so at 5.
+- 26 of the 27 land on BAN's lexeme (70 of the 72 flip tokens, pooled).
+- One feature yields a verified token at 22 sites (15%). At 20 of them that token is BAN's lexeme; at 2 it is another token.
+
+**Slips.**
+- The 11 extra NULL fixes are all slips with no HF label known before the run, judged by the completion rule. The §4 prediction counted known labels only.
+- Where the HF label was known (26 slips), NULL agrees at all 26: 19 verified, 7 lucky.
+
+**gen:NULL.**
+- All 13 verified greedy generations begin with S's wrong token.
+- The greedy continuation differs from S's sampled one and makes the program pass.
+- 9 of the 13 are in problem 775.

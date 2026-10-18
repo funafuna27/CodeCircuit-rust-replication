@@ -1,0 +1,87 @@
+{
+ "site_id": "68|28|255",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " = ascending && descending;\n  return ascending;\n}",
+   "tokens": 12,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " = ascending as bool;\n  descending = descending as bool;\n  return ascending || descending;\n}",
+   "tokens": 22,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " || descending\n}",
+   "tokens": 4,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " && descending\n}",
+   "tokens": 4,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 67,
+ "collateral": {
+  "repair_to": "||",
+  "repair_label": "verified",
+  "repair_token": 3653,
+  "positions": 4,
+  "G": 1,
+  "G_k": 12,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 3
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 1,
+  "t_star_id": 3653,
+  "t_star_piece": " ||",
+  "margin_at_kstar": -0.45578956604003906,
+  "scan_replay_disagree": 0,
+  "n_candidates": 59557,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    123,
+    13971,
+    29.625
+   ]
+  ],
+  "completion": " descending\n",
+  "fullvocab_t": 3653
+ },
+ "contrast_repair": {
+  "to": "||",
+  "token": 3653,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 20.298564672470093
+}

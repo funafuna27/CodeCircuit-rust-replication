@@ -1,0 +1,147 @@
+{
+ "site_id": "443|152|115",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " != largest {\n            largest = i;\n        }\n    }\n    largest\n}",
+   "tokens": 20,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " != largest {\n            largest = i;\n        }\n    }\n    return largest;\n}",
+   "tokens": 22,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " < largest {\n            largest = i;\n        }\n    }\n    largest\n}",
+   "tokens": 20,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " > largest {\n            largest = i;\n        }\n    }\n    largest\n}",
+   "tokens": 20,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 83,
+ "collateral": {
+  "repair_to": "<",
+  "repair_label": "verified",
+  "repair_token": 968,
+  "positions": 20,
+  "G": 0,
+  "G_k": 13,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 19
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 11,
+  "t_star_id": 968,
+  "t_star_piece": " <",
+  "margin_at_kstar": -0.18598365783691406,
+  "scan_replay_disagree": 0,
+  "n_candidates": 34917,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    66,
+    12802,
+    42.5
+   ],
+   [
+    24,
+    66,
+    2204,
+    54.5
+   ],
+   [
+    18,
+    66,
+    13575,
+    12.875
+   ],
+   [
+    23,
+    66,
+    14747,
+    43.0
+   ],
+   [
+    20,
+    66,
+    8885,
+    12.0625
+   ],
+   [
+    25,
+    66,
+    9882,
+    22.375
+   ],
+   [
+    18,
+    66,
+    5964,
+    17.875
+   ],
+   [
+    23,
+    66,
+    15847,
+    38.25
+   ],
+   [
+    17,
+    66,
+    9989,
+    20.25
+   ],
+   [
+    20,
+    66,
+    6566,
+    21.75
+   ],
+   [
+    16,
+    66,
+    11136,
+    7.3125
+   ]
+  ],
+  "completion": " largest {\n",
+  "fullvocab_t": 968
+ },
+ "contrast_repair": {
+  "to": "<",
+  "token": 968,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 13.668245553970337
+}

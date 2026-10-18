@@ -1,0 +1,147 @@
+{
+ "site_id": "443|67|103",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " != max {\n      max = i;\n    }\n  }\n  return max;\n}",
+   "tokens": 22,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " != max {\n      max = i;\n    }\n  }\n  return max;\n}",
+   "tokens": 22,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " < max {\n      max = i;\n    }\n  }\n  max\n}",
+   "tokens": 20,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " > max {\n      max = i;\n    }\n  }\n  max\n}",
+   "tokens": 20,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 83,
+ "collateral": {
+  "repair_to": "<",
+  "repair_label": "verified",
+  "repair_token": 968,
+  "positions": 20,
+  "G": 1,
+  "G_k": 16,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 19
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 11,
+  "t_star_id": 968,
+  "t_star_piece": " <",
+  "margin_at_kstar": -0.017042160034179688,
+  "scan_replay_disagree": 1,
+  "n_candidates": 34745,
+  "K": 1024,
+  "ablated": [
+   [
+    23,
+    66,
+    12802,
+    42.5
+   ],
+   [
+    24,
+    66,
+    2204,
+    55.25
+   ],
+   [
+    18,
+    66,
+    13575,
+    15.125
+   ],
+   [
+    23,
+    66,
+    14747,
+    44.0
+   ],
+   [
+    20,
+    66,
+    8885,
+    12.5625
+   ],
+   [
+    25,
+    66,
+    9882,
+    20.875
+   ],
+   [
+    23,
+    66,
+    15847,
+    39.75
+   ],
+   [
+    17,
+    66,
+    9989,
+    20.125
+   ],
+   [
+    18,
+    66,
+    5964,
+    15.4375
+   ],
+   [
+    20,
+    66,
+    6566,
+    21.0
+   ],
+   [
+    16,
+    66,
+    11136,
+    7.4375
+   ]
+  ],
+  "completion": " max {\n",
+  "fullvocab_t": 968
+ },
+ "contrast_repair": {
+  "to": "<",
+  "token": 968,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 15.229407548904419
+}

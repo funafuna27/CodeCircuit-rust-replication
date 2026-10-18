@@ -1,0 +1,105 @@
+{
+ "site_id": "762|76|141",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " 28;\n    }\n    if month_number == 4 || month_number == 6 || month_number == 9 || month_number == 11 {\n        return 30;\n    }\n    return 31;\n}",
+   "tokens": 58,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " true;\n    }\n    if month_number == 4 || month_number == 6 || month_number == 9 || month_number == 11 {\n        return true;\n    }\n    return false;\n}",
+   "tokens": 52,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " false;\n    }\n    if month_number == 4 || month_number == 6 || month_number == 9 || month_number == 11 {\n        return true;\n    }\n    if month_number == 3 {\n        return true;\n    }\n    return false;\n}",
+   "tokens": 70,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " true;\n    }\n    if month_number == 4 || month_number == 6 || month_number == 9 || month_number == 11 {\n        return true;\n    }\n    return false;\n}",
+   "tokens": 52,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 113,
+ "collateral": {
+  "repair_to": "false",
+  "repair_label": "verified",
+  "repair_token": 1566,
+  "positions": 50,
+  "G": 0,
+  "G_k": 28,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 47
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 4,
+  "t_star_id": 1566,
+  "t_star_piece": " false",
+  "margin_at_kstar": -0.128143310546875,
+  "scan_replay_disagree": 0,
+  "n_candidates": 40030,
+  "K": 1024,
+  "ablated": [
+   [
+    17,
+    80,
+    10458,
+    10.8125
+   ],
+   [
+    20,
+    80,
+    8603,
+    7.78125
+   ],
+   [
+    24,
+    80,
+    13277,
+    77.5
+   ],
+   [
+    18,
+    80,
+    287,
+    45.0
+   ]
+  ],
+  "completion": ";\n",
+  "fullvocab_t": 1566
+ },
+ "contrast_repair": {
+  "to": "false",
+  "token": 1566,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 37.482115745544434
+}

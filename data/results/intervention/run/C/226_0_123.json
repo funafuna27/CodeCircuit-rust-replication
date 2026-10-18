@@ -1,0 +1,165 @@
+{
+ "site_id": "226|0|123",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " == 1 {\n            result.push_str(&a0[i]);\n        }\n    }\n    result\n}",
+   "tokens": 28,
+   "stopped": "braces",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " == 0 {\n            result.push_str(a0.chars().nth(i).unwrap());\n        }\n    }\n    result\n}",
+   "tokens": 34,
+   "stopped": "braces"
+  },
+  "BAN": {
+   "text": " == 1 {\n            result.push(a0[i]);\n        }\n    }\n    result\n}",
+   "tokens": 26,
+   "stopped": "braces"
+  },
+  "NULL": {
+   "text": " != 0 {\n            result.push(a0[i]);\n        }\n    }\n    result\n}",
+   "tokens": 26,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 95,
+ "collateral": {
+  "repair_to": "==",
+  "repair_label": "verified",
+  "repair_token": 1159,
+  "positions": 32,
+  "G": 2,
+  "G_k": 17,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 29
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 14,
+  "t_star_id": 1159,
+  "t_star_piece": " ==",
+  "margin_at_kstar": -0.04086494445800781,
+  "scan_replay_disagree": 1,
+  "n_candidates": 34615,
+  "K": 1024,
+  "ablated": [
+   [
+    21,
+    65,
+    3050,
+    78.5
+   ],
+   [
+    20,
+    65,
+    3978,
+    23.75
+   ],
+   [
+    20,
+    65,
+    10072,
+    26.25
+   ],
+   [
+    18,
+    65,
+    16244,
+    62.5
+   ],
+   [
+    19,
+    65,
+    4284,
+    22.875
+   ],
+   [
+    23,
+    65,
+    274,
+    21.625
+   ],
+   [
+    22,
+    65,
+    12707,
+    30.5
+   ],
+   [
+    21,
+    65,
+    202,
+    10.1875
+   ],
+   [
+    19,
+    65,
+    12898,
+    13.75
+   ],
+   [
+    24,
+    65,
+    2108,
+    12.25
+   ],
+   [
+    21,
+    65,
+    5143,
+    16.875
+   ],
+   [
+    20,
+    65,
+    3034,
+    8.0
+   ],
+   [
+    8,
+    20,
+    14941,
+    10.625
+   ],
+   [
+    25,
+    65,
+    3204,
+    75.5
+   ]
+  ],
+  "completion": " 1 {\n",
+  "fullvocab_t": 1159
+ },
+ "contrast_repair": {
+  "to": "==",
+  "token": 1159,
+  "label": "verified",
+  "n_candidates": 2
+ },
+ "seconds": 19.439642906188965
+}

@@ -1,0 +1,129 @@
+{
+ "site_id": "576|90|181",
+ "excluded": null,
+ "gen": {
+  "G": {
+   "text": " {\n                    return true;\n                }\n                if j + 1 == a1.len() {\n                    return true;\n                }\n                if i + 1 < a0.len() && j + 1 < a1.len() {\n                    if a0[i + 1] != a1[j + 1] {\n                        return false;\n                    }\n                }\n            }\n        }\n    }",
+   "tokens": 97,
+   "stopped": "cap",
+   "first_matches_t_star": true
+  },
+  "G_every": {
+   "text": " {\n                    return true;\n                }\n                if j + 1 == a1.len() {\n                    return true;\n                }\n                if i + 1 < a0.len() && j + 1 < a1.len() {\n                    if a0[i + 1] != a1[j + 1] {\n                        return false;\n                    }\n                }\n            }\n        }\n    }",
+   "tokens": 97,
+   "stopped": "cap"
+  },
+  "BAN": {
+   "text": " {\n                    return true;\n                }\n                if j + 1 == a1.len() {\n                    return true;\n                }\n                if i + 1 < a0.len() && j + 1 < a1.len() {\n                    if a0[i + 1] != a1[j + 1] {\n                        return false;\n                    }\n                }\n            }\n        }\n    }",
+   "tokens": 97,
+   "stopped": "cap"
+  },
+  "NULL": {
+   "text": " || j + 1 == a1.len() {\n                    return true;\n                }\n            }\n        }\n    }\n    return false;\n}",
+   "tokens": 36,
+   "stopped": "braces"
+  }
+ },
+ "gen_cap": 97,
+ "collateral": {
+  "repair_to": "&&",
+  "repair_label": "verified",
+  "repair_token": 2732,
+  "positions": 34,
+  "G": 1,
+  "G_k": 8,
+  "RNDk": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "teacher_agree_clean": 31
+ },
+ "CONTRAST": {
+  "arm": "CONTRAST",
+  "flipped": true,
+  "k_star": 8,
+  "t_star_id": 2732,
+  "t_star_piece": " &&",
+  "margin_at_kstar": -0.22195816040039062,
+  "scan_replay_disagree": 1,
+  "n_candidates": 51411,
+  "K": 1024,
+  "ablated": [
+   [
+    21,
+    101,
+    6743,
+    74.0
+   ],
+   [
+    19,
+    101,
+    3143,
+    20.5
+   ],
+   [
+    23,
+    101,
+    5084,
+    30.875
+   ],
+   [
+    23,
+    101,
+    1791,
+    15.6875
+   ],
+   [
+    20,
+    101,
+    3833,
+    16.0
+   ],
+   [
+    20,
+    101,
+    4491,
+    9.4375
+   ],
+   [
+    21,
+    100,
+    6743,
+    40.25
+   ],
+   [
+    20,
+    100,
+    4491,
+    17.375
+   ]
+  ],
+  "completion": " j + 1 == a1.len() {\n",
+  "fullvocab_t": 2732
+ },
+ "contrast_repair": {
+  "to": "&&",
+  "token": 2732,
+  "label": "verified",
+  "n_candidates": 1
+ },
+ "seconds": 45.575217485427856
+}
