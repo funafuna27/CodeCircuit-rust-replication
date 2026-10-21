@@ -52,14 +52,125 @@ of Rust under a pre-registration (`PREREGISTRATION.md`, finished 2026-10-01);
 ask it within a problem, on two solutions to the same task
 (`PREREGISTRATION_WITHIN.md`, finished 2026-10-02); ask it at identical
 length, on two one-token mutants of one passing solution
-(`PREREGISTRATION_MUTANT.md`, finished 2026-10-08); and ask it again with the
+(`PREREGISTRATION_MUTANT.md`, finished 2026-10-08); ask it again with the
 model's surprise matched as well (`PREREGISTRATION_MATCHED.md`, finished
 2026-10-12); try it on the model's own errors and their one-token repairs
-(`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13); and close on
-Phase 5's retained pairs, against cheap signals and a probe of the same forward
-pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14); and test the paper's
-causal claim by zeroing graph-ranked features at the model's own bugs
-(`PREREGISTRATION_P8_INTERVENTION.md`, finished 2026-10-19).
+(`PREREGISTRATION_OWNFIX.md`, stopped at its gate 2026-10-13); compare the
+graph, on Phase 5's retained pairs, with cheap signals and a probe of the same
+forward pass (`PREREGISTRATION_CLOSING.md`, finished 2026-10-14); and test the
+paper's causal claim by zeroing graph-ranked features at the model's own bugs
+(`PREREGISTRATION_P8_INTERVENTION.md`, finished 2026-10-19). The study closed
+with Phase 8; the conclusion comes first, the phases follow.
+
+## Conclusion (study closed 2026-10-19)
+
+No further phase is planned. Over eight phases, seven of them pre-registered,
+the study built 4,349 attribution graphs. Its answer to each of the paper's
+claims, measured against execution at the problem level unless noted
+(intervals are 95% and resample problems):
+
+| the paper's claim | answer here | phases |
+|---|---|---|
+| Graph features predict whether LLM-generated code is correct (AUROC 79.89%, Python) | **The number reproduces** on the paper's protocol (79.73%). That protocol scores rows against an LLM judge whose prompt sets the shape of the labels. Against execution, per problem and under the same 140-token cap: 0.727 [0.662, 0.790] in Python, 0.789 [0.725, 0.848] in Rust | 1, 2 |
+| They do so line by line | **Cannot be tested on the shipped labels.** One cutoff per problem rebuilds 1418 of their 1420 rows, and within a problem the line's position alone scores 0.998 (the trained model 0.885) | 1 |
+| They beat the paper's surface baselines, output-probability scores such as MaxProb, perplexity and entropy | **Not shown here.** Between problems those baselines were not rerun; there the graph beats length and size heuristics, which are not among the paper's baselines: +0.103 [+0.041, +0.166] in Python, +0.094 [+0.025, +0.165] in Rust. Within pairs, the output distribution (code and edit-token log-probabilities, entropy, the final position's top probability) separates the members as well as the graph (Phases 4, 5), and added to it and the kind of edit, the graph gives +0.002 [−0.072, +0.074] (Phase 7) | 1, 2, 4, 5, 7 |
+| They read the model's computation on the code it wrote, "sound reasoning" against "logical failure" | **Not shown beyond cheaper signals.** In Python the code adds nothing measurable over the signature (+0.034 [−0.016, +0.085]). In Rust it adds, but not separably from length (Phases 2–3). At identical length the registered test is null (0.469), and the within-pair signal (0.674) cannot be separated from the model's surprise. With surprise matched as well, the graph separates the pair (0.641, p 0.004), but the kind of edit alone does as well (0.676), and the graph adds nothing measurable to the cheap signals (the row above) | 1–5, 7 |
+| The attribution is what carries the signal | **Not shown beyond plain activations.** Inside the graph, the attribution-dependent columns carry most of the 0.641: the three attribution-free features alone score 0.541 (difference +0.100 [+0.000, +0.200], undecided as published, above 0 without the erratum's pair). But a probe of plain transcoder activations, with no attribution, scores 0.685, and given the kind of edit, the output distribution and the active-feature count, the one valid test of attribution does not reject (p 0.024 against Holm's 0.0167) | 7 |
+| The signal holds across languages (Python, C++ and Java in the paper) | **Partly.** The graph beats length heuristics in Python and Rust alike, but whether the code contributes differs between the arms, and the arms differ in more than language. C++, Java and cross-language transfer were not run | 1, 2 |
+| Zeroing a feature picked from the graph fixes a bug (§4.4, one case) | **The features are causal; as a repair, the graph does worse than a token ban.** At 142 sites of Gemma's own one-token bugs, zeroing the graph's top features cumulatively (median 20) changes the model's choice at 91% of sites (matched random features: 10%) and repairs 0.34 (random: 0.05). Forbidding the wrong token repairs 0.56 (graph − ban −0.224 [−0.369, −0.086]) and gradient × activation 0.40; 48 of the graph's 57 repairs are the token the ban gives. The graph's single top feature changes the choice at 4% of sites | 8 |
+
+In short, the attribution graph carries real information about whether the code
+works, and the features it ranks highest do drive the model's choice. It beats
+length and size heuristics between problems (Phases 1–2). But wherever it was
+set against a cheaper method (Phases 4, 5, 7 and 8), it did no better: the kind
+of edit, the output distribution, a probe of plain activations, a token ban, or
+one backward pass.
+
+**What the study does not cover.**
+- One model, gemma-2-2b-it, with its transcoders; MBPP's short functions;
+  Python and Rust only.
+- Phases 4–8 work with one-token edits. Phase 6, which would have used the
+  model's own errors as prediction targets, stopped at its gate.
+- Four of Phase 7's five tests were withdrawn by their size check, and the
+  graph's increment over the cheap signals does not exclude a gain of up to
+  0.07.
+- Phase 8 starts from a one-token bug at a known position, where a ban exists.
+  It does not find bugs.
+
+**What would reopen it.**
+- New problems, enough for a valid test of the graph's increment over the kind
+  of edit, the output distribution and a probe. Phase 7 reused Phase 5's pairs.
+- A larger model, or cross-layer transcoders.
+- Bugs longer than one token, where forbidding one token may not be enough.
+  That is where a graph-guided intervention could still beat a cheap one.
+
+**Where everything is.** Every phase that built graphs did so with
+`data/3_generate_graph.py` and `data/4_generate_feature.py` through
+`data/run_chunked.sh`, at `BATCH_SIZE=64`.
+
+| phase | pre-registration | scripts in `data/` | results in `data/results/` |
+|---|---|---|---|
+| 1, Python | none; its baseline is locked in `PREREGISTRATION.md` §3 | the upstream `0_`–`5_` scripts, `1_python_correct.py`, `5_problem_level.py`, `5b_classification_grouped.py` | `python/` |
+| 2, Rust | `PREREGISTRATION.md` | `mbpp_rust.py` and the `_rust` scripts, `2b_apply_token_cap.py`, `6_cross_arm.py`, `6b_c5_null.py`, `run_rust_analysis.sh`; the Python top-up through `run_python_topup.sh` | `rust/`, `python_topup/`, `exploratory/` |
+| 3, within a problem | `PREREGISTRATION_WITHIN.md` | `w0_`–`w3_`, `run_within.sh`, `8_within_length_decomposition.py` | `within/` |
+| 4, one-token mutants | `PREREGISTRATION_MUTANT.md` | `m1_`–`m5_`, `run_mutant.sh` | `mutant/` |
+| 5, surprise matched | `PREREGISTRATION_MATCHED.md` | `p5_0_`–`p5_6_`, `run_matched.sh` | `matched/` |
+| 6, own errors | `PREREGISTRATION_OWNFIX.md` | `p6_*`, `run_ownfix.sh` | `ownfix/` |
+| 7, closing comparison | `PREREGISTRATION_CLOSING.md` | `p7_*`, `run_closing.sh` | `closing/` |
+| erratum | the section below, and one in each of four pre-registrations | `erratum_inf/` | `erratum_inf/` |
+| 8, intervention | `PREREGISTRATION_P8_INTERVENTION.md`; design in `data/intervention_design/` | `p8_*`, `run_p8.sh` | `intervention/` |
+
+- **The attribution graphs are not in the repository.** All 197 of Phase 4's
+  and 518 of Phase 5's are kept on the machine that built them (343 GB). The
+  other runs kept only their last chunk of 44–50 graphs, and Phase 8 kept none,
+  by design. A graph costs about 5–11 GPU-minutes to rebuild.
+- **Added at closing:** the feature tables (`data/gemma_*_features.jsonl`) and
+  the inputs of Phases 3–4 (`data/within_{samples,labels,rows}.jsonl`,
+  `data/mutant_rows.jsonl`, `data/mutant_logprob.jsonl`,
+  `data/mutants_judged.jsonl`). Until then `data/*.jsonl` was ignored, so a
+  clone could not rerun the analyses of Phases 1–5.
+- Phase 6's samples and repairs are gzipped in `data/results/ownfix/data/`. The
+  scripts of Phases 6 and 8 read them unpacked from `data/`.
+- Phase 7, and Phase 8's checks, also read the retained graphs, and Phase 7 reads
+  its activation means in `/home/user1/closing_work`. Several scripts hard-code
+  `/home/user1` paths.
+- Phase 1's row-level 79.73% and 77.06% are printed by `5_classification.py` and
+  `5b_classification_grouped.py`. No results file records them.
+- The public copy,
+  [funafuna27/CodeCircuit-rust-replication](https://github.com/funafuna27/CodeCircuit-rust-replication),
+  differs from the working repository only in the removed upstream keys and its
+  own notes. Its `PUBLIC_COPY.md` maps the commit hashes.
+
+**Corrections made while closing.** Before the study closed, an audit checked
+this readme against the result files, with three independent checks of each
+finding. It changed these statements:
+- **Erratum:** the rerun changes three descriptive readings, not one. C's
+  verified − lucky interval now covers 0, and in Phase 5 the kind of edit no
+  longer scores above the graph. β_5's rerun bound is −0.021, and the wording on
+  Phase 6's three inf-only samples changed. `PREREGISTRATION_CLOSING.md` and
+  `PREREGISTRATION_OWNFIX.md` carry the same corrections, appended.
+- **Phase 4:** the kind of edit's 0.667 is on all 99 pairs; on the 98 analysed
+  pairs it is 0.643.
+- **Phase 5:** the kind of edit separates the pairs at least as well as the
+  graph, not better (graph − edit −0.035 [−0.126, +0.055]).
+- **Phase 7:**
+  - four of the five tests were withdrawn, not all of them;
+  - the attribution reading is now stated as published, undecided;
+  - the edit's local quantities rank the lucky pairs below chance, so the claim
+    that every signal ranks them near chance now names the graph, C and the
+    probe;
+  - the extra-input check covered the survivors and their sources, not the
+    killed members.
+- **Phase 8:**
+  - 142 counts sites (92 distinct bugs), not bugs;
+  - the exclusion rule is twice the noise floor;
+  - the 13 sites where G never flips, and the candidates for single features,
+    are now stated exactly;
+  - the side-effect rates are compared on the same sites;
+  - the phase used 21.55 GPU-h, not 21.6.
+- **Smaller wording:** Phase 3's token difference, the path to Phase 6's what-if
+  log and its relaxations, the `BATCH_SIZE` note, and the note on the upstream
+  keys.
 
 ## Erratum (2026-10-14): the Rust judge passed infinite results
 
@@ -79,7 +190,7 @@ tolerant branch requiring finite values (`data/erratum_inf/`, outputs in
 | 3 | 34 samples | 1 (task 248) | none of the 89 pairs |
 | 4 | 1 survivor | 1 | 1 of 98 pairs (task 248, source 3) has two failing members |
 | 5 | 29 samples, 3 survivors | 3 survivors | 1 of 259 pairs (task 248, source 15) |
-| 6 | 42 repairs, 120 samples | 33 repairs (tasks 137, 248), 3 samples (task 248) | verified repairs 304 → 271; repairs right only on the asserts 275 of 546 checkable (50%, was 47%); pairs 49 → 41, all 8 lost being fallback pairs (strict 20 unchanged); the gate is missed either way. The 3 samples (added to the audit on 10-15) served only to calibrate the extra inputs, and a calibration without them keeps the same 10 inputs; as failing samples they would have been 3 more sources, never searched |
+| 6 | 42 repairs, 120 samples | 33 repairs (tasks 137, 248), 3 samples (task 248) | verified repairs 304 → 271; repairs right only on the asserts 275 of 546 checkable (50%, was 47%); pairs 49 → 41, all 8 lost being fallback pairs (strict 20 unchanged); the gate is missed either way. The 3 samples (added to the audit on 10-15) are in no pair. One of them (round 2, sample 42) was among task 248's calibration samples, and a calibration that requires finite values keeps the same 10 inputs; as failing samples they would have been 3 more sources, never searched |
 | 7 | — | — | inherits Phase 5's pair, and Phase 4's in its descriptive section; the false survivors had been "verified" by the same check (129 → 128 verified) |
 
 Phases 4, 5 and 7 were rerun without the affected pair, their scripts unchanged (Phase 7's
@@ -98,20 +209,27 @@ Phase 7's refits did. No pre-registered reading changes:
 | Phase 5 surprise alone, centred | 0.591, p 0.005 | 0.574, p 0.040 |
 | Phase 5 output distribution / edit identity | 0.649 / 0.676 | 0.643 / 0.667 |
 | Phase 5 graph added to edit identity | +0.012 [−0.074, +0.098] | +0.023 [−0.072, +0.113] |
-| Phase 6 β_5 (post hoc, on Phase 5's pairs) | −0.461 [−0.897, −0.024] | −0.458 [−0.895, −0.022] |
+| Phase 6 β_5 (post hoc, on Phase 5's pairs) | −0.461 [−0.897, −0.024] | −0.458 [−0.895, −0.021] |
 | Phase 7 C / graph / probe P | 0.707 / 0.641 / 0.685 | 0.729 / 0.669 / 0.733 |
 | Phase 7 graph added to C, corrected | +0.002 [−0.072, +0.074] | −0.015 [−0.095, +0.061] |
 | Phase 7 S3 | p 0.024, not rejected | p 0.052, not rejected |
 | Phase 7 A(G) − A(G_free) | +0.100 [+0.000, +0.200], undecided | +0.134 [+0.030, +0.236], above 0 |
 | Phase 7 graph, verified − lucky survivors | +0.25 [+0.05, +0.44] | +0.19 [+0.00, +0.37] |
+| Phase 7 C, verified − lucky survivors | +0.20 [+0.01, +0.38] | +0.16 [−0.02, +0.35] |
+| Phase 7 L, verified − lucky survivors | +0.18 [+0.03, +0.33] | +0.07 [−0.11, +0.25] |
 
-One descriptive reading changes: without the pair, the attribution-dependent graph columns
+Three descriptive readings change. Without the pair, the attribution-dependent graph columns
 contribute to the centred accuracy (A(G) − A(G_free) above 0), where the published run left it
-undecided. The rest stands: the graph adds nothing measurable to the cheap signals, the probe does
-as well as the graph, Phase 4 is null and Phase 6 misses its gate. The numbers in the sections
+undecided. C's interval for verified − lucky survivors now covers 0, so by Phase 7's rule C no
+longer reads as following correctness; the graph's and the probe's (+0.20 [+0.06, +0.35]) stay
+above 0. (L's covers 0 too, but L never met that rule: it ranks the lucky pairs below chance,
+0.375 [0.270, 0.492].) And in Phase 5 the kind of edit no longer scores above the graph (0.667
+against 0.669). The first of these was reported on 10-14; the other two were found while closing
+the study, on 10-19. The rest stands: the graph adds nothing measurable to the cheap signals, the
+probe does as well as the graph, Phase 4 is null and Phase 6 misses its gate. The numbers in the sections
 below are as published; Phase 8 uses the finite-aware judge throughout.
 
-## Where this stands
+## The eight phases in brief
 
 The paper's number reproduces — 79.73% against 79.89% — but it is a row-level
 score against an LLM judge whose prompt dictates the shape of the label. Measured
@@ -123,7 +241,10 @@ it does not: a graph taken at the signature, before a line of logic exists,
 predicts execution as well as one over the whole function, while the body does
 help predict what the judge will say. In Rust it does — between problems, and
 weakly between two solutions to the same problem — but in both designs that
-contribution cannot be separated from the code's length at this n. Phase 4
+contribution cannot be separated from the code's length at this n. The arms
+differ in more than language (the Python labels lean on name-aliasing for 99 of
+114 positives; the Rust prompt carries the signature), so the difference is not
+attributed to language. Phase 4
 removes length by construction, pairing two one-token mutants of one passing
 solution at identical length, and the pre-registered test detects nothing.
 Compared within each pair (exploratory), the graph features do tell the passing
@@ -133,7 +254,7 @@ is no longer significant; the kind of edit alone separates the pair as well
 (post hoc). Phase 5 matches the members on surprise by design as well, and
 there the graph features do separate them (0.64, p 0.004, and 0.64 with the
 remaining surprise removed). But the rest of the model's output distribution
-separates them as well (0.65), and the kind of edit better (0.68), with the
+separates them as well (0.65), and the kind of edit at least as well (0.68), with the
 graph adding nothing measurable to it. In Rust, then, the graph carries
 information about correctness, but it has not been shown to carry information
 that cheaper signals lack. Phase 6 tried to settle this on Gemma's own errors, a
@@ -144,15 +265,13 @@ the question directly on Phase 5's pairs. Given the kind of edit and the output
 distribution (0.71), the graph's 49 features add nothing (+0.00 [−0.07, +0.07]
 after correcting for dilution). A probe of plain transcoder activations, with no
 attribution, does as well as the graph (0.69 against 0.64). A third of the
-surviving mutants turn out wrong on extra inputs, and every signal, the graph's
-included, ranks those pairs at chance: they track whether the program still
-works, not whether it passed three asserts. The arms differ in more than
-language (the Python labels lean on name-aliasing for 99 of
-114 positives; the Rust prompt carries the signature), so the difference is not
-attributed to language.
+checkable surviving mutants (64 of 193) turn out wrong on extra inputs, and the graph, the cheap
+baseline and the probe all rank those pairs near chance: they track whether the
+program still works, not whether it passed three asserts.
 
 Phase 8 tested the paper's other claim, that zeroing features the graph picks
-can fix a bug. At 142 of Gemma's own one-token bugs, zeroing the graph's
+can fix a bug. At 142 sites of Gemma's own one-token bugs (92 distinct bugs, 30
+problems), zeroing the graph's
 top-ranked features changes the model's choice at 91% of sites, where matched
 random features do so at 10%, and repairs 34% of them (equal weight over
 problems). Forbidding the wrong token repairs 56%. Most of the graph's repairs
@@ -171,13 +290,14 @@ not shown to do more than cheap methods.
 | Phase 4, Rust, 98 pairs | the same, for two one-token mutants of one passing solution, identical in length | **A = 0.469 [0.367, 0.571], p 0.723**, predicted null. Centred within each pair (exploratory): 0.674, p 0.010; the model's surprise alone, centred: 0.694, p 0.010; centred with surprise removed (post hoc): 0.592, p 0.139 |
 | Phase 5, Rust, 259 pairs | the same, with the members' code log-probabilities matched (median gap 0.18 nats) | **centred graph features 0.641 [0.562, 0.717], p 0.004**, predicted null; with the remaining surprise removed 0.639, p 0.005. Output distribution alone 0.649; the kind of edit alone 0.676 (exploratory), graph added to it +0.012 [−0.074, +0.098] |
 | Phase 6, Rust | a verified one-token repair of Gemma's own failing code against a control that keeps the bug | **gate missed: 20 strict pairs (49 with the fallback), against 150; no graph built**. 275 of 579 checkable repairs passed the asserts by luck |
-| Phase 7, Rust, Phase 5's 259 pairs | does the graph add to the kind of edit and the output distribution (C, 0.707)? to a probe of plain activations? | **added to C: −0.019, +0.002 [−0.072, +0.074] after the dilution correction**; the pre-registered tests were withdrawn by their size check. Probe 0.685 against graph 0.641. 64 of 193 checkable survivors wrong on extra inputs; on those the graph scores 0.469 |
-| Phase 8, Rust, 142 of Gemma's own one-token bugs (30 problems) | does zeroing the graph's top-ranked features repair the bug more often than matched random features (S1), than forbidding the wrong token (S2), than gradient × activation without the graph (S3)? | **S1 rejected: D +0.287 [+0.141, +0.441], p 0.0004; S2 not rejected: D −0.224 [−0.369, −0.086]**, both as predicted; S3 not tested. Repair rates: ban 0.56, graph 0.34, gradient × activation 0.40, random 0.05 |
+| Phase 7, Rust, Phase 5's 259 pairs | does the graph add to the kind of edit and the output distribution (C, 0.707)? to a probe of plain activations? | **added to C: +0.002 [−0.072, +0.074] after the dilution correction (−0.019 before it)**; four of the five pre-registered tests were withdrawn by their size check, and the one kept, attribution beyond C and the active-feature count, was not rejected (p 0.024 against Holm's 0.0167). Probe 0.685 against graph 0.641. 64 of 193 checkable survivors wrong on extra inputs; on those the graph scores 0.469 |
+| Phase 8, Rust, 142 sites of Gemma's own one-token bugs (92 distinct bugs, 30 problems) | does zeroing the graph's top-ranked features repair the bug more often than matched random features (S1), than forbidding the wrong token (S2), than gradient × activation without the graph (S3)? | **S1 rejected: D +0.287 [+0.141, +0.441], p 0.0004; S2 not rejected: D −0.224 [−0.369, −0.086]**, both as predicted; S3 not tested. Repair rates: ban 0.56, graph 0.34, gradient × activation 0.40, random 0.05 |
 
 Each "predicted null" was my prediction, written down before the data. The
 first three were wrong in the paper's favour; Phase 4's held; Phase 5's failed,
-again in the paper's favour; Phase 7's held, but only because its tests could
-not be run at a valid size; Phase 8's held, with S2 on the other side of zero.
+again in the paper's favour; Phase 7's held, but mostly because four of its five
+tests could not be run at a valid size; Phase 8's held, with S2 on the other
+side of zero.
 What else held:
 the level is not a length proxy (C4), the two arms rank the problems they share
 alike (ρ +0.758, consistent with both reading problem difficulty), Phase 3's
@@ -394,7 +514,8 @@ enter the graph by greedy frontier expansion, re-ranking once per
 binds on **all 1420 graphs** — active feature counts run 16,785 to 216,132
 (p5–p95: 27k–152k), so 8192 is between 3.8% and 48.8% of what was available, and
 never more than all of it. All 1420 graphs were generated at the upstream default
-of 64, and the Rust arm must use the same value.
+of 64, and the Rust arm used the same value, as did every later phase that built
+graphs.
 
 ## Plan for the Rust arm
 
@@ -613,9 +734,13 @@ exactly what went.
 near 80 GB — took 8 days 16 hours (2026-09-22 08:07 to 09-30 23:44), 1.14x the
 7.6 days costed above.
 
-Note for anyone forking this: `data/1_code_correct.py` carries a hardcoded
-OpenAI key inherited from upstream. It must not be used, and must be scrubbed
-from history before this fork is ever made public.
+Note for anyone forking this: upstream's `data/1_code_correct.py` came with two
+hardcoded OpenAI keys. They must not be used. They remain in every commit of
+the private working repository. The public copy
+([funafuna27/CodeCircuit-rust-replication](https://github.com/funafuna27/CodeCircuit-rust-replication),
+made 2026-10-14) has them removed from its whole history, so its commit hashes
+differ from the ones cited in the pre-registrations; its `PUBLIC_COPY.md` maps
+them.
 
 The Python graphs took 5 days 10 hours on the same RTX 5070 (12GB) at
 `batch_size=64, offload='cpu'`, chunked at 200 graphs so peak disk stays near
@@ -648,7 +773,7 @@ pair's labels swapped at random.
 
 **The draw.** 6680 samples; 56.3% compile, 24.9% pass. 89 problems yield a pair
 (gate: 70). Every failing member fails an assertion and none timed out; the
-token difference within a pair has median 2 and mean +0.00. 178 graphs, none
+absolute token difference within a pair has median 2 (signed mean +0.00). 178 graphs, none
 missing (2026-10-01 13:42 to 10-02 20:31).
 
 | | A | 95% CI | label-swap p |
@@ -768,8 +893,10 @@ primary, could.
 **Or more than the kind of edit?** Found later, while preparing Phase 5, and
 post hoc here: the two members carry different edits, and the edit's surface
 identity alone — which token was replaced, by which, and where — ranks the
-survivor higher in 0.667 of the pairs (p 0.005, `p5_5_edit_baseline.py`), as
-often as the graph features do. A boundary change such as `>` → `>=` is often
+survivor higher in 0.667 of all 99 pairs (p 0.005, `p5_5_edit_baseline.py`; it
+needs no graph, so task 633's pair is included). On the 98 analysed pairs it
+scores 0.643, about as often as the graph features' 0.674 (difference +0.031
+[−0.102, +0.163]). A boundary change such as `>` → `>=` is often
 harmless. Adding the graph features to the edit identity changes A by +0.036
 [−0.097, +0.168]. So Phase 4's centred graph signal is not shown to exceed the
 kind of edit either.
@@ -817,7 +944,8 @@ The failing one's graph is larger: more pruned feature nodes in 60% of pairs
 
 **But not beyond cheaper signals.** The rest of the model's output distribution
 separates the same pairs as well (0.649), and the kind of edit, with no model at
-all, better (0.676). Adding the graph features to the kind of edit gains
+all, at least as well (0.676; graph − edit −0.035 [−0.126, +0.055]). Adding the
+graph features to the kind of edit gains
 +0.012 [−0.074, +0.098]. The graph carries information about these injected
 errors; it is not shown to carry information that the output distribution or
 the edit's surface identity lack.
@@ -848,8 +976,9 @@ the asserts by luck** and returned a wrong value on a nearby input; 792 could no
 be checked at all (no passing Gemma sample, or too few usable inputs). With a
 control that keeps the bug, sits on a live site and matches the repair's length,
 kind of edit and surprise, 20 pairs remained (49 with the fallback). Relaxing the
-rules after the fact reaches 150 pairs only by dropping both the verification
-and the matching (`results/ownfix/yield_whatif.log`).
+rules after the fact reaches 150 pairs only by admitting unverifiable repairs,
+taking the fallback control and widening the surprise caliper from 1.0 to 3.0
+(`data/results/ownfix/yield_whatif.log`).
 
 So at this scale, Phase 6's question — whether the graph reads the correctness
 of the model's own errors beyond cheaper signals — cannot be answered this way,
@@ -870,19 +999,19 @@ leads, so a positive answer would have needed new problems.
 
 **The blocks:**
 - **C, the cheap baseline:** the kind of edit, plus the output distribution
-  (code, edit-token and lowest log-probabilities, entropy, the final position's
-  top probability and entropy).
+  (code, edit-token and lowest log-probabilities, mean entropy, length in
+  characters, the final position's top probability and entropy).
 - **G:** the 49 graph features.
 - **P, a probe of the same forward pass:** every active transcoder feature's
   activation, averaged over positions and reduced to 45 SVD directions, with no
   attribution.
-- **L:** eight quantities at the edited tokens, four from activations and four
-  from attribution.
+- **L:** eight quantities at and just after the edited tokens, four from
+  activations and four from attribution.
 
-Each pair's survivor and killed member were also checked on Phase 6's extra
-inputs.
+Each pair's survivor, and the passing source it was mutated from, was also
+checked on Phase 6's extra inputs.
 
-**The tests were withdrawn.** The pre-registered tests are clustered
+**Four of the five tests were withdrawn.** The pre-registered tests are clustered
 conditional-independence tests (a GCM with a Rademacher max-|T|). On synthetic
 labels over the real covariates, before any real label was read, they rejected
 6–6.5% of true nulls at 5%, even for columns of pure noise, and up to 14% under
@@ -899,7 +1028,7 @@ increments, corrected for the dilution that extra columns cause in a forest:
 | L, the edit's local quantities | 0.537 | [0.465, 0.608] |
 | **G added to C**, corrected | **+0.002** | [−0.072, +0.074] |
 | L added to C, corrected | −0.006 | [−0.056, +0.043] |
-| G added to P + the output distribution, corrected | +0.022 | [−0.040, +0.079] |
+| G added to P, the active-feature count and the output distribution, corrected | +0.022 | [−0.040, +0.079] |
 
 Adding the graph to C was negative in all ten refits with other seeds (−0.046
 to −0.008). It was also negative:
@@ -916,16 +1045,21 @@ asserts but return a wrong value on a nearby input:
 | C | 0.806 | 0.609 | +0.20 [+0.01, +0.38] |
 | probe | 0.787 | 0.594 | +0.19 [+0.03, +0.36] |
 
-Every signal ranks the lucky pairs near chance. When neither member of a pair is
-truly correct, nothing tells them apart. So the signals follow whether the edit
-broke the program, not whether it passed the asserts. The label noise dilutes
-them alike and does not change the increment.
+The graph, C and the probe rank the lucky pairs near chance. When neither member
+of a pair is truly correct, they do not tell them apart, so they follow whether
+the edit broke the program, not whether it passed the asserts. (The edit's local
+quantities L are the exception: alone they rank the lucky pairs below chance,
+0.375 [0.270, 0.492].) The label noise dilutes the signals alike and does not change the
+increment.
 
 **What it adds up to.** On these pairs, the attribution graph's summary is not
 shown to know more than the kind of edit and the output distribution. A probe of
-the same forward pass without attribution does as well. Inside the graph,
-attribution is what carries Phase 5's 0.64, but beyond C it adds nothing
-measurable (its one valid test: p 0.024 against Holm's 0.0167). The interval
+the same forward pass without attribution does as well. Inside the graph, the
+attribution-dependent columns carry most of Phase 5's 0.64 (the three
+attribution-free features alone reach 0.54; the difference, +0.100
+[+0.000, +0.200], is undecided as published and above 0 without the erratum's
+pair). Beyond C and the active-feature count they add nothing measurable (the one
+valid test: p 0.024 against Holm's 0.0167). The interval of the graph added to C
 does not exclude a gain of up to 0.07. The tests that would have settled it
 could not be run at a valid size, and the pairs are not new.
 
@@ -934,7 +1068,7 @@ could not be run at a valid size, and the pairs are not new.
 The paper's second claim (§4.4) is causal: zeroing one transcoder feature picked
 from the graph fixed a bug (`high = mid`). It reports that one case, with no rate
 and no control. Phase 8 measures the rate at Gemma's own one-token bugs, against
-controls. Each site is a failing solution from Phase 6 where Gemma's wrong token
+controls. Each site is a position in a failing solution from Phase 6 where Gemma's wrong token
 was its top choice and a one-token repair is verified: it passes the asserts and
 the calibrated extra inputs. At the decision position, the features ranked
 highest for the wrong token's logit are zeroed, cumulatively, until the model's
@@ -962,11 +1096,12 @@ problems; the design is in `data/intervention_design/`.
   - whole-program generation.
 
 **Result: the graph's features beat random ones, but not the ban.** The analysis
-covers 142 sites over 30 problems. 4 sites were excluded by a registered rule:
-there the model preferred the wrong token by less than the noise floor. Repair
-rates are equal-weight over problems:
+covers 142 sites (92 distinct bugs, in 118 failing solutions) over 30 problems.
+4 sites were excluded by a registered rule: there the model preferred the wrong
+token by less than twice the noise floor (margins 0.06–0.15, against 2δ = 0.38).
+Repair rates are equal-weight over problems:
 
-| arm | repair rate | 95% CI | top token changed | median features zeroed |
+| arm | repair rate | 95% CI | top token changed | median features zeroed (sites that flip) |
 |---|---|---|---|---|
 | BAN, forbid the wrong token | 0.561 | [0.404, 0.715] | 100% | — |
 | G, the graph's ranking | 0.337 | [0.203, 0.481] | 91% | 20 |
@@ -987,23 +1122,25 @@ rates are equal-weight over problems:
 - In the other 59 flips the model moves to a token that is usually wrong (9
   repairs).
 - So D(G − BAN) = −0.22 comes from breaks. At 39 sites G flips to a failing
-  token where the ban's token passes. Only 7 sites are rescues, and at 4 G never
-  flips.
+  token where the ban's token passes. Only 7 sites are rescues. At 4 more the
+  ban's token passes where G never flips (G does not flip at 13 sites in all).
 - Gradient × activation, without the graph, does as well. Where both flip, it
   repairs 0.45 against G's 0.40.
 - Ordering features by their measured single ablations does better than either
   (0.52).
 
-**The paper's single feature (post hoc).** Zeroing one of the top 384 features:
-- changes the top token at 27 sites (19%); one matched random feature does so
-  at 5;
+**The paper's single feature (post hoc).** Zeroing one feature at a time, among
+G's top 128 and gradient × activation's top 256 (about 320 distinct per site):
+- changes the top token at 27 sites (19%); one of 128 random features, matched
+  to G's top 128, does so at 5;
 - yields a verified repair at 22 sites (15%), but at 20 of them the repair is
   the ban's token;
 - gives a repair the ban does not give at only 2 sites.
 
 **Side effects.** G's ablation also changes the model's top token at some later
-position of the repaired program (teacher-forced) at 60% of sites. Random
-features ablated in the same number do so at 9%.
+position of the repaired program (teacher-forced) at 60% of sites (57% of the
+129 where it flips). Random features ablated in the same number do so, in most
+of 20 draws, at 9% of those 129 sites.
 
 **Predictions.** Of 34 predictions written before any GPU data, 21 held; of 10
 revised after the pilot (label-free), 9 held. The decisions held: S1 rejects, S2
@@ -1014,7 +1151,7 @@ below the original ranges, and inside the revised ones.
 whose removal changes the decision, where random features rarely do. But its
 repairs are mostly the runner-up token, which forbidding the wrong token gives
 for free, and where it moves the model elsewhere it mostly breaks the code. No
-advantage over a single backward pass was found either. The phase used 21.6 of
+advantage over a single backward pass was found either. The phase used 21.55 of
 its 28 GPU-h. Its limits:
 - one-token substitutions at known sites;
 - the wrong token's logit as the target;
