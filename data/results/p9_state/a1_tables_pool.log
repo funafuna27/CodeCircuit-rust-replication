@@ -1,0 +1,42 @@
+T0 reproduction: harness exit status = stored compiles in 41560 of 41560 | first error code agrees in 16244 of 16244 | timeouts 0
+T1 lib x harness: {'lib_err__harness_err': 16598, 'lib_ok__harness_err': 921, 'lib_ok__harness_ok': 24041}
+
+T2 lib-mode errors: family x location of the primary span (counts of diagnostics)
+  family         sig   body  other   none   total
+  syntax          92    627    732      0    1451
+  resolve          3   2198    821      0    3022
+  type           215  18614    431      0   19260
+  pattern          1     79      3      0      83
+  lifetime         0      1      1      0       2
+  mutability     241    578     39      0     858
+  move             0    670      7      0     677
+  borrow           0     94      1      0      95
+  deny_lint        0      1      0      0       1
+  harness-mode errors whose primary span is in the harness: {'syntax': 576, 'resolve': 4214, 'type': 612, 'lifetime': 1}
+
+T3 lib-mode errors per family
+  family       diags samples  dedup probs    sec  child either before  gap  codes
+  syntax        1451    1256    831   201  0.352  0.331  0.589   0.51    0  {None: 1451}
+  resolve       3022    2306   1922   237  0.043  0.259  0.285  0.431    0  {'E0425': 2556, 'E0433': 327, 'E0428': 60, 'E0658': 31, 'E0435': 27, 'E0423': 17, 'E0434': 4}
+  type         19260   12127   8644   307  0.417  0.701  0.804  0.256    0  {'E0308': 8196, 'E0277': 5526, 'E0599': 2553, 'E0608': 1222, 'E0369': 451, 'E0609': 235, 'E0614': 198, 'E0283': 103}
+  pattern         83      76     38     6  0.012    1.0    1.0    0.0  -12  {'E0004': 82, 'E0005': 1}
+  lifetime         2       2      2     2    1.0    0.5    1.0    0.5  0.5  {'E0716': 2}
+  mutability     858     817    488    94  0.411  0.994  0.999    0.7    2  {'E0596': 565, 'E0384': 288, 'E0594': 5}
+  move           677     531    365    55  0.542  0.997    1.0  0.242    0  {'E0382': 343, 'E0507': 333, 'E0505': 1}
+  borrow          95      90     69    18    1.0  0.389    1.0    0.6    0  {'E0502': 67, 'E0499': 22, 'E0506': 6}
+  deny_lint        1       1      1     1    0.0    1.0    1.0    0.0    0  {'overflowing_literals': 1}
+
+T4 duplicates (whitespace removed, within a problem): {'samples': 41560, 'unique': 25171, 'compiling': 24041, 'compiling_unique': 13018, 'failing': 17519, 'failing_unique': 12153, 'passing': 7367, 'passing_unique': 2508, 'mutability_samples': 817, 'mutability_unique': 488, 'move_samples': 531, 'move_unique': 365, 'borrow_samples': 90, 'borrow_unique': 69, 'dup_rate': 0.394}
+
+T5 natural borrow-check errors (lib mode)
+  mutability errors by the site rustc suggests making mutable (diagnostics): {'other': 39, 'body': 146, 'sig': 668, 'no suggestion': 5} | samples, dedup: {'other': 32, 'body': 127, 'sig': 332, 'no suggestion': 4}
+  any borrow-check error, dedup samples by phase: {'6': 657, '3': 153, '5': 62} | samples by phase: {'3': 6680, '5': 3280, '6': 31600}
+  mutability  samples 817 (dedup 488) over 94 problems; dedup per problem quartiles [1.0, 2.0, 4.0]; top [(428, 65), (625, 49), (99, 39), (591, 38), (479, 32)]
+  move        samples 531 (dedup 365) over 55 problems; dedup per problem quartiles [1.0, 3.0, 7.0]; top [(299, 44), (251, 35), (442, 29), (305, 27), (788, 25)]
+  borrow      samples 90 (dedup 69) over 18 problems; dedup per problem quartiles [1.0, 2.0, 4.0]; top [(625, 21), (591, 15), (635, 5), (141, 4), (619, 4)]
+  any_bck     samples 1374 (dedup 872) over 128 problems; dedup per problem quartiles [1.0, 2.0, 7.0]; top [(428, 65), (625, 54), (299, 44), (591, 42), (99, 39)]
+  failing samples 17519: with a syntax/resolve/type/pattern error 15247 (borrow checking possibly masked); only borrow-check errors 1350 (dedup 848); borrow-check error beside a type error 24
+
+T6 unused_mut in compiling samples: {'compiling': 24041, 'with_unused_mut': 1015, 'with_unused_mut_dedup': 898, 'problems': 138, 'total_warnings': 1157, 'passing_with_unused_mut_dedup': 118}
+
+T7 primary span in the body, by fifth of the body: {'mutability': [137, 23, 110, 201, 107], 'move': [30, 82, 85, 214, 259], 'borrow': [1, 1, 29, 58, 5]}

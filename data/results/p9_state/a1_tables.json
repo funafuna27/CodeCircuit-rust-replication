@@ -1,0 +1,449 @@
+{
+ "T0": {
+  "n": 6680,
+  "compiles_agree": 6680,
+  "first_code_agree": 2681,
+  "first_code_n": 2681,
+  "timeouts": 0
+ },
+ "T1": {
+  "lib_err__harness_err": 2736,
+  "lib_ok__harness_err": 180,
+  "lib_ok__harness_ok": 3764
+ },
+ "T2": {
+  "syntax": {
+   "sig": 20,
+   "body": 75,
+   "other": 176,
+   "none": 0
+  },
+  "resolve": {
+   "sig": 0,
+   "body": 426,
+   "other": 122,
+   "none": 0
+  },
+  "type": {
+   "sig": 26,
+   "body": 3417,
+   "other": 87,
+   "none": 0
+  },
+  "pattern": {
+   "sig": 0,
+   "body": 5,
+   "other": 0,
+   "none": 0
+  },
+  "mutability": {
+   "sig": 32,
+   "body": 70,
+   "other": 10,
+   "none": 0
+  },
+  "move": {
+   "sig": 0,
+   "body": 96,
+   "other": 2,
+   "none": 0
+  },
+  "borrow": {
+   "sig": 0,
+   "body": 15,
+   "other": 0,
+   "none": 0
+  },
+  "harness_part": {
+   "syntax": 139,
+   "resolve": 805,
+   "type": 58
+  }
+ },
+ "T3": {
+  "syntax": {
+   "diags": 271,
+   "samples": 232,
+   "problems": 103,
+   "samples_dedup": 169,
+   "secondary_share": 0.347,
+   "child_share": 0.225,
+   "either_share": 0.498,
+   "cause_before_primary_share": 0.57,
+   "median_line_gap": 0,
+   "codes": {
+    "null": 271
+   }
+  },
+  "resolve": {
+   "diags": 548,
+   "samples": 410,
+   "problems": 147,
+   "samples_dedup": 387,
+   "secondary_share": 0.069,
+   "child_share": 0.343,
+   "either_share": 0.376,
+   "cause_before_primary_share": 0.515,
+   "median_line_gap": 0.0,
+   "codes": {
+    "E0425": 459,
+    "E0433": 52,
+    "E0428": 16,
+    "E0658": 9,
+    "E0423": 8,
+    "E0435": 3,
+    "E0434": 1
+   }
+  },
+  "type": {
+   "diags": 3530,
+   "samples": 2036,
+   "problems": 275,
+   "samples_dedup": 1708,
+   "secondary_share": 0.376,
+   "child_share": 0.686,
+   "either_share": 0.772,
+   "cause_before_primary_share": 0.211,
+   "median_line_gap": 0,
+   "codes": {
+    "E0308": 1436,
+    "E0277": 1045,
+    "E0599": 387,
+    "E0608": 366,
+    "E0369": 91,
+    "E0609": 38,
+    "E0606": 21,
+    "E0283": 20
+   }
+  },
+  "pattern": {
+   "diags": 5,
+   "samples": 5,
+   "problems": 3,
+   "samples_dedup": 5,
+   "secondary_share": 0.0,
+   "child_share": 1.0,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.0,
+   "median_line_gap": -12,
+   "codes": {
+    "E0004": 5
+   }
+  },
+  "mutability": {
+   "diags": 112,
+   "samples": 104,
+   "problems": 38,
+   "samples_dedup": 80,
+   "secondary_share": 0.393,
+   "child_share": 1.0,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.679,
+   "median_line_gap": 3.0,
+   "codes": {
+    "E0596": 75,
+    "E0384": 37
+   }
+  },
+  "move": {
+   "diags": 98,
+   "samples": 79,
+   "problems": 34,
+   "samples_dedup": 72,
+   "secondary_share": 0.622,
+   "child_share": 1.0,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.296,
+   "median_line_gap": 0.0,
+   "codes": {
+    "E0382": 56,
+    "E0507": 42
+   }
+  },
+  "borrow": {
+   "diags": 15,
+   "samples": 14,
+   "problems": 9,
+   "samples_dedup": 14,
+   "secondary_share": 1.0,
+   "child_share": 0.4,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.6,
+   "median_line_gap": 0,
+   "codes": {
+    "E0502": 10,
+    "E0506": 3,
+    "E0499": 2
+   }
+  }
+ },
+ "T4": {
+  "samples": 6680,
+  "unique": 4955,
+  "compiling": 3764,
+  "compiling_unique": 2538,
+  "failing": 2916,
+  "failing_unique": 2417,
+  "passing": 1661,
+  "passing_unique": 796,
+  "mutability_samples": 104,
+  "mutability_unique": 80,
+  "move_samples": 79,
+  "move_unique": 72,
+  "borrow_samples": 14,
+  "borrow_unique": 14,
+  "dup_rate": 0.258
+ },
+ "T5": {
+  "mutability": {
+   "samples": 104,
+   "samples_dedup": 80,
+   "problems": 38,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    1.0,
+    2.25
+   ],
+   "top_problems": [
+    [
+     625,
+     9
+    ],
+    [
+     635,
+     8
+    ],
+    [
+     591,
+     7
+    ],
+    [
+     428,
+     6
+    ],
+    [
+     566,
+     3
+    ],
+    [
+     749,
+     3
+    ],
+    [
+     479,
+     3
+    ],
+    [
+     224,
+     3
+    ],
+    [
+     99,
+     3
+    ],
+    [
+     752,
+     2
+    ]
+   ]
+  },
+  "move": {
+   "samples": 79,
+   "samples_dedup": 72,
+   "problems": 34,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "top_problems": [
+    [
+     299,
+     7
+    ],
+    [
+     305,
+     5
+    ],
+    [
+     442,
+     5
+    ],
+    [
+     223,
+     5
+    ],
+    [
+     635,
+     4
+    ],
+    [
+     251,
+     4
+    ],
+    [
+     94,
+     3
+    ],
+    [
+     753,
+     3
+    ],
+    [
+     632,
+     3
+    ],
+    [
+     12,
+     3
+    ]
+   ]
+  },
+  "borrow": {
+   "samples": 14,
+   "samples_dedup": 14,
+   "problems": 9,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    1.0,
+    2.0
+   ],
+   "top_problems": [
+    [
+     635,
+     4
+    ],
+    [
+     591,
+     2
+    ],
+    [
+     619,
+     2
+    ],
+    [
+     100,
+     1
+    ],
+    [
+     625,
+     1
+    ],
+    [
+     632,
+     1
+    ],
+    [
+     304,
+     1
+    ],
+    [
+     477,
+     1
+    ],
+    [
+     631,
+     1
+    ]
+   ]
+  },
+  "any_bck": {
+   "samples": 184,
+   "samples_dedup": 153,
+   "problems": 65,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    1.0,
+    3.0
+   ],
+   "top_problems": [
+    [
+     635,
+     10
+    ],
+    [
+     625,
+     9
+    ],
+    [
+     591,
+     7
+    ],
+    [
+     299,
+     7
+    ],
+    [
+     632,
+     6
+    ],
+    [
+     428,
+     6
+    ],
+    [
+     305,
+     5
+    ],
+    [
+     223,
+     5
+    ],
+    [
+     442,
+     5
+    ],
+    [
+     251,
+     4
+    ]
+   ]
+  },
+  "failing": 2916,
+  "failing_with_syntax_resolve_type_error": 2556,
+  "failing_only_borrowck_errors": 180,
+  "failing_only_borrowck_errors_dedup": 149,
+  "bck_alongside_type_error": 4,
+  "mutability_decl_site": {
+   "body": 16,
+   "sig": 86,
+   "other": 10
+  },
+  "mutability_decl_site_samples_dedup": {
+   "body": 15,
+   "sig": 59,
+   "other": 9
+  }
+ },
+ "T6": {
+  "compiling": 3764,
+  "with_unused_mut": 128,
+  "with_unused_mut_dedup": 126,
+  "problems": 73,
+  "total_warnings": 149,
+  "passing_with_unused_mut_dedup": 22
+ },
+ "T7": {
+  "mutability": [
+   16,
+   3,
+   15,
+   25,
+   11
+  ],
+  "move": [
+   1,
+   11,
+   15,
+   30,
+   39
+  ],
+  "borrow": [
+   1,
+   0,
+   5,
+   9,
+   0
+  ]
+ }
+}

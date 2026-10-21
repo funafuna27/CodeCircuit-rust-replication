@@ -1,0 +1,282 @@
+==============================================================================
+violation  problem 724 sample 71  x `sum` (let) -> y `digit` (let)  errors ['E0384']  tokens 114 same multiset True
+q: 'sum' (token 91), op '▁+='; site: cannot assign twice to immutable variable
+fn power_base_sum(a0: i64, a1: i64) -> i64 {
+    let sum = 0;
+    let mut base = a0;
+    while base > 0 {
+        let mut digit = base % 10;
+        sum += digit * a1;
+        base /= 10;
+    }
+    sum
+}
+==============================================================================
+violation  problem 109 sample 28  x `count` (let) -> y `rotated` (let)  errors ['E0384']  tokens 157 same multiset True
+q: 'count' (token 141), op '▁+='; site: cannot assign twice to immutable variable
+fn odd_Equivalent(a0: &str, a1: i64) -> i64 {
+  let count = 0;
+  for i in 0..a0.len() {
+    let new_string = a0.chars().map(|c| c).collect::<String>();
+    let mut rotated = new_string.chars().cycle().collect::<String>();
+    if rotated.chars().filter(|c| c.is_ascii_digit()).count() % 2 != 0 {
+      count += 1;
+    }
+  }
+  count
+}
+==============================================================================
+violation  problem 279 sample 29  x `decagonal` (let) -> y `i` (for)  errors ['E0384']  tokens 96 same multiset True
+q: 'deca' (token 59), op '▁+='; site: cannot assign twice to immutable variable
+fn is_num_decagonal(a0: i64) -> i64 {
+  let decagonal = a0;
+  for mut i in 1..=10 {
+    decagonal += (i as i64) * (i as i64) * (i as i64);
+  }
+  decagonal
+}
+==============================================================================
+violation  problem 57 sample 177  x `max_num` (let) -> y `num` (for)  errors ['E0384']  tokens 138 same multiset True
+q: 'max' (token 112), op '▁='; site: cannot assign twice to immutable variable
+fn find_Max_Num(a0: Vec<i64>) -> i64 {
+    let mut n: i64 = a0.iter().fold(0, |x, &y| x * 10 + y);
+    if n < 0 {
+        return -n;
+    }
+    let max_num = n;
+    for mut num in a0 {
+        max_num = std::cmp::max(max_num, num);
+    }
+    max_num
+}
+==============================================================================
+violation  problem 251 sample 62  x `result` (let) -> y `element` (for)  errors ['E0596']  tokens 134 same multiset True
+q: 'result' (token 76), op 'push'; site: cannot borrow as mutable
+fn insert_element(a0: Vec<String>, a1: &str) -> Vec<String> {
+    let result = Vec::new();
+    for mut element in a0.iter() {
+        result.push(String::from(element.to_string()));
+    }
+    for i in 0..a0.len() {
+        result.insert(i, String::from(a1.to_string()));
+    }
+    result
+}
+==============================================================================
+violation  problem 415 sample 19  x `max2` (let) -> y `i` (for)  errors ['E0384', 'E0384']  tokens 164 same multiset True
+q: 'max' (token 96), op '▁='; site: cannot assign twice to immutable variable
+fn max_Product(a0: Vec<i64>) -> (i64, i64) {
+    let mut max1 = a0[0];
+    let max2 = a0[0];
+    for mut i in 1..a0.len() {
+        if a0[i] > max1 {
+            max2 = max1;
+            max1 = a0[i];
+        } else if a0[i] > max2 {
+            max2 = a0[i];
+        }
+    }
+    let product = max1 * max2;
+    (max1, max2)
+}
+==============================================================================
+violation  problem 640 sample 77  x `result` (let) -> y `word` (for)  errors ['E0384']  tokens 75 same multiset True
+q: 'result' (token 55), op '▁='; site: cannot assign twice to immutable variable
+fn remove_parenthesis(a0: Vec<String>) -> String {
+    let result = "".to_string();
+    for mut word in a0 {
+        result = result.replace("(", "").replace(")", "");
+    }
+    result
+}
+==============================================================================
+violation  problem 428 sample 84  x `a` (let) -> y `i` (for)  errors ['E0596']  tokens 120 same multiset True
+q: 'a' (token 91), op 'swap'; site: cannot borrow as mutable
+fn shell_sort(a0: Vec<i64>) -> Vec<i64> {
+  let a = a0.clone();
+  for mut i in 1..a.len() {
+    let mut j = i;
+    while j > 0 && a[j] < a[j - 1] {
+      a.swap(j, j - 1);
+      j -= 1;
+    }
+  }
+  a
+}
+==============================================================================
+violation  problem 565 sample 68  x `v` (let) -> y `c` (for)  errors ['E0596']  tokens 66 same multiset True
+q: 'v' (token 50), op 'push'; site: cannot borrow as mutable
+fn split(a0: &str) -> Vec<String> {
+  let v = Vec::new();
+  for mut c in a0.chars() {
+    v.push(String::new());
+  }
+  v
+}
+==============================================================================
+violation  problem 792 sample 54  x `count` (let) -> y `v` (for)  errors ['E0384']  tokens 93 same multiset True
+q: 'count' (token 74), op '▁+='; site: cannot assign twice to immutable variable
+fn count_list(a0: Vec<Vec<i64>>) -> i64 {
+    let count = 0;
+    for mut v in a0 {
+        for e in v {
+            if e == 0 {
+                count += 1;
+            }
+        }
+    }
+    count
+}
+==============================================================================
+violation  problem 268 sample 41  x `n` (let) -> y `a0` (param)  errors ['E0384']  tokens 82 same multiset False
+q: 'n' (token 69), op '▁+='; site: cannot assign twice to immutable variable
+fn find_star_num(mut a0: i64) -> i64 {
+    let mut a = a0;
+    let n = 1;
+    while n <= 100 {
+        a += 1;
+        n += 1;
+    }
+    a
+}
+==============================================================================
+violation  problem 563 sample 23  x `current_value` (let) -> y `a0` (param)  errors ['E0596']  tokens 188 same multiset False
+q: 'current' (token 105), op 'clear'; site: cannot borrow as mutable
+fn extract_values(mut a0: &str) -> Vec<String> {
+  let mut values: Vec<String> = Vec::new();
+  let current_value: String = String::new();
+  for char in a0.chars() {
+    if char == '"' {
+      if current_value.len() > 0 {
+        values.push(current_value.clone());
+        current_value.clear();
+      }
+    } else if char == '\\' {
+      current_value.push(char);
+    } else {
+      current_value.push(char);
+    }
+  }
+  if !current_value.is_empty() {
+    values.push(current_value.clone());
+  }
+  values
+}
+==============================================================================
+violation  problem 603 sample 34  x `sum` (let) -> y `a0` (param)  errors ['E0384']  tokens 166 same multiset False
+q: 'sum' (token 134), op '▁+='; site: cannot assign twice to immutable variable
+fn get_ludic(mut a0: i64) -> Vec<i64> {
+  let mut result = Vec::new();
+  for i in 1..=a0 {
+    if is_ludic(i) {
+      result.push(i);
+    }
+  }
+  result
+}
+fn is_ludic(n: i64) -> bool {
+  let mut num = n;
+  let sum = 0;
+  while num > 0 {
+    sum += num % 10;
+    num /= 10;
+  }
+  sum == 0 || sum == 1
+}
+==============================================================================
+violation  problem 643 sample 171  x `i` (let) -> y `a0` (param)  errors ['E0384']  tokens 104 same multiset False
+q: 'i' (token 91), op '▁+='; site: cannot assign twice to immutable variable
+fn text_match_wordz_middle(mut a0: &str) -> bool {
+    let i = 0;
+    while i < a0.len() {
+        if a0.chars().nth(i).unwrap() == 'z' {
+            return true;
+        }
+        i += 1;
+    }
+    false
+}
+==============================================================================
+legal  problem 751 sample 144  x `heap` (let) -> y `i` (for)  errors []  tokens 122 same multiset True
+fn check_min_heap(a0: Vec<i64>) -> bool {
+  let heap = a0.clone();
+  for mut i in 1..=heap.len() {
+    if heap[0] < heap[i] {
+      return false;
+    }
+  }
+  true
+}
+==============================================================================
+legal  problem 751 sample 57  x `heap` (let) -> y `right` (let)  errors []  tokens 171 same multiset True
+fn check_min_heap(a0: Vec<i64>) -> bool {
+    let heap = a0.clone();
+    for i in 1..(heap.len() / 2) {
+        let left = 2 * i - 1;
+        let mut right = 2 * i;
+        if heap[i] < heap[left] {
+            return false;
+        }
+        if heap[i] < heap[right] {
+            return false;
+        }
+    }
+    return true;
+}
+==============================================================================
+legal  problem 604 sample 47  x `words` (let) -> y `word` (for)  errors []  tokens 90 same multiset True
+fn reverse_words(a0: &str) -> String {
+    let words = a0.split_whitespace();
+    let mut reversed_words = Vec::new();
+    for mut word in words {
+        reversed_words.push(word.to_owned());
+    }
+    reversed_words.join(" ")
+}
+==============================================================================
+legal  problem 120 sample 121  x `max_product` (let) -> y `j` (for)  errors []  tokens 182 same multiset True
+fn max_product_tuple(a0: Vec<(i64, i64)>) -> i64 {
+    let max_product = std::i64::MIN;
+    for i in 0..a0.len() {
+        for mut j in i + 1..a0.len() {
+            let product = a0[i].0 * a0[j].0;
+            let max_product = std::cmp::max(max_product, product);
+            let product = a0[i].1 * a0[j].1;
+            let max_product = std::cmp::max(max_product, product);
+        }
+    }
+    max_product
+}
+==============================================================================
+legal  problem 59 sample 162  x `a` (let) -> y `a0` (param)  errors []  tokens 109 same multiset False
+fn is_octagonal(mut a0: i64) -> i64 {
+  let a = a0;
+  let mut sum = 0;
+  for i in 1..=3 {
+    let n = (i as f64 * (i as f64 * 3.0 + 1.0)) as i64;
+    sum += n;
+  }
+  a + sum
+}
+==============================================================================
+legal  problem 603 sample 111  x `n` (let) -> y `n` (param)  errors []  tokens 166 same multiset False
+fn get_ludic(a0: i64) -> Vec<i64> {
+  let mut result = Vec::new();
+  for i in 1..=a0 {
+    if is_ludic(i) {
+      result.push(i);
+    }
+  }
+  result
+}
+fn is_ludic(mut n: i64) -> bool {
+  let n = n;
+  let mut i = 2;
+  while i * i <= n {
+    if n % i == 0 {
+      return false;
+    }
+    i += 1;
+  }
+  true
+}

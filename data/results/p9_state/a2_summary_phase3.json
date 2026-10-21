@@ -1,0 +1,257 @@
+{
+ "sources": {
+  "unique_compiling": 2538,
+  "problems": 318,
+  "with_mut_let_or_for": 1896,
+  "necessity": {
+   "necessary": 2793,
+   "unnecessary": 147
+  },
+  "compiles_run": 10257,
+  "by_phase": {
+   "3": 2538
+  }
+ },
+ "candidates_tried": {
+  "violation ok=True": 6934,
+  "legal ok=True": 383
+ },
+ "table": {
+  "violation | y let | any": {
+   "candidates": 851,
+   "sources": 373,
+   "problems": 134,
+   "sources_le140": 184,
+   "problems_le140": 80,
+   "passing_sources": 82,
+   "sources_aligned": 320,
+   "problems_aligned_le140": 68
+  },
+  "violation | y let | multiset equal": {
+   "candidates": 851,
+   "sources": 373,
+   "problems": 134,
+   "sources_le140": 184,
+   "problems_le140": 80,
+   "passing_sources": 82,
+   "sources_aligned": 320,
+   "problems_aligned_le140": 68
+  },
+  "violation | y let/for | any": {
+   "candidates": 3109,
+   "sources": 1396,
+   "problems": 250,
+   "sources_le140": 945,
+   "problems_le140": 202,
+   "passing_sources": 439,
+   "sources_aligned": 1348,
+   "problems_aligned_le140": 198
+  },
+  "violation | y let/for | multiset equal": {
+   "candidates": 3109,
+   "sources": 1396,
+   "problems": 250,
+   "sources_le140": 945,
+   "problems_le140": 202,
+   "passing_sources": 439,
+   "sources_aligned": 1348,
+   "problems_aligned_le140": 198
+  },
+  "violation | y any | any": {
+   "candidates": 6934,
+   "sources": 1865,
+   "problems": 272,
+   "sources_le140": 1323,
+   "problems_le140": 229,
+   "passing_sources": 525,
+   "sources_aligned": 1865,
+   "problems_aligned_le140": 229
+  },
+  "violation | y any | multiset equal": {
+   "candidates": 4019,
+   "sources": 1492,
+   "problems": 258,
+   "sources_le140": 1002,
+   "problems_le140": 210,
+   "passing_sources": 452,
+   "sources_aligned": 1457,
+   "problems_aligned_le140": 207
+  },
+  "legal | y let | any": {
+   "candidates": 59,
+   "sources": 34,
+   "problems": 29,
+   "sources_le140": 7,
+   "problems_le140": 7,
+   "passing_sources": 3,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  },
+  "legal | y let | multiset equal": {
+   "candidates": 59,
+   "sources": 34,
+   "problems": 29,
+   "sources_le140": 7,
+   "problems_le140": 7,
+   "passing_sources": 3,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  },
+  "legal | y let/for | any": {
+   "candidates": 180,
+   "sources": 92,
+   "problems": 56,
+   "sources_le140": 47,
+   "problems_le140": 26,
+   "passing_sources": 15,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  },
+  "legal | y let/for | multiset equal": {
+   "candidates": 180,
+   "sources": 92,
+   "problems": 56,
+   "sources_le140": 47,
+   "problems_le140": 26,
+   "passing_sources": 15,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  },
+  "legal | y any | any": {
+   "candidates": 383,
+   "sources": 126,
+   "problems": 73,
+   "sources_le140": 77,
+   "problems_le140": 44,
+   "passing_sources": 22,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  },
+  "legal | y any | multiset equal": {
+   "candidates": 233,
+   "sources": 97,
+   "problems": 59,
+   "sources_le140": 51,
+   "problems_le140": 28,
+   "passing_sources": 15,
+   "sources_aligned": 0,
+   "problems_aligned_le140": 0
+  }
+ },
+ "tokens": {
+  "violation": {
+   "same_len": 1.0,
+   "same_multiset": 0.58,
+   "n": 6934,
+   "mut_piece": {
+    "mut": 2915,
+    "▁mut": 4019
+   },
+   "same_multiset_by_y_kind": {
+    "let": 1.0,
+    "for": 1.0,
+    "param": 0.238
+   }
+  },
+  "legal": {
+   "same_len": 1.0,
+   "same_multiset": 0.608,
+   "n": 383,
+   "mut_piece": {
+    "mut": 150,
+    "▁mut": 233
+   },
+   "same_multiset_by_y_kind": {
+    "let": 1.0,
+    "for": 1.0,
+    "param": 0.261
+   }
+  }
+ },
+ "position": {
+  "x_decl_to_q_tokens": [
+   27.0,
+   38.0,
+   57.0,
+   7,
+   253
+  ],
+  "y_mut_to_q_tokens": [
+   26.0,
+   48.0,
+   72.0,
+   -201,
+   288
+  ],
+  "y_after_q": 573,
+  "y_before_x": 4070,
+  "q_share_of_text": [
+   0.6,
+   0.8,
+   0.8,
+   0.12,
+   0.95
+  ],
+  "n_tok": [
+   106.0,
+   141.0,
+   186.0,
+   54,
+   398
+  ],
+  "q_op_missing": 0
+ },
+ "q": {
+  "errors": {
+   "E0384": 4355,
+   "E0596": 2063,
+   "E0384+E0384": 358,
+   "E0384+E0384+E0384": 39,
+   "E0384+E0384+E0384+E0384": 36,
+   "E0594": 21
+  },
+  "q_piece": {
+   "result": 1148,
+   "sum": 954,
+   "count": 675,
+   "max": 548,
+   "a": 502,
+   "i": 431,
+   "min": 189,
+   "j": 160,
+   "dp": 140,
+   "current": 138,
+   "b": 127,
+   "largest": 90
+  },
+  "q_op_piece": {
+   "▁+=": 2713,
+   "▁=": 1922,
+   "push": 1419,
+   "▁*=": 145,
+   "▁/=": 118,
+   "swap": 109,
+   "sort": 96,
+   "▁|=": 67,
+   "insert": 59,
+   "▁>>=": 51,
+   "▁-=": 44,
+   "clear": 35,
+   "rotate": 31,
+   "mut": 27,
+   "next": 22
+  },
+  "site_label": {
+   "cannot assign twice to immutable variable": 4810,
+   "cannot borrow as mutable": 2079,
+   "cannot assign": 45
+  }
+ },
+ "violation_sources_per_problem": [
+  3.0,
+  6.5,
+  10.0,
+  1,
+  20
+ ]
+}

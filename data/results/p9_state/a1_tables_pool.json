@@ -1,0 +1,509 @@
+{
+ "T0": {
+  "n": 41560,
+  "compiles_agree": 41560,
+  "first_code_agree": 16244,
+  "first_code_n": 16244,
+  "timeouts": 0
+ },
+ "T1": {
+  "lib_err__harness_err": 16598,
+  "lib_ok__harness_err": 921,
+  "lib_ok__harness_ok": 24041
+ },
+ "T2": {
+  "syntax": {
+   "sig": 92,
+   "body": 627,
+   "other": 732,
+   "none": 0
+  },
+  "resolve": {
+   "sig": 3,
+   "body": 2198,
+   "other": 821,
+   "none": 0
+  },
+  "type": {
+   "sig": 215,
+   "body": 18614,
+   "other": 431,
+   "none": 0
+  },
+  "pattern": {
+   "sig": 1,
+   "body": 79,
+   "other": 3,
+   "none": 0
+  },
+  "lifetime": {
+   "sig": 0,
+   "body": 1,
+   "other": 1,
+   "none": 0
+  },
+  "mutability": {
+   "sig": 241,
+   "body": 578,
+   "other": 39,
+   "none": 0
+  },
+  "move": {
+   "sig": 0,
+   "body": 670,
+   "other": 7,
+   "none": 0
+  },
+  "borrow": {
+   "sig": 0,
+   "body": 94,
+   "other": 1,
+   "none": 0
+  },
+  "deny_lint": {
+   "sig": 0,
+   "body": 1,
+   "other": 0,
+   "none": 0
+  },
+  "harness_part": {
+   "syntax": 576,
+   "resolve": 4214,
+   "type": 612,
+   "lifetime": 1
+  }
+ },
+ "T3": {
+  "syntax": {
+   "diags": 1451,
+   "samples": 1256,
+   "problems": 201,
+   "samples_dedup": 831,
+   "secondary_share": 0.352,
+   "child_share": 0.331,
+   "either_share": 0.589,
+   "cause_before_primary_share": 0.51,
+   "median_line_gap": 0,
+   "codes": {
+    "null": 1451
+   }
+  },
+  "resolve": {
+   "diags": 3022,
+   "samples": 2306,
+   "problems": 237,
+   "samples_dedup": 1922,
+   "secondary_share": 0.043,
+   "child_share": 0.259,
+   "either_share": 0.285,
+   "cause_before_primary_share": 0.431,
+   "median_line_gap": 0,
+   "codes": {
+    "E0425": 2556,
+    "E0433": 327,
+    "E0428": 60,
+    "E0658": 31,
+    "E0435": 27,
+    "E0423": 17,
+    "E0434": 4
+   }
+  },
+  "type": {
+   "diags": 19260,
+   "samples": 12127,
+   "problems": 307,
+   "samples_dedup": 8644,
+   "secondary_share": 0.417,
+   "child_share": 0.701,
+   "either_share": 0.804,
+   "cause_before_primary_share": 0.256,
+   "median_line_gap": 0,
+   "codes": {
+    "E0308": 8196,
+    "E0277": 5526,
+    "E0599": 2553,
+    "E0608": 1222,
+    "E0369": 451,
+    "E0609": 235,
+    "E0614": 198,
+    "E0283": 103
+   }
+  },
+  "pattern": {
+   "diags": 83,
+   "samples": 76,
+   "problems": 6,
+   "samples_dedup": 38,
+   "secondary_share": 0.012,
+   "child_share": 1.0,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.0,
+   "median_line_gap": -12,
+   "codes": {
+    "E0004": 82,
+    "E0005": 1
+   }
+  },
+  "lifetime": {
+   "diags": 2,
+   "samples": 2,
+   "problems": 2,
+   "samples_dedup": 2,
+   "secondary_share": 1.0,
+   "child_share": 0.5,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.5,
+   "median_line_gap": 0.5,
+   "codes": {
+    "E0716": 2
+   }
+  },
+  "mutability": {
+   "diags": 858,
+   "samples": 817,
+   "problems": 94,
+   "samples_dedup": 488,
+   "secondary_share": 0.411,
+   "child_share": 0.994,
+   "either_share": 0.999,
+   "cause_before_primary_share": 0.7,
+   "median_line_gap": 2,
+   "codes": {
+    "E0596": 565,
+    "E0384": 288,
+    "E0594": 5
+   }
+  },
+  "move": {
+   "diags": 677,
+   "samples": 531,
+   "problems": 55,
+   "samples_dedup": 365,
+   "secondary_share": 0.542,
+   "child_share": 0.997,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.242,
+   "median_line_gap": 0,
+   "codes": {
+    "E0382": 343,
+    "E0507": 333,
+    "E0505": 1
+   }
+  },
+  "borrow": {
+   "diags": 95,
+   "samples": 90,
+   "problems": 18,
+   "samples_dedup": 69,
+   "secondary_share": 1.0,
+   "child_share": 0.389,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.6,
+   "median_line_gap": 0,
+   "codes": {
+    "E0502": 67,
+    "E0499": 22,
+    "E0506": 6
+   }
+  },
+  "deny_lint": {
+   "diags": 1,
+   "samples": 1,
+   "problems": 1,
+   "samples_dedup": 1,
+   "secondary_share": 0.0,
+   "child_share": 1.0,
+   "either_share": 1.0,
+   "cause_before_primary_share": 0.0,
+   "median_line_gap": 0,
+   "codes": {
+    "overflowing_literals": 1
+   }
+  }
+ },
+ "T4": {
+  "samples": 41560,
+  "unique": 25171,
+  "compiling": 24041,
+  "compiling_unique": 13018,
+  "failing": 17519,
+  "failing_unique": 12153,
+  "passing": 7367,
+  "passing_unique": 2508,
+  "mutability_samples": 817,
+  "mutability_unique": 488,
+  "move_samples": 531,
+  "move_unique": 365,
+  "borrow_samples": 90,
+  "borrow_unique": 69,
+  "dup_rate": 0.394
+ },
+ "T5": {
+  "mutability": {
+   "samples": 817,
+   "samples_dedup": 488,
+   "problems": 94,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    2.0,
+    4.0
+   ],
+   "top_problems": [
+    [
+     428,
+     65
+    ],
+    [
+     625,
+     49
+    ],
+    [
+     99,
+     39
+    ],
+    [
+     591,
+     38
+    ],
+    [
+     479,
+     32
+    ],
+    [
+     141,
+     17
+    ],
+    [
+     569,
+     13
+    ],
+    [
+     749,
+     13
+    ],
+    [
+     635,
+     13
+    ],
+    [
+     138,
+     12
+    ]
+   ]
+  },
+  "move": {
+   "samples": 531,
+   "samples_dedup": 365,
+   "problems": 55,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    3.0,
+    7.0
+   ],
+   "top_problems": [
+    [
+     299,
+     44
+    ],
+    [
+     251,
+     35
+    ],
+    [
+     442,
+     29
+    ],
+    [
+     305,
+     27
+    ],
+    [
+     788,
+     25
+    ],
+    [
+     223,
+     25
+    ],
+    [
+     137,
+     16
+    ],
+    [
+     594,
+     12
+    ],
+    [
+     753,
+     12
+    ],
+    [
+     777,
+     10
+    ]
+   ]
+  },
+  "borrow": {
+   "samples": 90,
+   "samples_dedup": 69,
+   "problems": 18,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    2.0,
+    4.0
+   ],
+   "top_problems": [
+    [
+     625,
+     21
+    ],
+    [
+     591,
+     15
+    ],
+    [
+     635,
+     5
+    ],
+    [
+     141,
+     4
+    ],
+    [
+     619,
+     4
+    ],
+    [
+     632,
+     3
+    ],
+    [
+     557,
+     3
+    ],
+    [
+     100,
+     2
+    ],
+    [
+     565,
+     2
+    ],
+    [
+     4,
+     2
+    ]
+   ]
+  },
+  "any_bck": {
+   "samples": 1374,
+   "samples_dedup": 872,
+   "problems": 128,
+   "per_problem_dedup_quartiles": [
+    1.0,
+    2.0,
+    7.0
+   ],
+   "top_problems": [
+    [
+     428,
+     65
+    ],
+    [
+     625,
+     54
+    ],
+    [
+     299,
+     44
+    ],
+    [
+     591,
+     42
+    ],
+    [
+     99,
+     39
+    ],
+    [
+     251,
+     37
+    ],
+    [
+     479,
+     32
+    ],
+    [
+     442,
+     29
+    ],
+    [
+     305,
+     27
+    ],
+    [
+     788,
+     25
+    ]
+   ]
+  },
+  "failing": 17519,
+  "failing_with_syntax_resolve_type_error": 15247,
+  "failing_only_borrowck_errors": 1350,
+  "failing_only_borrowck_errors_dedup": 848,
+  "bck_alongside_type_error": 24,
+  "mutability_decl_site": {
+   "other": 39,
+   "body": 146,
+   "sig": 668,
+   "no suggestion": 5
+  },
+  "mutability_decl_site_samples_dedup": {
+   "other": 32,
+   "body": 127,
+   "sig": 332,
+   "no suggestion": 4
+  },
+  "any_bck_by_phase_dedup": {
+   "6": 657,
+   "3": 153,
+   "5": 62
+  },
+  "samples_by_phase": {
+   "3": 6680,
+   "5": 3280,
+   "6": 31600
+  }
+ },
+ "T6": {
+  "compiling": 24041,
+  "with_unused_mut": 1015,
+  "with_unused_mut_dedup": 898,
+  "problems": 138,
+  "total_warnings": 1157,
+  "passing_with_unused_mut_dedup": 118
+ },
+ "T7": {
+  "mutability": [
+   137,
+   23,
+   110,
+   201,
+   107
+  ],
+  "move": [
+   30,
+   82,
+   85,
+   214,
+   259
+  ],
+  "borrow": [
+   1,
+   1,
+   29,
+   58,
+   5
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+T0 reproduction: harness exit status = stored compiles in 6680 of 6680 | first error code agrees in 2681 of 2681 | timeouts 0
+T1 lib x harness: {'lib_err__harness_err': 2736, 'lib_ok__harness_err': 180, 'lib_ok__harness_ok': 3764}
+
+T2 lib-mode errors: family x location of the primary span (counts of diagnostics)
+  family         sig   body  other   none   total
+  syntax          20     75    176      0     271
+  resolve          0    426    122      0     548
+  type            26   3417     87      0    3530
+  pattern          0      5      0      0       5
+  mutability      32     70     10      0     112
+  move             0     96      2      0      98
+  borrow           0     15      0      0      15
+  harness-mode errors whose primary span is in the harness: {'syntax': 139, 'resolve': 805, 'type': 58}
+
+T3 lib-mode errors per family
+  family       diags samples  dedup probs    sec  child either before  gap  codes
+  syntax         271     232    169   103  0.347  0.225  0.498   0.57    0  {None: 271}
+  resolve        548     410    387   147  0.069  0.343  0.376  0.515  0.0  {'E0425': 459, 'E0433': 52, 'E0428': 16, 'E0658': 9, 'E0423': 8, 'E0435': 3, 'E0434': 1}
+  type          3530    2036   1708   275  0.376  0.686  0.772  0.211    0  {'E0308': 1436, 'E0277': 1045, 'E0599': 387, 'E0608': 366, 'E0369': 91, 'E0609': 38, 'E0606': 21, 'E0283': 20}
+  pattern          5       5      5     3    0.0    1.0    1.0    0.0  -12  {'E0004': 5}
+  mutability     112     104     80    38  0.393    1.0    1.0  0.679  3.0  {'E0596': 75, 'E0384': 37}
+  move            98      79     72    34  0.622    1.0    1.0  0.296  0.0  {'E0382': 56, 'E0507': 42}
+  borrow          15      14     14     9    1.0    0.4    1.0    0.6    0  {'E0502': 10, 'E0506': 3, 'E0499': 2}
+
+T4 duplicates (whitespace removed, within a problem): {'samples': 6680, 'unique': 4955, 'compiling': 3764, 'compiling_unique': 2538, 'failing': 2916, 'failing_unique': 2417, 'passing': 1661, 'passing_unique': 796, 'mutability_samples': 104, 'mutability_unique': 80, 'move_samples': 79, 'move_unique': 72, 'borrow_samples': 14, 'borrow_unique': 14, 'dup_rate': 0.258}
+
+T5 natural borrow-check errors (lib mode)
+  mutability errors by the site rustc suggests making mutable (diagnostics): {'body': 16, 'sig': 86, 'other': 10} | samples, dedup: {'body': 15, 'sig': 59, 'other': 9}
+  mutability  samples 104 (dedup 80) over 38 problems; dedup per problem quartiles [1.0, 1.0, 2.25]; top [(625, 9), (635, 8), (591, 7), (428, 6), (566, 3)]
+  move        samples 79 (dedup 72) over 34 problems; dedup per problem quartiles [1.0, 1.0, 3.0]; top [(299, 7), (305, 5), (442, 5), (223, 5), (635, 4)]
+  borrow      samples 14 (dedup 14) over 9 problems; dedup per problem quartiles [1.0, 1.0, 2.0]; top [(635, 4), (591, 2), (619, 2), (100, 1), (625, 1)]
+  any_bck     samples 184 (dedup 153) over 65 problems; dedup per problem quartiles [1.0, 1.0, 3.0]; top [(635, 10), (625, 9), (591, 7), (299, 7), (632, 6)]
+  failing samples 2916: with a syntax/resolve/type/pattern error 2556 (borrow checking possibly masked); only borrow-check errors 180 (dedup 149); borrow-check error beside a type error 4
+
+T6 unused_mut in compiling samples: {'compiling': 3764, 'with_unused_mut': 128, 'with_unused_mut_dedup': 126, 'problems': 73, 'total_warnings': 149, 'passing_with_unused_mut_dedup': 22}
+
+T7 primary span in the body, by fifth of the body: {'mutability': [16, 3, 15, 25, 11], 'move': [1, 11, 15, 30, 39], 'borrow': [1, 0, 5, 9, 0]}

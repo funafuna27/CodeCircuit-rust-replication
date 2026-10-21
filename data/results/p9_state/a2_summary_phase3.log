@@ -1,0 +1,23 @@
+sources: {'unique_compiling': 2538, 'problems': 318, 'with_mut_let_or_for': 1896, 'necessity': {'necessary': 2793, 'unnecessary': 147}, 'compiles_run': 10257, 'by_phase': {'3': 2538}}
+
+candidates that rustc labels as intended (ok):
+  set                                             cands  srcs probs srcs<=140 probs<=140 pass srcs srcs y<q probs y<q<=140
+  violation | y let | any                           851   373   134       184         80        82      320             68
+  violation | y let | multiset equal                851   373   134       184         80        82      320             68
+  violation | y let/for | any                      3109  1396   250       945        202       439     1348            198
+  violation | y let/for | multiset equal           3109  1396   250       945        202       439     1348            198
+  violation | y any | any                          6934  1865   272      1323        229       525     1865            229
+  violation | y any | multiset equal               4019  1492   258      1002        210       452     1457            207
+  legal | y let | any                                59    34    29         7          7         3        0              0
+  legal | y let | multiset equal                     59    34    29         7          7         3        0              0
+  legal | y let/for | any                           180    92    56        47         26        15        0              0
+  legal | y let/for | multiset equal                180    92    56        47         26        15        0              0
+  legal | y any | any                               383   126    73        77         44        22        0              0
+  legal | y any | multiset equal                    233    97    59        51         28        15        0              0
+  tried (type, ok): {'violation ok=True': 6934, 'legal ok=True': 383}
+
+token agreement with the source: {"violation": {"same_len": 1.0, "same_multiset": 0.58, "n": 6934, "mut_piece": {"mut": 2915, "\u2581mut": 4019}, "same_multiset_by_y_kind": {"let": 1.0, "for": 1.0, "param": 0.238}}, "legal": {"same_len": 1.0, "same_multiset": 0.608, "n": 383, "mut_piece": {"mut": 150, "\u2581mut": 233}, "same_multiset_by_y_kind": {"let": 1.0, "for": 1.0, "param": 0.261}}}
+
+position (violations): {"x_decl_to_q_tokens": [27.0, 38.0, 57.0, 7, 253], "y_mut_to_q_tokens": [26.0, 48.0, 72.0, -201, 288], "y_after_q": 573, "y_before_x": 4070, "q_share_of_text": [0.6, 0.8, 0.8, 0.12, 0.95], "n_tok": [106.0, 141.0, 186.0, 54, 398], "q_op_missing": 0}
+q: {"errors": {"E0384": 4355, "E0596": 2063, "E0384+E0384": 358, "E0384+E0384+E0384": 39, "E0384+E0384+E0384+E0384": 36, "E0594": 21}, "q_piece": {"result": 1148, "sum": 954, "count": 675, "max": 548, "a": 502, "i": 431, "min": 189, "j": 160, "dp": 140, "current": 138, "b": 127, "largest": 90}, "q_op_piece": {"▁+=": 2713, "▁=": 1922, "push": 1419, "▁*=": 145, "▁/=": 118, "swap": 109, "sort": 96, "▁|=": 67, "insert": 59, "▁>>=": 51, "▁-=": 44, "clear": 35, "rotate": 31, "mut": 27, "next": 22}, "site_label": {"cannot assign twice to immutable variable": 4810, "cannot borrow as mutable": 2079, "cannot assign": 45}}
+violation sources per problem (quartiles, min, max): [3.0, 6.5, 10.0, 1, 20]
