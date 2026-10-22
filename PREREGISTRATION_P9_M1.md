@@ -251,3 +251,62 @@ entropy (each within 0.02); the minimum log p difference is reported and not jud
 log p column, computed from the same forward pass for every row. The gate script was changed accordingly
 and, since its hash changed, the X1 extraction was run again before the M1 extraction. Nothing else
 changed.
+
+## 11. Results (appended 2026-10-22, after the run)
+
+Run 21:31–22:54 JST on commit aac9ac3, in the order of §8. Gates: X1 posmean bit-equal 518/518, f0/f3/f4
+518/518, X3 per-token code log p 0.003 and mean entropy 0.002 (minimum log p reported: as in run 1);
+X2 f0/f3/f4 equal on all 1,734 Rust and 1,420 Python rows; the 94 surviving graphs bit-equal in tokens,
+active features and values, logit targets and probabilities (94/94); R exact for all eight AUROCs, and
+the seeded out-of-fold function equal to `oof_problem_scores`. `p9_m1_check.py`, written apart from the
+analysis, gives the same AUROC(C), AUROC(G + C) and primary Δ for Rust strict and Python 240 to four
+decimals. P's 45 directions hold 0.835 of the centred sum of squares (P_code 0.844). No single-class draw.
+
+**Levels (Rust strict, 206 problems; AUROC [95% interval]).** G 0.789 [0.724, 0.848]; C 0.707
+[0.634, 0.777]; G_free 0.710; P 0.744 [0.676, 0.808]; P_code 0.767 [0.701, 0.826]; G + C 0.777
+[0.712, 0.839]; G_free + C 0.723; C + P 0.767; P_code + C 0.784; G + C + P 0.786; G_free + C + P 0.769.
+
+**Primary.** Δ = AUROC(G + C) − AUROC(C) = +0.070 [+0.029, +0.110] (bootstrap mean +0.070). Null
+centres: design L +0.024 (Monte Carlo SE 0.002), design F +0.013 (0.002). Widened interval [+0.018,
++0.122]; bracket [−0.006, +0.109]; corrected point +0.052. **Reading: "not determined at 206 problems:
+[−0.006, +0.109]", seed-dependent**: over the 10 alternative seed pairs the plug-in ran from +0.080 to
++0.091 (all above the main seeds' +0.070), and with its 10th percentile in place the lower bracket
+would be +0.004, which reads "the graph's features (including their forward-pass columns) add; their size
+is not bounded below 0.05".
+
+| secondary (Rust strict) | raw Δ [95%] | c0 (L) | bracket | reading |
+|---|---|---|---|---|
+| S0: G beyond G_free + C | +0.054 [+0.019, +0.089] | +0.025 | [−0.016, +0.074] | not determined |
+| S1: G beyond G_free + C + P | +0.017 [+0.005, +0.031] | +0.003 | [−0.002, +0.032] | **adds less than 0.05; not distinguishable from 0** |
+| S2: P beyond C | +0.060 [+0.005, +0.115] | +0.007 | [−0.017, +0.123] | not determined |
+| S2: P_code beyond C | +0.076 [+0.019, +0.135] | −0.003 | [+0.006, +0.155] | **P_code adds (+0.080); size not bounded below 0.05** |
+| S3: P + G_free − G | −0.039 [−0.100, +0.022] | — | — | (P − G −0.045 [−0.109, +0.020]; P_code − G −0.022 [−0.085, +0.045]) |
+
+S0 is not above 0, so a positive primary would not be called attribution. Once the probe is in the base
+(S1), the attribution-dependent columns add less than 0.05. The probe over code positions alone adds to
+the output distribution about as much as the whole graph does (P_code + C 0.784 against G + C 0.777).
+
+**Step 0 (Rust strict).** All-rows C1 (not compared across signals): G +0.135 [+0.072, +0.202], C +0.107,
+G + C +0.120, P +0.017, C + P +0.052, G + C + P +0.082. One-row form (last row − step 0): G +0.107
+[+0.033, +0.185], C +0.167 [+0.079, +0.257], G + C +0.116, P +0.056, C + P +0.097, G + C + P +0.083.
+Minus C's: G −0.060 [−0.144, +0.029], G + C −0.051, P −0.111 [−0.205, −0.018], C + P −0.070, G + C + P
+−0.083 [−0.155, −0.010]. No signal gains more from the generated body than C does; P reads the problem
+already at step 0 (0.728). The primary's raw Δ at step 0: +0.056 [−0.007, +0.119].
+
+**Sensitivities (Rust).** Logistic learner +0.068 [+0.016, +0.119]. MBPP+ labels: §7 rule (85/206
+positive, 10 flips) +0.066 [+0.028, +0.105]; without exclusions (77/206, 18 flips) +0.093 [+0.052,
++0.134]. Rust loose +0.097 [+0.058, +0.138]. C_dist alone 0.747, G beyond it +0.058 [+0.006, +0.111];
+length alone 0.580, G beyond it +0.184 [+0.109, +0.258].
+
+**Python 240.** G 0.709, C 0.713, G + C 0.748. Primary +0.035 [−0.009, +0.078], c0 +0.016, bracket
+[−0.036, +0.075]: not determined. S0 +0.022 [−0.017, +0.063]; S1 +0.007 [−0.006, +0.020]; S2 P +0.008,
+P_code +0.034 [−0.025, +0.093]; S3 −0.006. One-row form: G −0.011 [−0.082, +0.063], C +0.113 [+0.033,
++0.194]; G minus C −0.124 [−0.217, −0.034]. Python 256: primary +0.028 [−0.009, +0.065].
+
+**Against §7.** Gates: held (after deviation 1). AUROC(C) 0.707, below the predicted 0.72–0.82; P and
+P_code within range. Primary plug-in +0.070, above the predicted −0.02 to +0.05; c0 and the interval
+widths within range; the reading ("not determined") the one predicted most likely. S0 held (Lb ≤ 0); S1
+held; S2 for P slightly above range (+0.053) and P_code larger, not smaller, than P (missed); S3 held.
+Step 0: every step-0 AUROC above 0.6 held (C 0.601); G's one-row contrast within 0.05 of C's missed
+(−0.060); the step-0 Δ within ±0.05 missed (+0.056). Python: the reading held; C's one-row contrast
+(+0.113) outside ±0.06 (missed).

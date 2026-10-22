@@ -1,0 +1,109 @@
+== extract matched (X1 texts) 2026-10-22 21:31:16 JST
+  matched 500/518  median 0.342 s per text
+  matched 518/518  median 0.342 s per text
+{"role": "matched", "texts": 518, "seconds_total": 183.5, "s_median": 0.342, "max_mem_gb": 10.65, "gpu": "NVIDIA GeForce RTX 5070", "torch": "2.11.0+cu128", "library": {"circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer", "version": "0.5.3.dev1+g6018ed8d3"}, "guard": {"PREREGISTRATION_P9_M1.md": "f15daed418ea041d", "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71", "data/p9_m1_common.py": "7166104d8918d584", "data/p9_m1_extract.py": "0e7ef0905d88a7dc", "data/p9_m1_gates.py": "7d81a5ec84b431ee", "data/p9_m1_analysis.py": "fe04ac5f73a2b60c", "data/p9_common.py": "2ae1e55a3d7dcf08", "data/5_problem_level.py": "8f759cee25c4d5cf", "HEAD": "aac9ac339f1e50c132fedfd1b0233c5570ff58d1"}, "sha256": "813b8ee119a104bce5471e728e057f4143ac6f2a2c7a1147fda3b860c16d824d", "path": "/home/user1/p9_work/m1/extract_matched.npz"}
+== gate X1 2026-10-22 21:35:03 JST
+ "rows": 518,
+ "posmean_equal": 518,
+ "f0f3f4_equal": 518,
+  "per_token_code_logprob_mean_abs": 0.00304,
+  "min_logprob_mean_abs": 0.06516,
+  "mean_entropy_mean_abs": 0.00208
+ "p_ok": true,
+ "f_ok": true,
+ "c_ok": true,
+ "extractor_ok": true
+== extract rust 2026-10-22 21:35:05 JST
+  rust 1500/1734  median 0.295 s per text
+  rust 1734/1734  median 0.296 s per text
+{"role": "rust", "texts": 1734, "seconds_total": 518.9, "s_median": 0.296, "max_mem_gb": 10.94, "gpu": "NVIDIA GeForce RTX 5070", "torch": "2.11.0+cu128", "library": {"circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer", "version": "0.5.3.dev1+g6018ed8d3"}, "guard": {"PREREGISTRATION_P9_M1.md": "f15daed418ea041d", "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71", "data/p9_m1_common.py": "7166104d8918d584", "data/p9_m1_extract.py": "0e7ef0905d88a7dc", "data/p9_m1_gates.py": "7d81a5ec84b431ee", "data/p9_m1_analysis.py": "fe04ac5f73a2b60c", "data/p9_common.py": "2ae1e55a3d7dcf08", "data/5_problem_level.py": "8f759cee25c4d5cf", "HEAD": "aac9ac339f1e50c132fedfd1b0233c5570ff58d1"}, "sha256": "cc029461d73a22c894cad4a3eada528995730021fc8ead9278aca9c4552b56ff", "path": "/home/user1/p9_work/m1/extract_rust.npz"}
+== extract python 2026-10-22 21:44:03 JST
+  python 1250/1420  median 0.254 s per text
+  python 1420/1420  median 0.252 s per text
+{"role": "python", "texts": 1420, "seconds_total": 396.8, "s_median": 0.252, "max_mem_gb": 12.02, "gpu": "NVIDIA GeForce RTX 5070", "torch": "2.11.0+cu128", "library": {"circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer", "version": "0.5.3.dev1+g6018ed8d3"}, "guard": {"PREREGISTRATION_P9_M1.md": "f15daed418ea041d", "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71", "data/p9_m1_common.py": "7166104d8918d584", "data/p9_m1_extract.py": "0e7ef0905d88a7dc", "data/p9_m1_gates.py": "7d81a5ec84b431ee", "data/p9_m1_analysis.py": "fe04ac5f73a2b60c", "data/p9_common.py": "2ae1e55a3d7dcf08", "data/5_problem_level.py": "8f759cee25c4d5cf", "HEAD": "aac9ac339f1e50c132fedfd1b0233c5570ff58d1"}, "sha256": "1049757005247f9c2de2a634bdafc3594a150c41b10b480aa4329b4df1fb2bc1", "path": "/home/user1/p9_work/m1/extract_python.npz"}
+== gates X2 and R 2026-10-22 21:50:57 JST
+  },
+  "python_240": {
+   "rows": 1137,
+   "problems": 240,
+   "positive": 114,
+   "auroc_all": 0.7091,
+   "auroc_step0": 0.6928,
+   "want": [
+    0.7091,
+    0.6928
+   ]
+  },
+  "python_256": {
+   "rows": 1337,
+   "problems": 256,
+   "positive": 114,
+   "auroc_all": 0.7269,
+   "auroc_step0": 0.6931,
+   "want": [
+    0.7269,
+    0.6931
+   ]
+  },
+  "r_ok": true
+ },
+ "F_rust": {
+  "extract_sha256": "cc029461d73a22c894cad4a3eada528995730021fc8ead9278aca9c4552b56ff",
+  "rows": 1734,
+  "f0_differ": 0,
+  "f34_differ": 0,
+  "f0_examples": [],
+  "f34_examples": [],
+  "f0_ok": true,
+  "f34_ok": true,
+  "flagged_problems": [],
+  "arm_ok": true
+ },
+ "F_python": {
+  "extract_sha256": "1049757005247f9c2de2a634bdafc3594a150c41b10b480aa4329b4df1fb2bc1",
+  "rows": 1420,
+  "f0_differ": 0,
+  "f34_differ": 0,
+  "f0_examples": [],
+  "f34_examples": [],
+  "f0_ok": true,
+  "f34_ok": true,
+  "flagged_problems": [],
+  "arm_ok": true
+ },
+ "graphs94": {
+  "equal": {
+   "tokens": 94,
+   "active": 94,
+   "values": 94,
+   "logit_targets": 94,
+   "logit_probs": 94
+  },
+  "graphs": 94
+ }
+}
+== analysis 2026-10-22 21:53:49 JST
+== rust_strict: 1654 rows, 206 problems, 95 positive
+  level G: {'auroc': 0.7887, 'ci95': [0.7243, 0.8482], 'draws_dropped': 0}
+  level C: {'auroc': 0.7073, 'ci95': [0.6342, 0.777], 'draws_dropped': 0}
+  level G_free: {'auroc': 0.7102, 'ci95': [0.6349, 0.7828], 'draws_dropped': 0}
+  level G+C: {'auroc': 0.7772, 'ci95': [0.7116, 0.8385], 'draws_dropped': 0}
+  level G_free+C: {'auroc': 0.7231, 'ci95': [0.6515, 0.7903], 'draws_dropped': 0}
+  level P: {'auroc': 0.744, 'ci95': [0.6759, 0.8076], 'draws_dropped': 0}
+  level P_code: {'auroc': 0.7668, 'ci95': [0.701, 0.8263], 'draws_dropped': 0}
+  level C+P: {'auroc': 0.7671, 'ci95': [0.701, 0.8289], 'draws_dropped': 0}
+  level G+C+P: {'auroc': 0.7863, 'ci95': [0.7217, 0.8461], 'draws_dropped': 0}
+  level G_free+C+P: {'auroc': 0.769, 'ci95': [0.7037, 0.8303], 'draws_dropped': 0}
+  level P+G_free: {'auroc': 0.7496, 'ci95': [0.6813, 0.8121], 'draws_dropped': 0}
+  level P_code+C: {'auroc': 0.7837, 'ci95': [0.7204, 0.8426], 'draws_dropped': 0}
+  rust_strict G+C vs C: +0.0700 [0.0292, 0.1102]; c0 [0.0241, 0.0128] -> not determined at this n: [-0.0063, +0.1087] [-0.0063, +0.1087]
+  rust_strict G+C vs G_free+C: +0.0541 [0.0185, 0.0889]; c0 [0.0248] -> not determined at this n: [-0.0163, +0.0738] [-0.0163, +0.0738]
+  rust_strict G+C+P vs G_free+C+P: +0.0174 [0.0045, 0.0307]; c0 [0.0027] -> G adds less than 0.05 (upper bound +0.0317); not distinguishable from 0 [-0.0018, +0.0317]
+  rust_strict P+C vs C: +0.0599 [0.0052, 0.1151]; c0 [0.0073] -> not determined at this n: [-0.0174, +0.1233] [-0.0174, +0.1233]
+  rust_strict P_code+C vs C: +0.0764 [0.0188, 0.135]; c0 [-0.0031] -> P_code adds (+0.0795); its size is not bounded below 0.05 [+0.0058, +0.1545]
+== rust_loose: 1734 rows, 214 problems, 99 positive
+== python_240: 1137 rows, 240 problems, 114 positive
+  python_240 G+C vs C: +0.0345 [-0.0085, 0.0779]; c0 [0.0155] -> not determined at this n: [-0.0360, +0.0746] [-0.0360, +0.0746]
+== python_256: 1337 rows, 256 problems, 114 positive
+wrote /home/user1/CodeCircuit-rust/data/results/p9_m1/analysis.json in 3637 s
+== done 2026-10-22 22:54:27 JST

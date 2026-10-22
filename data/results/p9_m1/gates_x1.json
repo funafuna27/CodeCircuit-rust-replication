@@ -1,0 +1,28 @@
+{
+ "guard": {
+  "PREREGISTRATION_P9_M1.md": "f15daed418ea041d",
+  "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71",
+  "data/p9_m1_common.py": "7166104d8918d584",
+  "data/p9_m1_extract.py": "0e7ef0905d88a7dc",
+  "data/p9_m1_gates.py": "7d81a5ec84b431ee",
+  "data/p9_m1_analysis.py": "fe04ac5f73a2b60c",
+  "data/p9_common.py": "2ae1e55a3d7dcf08",
+  "data/5_problem_level.py": "8f759cee25c4d5cf",
+  "HEAD": "aac9ac339f1e50c132fedfd1b0233c5570ff58d1"
+ },
+ "extract_sha256": "813b8ee119a104bce5471e728e057f4143ac6f2a2c7a1147fda3b860c16d824d",
+ "rows": 518,
+ "posmean_equal": 518,
+ "posmean_differ": [],
+ "f0f3f4_equal": 518,
+ "f0f3f4_differ": [],
+ "x3": {
+  "per_token_code_logprob_mean_abs": 0.00304,
+  "min_logprob_mean_abs": 0.06516,
+  "mean_entropy_mean_abs": 0.00208
+ },
+ "p_ok": true,
+ "f_ok": true,
+ "c_ok": true,
+ "extractor_ok": true
+}

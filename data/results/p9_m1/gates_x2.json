@@ -1,0 +1,102 @@
+{
+ "guard": {
+  "PREREGISTRATION_P9_M1.md": "f15daed418ea041d",
+  "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71",
+  "data/p9_m1_common.py": "7166104d8918d584",
+  "data/p9_m1_extract.py": "0e7ef0905d88a7dc",
+  "data/p9_m1_gates.py": "7d81a5ec84b431ee",
+  "data/p9_m1_analysis.py": "fe04ac5f73a2b60c",
+  "data/p9_common.py": "2ae1e55a3d7dcf08",
+  "data/5_problem_level.py": "8f759cee25c4d5cf",
+  "HEAD": "aac9ac339f1e50c132fedfd1b0233c5570ff58d1"
+ },
+ "R": {
+  "oof_equals_5_problem_level": true,
+  "rust_strict": {
+   "rows": 1654,
+   "problems": 206,
+   "positive": 95,
+   "auroc_all": 0.7887,
+   "auroc_step0": 0.654,
+   "want": [
+    0.7887,
+    0.654
+   ]
+  },
+  "rust_loose": {
+   "rows": 1734,
+   "problems": 214,
+   "positive": 99,
+   "auroc_all": 0.7953,
+   "auroc_step0": 0.6732,
+   "want": [
+    0.7953,
+    0.6732
+   ]
+  },
+  "python_240": {
+   "rows": 1137,
+   "problems": 240,
+   "positive": 114,
+   "auroc_all": 0.7091,
+   "auroc_step0": 0.6928,
+   "want": [
+    0.7091,
+    0.6928
+   ]
+  },
+  "python_256": {
+   "rows": 1337,
+   "problems": 256,
+   "positive": 114,
+   "auroc_all": 0.7269,
+   "auroc_step0": 0.6931,
+   "want": [
+    0.7269,
+    0.6931
+   ]
+  },
+  "r_ok": true
+ },
+ "F_rust": {
+  "extract_sha256": "cc029461d73a22c894cad4a3eada528995730021fc8ead9278aca9c4552b56ff",
+  "rows": 1734,
+  "f0_differ": 0,
+  "f34_differ": 0,
+  "f0_examples": [],
+  "f34_examples": [],
+  "f0_ok": true,
+  "f34_ok": true,
+  "flagged_problems": [],
+  "arm_ok": true
+ },
+ "F_python": {
+  "extract_sha256": "1049757005247f9c2de2a634bdafc3594a150c41b10b480aa4329b4df1fb2bc1",
+  "rows": 1420,
+  "f0_differ": 0,
+  "f34_differ": 0,
+  "f0_examples": [],
+  "f34_examples": [],
+  "f0_ok": true,
+  "f34_ok": true,
+  "flagged_problems": [],
+  "arm_ok": true
+ },
+ "graphs94": {
+  "graphs": 94,
+  "per_arm": {
+   "rust": 50,
+   "python": 44
+  },
+  "all_94_compared": true,
+  "skipped": [],
+  "equal": {
+   "tokens": 94,
+   "active": 94,
+   "values": 94,
+   "logit_targets": 94,
+   "logit_probs": 94
+  },
+  "differ": []
+ }
+}
