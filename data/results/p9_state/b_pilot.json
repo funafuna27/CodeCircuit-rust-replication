@@ -1,0 +1,151 @@
+{
+ "pilot": {
+  "items": 83,
+  "dropped_token_mismatch": 0,
+  "problems": 20,
+  "D_VA": {
+   "problems": 20,
+   "mean": -0.0727,
+   "ci95": [
+    -0.1411,
+    -0.0223
+   ],
+   "sd_problems": 0.1428,
+   "p_one_sided": 0.00111,
+   "alternative": "less",
+   "mde80_two_sided_05": 0.0894
+  },
+  "D_VA_per_token_minus_background": {
+   "problems": 20,
+   "mean": 0.0301,
+   "ci95": [
+    -0.0105,
+    0.0675
+   ],
+   "sd_problems": 0.0886,
+   "p_one_sided": 0.92104,
+   "alternative": "less",
+   "mde80_two_sided_05": 0.0555
+  },
+  "background_mean_per_token": {
+   "problems": 20,
+   "mean": -0.0614,
+   "ci95": [
+    -0.0899,
+    -0.0394
+   ],
+   "sd_problems": 0.0588,
+   "p_one_sided": 1e-05,
+   "alternative": "less",
+   "mde80_two_sided_05": 0.0368
+  },
+  "room": {
+   "p_S_place": [
+    0.982,
+    0.995,
+    0.998
+   ],
+   "p_S_op": [
+    0.955,
+    0.967,
+    0.998
+   ],
+   "H_S_place": [
+    0.017,
+    0.039,
+    0.119
+   ],
+   "H_S_op": [
+    0.014,
+    0.154,
+    0.232
+   ]
+  },
+  "span_len": [
+   2,
+   2,
+   3
+  ],
+  "background_tokens_per_item": [
+   31,
+   36,
+   47
+  ],
+  "by_site": {
+   "E0384": {
+    "problems": 15,
+    "mean": -0.0839,
+    "ci95": [
+     -0.1965,
+     -0.0148
+    ],
+    "sd_problems": 0.1997,
+    "p_one_sided": 0.00459,
+    "alternative": "less",
+    "mde80_two_sided_05": 0.1444
+   },
+   "E0596": {
+    "problems": 7,
+    "mean": -0.0843,
+    "ci95": [
+     -0.1724,
+     -0.0138
+    ],
+    "sd_problems": 0.121,
+    "p_one_sided": 0.0239,
+    "alternative": "less",
+    "mde80_two_sided_05": 0.128
+   }
+  },
+  "background_by_entropy_tercile": [
+   -0.0201,
+   -0.0641,
+   -0.0812
+  ]
+ },
+ "behaviour": {
+  "items": 286,
+  "problems": 44,
+  "D_beh": {
+   "problems": 44,
+   "mean": 0.6355,
+   "ci95": [
+    0.3875,
+    0.931
+   ],
+   "sd_problems": 0.9629,
+   "p_one_sided": 1e-05,
+   "alternative": "greater",
+   "mde80_two_sided_05": 0.4064
+  },
+  "D_beh_per_token_minus_background": {
+   "problems": 44,
+   "mean": 0.0439,
+   "ci95": [
+    -0.0346,
+    0.1383
+   ],
+   "sd_problems": 0.304,
+   "p_one_sided": 0.18802,
+   "alternative": "greater",
+   "mde80_two_sided_05": 0.1283
+  },
+  "background_mean_per_token": {
+   "problems": 44,
+   "mean": 0.1344,
+   "ci95": [
+    0.0991,
+    0.1703
+   ],
+   "sd_problems": 0.1214,
+   "p_one_sided": 1e-05,
+   "alternative": "greater",
+   "mde80_two_sided_05": 0.0512
+  },
+  "p_S_place_quartiles": [
+   0.431,
+   0.725,
+   0.972
+  ]
+ }
+}

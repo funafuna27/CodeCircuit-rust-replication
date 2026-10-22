@@ -37,7 +37,8 @@ import p9_common as C  # noqa: E402
 
 RELABEL = os.environ.get('RELABEL', os.path.join(C.OUT_DIR, 'a3_relabel.jsonl.gz'))
 CASES = os.environ.get('CASES', os.path.join(C.OUT_DIR, 'a3_cases.json'))
-OUT = os.environ.get('OUT', os.path.join(C.OUT_DIR, 'a3_summary.json'))
+OUT = os.environ.get("OUT", os.path.join(C.OUT_DIR, "a3_summary.json"))
+# EXCLUDE=comma-separated task ids left out (the audit of 2026-10-22: tasks below MIN_CASES, artefact tasks)
 N_SIM = int(os.environ.get('N_SIM', 2000))
 
 
@@ -86,6 +87,8 @@ def power(struct, aucs, rng, n_sim):
 
 def main():
     rows = C.read_jsonl(RELABEL)
+    excl = {int(t) for t in os.environ.get("EXCLUDE", "").split(",") if t}
+    rows = [r for r in rows if r["task_id"] not in excl]
     with open(CASES, encoding='utf-8') as f:
         cases = json.load(f)['tasks']
     out, log = {}, []

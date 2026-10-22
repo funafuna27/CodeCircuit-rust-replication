@@ -16,7 +16,8 @@ Modes: `-O` (the study's) and `-O -C overflow-checks=on`.
 
 Safety: the programs are Gemma's code. Each runs in a Pool worker under an 8 GiB address-space
 limit (inherited by rustc and the binary), in its own temporary directory, with timeouts:
-compile 120 s, run 30 s (MBPP+ has about 100 cases per task, against MBPP's 3).
+compile 120 s, run 30 s (MBPP+ has about 100 cases per task, against MBPP's 3); a run that times out is
+rerun once at 120 s (rule fixed 2026-10-22 before any flip label was read by an analysis).
 
   OUT=results/p9_state/a3_relabel.jsonl.gz  WORKERS=6  [LIMIT=n]
 """
@@ -39,12 +40,13 @@ os.environ.setdefault('HF_DATASETS_OFFLINE', '1')
 import p9_common as C  # noqa: E402
 import p8_judge  # noqa: E402
 from mbpp_rust import I64_MIN  # noqa: E402
+from p9_a3_mbppplus import split_tuple  # noqa: E402
 
 CASES = os.environ.get('CASES', os.path.join(C.OUT_DIR, 'a3_cases.json'))
 OUT = os.environ.get('OUT', os.path.join(C.OUT_DIR, 'a3_relabel.jsonl.gz'))
 WORKERS = int(os.environ.get('WORKERS', 6))
 LIMIT = int(os.environ.get('LIMIT', 0))
-COMPILE_TIMEOUT, RUN_TIMEOUT = 120, 30
+COMPILE_TIMEOUT, RUN_TIMEOUT, RETRY_TIMEOUT = 120, 30, 120
 MODES = {'O': ['-O'], 'O_ovf': ['-O', '-C', 'overflow-checks=on']}
 MAIN_RE = p8_judge._NEW.MAIN_RE
 
@@ -72,33 +74,46 @@ def esc(s):
     return ''.join(out)
 
 
-def lit(v, owned=True):
-    if isinstance(v, bool):
+def lit(v, t):
+    """A Rust literal of type t (the signature's type string) for the JSON value v.
+
+    Directed by the type, not by the Python value: JSON turns MBPP+'s tuples into lists, and an
+    empty list has no element type. (Version 1 followed the value; 291 programs in 27 tasks did not
+    compile. Fixed 2026-10-22 before any Phase 9 statistic read a flip label.)"""
+    if t == 'bool':
         return 'true' if v else 'false'
-    if isinstance(v, int):
-        return 'i64::MIN' if v == I64_MIN else f'{v}i64'
-    if isinstance(v, float):
-        return f'{v!r}f64'
-    if isinstance(v, str):
-        return f'String::from("{esc(v)}")' if owned else f'"{esc(v)}"'
-    if isinstance(v, list):
-        return 'vec![' + ', '.join(lit(x, True) for x in v) + ']'
-    if isinstance(v, tuple):
-        inner = ', '.join(lit(x, True) for x in v)
-        return f'({inner},)' if len(v) == 1 else f'({inner})'
-    raise ValueError(f'no literal for {v!r}')
+    if t == 'i64':
+        return 'i64::MIN' if v == I64_MIN else f'{int(v)}i64'
+    if t == 'f64':
+        return f'{float(v)!r}f64'
+    if t == 'String':
+        return f'String::from("{esc(v)}")'
+    if t == '&str':
+        return f'"{esc(v)}"'
+    if t.startswith('Vec<'):
+        inner = t[4:-1]
+        if not v:
+            return f'Vec::<{inner}>::new()'
+        return 'vec![' + ', '.join(lit(x, inner) for x in v) + ']'
+    if t.startswith('('):
+        parts = split_tuple(t)
+        if len(parts) != len(v):
+            raise ValueError(f'{v!r} does not fit {t}')
+        inner = ', '.join(lit(x, p) for x, p in zip(v, parts))
+        return f'({inner},)' if len(parts) == 1 else f'({inner})'
+    raise ValueError(f'no literal of type {t} for {v!r}')
 
 
 def build_case(i, sig, case):
-    call = f"{sig['name']}({', '.join(lit(a, owned=(sig['params'][j] != '&str')) for j, a in enumerate(case['args']))})"
-    exp = lit(case['exp'], owned=True)
+    call = f"{sig['name']}({', '.join(lit(a, sig['params'][j]) for j, a in enumerate(case['args']))})"
+    exp = f"let e: {sig['ret']} = {lit(case['exp'], sig['ret'])};"
     if case['is_close'] and sig['ret'] == 'f64':
-        check = (f"match r {{ Ok(v) => {{ let e = {exp}; "
+        check = (f"match r {{ Ok(v) => {{ {exp} "
                  f"if v == e || (v.is_finite() && e.is_finite() && (v - e).abs() <= 1e-3 * v.abs().max(e.abs())) "
                  f"{{ p += 1; }} else {{ println!(\"FAIL {i}\"); }} }}, "
                  f"Err(_) => println!(\"PANIC {i}\") }}")
     else:
-        check = (f"match r {{ Ok(v) => {{ if v == {exp} {{ p += 1; }} "
+        check = (f"match r {{ Ok(v) => {{ {exp} if v == e {{ p += 1; }} "
                  f"else {{ println!(\"FAIL {i}\"); }} }}, "
                  f"Err(_) => println!(\"PANIC {i}\") }}")
     return f"    let r = std::panic::catch_unwind(|| {call});\n    {check};\n"
@@ -111,7 +126,7 @@ def build_source(code, sig, cases):
             + f"    println!(\"PASS {{}} of {len(cases)}\", p);\n}}\n")
 
 
-def judge(code, sig, cases, flags):
+def judge(code, sig, cases, flags, run_timeout=RUN_TIMEOUT):
     with tempfile.TemporaryDirectory(prefix='p9a3_') as td:
         rs, binp = Path(td) / 'p.rs', Path(td) / 'p'
         rs.write_text(build_source(code, sig, cases), encoding='utf-8')
@@ -126,7 +141,7 @@ def judge(code, sig, cases, flags):
             return {'stage': 'no_compile', 'error': (m.group(0) if m else c.stderr[:160])[:160]}
         ct = time.time() - t0
         try:
-            r = subprocess.run([str(binp)], capture_output=True, text=True, timeout=RUN_TIMEOUT, cwd=td)
+            r = subprocess.run([str(binp)], capture_output=True, text=True, timeout=run_timeout, cwd=td)
         except subprocess.TimeoutExpired:
             return {'stage': 'run_timeout', 'compile_sec': round(ct, 1)}
         m = re.search(r'PASS (\d+) of (\d+)', r.stdout)
@@ -136,7 +151,7 @@ def judge(code, sig, cases, flags):
             return {'stage': 'no_pass_line', 'n_fail': len(fails), 'n_panic': len(panics),
                     'error': (r.stderr.strip().splitlines() or [''])[-1][:160]}
         return {'stage': 'ok', 'n_pass': int(m.group(1)), 'n_cases': int(m.group(2)), 'n_fail': len(fails),
-                'n_panic': len(panics), 'bad': sorted(fails + panics)[:40], 'compile_sec': round(ct, 1)}
+                'n_panic': len(panics), 'bad': sorted(fails + panics), 'panics': sorted(panics), 'compile_sec': round(ct, 1)}
 
 
 _CASES = None
@@ -158,6 +173,8 @@ def work(item):
     for mode, flags in MODES.items():
         try:
             out[mode] = judge(code, sig, cases, flags)
+            if out[mode]['stage'] == 'run_timeout':      # rule fixed before reading: one rerun at 120 s
+                out[mode] = dict(judge(code, sig, cases, flags, run_timeout=RETRY_TIMEOUT), retried=True)
         except Exception as e:
             out[mode] = {'stage': 'judge_error', 'error': type(e).__name__}
     return out

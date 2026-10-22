@@ -1,0 +1,8 @@
+F0 gate: programs failing a base case where MBPP+ base = stored asserts (mode O): {'base_fail_where_base_agrees': 0, 'tasks': []}
+F1 verdicts: {"O": {"programs": {"flips": 728, "holds": 1629, "timeout": 7}, "samples": {"flips": 1843, "holds": 5311, "timeout": 7}}, "O_ovf": {"programs": {"flips": 740, "holds": 1620, "timeout": 4}, "samples": {"flips": 1866, "holds": 5291, "timeout": 4}}, "flip_only_with_overflow_checks": 9, "flip_O_holds_ovf": 0}
+F2 causes (mode O): {'flips': 728, 'base_case_fails': 9, 'base_case_fails_in_corrected_tasks': 9, 'plus_only': 719, 'flips_in_float_result_tasks': 1, 'flips_in_custom_assertion_tasks': 18}
+F3 samples by phase (mode O): {'2': {'flips': 19, 'holds': 75}, '3': {'flips': 283, 'holds': 1310, 'timeout': 1}, '5': {'flips': 279, 'holds': 1247, 'timeout': 1}, '6': {'holds': 2679, 'timeout': 5, 'flips': 1262}}
+F4 tasks (mode O, distinct programs): {'tasks': 203, 'tasks_with_flip': 79, 'tasks_all_flip': 32, 'mixed_tasks': 47, 'mixed_programs': 956, 'mixed_flips': 457, 'mixed_pairs': 5401, 'mixed_tasks_corrected_base': 2}
+F5 Phase 2 greedy generations: {'greedy_passing_in_usable_tasks': 94, 'flips_O': 19, 'flips_O_ovf': 19, 'timeouts_O': 0, 'strict_flips_O': 18, 'strict_passing': 90, 'flipped_tasks': [3, 58, 69, 113, 118, 142, 285, 292, 435, 559, 564, 567, 593, 597, 643, 755, 766, 792, 806]}
+V variance components (flip label, distinct programs): {'programs': 2357, 'tasks': 203, 'flip_rate': 0.309, 'between_task_var': 0.1411, 'within_task_var': 0.0738, 'icc': 0.657, 'programs_per_task_median': 8.0}
+P power of a within-task AUROC test (alpha 0.05): {'mixed_tasks': 47, 'n_sim': 2000, 'power_at_auc': {'0.55': 0.248, '0.60': 0.708, '0.65': 0.966, '0.70': 0.999, '0.75': 1.0}}
