@@ -1,0 +1,134 @@
+{
+ "role": "pilot",
+ "items_kept": 83,
+ "VA_rows": 81,
+ "VA_problems": 19,
+ "VPz_rows": 27,
+ "VPz_problems": 6,
+ "VA": {
+  "rows": 81,
+  "svd_share_q": 0.9902,
+  "svd_share_bg": 0.9824,
+  "probe_q": {
+   "problems": 19,
+   "mean": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "probe_bg": {
+   "problems": 19,
+   "mean": 0.9934,
+   "ci95": [
+    0.9803,
+    1.0
+   ]
+  },
+  "cheap_q": {
+   "problems": 19,
+   "mean": 0.8706,
+   "ci95": [
+    0.7127,
+    0.9868
+   ]
+  },
+  "cheap_bg": {
+   "problems": 19,
+   "mean": 0.6744,
+   "ci95": [
+    0.4868,
+    0.8389
+   ]
+  },
+  "probe_q_minus_bg": {
+   "problems": 19,
+   "mean": 0.0066,
+   "ci95": [
+    0.0,
+    0.0197
+   ]
+  },
+  "cheap_q_minus_bg": {
+   "problems": 19,
+   "mean": 0.1962,
+   "ci95": [
+    0.0272,
+    0.3921
+   ]
+  },
+  "cheap_single": {
+   "cheap_q_logp_next": 0.8601,
+   "cheap_q_entropy": 0.8706,
+   "cheap_q_top_prob": 0.8601,
+   "cheap_q_kl_diff": 0.9232,
+   "cheap_bg_logp_next": 0.5662,
+   "cheap_bg_entropy": 0.5692,
+   "cheap_bg_top_prob": 0.3461,
+   "cheap_bg_kl_diff": 0.3836
+  }
+ },
+ "VPz": {
+  "rows": 27,
+  "svd_share_q": 1.0,
+  "svd_share_bg": 1.0,
+  "probe_q": {
+   "problems": 6,
+   "mean": 1.0,
+   "ci95": [
+    1.0,
+    1.0
+   ]
+  },
+  "probe_bg": {
+   "problems": 6,
+   "mean": 0.75,
+   "ci95": [
+    0.4167,
+    1.0
+   ]
+  },
+  "cheap_q": {
+   "problems": 6,
+   "mean": 0.5317,
+   "ci95": [
+    0.1667,
+    0.8651
+   ]
+  },
+  "cheap_bg": {
+   "problems": 6,
+   "mean": 0.3611,
+   "ci95": [
+    0.0833,
+    0.6944
+   ]
+  },
+  "probe_q_minus_bg": {
+   "problems": 6,
+   "mean": 0.25,
+   "ci95": [
+    0.0,
+    0.5833
+   ]
+  },
+  "cheap_q_minus_bg": {
+   "problems": 6,
+   "mean": 0.1706,
+   "ci95": [
+    -0.496,
+    0.754
+   ]
+  },
+  "cheap_single": {
+   "cheap_q_logp_next": 0.2083,
+   "cheap_q_entropy": 0.2222,
+   "cheap_q_top_prob": 0.2083,
+   "cheap_q_kl_diff": 0.2222,
+   "cheap_bg_logp_next": 0.4306,
+   "cheap_bg_entropy": 0.4306,
+   "cheap_bg_top_prob": 0.4306,
+   "cheap_bg_kl_diff": 0.4306
+  }
+ }
+}

@@ -12,10 +12,13 @@ Reads the forward outputs (p9_b_forward.py) and the items (p9_b_items.py). For e
 Problem score: mean over items within (source, x), then x within source, then sources within problem.
 Primary: one-sided sign flip, H1 mean < 0, alpha 0.05 (99,999 flips + identity, stream [20261022, 11]);
 interval 5,000 bootstrap draws of problems (stream [20261022, 12]).
-S1 (only if the primary rejects): d_read = c(q_place) - mean c of same-id reads of x before q.
-S2 (only if S1 rejects): d_z = sum over the span of log p_V - log p_Pz.
+S1 and S2 (only if the primary rejects; Holm over the two at 0.05):
+  S1  d_read = (c(q_place) - c-hat) - mean over reads of (c(read) - c-hat), reads = occurrences of x's name
+      before q_place and at least 20 tokens after the later edit (rules fixed at gate 2, §2)
+  S2  d_z = sum over the span of log p_V - log p_Pz
 Descriptive: raw span sum, background mean, R arm, 2 x 2, q_place / q_op alone, E0384 / E0596, Phase 3
-only, y in another function excluded, 20%-trimmed problem means, per-token form.
+only, y in another function excluded, 20%-trimmed problem means, per-token form, the jump (c just after
+the edit, just before q, at q).
 
   ROLE=primary|pilot  WORK=/home/user1/p9_work/forward  OUT=results/p9_state/b_analysis_<role>.json
 """
@@ -38,6 +41,7 @@ ALPHA = 0.05
 N_FLIP, N_BOOT = 99999, 5000
 DIST_EDGES = [1, 5, 10, 20, 40, 10 ** 9]
 N_HBINS, MIN_CELL = 20, 30
+READ_MIN_DIST = 20
 
 
 def sha(t):
@@ -112,7 +116,7 @@ def item_tokens(it, F, prose):
     edits_before = [x['name_pos']] + ([y['name_pos']] if y['name_pos'] < qp else [])
     start = at('S', max(edits_before))
     xs = [(s, s + len(x['name'])) for kind, t, s in C.lex(S) if kind == 'ident' and t == x['name']]
-    bg = []
+    bg, bg_j = [], []
     for i in range(start + 1, span_S[0]):
         a, b = int(off_S[i][0]) - base, int(off_S[i][1]) - base
         if any(a < xb and b > xa for xa, xb in xs):
@@ -121,21 +125,22 @@ def item_tokens(it, F, prose):
         if jv is None or ja is None:
             continue
         bg.append((float(recs['V']['logp'][jv] - recs['A']['logp'][ja]), float(recs['S']['ent'][i]), i - start))
+        bg_j.append((i, jv, ja))
     span_c = [float(recs['V']['logp'][jv] - recs['A']['logp'][ja]) for jv, ja in zip(span['V'], span['A'])]
     span_h = [float(recs['S']['ent'][i]) for i in span_S]
     span_d = [i - start for i in span_S]
-    # reads of x before q with q_place's token id (S1)
+    # reads of x before q, at least READ_MIN_DIST tokens after the later edit (S1): (c, H, distance)
     reads = []
     for r in it['reads']:
         sr = inv.get(r)
         if sr is None:
             continue
         i = at('S', sr)
-        if i is None or recs['S']['ids'][i] != recs['S']['ids'][span_S[0]]:
+        if i is None or i - start < READ_MIN_DIST or i >= span_S[0]:
             continue
         jv, ja = tok_in('V', i), tok_in('A', i)
         if jv is not None and ja is not None:
-            reads.append(float(recs['V']['logp'][jv] - recs['A']['logp'][ja]))
+            reads.append((float(recs['V']['logp'][jv] - recs['A']['logp'][ja]), float(recs['S']['ent'][i]), i - start))
     # placebos (S2)
     dz = []
     for mz, rz in pz:
@@ -146,6 +151,7 @@ def item_tokens(it, F, prose):
     return {'problem': it['key'][0], 'source': it['key'][1], 'x': x['name'], 'site': it['site_code'],
             'phase3': None, 'y_other_fn': it['y_other_fn'],
             'span_c': span_c, 'span_h': span_h, 'span_d': span_d, 'bg': bg, 'reads': reads, 'dz': dz,
+            'bg_j': bg_j, 'q_j': (span_S[0], span['V'][0], span['A'][0]),
             'raw': sum(span_c), 'R_S': lp('R', span['R']) - lp('S', span_S), 'V_S': lp('V', span['V']) - lp('S', span_S),
             'A_S': lp('A', span['A']) - lp('S', span_S),
             'place_c': span_c[0], 'op_c': span_c[-1], 'n_span': len(span_c)}
@@ -236,18 +242,32 @@ def main():
         r['d'] = float(sum(c - ch for c, ch in zip(r['span_c'], r['chat'])))
         r['d_tok'] = r['d'] / r['n_span']
         r['bg_mean'] = float(np.mean([c for c, _, _ in r['bg']])) if r['bg'] else None
-        r['d_read'] = (r['place_c'] - float(np.mean(r['reads']))) if r['reads'] else None
+        r['res_q'] = r['place_c'] - r['chat'][0]
+        r['res_reads'] = float(np.mean([c - f(r['problem'], h, d) for c, h, d in r['reads']])) if r['reads'] else None
+        r['d_read'] = (r['res_q'] - r['res_reads']) if r['reads'] else None
         r['d_z'] = float(np.mean(r['dz'])) if r['dz'] else None
+        after = [c for c, _, d in r['bg'] if d <= 4]
+        before = [c for c, _, _ in r['bg'][-5:]]
+        r['jump_after'] = float(np.mean(after)) if after else None
+        r['jump_before'] = float(np.mean(before)) if before else None
+        r['jump_at_q'] = r['raw'] / r['n_span']
+        r['jump'] = (r['jump_at_q'] - r['jump_before']) if before else None
     out = {'role': ROLE, 'items': len(rows), 'dropped_id_mismatch': dropped,
            'problems': len({r['problem'] for r in rows}), 'entropy_bin_edges': [round(float(e), 4) for e in edges[1:-1]]}
     prim = test(hier(rows, lambda r: r['d']), 11)
     out['primary'] = dict(prim, rejected=bool(prim.get('p_one_sided_less', 1) < ALPHA))
     s1 = test(hier(rows, lambda r: r['d_read']), 13)
     s2 = test(hier(rows, lambda r: r['d_z']), 15)
-    out['S1'] = dict(s1, tested=out['primary']['rejected'],
-                     rejected=bool(out['primary']['rejected'] and s1.get('p_one_sided_less', 1) < ALPHA))
-    out['S2'] = dict(s2, tested=out['S1']['rejected'],
-                     rejected=bool(out['S1']['rejected'] and s2.get('p_one_sided_less', 1) < ALPHA))
+    # Holm over S1 and S2 at ALPHA, gated by the primary
+    ps = [s1.get('p_one_sided_less', 1.0), s2.get('p_one_sided_less', 1.0)]
+    rej = [False, False]
+    if out['primary']['rejected']:
+        lo, hi = (0, 1) if ps[0] <= ps[1] else (1, 0)
+        if ps[lo] < ALPHA / 2:
+            rej[lo] = True
+            rej[hi] = ps[hi] < ALPHA
+    out['S1'] = dict(s1, tested=out['primary']['rejected'], rejected=rej[0])
+    out['S2'] = dict(s2, tested=out['primary']['rejected'], rejected=rej[1])
     desc = {
         'raw_span_c': test(hier(rows, lambda r: r['raw']), 21),
         'background_mean_per_token': test(hier(rows, lambda r: r['bg_mean']), 23),
@@ -260,6 +280,12 @@ def main():
         'trimmed_20': test(hier(rows, lambda r: r['d']), 37, trim=0.2),
         'phase3_only': test(hier([r for r in rows if r['phase3']], lambda r: r['d']), 39),
         'without_y_other_fn': test(hier([r for r in rows if not r['y_other_fn']], lambda r: r['d']), 41),
+        'S1_q_place_residual': test(hier([r for r in rows if r['reads']], lambda r: r['res_q']), 47),
+        'S1_reads_residual': test(hier(rows, lambda r: r['res_reads']), 49),
+        'jump_after_edit': test(hier(rows, lambda r: r['jump_after']), 51),
+        'jump_before_q': test(hier(rows, lambda r: r['jump_before']), 53),
+        'jump_at_q_per_token': test(hier(rows, lambda r: r['jump_at_q']), 55),
+        'jump_at_q_minus_before': test(hier(rows, lambda r: r['jump']), 57),
     }
     for site, s in (('E0384', 43), ('E0596', 45)):
         desc[f'site_{site}'] = test(hier([r for r in rows if r['site'] == site], lambda r: r['d']), s)
