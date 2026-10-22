@@ -1,0 +1,23 @@
+[
+ {
+  "row": 14,
+  "task_id": 190020,
+  "tokens": 100,
+  "graph": "graph_14_190020_0.pt",
+  "text": "Write a function to find whether a given array of integers contains any duplicate element. fn test_duplicate(a0: Vec<i64>) -> bool {\n  for i in 0..a0.len() {\n    for j in i + 1..a0.len() {\n      if a0[i] >= a0[j] {\n        return true;\n      }\n    }\n  }\n  return false;\n}"
+ },
+ {
+  "row": 242,
+  "task_id": 4280370,
+  "tokens": 120,
+  "graph": "graph_242_4280370_0.pt",
+  "text": "Write a function to sort the given array by using shell sort. fn shell_sort(a0: Vec<i64>) -> Vec<i64> {\n    let mut a = a0.clone();\n    for i in 1..a.len() {\n        let mut j = i;\n        while j != 0 && a[j - 1] > a[j] {\n            a.swap(j - 1, j);\n            j -= 1;\n        }\n    }\n    a\n}"
+ },
+ {
+  "row": 244,
+  "task_id": 4340080,
+  "tokens": 140,
+  "graph": "graph_244_4340080_0.pt",
+  "text": "Write a function that matches a string that has an a followed by one or more b's. fn text_match_one(a0: &str) -> bool {\n  let mut i = 0;\n  while i < a0.len() {\n    if a0.chars().nth(i).unwrap() == 'a' {\n      if a0.chars().skip(i + 1).take(a0.len() - i - 1).all(|x| x < 'b') {\n        return true;\n      }\n    }\n    i += 1;\n  }\n  false\n}"
+ }
+]

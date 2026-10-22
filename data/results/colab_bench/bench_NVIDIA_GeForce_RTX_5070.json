@@ -1,0 +1,68 @@
+{
+ "gpu": "NVIDIA GeForce RTX 5070",
+ "capability": [
+  12,
+  0
+ ],
+ "vram_gib": 11.9,
+ "cpu_count": 20,
+ "versions": {
+  "python": "3.13.15",
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "transformers": "4.57.3",
+  "transformer-lens": "3.2.1",
+  "huggingface_hub": "0.36.2",
+  "einops": "0.8.2",
+  "safetensors": "0.8.0",
+  "tokenizers": "0.22.2",
+  "numpy": "2.5.2"
+ },
+ "call": {
+  "max_n_logits": 10,
+  "desired_logit_prob": 0.95,
+  "batch_size": 64,
+  "max_feature_nodes": 8192,
+  "offload": "cpu",
+  "verbose": false
+ },
+ "alloc_conf": "garbage_collection_threshold:0.8",
+ "model_load_s": 32.6,
+ "warmup_s": 24.0,
+ "graphs": [
+  {
+   "row": 14,
+   "graph": "graph_14_190020_0.pt",
+   "tokens": 100,
+   "attribute_s": 485.5,
+   "to_pt_s": 0.2,
+   "peak_vram_gib": 10.32,
+   "active_features": 97962,
+   "selected_features": 8192,
+   "n_logits": 3
+  },
+  {
+   "row": 242,
+   "graph": "graph_242_4280370_0.pt",
+   "tokens": 120,
+   "attribute_s": 743.0,
+   "to_pt_s": 0.2,
+   "peak_vram_gib": 11.14,
+   "active_features": 117810,
+   "selected_features": 8192,
+   "n_logits": 3
+  },
+  {
+   "row": 244,
+   "graph": "graph_244_4340080_0.pt",
+   "tokens": 140,
+   "attribute_s": 1195.1,
+   "to_pt_s": 0.2,
+   "peak_vram_gib": 11.97,
+   "active_features": 138172,
+   "selected_features": 8192,
+   "n_logits": 4
+  }
+ ],
+ "attribute_s_total": 2423.6
+}
