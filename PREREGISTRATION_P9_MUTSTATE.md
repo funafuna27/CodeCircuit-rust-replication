@@ -240,7 +240,9 @@ to estimate that rate, not to remove cases (inputs are never calibrated on Gemma
 
 ## 8. Deviations
 
-None yet.
+None in the execution (appended 2026-10-22 after the run). Two statements written before it turned out
+wrong and are kept as written: §5's spreads (the problem-level SD of d is 0.628, not 0.149; S1's 0.533,
+not the assumed 0.12; S2's 0.815, not 0.52), and §3's sizes (below).
 
 ## 9. Execution
 
@@ -250,3 +252,51 @@ ROLE=primary python p9_b_forward.py      # refuses unless this file is committed
 ROLE=primary python p9_b_analysis.py
 ROLE=primary python p9_b_probe.py        # refuses likewise
 ```
+
+Run 2026-10-22 12:50–13:10 JST on commit 66a884e (guard hash 6fd6d99018aefa50): 10,334 texts, 41 ms per
+text; probes 2,932 rows in 639 s. Outputs: `results/p9_state/b_analysis_primary.json`,
+`results/p9_state/b_probe_primary.json`. `p9_b_check.py`, written apart from the analysis, gives the same
+primary, S1 and S2 means to four decimals.
+
+### Results (appended 2026-10-22, after the run)
+
+All 3,457 items kept (no id mismatch), 167 problems. Means over problems, 95% bootstrap intervals,
+one-sided sign-flip p.
+
+| test | problems | mean (nats) | 95% interval | p | decision | §3 prediction |
+|---|---|---|---|---|---|---|
+| primary d | 167 | −0.290 | [−0.390, −0.200] | 1e-5 | **rejected** | rejected, −0.12 to −0.02 (size missed) |
+| S2 d_z (Holm, first) | 86 | −0.607 | [−0.787, −0.441] | 1e-5 | **rejected** (< 0.025) | rejected, −0.40 to −0.05 (size missed) |
+| S1 d_read (Holm, second) | 61 | −0.060 | [−0.184, +0.078] | 0.20 | not rejected (≥ 0.05) | not rejected, −0.08 to 0.00 |
+
+**Reading (§4, row 2).** At the mutation of x, Gemma's probability of the mutation drops beyond what the
+same edit does to background tokens of the same entropy and distance, and the drop depends on which
+binding lost its `mut`: x's own, not another necessary binding's. Not shown: that it is specific to the
+mutation rather than to every mention of x — reads of x 20 or more tokens after the edit drop too
+(residual −0.113 [−0.227, −0.034]; q_place's residual on the same 61 problems −0.173 [−0.265, −0.098]),
+and S1's 80% MDE turned out to be 0.17 nats, not the 0.04 of §5.
+
+Descriptive (registered):
+- raw Σ_span c −0.320 [−0.431, −0.229] (predicted −0.15 to −0.03); background −0.062 per token
+  [−0.080, −0.048]; q_place alone −0.205 [−0.271, −0.145], q_op alone −0.042 [−0.080, −0.014];
+- the 2 × 2 on the span: R − S −0.272, A − S −0.214, V − S −0.535 [−0.662, −0.419]. **Adding `mut` to y
+  alone lowers the mutation of x by 0.21 nats** (on the pilot, where y's edit lies after q, A − S was
+  −0.002). The two edits roughly add: Gemma predicts which binding a statement mutates from which
+  bindings are declared `mut`;
+- the jump: −0.260 per token 1–4 tokens after the edit, −0.018 over the last 5 tokens before q, −0.122 per
+  token at q, at q minus before −0.104 [−0.138, −0.071] (predicted at q −0.06 to −0.02; the rest held);
+- sensitivities all below 0: 20%-trimmed −0.171 [−0.197, −0.145]; per token −0.110; Phase 3 only (110
+  problems) −0.278; without y in another function (157) −0.315; E0384 sites (130) −0.326, E0596 (81)
+  −0.207;
+- probe 1 (V against A; 2,285 rows, 143 problems): A(q) 0.998, A(bg) 0.902, difference +0.097
+  [+0.073, +0.122] (predicted both ≥ 0.95 and within ±0.03: missed — the background is not at the
+  ceiling on the primary items). Its cheap signals: 0.780 at q, 0.726 at bg, difference +0.055
+  [−0.001, +0.110] (predicted 0.1 to 0.3);
+- **probe 2 (V against Pz; 647 rows, 67 problems): A2(q) 0.958, A2(bg) 0.572, difference +0.385
+  [+0.301, +0.466]** (predicted ≥ 0.95, 0.6–0.9, above 0.05). Its cheap signals at q (the distribution
+  that predicts q_op) are at chance: 0.517 [0.432, 0.608]. At x's token the activations separate x's
+  declaration losing `mut` from z's; the next-token distribution there does not. As §2 says, this shows
+  the change is carried at x's token, not that it is used.
+
+Next step under §4 row 2: probe and patching, with the caveat that specificity to the mutation (S1) is
+not shown. Patching and the graphs of part ① are planned in their own addendum at gate 3.
