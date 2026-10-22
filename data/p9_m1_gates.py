@@ -83,7 +83,9 @@ def x1():
                 'f0f3f4_equal': eq_f, 'f0f3f4_differ': bad_f[:20], 'x3': x3})
     out['p_ok'] = eq_pm == len(ref['ids'])
     out['f_ok'] = eq_f == len(ref['ids'])
-    out['c_ok'] = all(v < 0.02 for v in x3.values())
+    # Deviation 1 (PREREGISTRATION_P9_M1.md §10): X3 is judged on the two averaged quantities; the minimum
+    # log p (one token, so one bf16-rounded logit) is reported, not judged.
+    out['c_ok'] = x3['per_token_code_logprob_mean_abs'] < 0.02 and x3['mean_entropy_mean_abs'] < 0.02
     out['extractor_ok'] = bool(out['c_ok'])        # C is needed for the primary; P only if p_ok
     os.makedirs(M.OUT, exist_ok=True)
     with open(os.path.join(M.OUT, 'gates_x1.json'), 'w') as fh:

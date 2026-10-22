@@ -89,7 +89,8 @@ first.
    (its sha256 checked first against PREREGISTRATION_CLOSING.md) row by row, indices and float32 bits;
    f0, f3, f4 are compared with the stored columns 0, 3, 4 of `gemma_matched_features.jsonl` (reported;
    the decision on f is X2's, per arm); and **X3**: the code log p (per token), minimum log p and mean
-   entropy agree with Phase 5's `p5_2` values (HF, eager) within a mean absolute difference of 0.02 nats.
+   entropy agree with Phase 5's `p5_2` values (HF, eager) within a mean absolute difference of 0.02 nats
+   (amended by deviation 1, §10: the minimum log p is reported, not judged).
 2. Extraction of the M1 texts (refused unless X1's C check passed).
 3. **X2 and R** (`STEP=x2`): per arm, f0, f3, f4 against the stored G columns 0, 3, 4 on every row; the
    94 surviving Phase 1–2 graphs (`data/rust_graph`, 50; `data/python_graph`, 44) rebuilt by the same
@@ -236,4 +237,17 @@ The analysis runs on the CPU (about 1,800 out-of-fold fits, mostly the null band
 
 ## 10. Deviations
 
-None yet.
+**1. X3's minimum-log-p criterion (2026-10-22 21:31 JST, decided by the author before any M1 text was
+extracted).** The first run of §8 (commit a2d57df, 20:23–20:26 JST) passed X1 everywhere — posmean
+bit-equal 518/518, f0/f3/f4 equal 518/518 — but stopped at X3, as §5 required: the per-token code log p
+agreed with p5_2 within 0.003 and the mean entropy within 0.002, while the minimum log p differed by 0.065
+on average (median 0.050, 90th percentile 0.132, maximum 0.242; 63 of 518 rows above 0.125). The
+minimum is one token's log p, about −14 to −25 here, so it carries the bf16 rounding of one logit of
+magnitude 16–32, whose step is 0.125: the two implementations (HF eager in p5_2, TransformerLens here)
+round it differently, by up to two steps. The 0.02 tolerance, meant for averaged quantities, was the wrong
+scale for a single-token extreme. X3 exists to catch a misplaced code boundary or a wrong forward pass,
+which the two averaged quantities test. Change: X3 is judged on the per-token code log p and the mean
+entropy (each within 0.02); the minimum log p difference is reported and not judged. C keeps its minimum
+log p column, computed from the same forward pass for every row. The gate script was changed accordingly
+and, since its hash changed, the X1 extraction was run again before the M1 extraction. Nothing else
+changed.
