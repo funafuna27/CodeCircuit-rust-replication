@@ -1,0 +1,1359 @@
+44 mixed tasks; one flip each (stream [20261023, 21]); failing cases shown: all (stream [20261023, 22])
+====================================================================================================
+task 58: 11 hold / 8 flip; sampled program: members [[2, '3'], [15, '3'], [85, '6']]...; fails 28 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether the given two integers have opposite sign or not.
+  signature: fn opposite_Signs(a0: i64, a1: i64) -> bool
+  stored asserts: [([1, -2], True), ([3, 2], False), ([-10, -10], False), ([-2, 2], True)]
+  program:
+    fn opposite_Signs(a0: i64, a1: i64) -> bool {
+      return a0 * a1 < 0;
+    }
+  MBPP+ reference:
+    def opposite_Signs(x,y): 
+        return ((x ^ y) < 0)
+  case 93: args [-987654319, -1000000000003]
+      expected false
+      program  true
+  case 61: args [-987654319, -1000000000000]
+      expected false
+      program  true
+  case 68: args [-1000000000000, -987654319]
+      expected false
+      program  true
+  case 70: args [1000000000001, 987654321]
+      expected false
+      program  true
+  case 92: args [-1000000000002, 987654322]
+      expected true
+      program  false
+  case 38: args [-1000000000000, -987654320]
+      expected false
+      program  true
+  case 100: args [1000000000000, -987654319]
+      expected true
+      program  false
+  case 81: args [1000000000002, -987654319]
+      expected true
+      program  false
+  case 12: args [1000000000000, 987654321]
+      expected false
+      program  true
+  case 17: args [-1000000000000, -987654321]
+      expected false
+      program  true
+  case 107: args [-1000000000000, -987654322]
+      expected false
+      program  true
+  case 69: args [987654321, -999999999999]
+      expected true
+      program  false
+  case 71: args [-1000000000000, 987654322]
+      expected true
+      program  false
+  case 64: args [999999999999, 987654322]
+      expected false
+      program  true
+  case 13: args [1000000000000, 987654322]
+      expected false
+      program  true
+  case 43: args [-987654322, -1000000000000]
+      expected false
+      program  true
+  case 44: args [987654320, -1000000000000]
+      expected true
+      program  false
+  case 51: args [1000000000000, -987654322]
+      expected true
+      program  false
+  case 86: args [-1000000000003, -987654321]
+      expected false
+      program  true
+  case 31: args [999999999999, -987654319]
+      expected true
+      program  false
+  case 26: args [987654321, 1000000000000]
+      expected false
+      program  true
+  case 66: args [-1000000000000, 987654323]
+      expected true
+      program  false
+  case 52: args [-987654322, 1000000000000]
+      expected true
+      program  false
+  case 105: args [-987654319, 999999999999]
+      expected true
+      program  false
+  case 57: args [1000000000001, -987654321]
+      expected true
+      program  false
+  case 73: args [-987654319, -1000000000001]
+      expected false
+      program  true
+  case 72: args [-987654319, -1000000000002]
+      expected false
+      program  true
+  case 49: args [987654321, -1000000000001]
+      expected true
+      program  false
+====================================================================================================
+task 89: 1 hold / 14 flip; sampled program: members [[123, '6'], [156, '6']]; fails 63 of 103 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the closest smaller number than n.
+  signature: fn closest_num(a0: i64) -> i64
+  stored asserts: [([11], 10), ([7], 6), ([12], 11)]
+  program:
+    fn closest_num(a0: i64) -> i64 {
+        let mut min = a0;
+        for i in 1..=1000 {
+            if i < a0 {
+                min = i;
+            }
+        }
+        min
+    }
+  MBPP+ reference:
+    def closest_num(N):
+      return (N - 1)
+  case 10: args [-36]
+      expected -37
+      program  -36
+  case 62: args [-23]
+      expected -24
+      program  -23
+  case 51: args [-28]
+      expected -29
+      program  -28
+  case 91: args [-9]
+      expected -10
+      program  -9
+  case 45: args [-51]
+      expected -52
+      program  -51
+  case 4: args [0]
+      expected -1
+      program  0
+  case 102: args [-10]
+      expected -11
+      program  -10
+  case 27: args [-41]
+      expected -42
+      program  -41
+  case 96: args [-62]
+      expected -63
+      program  -62
+  case 7: args [-1]
+      expected -2
+      program  -1
+  case 23: args [-2]
+      expected -3
+      program  -2
+  case 82: args [-24]
+      expected -25
+      program  -24
+  case 90: args [-18]
+      expected -19
+      program  -18
+  case 66: args [-29]
+      expected -30
+      program  -29
+  case 30: args [-31]
+      expected -32
+      program  -31
+  case 93: args [-93]
+      expected -94
+      program  -93
+  case 20: args [-21]
+      expected -22
+      program  -21
+  case 16: args [-34]
+      expected -35
+      program  -34
+  case 63: args [-98]
+      expected -99
+      program  -98
+  case 100: args [-45]
+      expected -46
+      program  -45
+  case 57: args [-97]
+      expected -98
+      program  -97
+  case 61: args [-49]
+      expected -50
+      program  -49
+  case 52: args [-95]
+      expected -96
+      program  -95
+  case 72: args [-56]
+      expected -57
+      program  -56
+  case 101: args [-92]
+      expected -93
+      program  -92
+  case 32: args [-42]
+      expected -43
+      program  -42
+  case 18: args [-40]
+      expected -41
+      program  -40
+  case 5: args [-4]
+      expected -5
+      program  -4
+  case 75: args [-68]
+      expected -69
+      program  -68
+  case 67: args [-30]
+      expected -31
+      program  -30
+  case 9: args [-37]
+      expected -38
+      program  -37
+  case 40: args [-43]
+      expected -44
+      program  -43
+  case 14: args [-20]
+      expected -21
+      program  -20
+  case 98: args [-26]
+      expected -27
+      program  -26
+  case 33: args [-60]
+      expected -61
+      program  -60
+  case 19: args [-33]
+      expected -34
+      program  -33
+  case 3: args [-5]
+      expected -6
+      program  -5
+  case 8: args [-39]
+      expected -40
+      program  -39
+  case 48: args [-55]
+      expected -56
+      program  -55
+  case 54: args [-96]
+      expected -97
+      program  -96
+  case 87: args [-70]
+      expected -71
+      program  -70
+  case 84: args [-44]
+      expected -45
+      program  -44
+  case 99: args [-99]
+      expected -100
+      program  -99
+  case 85: args [-69]
+      expected -70
+      program  -69
+  case 74: args [-8]
+      expected -9
+      program  -8
+  case 42: args [-52]
+      expected -53
+      program  -52
+  case 26: args [-59]
+      expected -60
+      program  -59
+  case 89: args [-61]
+      expected -62
+      program  -61
+  case 34: args [-7]
+      expected -8
+      program  -7
+  case 53: args [-22]
+      expected -23
+      program  -22
+  case 29: args [-58]
+      expected -59
+      program  -58
+  case 39: args [-19]
+      expected -20
+      program  -19
+  case 24: args [1]
+      expected 0
+      program  1
+  case 46: args [-54]
+      expected -55
+      program  -54
+  case 55: args [-50]
+      expected -51
+      program  -50
+  case 79: args [-27]
+      expected -28
+      program  -27
+  case 28: args [-32]
+      expected -33
+      program  -32
+  case 31: args [-6]
+      expected -7
+      program  -6
+  case 6: args [-3]
+      expected -4
+      program  -3
+  case 12: args [-38]
+      expected -39
+      program  -38
+  case 11: args [-35]
+      expected -36
+      program  -35
+  case 59: args [-94]
+      expected -95
+      program  -94
+  case 36: args [-53]
+      expected -54
+      program  -53
+====================================================================================================
+task 242: 3 hold / 1 flip; sampled program: members [[22, '5'], [23, '5'], [28, '5']]; fails 17 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to count the total number of characters in a string.
+  signature: fn count_charac(a0: &str) -> i64
+  stored asserts: [(['python programming'], 18), (['language'], 8), (['words'], 5)]
+  program:
+    fn count_charac(a0: &str) -> i64 {
+        a0.len() as i64
+    }
+  MBPP+ reference:
+    def count_charac(str1):
+        return len(str1)
+  case 65: args ["aaccaaccVaccMPNwvVNMPNwcNMccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvVPNwvcNMaacccMPNwvVMPNwvwPNccMPNwVVV"]
+      expected 139
+      program  149
+  case 59: args ["ccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvV"]
+      expected 78
+      program  88
+  case 15: args ["\u0262\u1d1caaccMPNwv\u1d0d\u026a\u1d07\ua731"]
+      expected 15
+      program  25
+  case 98: args ["aaccaaccVaccMPNwvVNMPNwcNMvccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvVPNwvcNMaacccMPNwvVMPNwvwPNccMPNwVVV"]
+      expected 140
+      program  150
+  case 48: args ["\u0262\u1d1caa\u0262ccMPNwv\u1d0d\u026a\u1d07\ua731"]
+      expected 16
+      program  27
+  case 37: args ["\u0262\u1d1caaccMPNwv\u1d0daccaaccMPNwccMPcMPNwvVNwvvVvMPccMPVNwvV\u026a\u1d07\ua731"]
+      expected 54
+      program  64
+  case 86: args ["\u0262\u1d1c\u1d0dccMPcMPNwvVN\u0262vV\u026a\u1d07\ua731accMPNwvV"]
+      expected 30
+      program  41
+  case 84: args ["ccMPcMPNPwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvV"]
+      expected 79
+      program  89
+  case 77: args ["\u0262\u1d1c\u1d0d"]
+      expected 3
+      program  8
+  case 5: args ["\u0262\u1d1c\u1d0d\u026a\u1d07\ua731"]
+      expected 6
+      program  16
+  case 93: args ["cccMPc\u0262\u1d1c\u1d0d\u026a\u1d07\ua731MPPNwvVNvVaaccMPNwvV"]
+      expected 32
+      program  42
+  case 94: args ["accaaccMPNw\u0262\u1d1caa\u0262ccMPNwv\u1d0d\u026a\u1d07\ua731ccMPcMPNwvVNwvvVvMPMccvV"]
+      expected 51
+      program  62
+  case 73: args ["\u0262\u1d1caaccMPNwv\u1d0daccaacccMccMPNwVPcMPccMPccccMPcMPNccMPcMPNwvVNvaaacccccMPcMPNwvVNwvVcNwvVNwvVNvVMPNwvVNcwvaaccaaccMPNwvVMPNwcNMPNwvcNMaacccMPNwvVMPNwvwPNwvVVvVVcMPNwccMPcMPNwvVNwvvVvMPccMPVNwvV\u026a\u1d07\ua731"]
+      expected 192
+      program  202
+  case 35: args ["\u0262\u1d1c\u1d0dccMPcMPNwvVNvV\u026a\u1d07\ua731accMPNwvV"]
+      expected 29
+      program  39
+  case 82: args ["\u0262\u1d1caa\u0262ccMPNwv\u1d0d\u1d0d\u026a\u1d07\ua731"]
+      expected 17
+      program  30
+  case 52: args ["\u0262\u1d1c\u1d0dV"]
+      expected 4
+      program  9
+  case 58: args ["\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731"]
+      expected 31
+      program  41
+====================================================================================================
+task 244: 1 hold / 2 flip; sampled program: members [[58, '6']]; fails 8 of 26 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the next perfect square greater than a given number.
+  signature: fn next_Perfect_Square(a0: i64) -> i64
+  stored asserts: [([35], 36), ([6], 9), ([9], 16)]
+  program:
+    fn next_Perfect_Square(a0: i64) -> i64 {
+      let mut square = 0;
+      let mut i = 1;
+      while square <= a0 {
+        let current_square = i * i;
+        if current_square > a0 {
+          break;
+        }
+        square = current_square;
+        i += 1;
+      }
+      i * i
+    }
+  MBPP+ reference:
+    import math  
+    def next_Perfect_Square(N): 
+        if N < 0:
+            return 0
+        nextN = math.floor(math.sqrt(N)) + 1
+        return nextN * nextN
+  case 22: args [-9]
+      expected 0
+      program  1
+  case 23: args [-6]
+      expected 0
+      program  1
+  case 14: args [-11]
+      expected 0
+      program  1
+  case 6: args [-10]
+      expected 0
+      program  1
+  case 3: args [-5]
+      expected 0
+      program  1
+  case 16: args [-1]
+      expected 0
+      program  1
+  case 21: args [-12]
+      expected 0
+      program  1
+  case 24: args [-80]
+      expected 0
+      program  1
+====================================================================================================
+task 269: 5 hold / 4 flip; sampled program: members [[34, '5']]; fails 14 of 82 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the ascii value of a character.
+  signature: fn ascii_value(a0: &str) -> i64
+  stored asserts: [(['A'], 65), (['R'], 82), (['S'], 83)]
+  program:
+    fn ascii_value(a0: &str) -> i64 {
+      a0.as_bytes().iter().map(|&b| b as u8).sum::<u8>() as i64
+    }
+  MBPP+ reference:
+    def ascii_value(k):
+      return ord(k)
+  case 23: args ["\u00e9"]
+      expected 233
+      program  108
+  case 29: args ["\u0080"]
+      expected 128
+      program  66
+  case 13: args ["\u03c0"]
+      expected 960
+      program  79
+  case 4: args ["\u00ae"]
+      expected 174
+      program  112
+  case 30: args ["\u2122"]
+      expected 8482
+      program  8
+  case 26: args ["\u2665"]
+      expected 9829
+      program  32
+  case 10: args ["\u20ac"]
+      expected 8364
+      program  16
+  case 27: args ["\uffff"]
+      expected 65535
+      program  109
+  case 31: args ["\u6587"]
+      expected 25991
+      program  3
+  case 17: args ["\u0e51"]
+      expected 3665
+      program  42
+  case 12: args ["\u00e4"]
+      expected 228
+      program  103
+  case 32: args ["\u2192"]
+      expected 8594
+      program  250
+  case 16: args ["\u00a9"]
+      expected 169
+      program  107
+  case 7: args ["\u0635"]
+      expected 1589
+      program  141
+====================================================================================================
+task 406: 30 hold / 11 flip; sampled program: members [[98, '6']]; fails 24 of 85 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find whether the parity of a given number is odd.
+  signature: fn find_Parity(a0: i64) -> bool
+  stored asserts: [([12], False), ([7], True), ([10], False)]
+  program:
+    fn find_Parity(a0: i64) -> bool {
+      let a1 = a0 % 2;
+      return a1 == 1;
+    }
+  MBPP+ reference:
+    def find_Parity(x): 
+        return x % 2 != 0
+  case 68: args [-97]
+      expected true
+      program  false
+  case 62: args [-35]
+      expected true
+      program  false
+  case 8: args [-9]
+      expected true
+      program  false
+  case 43: args [-59]
+      expected true
+      program  false
+  case 30: args [-43]
+      expected true
+      program  false
+  case 24: args [-7]
+      expected true
+      program  false
+  case 28: args [-3]
+      expected true
+      program  false
+  case 25: args [-41]
+      expected true
+      program  false
+  case 57: args [-5]
+      expected true
+      program  false
+  case 70: args [-93]
+      expected true
+      program  false
+  case 26: args [-61]
+      expected true
+      program  false
+  case 13: args [-1]
+      expected true
+      program  false
+  case 77: args [-95]
+      expected true
+      program  false
+  case 29: args [-49]
+      expected true
+      program  false
+  case 79: args [-37]
+      expected true
+      program  false
+  case 71: args [-15]
+      expected true
+      program  false
+  case 82: args [-99]
+      expected true
+      program  false
+  case 69: args [-91]
+      expected true
+      program  false
+  case 74: args [-33]
+      expected true
+      program  false
+  case 22: args [-47]
+      expected true
+      program  false
+  case 53: args [-63]
+      expected true
+      program  false
+  case 45: args [-45]
+      expected true
+      program  false
+  case 17: args [-11]
+      expected true
+      program  false
+  case 80: args [-13]
+      expected true
+      program  false
+====================================================================================================
+task 451: 10 hold / 3 flip; sampled program: members [[27, '5'], [29, '5']]; fails 9 of 112 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove all whitespaces from the given string.
+  signature: fn remove_whitespaces(a0: &str) -> String
+  stored asserts: [([' Google    Flutter '], 'GoogleFlutter'), ([' Google    Dart '], 'GoogleDart'), ([' iOS    Swift '], 'iOSSwift')]
+  program:
+    fn remove_whitespaces(a0: &str) -> String {
+      let mut result = String::new();
+      for c in a0.chars() {
+        if !c.is_whitespace() {
+          result.push(c);
+        }
+      }
+      result
+    }
+  MBPP+ reference:
+    import re
+    def remove_whitespaces(text1):
+      return text1.replace(' ', '')
+  case 89: args ["  \u180e\u200b12345\n67\n\t890\u200c\u200d This\u180e\u200biOS\u180e\u200b\u200c\u200d\u2060Swift\u200c\u200d\u2060 "]
+      expected "\u180e\u200b12345\n67\n\t890\u200c\u200dThis\u180e\u200biOS\u180e\u200b\u200c\u200d\u2060Swift\u200c\u200d\u2060"
+      program  "\u{180e}\u{200b}1234567890\u{200c}\u{200d}This\u{180e}\u{200b}iOS\u{180e}\u{200b}\u{200c}\u{200d}\u{2060}Swift\u{200c}\u{200d}\u{2060}"
+  case 27: args [" \u180e\u200b1234567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b1234567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}1234567890\u{200c}\u{200d}"
+  case 79: args [" \u180e\u200b123\u200d4\n567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b123\u200d4\n567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}123\u{200d}4567890\u{200c}\u{200d}"
+  case 15: args ["1234567\n\t890"]
+      expected "1234567\n\t890"
+      program  "1234567890"
+  case 61: args [" \u180e\u200b123\u200d4567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b123\u200d4567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}123\u{200d}4567890\u{200c}\u{200d}"
+  case 5: args ["\n\t"]
+      expected "\n\t"
+      program  ""
+  case 6: args [" \t\n\n\t"]
+      expected "\t\n\n\t"
+      program  ""
+  case 81: args [" \t\n\n"]
+      expected "\t\n\n"
+      program  ""
+  case 50: args [" \u180e\u200b12345\n67\n\t890\u200c\u200d "]
+      expected "\u180e\u200b12345\n67\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}1234567890\u{200c}\u{200d}"
+====================================================================================================
+task 459: 18 hold / 12 flip; sampled program: members [[136, '6']]; fails 78 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove uppercase substrings from a given string.
+  signature: fn remove_uppercase(a0: &str) -> String
+  stored asserts: [(['cAstyoUrFavoRitETVshoWs'], 'cstyoravoitshos'), (['wAtchTheinTernEtrAdIo'], 'wtchheinerntrdo'), (['VoicESeaRchAndreComMendaTionS'], 'oiceachndreomendaion')]
+  program:
+    fn remove_uppercase(a0: &str) -> String {
+      let mut result = String::new();
+      for c in a0.chars() {
+        if c.is_ascii_uppercase() {
+          continue;
+        }
+        result.push(c);
+      }
+      result
+    }
+  MBPP+ reference:
+    def remove_uppercase(str1):
+      return ''.join(c for c in str1 if c.islower())
+  case 5: args ["ThiS%^%!s&a(mY)TesTStR%i*ng"]
+      expected "hisamesting"
+      program  "hi%^%!s&a(m)est%i*ng"
+  case 28: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFG"]
+      expected "hisamseshisamsest"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m)sest"
+  case 17: args ["ThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 58: args ["CACDEFCThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngAG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 54: args ["ThBiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 33: args ["ThiS%^%!s&a(mY)TsesTStR%i*nAABCDEFGABCGEFG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i*n"
+  case 6: args ["ThiS%^%!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 80: args ["ThiS%^%!s&a(mY)TemsTStR%i*ngABFCDABCGEFAmCABCCDE"]
+      expected "hisamemstingm"
+      program  "hi%^%!s&a(m)emst%i*ngm"
+  case 65: args ["ThThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngiS%^%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG%iS*ngABCDABCDEFGEFG"]
+      expected "hhisamsestingihisamsestining"
+      program  "hhi%^%!s&a(m)sest%i*ngi%^%hi%^%!s&a(m)sest%i*n%i*ng"
+  case 64: args ["ABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)Tse%sTStThBiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFGR%i*n%!s&a(mY)TesTStR%i*ngDCEEFG"]
+      expected "hihisamsesthisamsestinginsamesting"
+      program  "%hihi%^%!s&a(m)se%sthi%^%!s&a(m)sest%i*ng%i*n%!s&a(m)est%i*ng"
+  case 62: args ["ThThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngiS%^A%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG%i*ngABCDABCDEFGEFG"]
+      expected "hhisamsestingihisamsestining"
+      program  "hhi%^%!s&a(m)sest%i*ngi%^%hi%^%!s&a(m)sest%i*n%i*ng"
+  case 71: args ["ThBiS%^%ABCDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ngEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hihihisamsestingsamestingsamsesting"
+      program  "hi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng!s&a(m)sest%i*ng"
+  case 92: args ["AABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTSetR%i*ngDCEEFGCGEFG"]
+      expected "hisamsestinghihisamsestinsameseting"
+      program  "hi%^%)!s&a(m)sest%i*ng%hihi%^%!s&a(m)sest%i*n%!s&a(m)eset%i*ng"
+  case 74: args ["ThBiS%^%ABCDEFG!s&a(mY)TsesThiS%^%ABCDEFABAABCDEGEFGDEFGThiS%^%)!s&a(mY)ABFCDAABCCDCEEFGTsesTStABCDEFGEFGTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamseshihisamsestting"
+      program  "hi%^%!s&a(m)seshi%^%hi%^%)!s&a(m)sestt%i*ng"
+  case 57: args ["ThiSS%^%ABCDEFGA(ABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFGT!s&a(mY)TsesTStR%i*ngABCDEFGThiS%^%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesAABCDEFGABCGEFGTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFG%i*ng"]
+      expected "hihisamsestingsamsestinghihisamseshisamsesting"
+      program  "hi%^%(hi%^%)!s&a(m)sest%i*ng!s&a(m)sest%i*nghi%^%hi%^%!s&a(m)seshi%^%)!s&a(m)sest%i*ng"
+  case 46: args ["ThThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngiS%^%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG%i*ngABCDABCDEFGEFG"]
+      expected "hhisamsestingihisamsestining"
+      program  "hhi%^%!s&a(m)sest%i*ngi%^%hi%^%!s&a(m)sest%i*n%i*ng"
+  case 24: args ["ThiS%^%ABCDEFG!ABCDEFGsTStR%i*ngABCDABCDEFGEFG"]
+      expected "histing"
+      program  "hi%^%!st%i*ng"
+  case 83: args ["AABCDEFGABCDEFGThiS%^%)!s&aC(mY)TsesTStR%i*ngABCGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%)!s&a(m)sest%i*ng"
+  case 82: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(m)Y)TsesTStABCDEFGEFG"]
+      expected "hisamseshisamsest"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m))sest"
+  case 87: args ["AABCDThiS%^%!s&a(mY)TemsTStR%i*ngEFGABCGEFG"]
+      expected "hisamemsting"
+      program  "hi%^%!s&a(m)emst%i*ng"
+  case 19: args ["ABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%)!s&a(m)sest%i*ng"
+  case 77: args ["ThiSS%^%ABCDEFGA(ABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFGT!s&a(ThiSS%^%ABCDEFGAABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFGT!s&a(mY)TsesTStR%i*ngABCDDEFGThiS%^%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFG%i*ng%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesAABCDEFGA
+      expected "hihisamsestingsahihisamsestingsamsestinghihisamseshisamsestinghisamseshisamsesting"
+      program  "hi%^%(hi%^%)!s&a(m)sest%i*ng!s&a(hi%^%hi%^%)!s&a(m)sest%i*ng!s&a(m)sest%i*nghi%^%hi%^%!s&a(m)seshi%^%)!s&a(m)sest%i*ng%hi%^%!s&a(m)seshi%^%)!s&a(m)sest%i*ng"
+  case 94: args ["ThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCA)TsesTStR%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFGi*ngGEFG"]
+      expected "hisamsestinsesthisamseshisamsesting"
+      program  "hi%^%!s&a(m)sest%i*n)sest%hi%^%!s&a(m)seshi%^%)!s&a(m)sesti*ng"
+  case 59: args ["ThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i**n"
+  case 86: args ["AABCDEFGABCDEFGThiS%^%)!s&aC(mY)TsesTStR%i*ngABCGEThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGFG"]
+      expected "hisamsestinghisamsestin"
+      program  "hi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n"
+  case 12: args ["ThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 95: args ["ACABCABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)Tse%sTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFGCDE"]
+      expected "hihisamsestinsamesting"
+      program  "%hihi%^%!s&a(m)se%st%i*n%!s&a(m)est%i*ng"
+  case 101: args ["CACDEFCThiS%^%ABCDEFG!s&a(mY)TsesTStR%%i*ngAG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%%i*ng"
+  case 90: args ["ThiSS%^%ABCDEFGT!s&a(mY)TsesTStR%i*ngABCDEFGThiS%^%)!s&a(mY)Tse%sTStR%i*ng"]
+      expected "hisamsestinghisamsesting"
+      program  "hi%^%!s&a(m)sest%i*nghi%^%)!s&a(m)se%st%i*ng"
+  case 98: args ["ThiSAAABFCDAABCCDCEEFGCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABSABFCDABCThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFGCGEFG%^%!s&a(mY)TsesTStR%i*ng"]
+      expected "hihisamsestinghisamsestinhihisamsestinsamestingsamsesting"
+      program  "hihi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n%hihi%^%!s&a(m)sest%i*n%!s&a(m)est%i*ng%^%!s&a(m)sest%i*ng"
+  case 97: args ["ThiSS%^%ABCDEFGAABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFGT!s&a(mY)TsesTStR%i*ngABCDEFGThiS%^%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCThiS%^%ABCABFCDABCDCEEFGDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ngEFG!s&a(mY)TsesTStR%i*ngDEFGEFG%i*ng"]
+      expected "hihisamsestingsamsestinghihisamseshisamsesthihihisamsestingsamestingsamsestinging"
+      program  "hi%^%hi%^%)!s&a(m)sest%i*ng!s&a(m)sest%i*nghi%^%hi%^%!s&a(m)seshi%^%)!s&a(m)sesthi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng!s&a(m)sest%i*ng%i*ng"
+  case 85: args ["ThThR%i*ngiS%^%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG%iS*ngABCDABCDEFGEFG"]
+      expected "hhingihisamsestining"
+      program  "hh%i*ngi%^%hi%^%!s&a(m)sest%i*n%i*ng"
+  case 78: args ["AABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABABFCDABCThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStRCEEFGCGEFG"]
+      expected "hisamsestinghisamsestinhihisamsestinsamest"
+      program  "hi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n%hihi%^%!s&a(m)sest%i*n%!s&a(m)est"
+  case 39: args ["A)TsesTStR%i*ng"]
+      expected "sesting"
+      program  ")sest%i*ng"
+  case 99: args ["ThThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngiS%^A%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGACDEFGEFG"]
+      expected "hhisamsestingihisamsestin"
+      program  "hhi%^%!s&a(m)sest%i*ngi%^%hi%^%!s&a(m)sest%i*n"
+  case 50: args ["ThiSS%^%ABCDEFGAABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFGT!s&a(mY)TsesTStR%i*ngABCDEFGThiS%^%ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFG%i*ng"]
+      expected "hihisamsestingsamsestinghihisamseshisamsesting"
+      program  "hi%^%hi%^%)!s&a(m)sest%i*ng!s&a(m)sest%i*nghi%^%hi%^%!s&a(m)seshi%^%)!s&a(m)sest%i*ng"
+  case 23: args ["AABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABCGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%)!s&a(m)sest%i*ng"
+  case 40: args ["ThiSS%^%ABCDEFGT!s&a(mY)TsesTStR%i*ngABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsestinghisamsesting"
+      program  "hi%^%!s&a(m)sest%i*nghi%^%)!s&a(m)sest%i*ng"
+  case 103: args ["ThABFCDABCDEFGGEFGiS%^%!%sg"]
+      expected "hisg"
+      program  "hi%^%!%sg"
+  case 7: args ["ThiS%^%!%s*ng"]
+      expected "hisng"
+      program  "hi%^%!%s*ng"
+  case 100: args ["ABCDEFGThiS%^%)!s&a(mY)TsesTThiS%^%!s&a(mY)TemsTStR%i*ngABAFCDABCGEFAmCABCCDEAEBCDEFGStR%i*ng"]
+      expected "hisamseshisamemstingmting"
+      program  "hi%^%)!s&a(m)seshi%^%!s&a(m)emst%i*ngmt%i*ng"
+  case 96: args ["AThiS%^%!s&a(mY)TsesTStR%i*nAABCDEFGABCGEFGBCDABCDG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i*n"
+  case 105: args ["ThisS%^%!s&a(mY)ABFCDABCDEFGEFGTsesTStRs%i*nAABCDEFGABCGEFG"]
+      expected "hissamsestsin"
+      program  "his%^%!s&a(m)sests%i*n"
+  case 56: args ["ABCDEFGThiS%^%)!s&a(mEFGStR%i*ng"]
+      expected "hisamting"
+      program  "hi%^%)!s&a(mt%i*ng"
+  case 69: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiSThiS%^%ABCABFCDABCDCEEFGDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(ThiS%^%!s&a(mY)TsesTStRs%i*nAABCDEFGABCGEFGmY)TesTStR%i*ngEFG!s&a(mY)TsesTStR%i*ng%^%)!s&a(mY)ABFCDAABCCDCEEFGTsesTStABCDEFGEFG"]
+      expected "hisamseshihihihisamsestingsahisamsestsinmestingsamsestingsamsest"
+      program  "hi%^%!s&a(m)seshihi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(hi%^%!s&a(m)sests%i*nm)est%i*ng!s&a(m)sest%i*ng%^%)!s&a(m)sest"
+  case 29: args ["ThiS%^%ABCABFCDABCDCEEFGDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ngEFG!s&a(mY)TsesTStR%i*ng"]
+      expected "hihihisamsestingsamestingsamsesting"
+      program  "hi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng!s&a(m)sest%i*ng"
+  case 26: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamseshisamsestingting"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m)sest%i*ngt%i*ng"
+  case 43: args ["ThiS%^%!s&a(mY)TsesTStR%i*CnAABCDGABCGEFG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i*n"
+  case 34: args ["ABCDEFGThiS%^%)!s&a(mY)TsesTAEBCDEFGStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%)!s&a(m)sest%i*ng"
+  case 63: args ["ABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)Tse%sTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFG"]
+      expected "hihisamsestinsamesting"
+      program  "%hihi%^%!s&a(m)se%st%i*n%!s&a(m)est%i*ng"
+  case 70: args ["ThiS%^%ABCABFCDABCDCEEFGDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ngEFG!ABFCDABCDCFGs&a(mY)TsesTStR%i*ng"]
+      expected "hihihisamsestingsamestingsamsesting"
+      program  "hi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng!s&a(m)sest%i*ng"
+  case 60: args ["ThiS%^%ABCABFCDABCDCEEFGDThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(ThiS%^%!s&a(mY)TsesTStRs%i*nAABCDEFGABCGEFGmY)TesTStR%i*ngEFG!s&a(mY)TsesTStR%i*ng"]
+      expected "hihihisamsestingsahisamsestsinmestingsamsesting"
+      program  "hi%^%hihi%^%!s&a(m)sest%i*ng%^%!s&a(hi%^%!s&a(m)sests%i*nm)est%i*ng!s&a(m)sest%i*ng"
+  case 48: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)ABFCDAABCCDCEEFGTsesTStABCDEFGEFG"]
+      expected "hisamseshisamsest"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m)sest"
+  case 75: args ["ThiS%^%!s&a(mY)TemsTStR%i*ngAmCABCCDE"]
+      expected "hisamemstingm"
+      program  "hi%^%!s&a(m)emst%i*ngm"
+  case 42: args ["AABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFGCGEFG"]
+      expected "hisamsestinghihisamsestinsamesting"
+      program  "hi%^%)!s&a(m)sest%i*ng%hihi%^%!s&a(m)sest%i*n%!s&a(m)est%i*ng"
+  case 66: args ["AABCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABABFCDABCThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFGCGEFG"]
+      expected "hisamsestinghisamsestinhihisamsestinsamesting"
+      program  "hi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n%hihi%^%!s&a(m)sest%i*n%!s&a(m)est%i*ng"
+  case 21: args ["ThiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ng"]
+      expected "hihisamsestingsamesting"
+      program  "hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng"
+  case 38: args ["ABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFG"]
+      expected "hihisamsestinsamesting"
+      program  "%hihi%^%!s&a(m)sest%i*n%!s&a(m)est%i*ng"
+  case 49: args ["ThiSS%^%ABCDEFG!s&a(mY)TsesTABCDEFGThiS%^%)!s%&a(mY)TsesTStR%i*ngStR%i*ng"]
+      expected "hisamseshisamsestingting"
+      program  "hi%^%!s&a(m)seshi%^%)!s%&a(m)sest%i*ngt%i*ng"
+  case 52: args ["ThiS%^%ABCDEFABAABCDEGEFGDEFGThiS%^%)!s&a(mY)ABFCDAABCCDCEEFGTsesTStABCDEFGEFG"]
+      expected "hihisamsest"
+      program  "hi%^%hi%^%)!s&a(m)sest"
+  case 45: args ["ThiS%^%!s&a(mY)TsesTStRs%i*nAABCDEFGABCGEFG"]
+      expected "hisamsestsin"
+      program  "hi%^%!s&a(m)sests%i*n"
+  case 22: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 36: args ["ThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i*n"
+  case 68: args ["ThiS%^%!s&a(mY)TemsTStR%i*ng"]
+      expected "hisamemsting"
+      program  "hi%^%!s&a(m)emst%i*ng"
+  case 53: args ["ThisS%^%!s&a(mY)TsesTStRs%i*nAABCDEFGABCGEFG"]
+      expected "hissamsestsin"
+      program  "his%^%!s&a(m)sests%i*n"
+  case 27: args ["ABFCDABCT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngS%^%!s&a(mY)TesTStR%i*ngDCEEFG"]
+      expected "hihisamsestingsamesting"
+      program  "%hihi%^%!s&a(m)sest%i*ng%^%!s&a(m)est%i*ng"
+  case 91: args ["AABThThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngiS%^%ABThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCGEFG%i*ngABCDABCDEFGEFGCDEFGABCDEFGThiS%^%)!s&aC(mY)TsesTStR%i*ngABCGEThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGFG"]
+      expected "hhisamsestingihisamsestininghisamsestinghisamsestin"
+      program  "hhi%^%!s&a(m)sest%i*ngi%^%hi%^%!s&a(m)sest%i*n%i*nghi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n"
+  case 76: args ["ThiS%^%!s&a(mY)(TemsTStR%i*ngAmCABCCDE"]
+      expected "hisamemstingm"
+      program  "hi%^%!s&a(m)(emst%i*ngm"
+  case 41: args ["ABFCDABCThiSS%^%ABCDEFGT!s&a(mY)TsesTStR%i*ngGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 61: args ["CABCABFCDABCThiSS%^%ABCDEFGT!s&a(mY)TsesTStR%i*ngGEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 35: args ["ThiSS%^%ABCDEFGT!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 44: args ["ThiS%^%!s&a(mY)TsesTStR%i*CnAABCDEFGABCA)TsesTStR%i*ngGEFG"]
+      expected "hisamsestinsesting"
+      program  "hi%^%!s&a(m)sest%i*n)sest%i*ng"
+  case 79: args ["AThBiS%^%ABCDEFG!s&a(mY)TsesThiS%^%ABCDEFABAABCDEGEFGDEFGThiS%^%)!s&a(mY)ABFCDAABCCDCEEFGTsesTStABCDEFGEFGTStR%i*ngABCDABCDEFGEFGABCDEGEFG"]
+      expected "hisamseshihisamsestting"
+      program  "hi%^%!s&a(m)seshi%^%hi%^%)!s&a(m)sestt%i*ng"
+  case 20: args ["ThiSS%^%ABCDEFG!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 16: args ["ThiS%^%ABCABFCDABCDCEEFGDEFG!s&a(mY)TsesTStR%i*ng"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 104: args ["CAThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFGBCDEEFG"]
+      expected "hisamseshisamsest"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m)sest"
+  case 67: args ["AAABFCDAABCCDCEEFGCDEFGABCDEFGThiS%^%)!s&a(mY)TsesTStR%i*ngABABFCDABCThiS%^%!s&a(mY)TsesTStR%i**CnAABCDGABCGEFGT%hiThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*n%!s&a(mY)TesTStR%i*ngDCEEFGCGEFG"]
+      expected "hisamsestinghisamsestinhihisamsestinsamesting"
+      program  "hi%^%)!s&a(m)sest%i*nghi%^%!s&a(m)sest%i**n%hihi%^%!s&a(m)sest%i*n%!s&a(m)est%i*ng"
+  case 84: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCsDEFGThiS%^%)!s&a(m)Y)TsesTStABCDEFGEFG"]
+      expected "hisamsesshisamsest"
+      program  "hi%^%!s&a(m)sesshi%^%)!s&a(m))sest"
+====================================================================================================
+task 471: 15 hold / 32 flip; sampled program: members [[30, '5'], [31, '5'], [179, '6']]; fails 49 of 104 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the product of the array multiplication modulo n.
+  signature: fn find_remainder(a0: Vec<i64>, a1: i64) -> i64
+  stored asserts: [([[100, 10, 5, 25, 35, 14], 11], 9), ([[1, 1, 1], 1], 0), ([[1, 2, 1], 2], 0)]
+  program:
+    fn find_remainder(a0: Vec<i64>, a1: i64) -> i64 {
+        let mut product = 1;
+        for i in a0.iter() {
+            product *= *i;
+        }
+        product % a1
+    }
+  MBPP+ reference:
+    def find_remainder(arr, n): 
+        from functools import reduce
+        return reduce(lambda x, y: x * y, arr) % n
+  case 83: args [[2000000, 2000000, 1000001, 1000000, 1000001, 2000000, 1000001], 2000001]
+      expected 1875001
+      program  275716
+  case 57: args [[1000001, 3000000, 2000001, 3000000], 10001]
+      expected 2709
+      program  3090
+  case 22: args [[1000000, 2000000, 10002, 3000000], 3000000]
+      expected 0
+      program  1593152
+  case 92: args [[2999999, 2000000, 1000001, 3000000], 1000000]
+      expected 0
+      program  -515328
+  case 101: args [[1000000, 2000000, 3000000, 1000000], 10002]
+      expected 384
+      program  -8848
+  case 12: args [[1000000, 2000000, 3000000, 1000000], 2000000]
+      expected 0
+      program  -171776
+  case 85: args [[1000000, 2000000, 3000000, 1000000, 1000000], 1999999]
+      expected 375000
+      program  -392286
+  case 70: args [[1000000, 2000000, 3000000, 1000000, 1000000], 2000000]
+      expected 0
+      program  -1521536
+  case 72: args [[2000000, 3000000, 10001, 3000000], 1000001]
+      expected 819983
+      program  -664442
+  case 63: args [[2000000, 2000000, 1000001, 1000000, 1000001, 2000000], 2000001]
+      expected 1750001
+      program  -674249
+  case 25: args [[1000000, 2000000, 3000000, 2000000, 1000000], 1000001]
+      expected 999989
+      program  69103
+  case 32: args [[2000000, 3000000, 2000000, 1000000], 1000000]
+      expected 0
+      program  208064
+  case 30: args [[1000000, 2000000, 10002, 3000000, 10002], 3000000]
+      expected 0
+      program  -498432
+  case 69: args [[2000000, 2999999, 10001, 3000000], 3000001]
+      expected 1986666
+      program  -1869531
+  case 46: args [[2999999, 10000, 2000000, 3000000], 2000000]
+      expected 0
+      program  -668928
+  case 79: args [[2000000, 2999999, 10001, 3000000], 1000000]
+      expected 0
+      program  -220544
+  case 17: args [[1000000, 2000000, 3000000, 1000000], 1000001]
+      expected 6
+      program  -753461
+  case 42: args [[2000000, 2000000, 1000001, 1000000, 2000000], 10001]
+      expected 9209
+      program  862
+  case 54: args [[1000000, 3000000, 2000000, 3000000], 10001]
+      expected 18
+      program  -3103
+  case 50: args [[2000000, 10001, 3000000, 10001], 10002]
+      expected 9954
+      program  -990
+  case 95: args [[1000000, 3000000, 2000001, 3000000, 1000000], 10001]
+      expected 8210
+      program  -634
+  case 14: args [[2000000, 1000001, 1000000, 2000000], 10001]
+      expected 404
+      program  -8345
+  case 76: args [[2000000, 1000001, 1000000, 2000000], 10002]
+      expected 6656
+      program  -5570
+  case 15: args [[2000000, 3000000, 3000000], 10002]
+      expected 8796
+      program  -9418
+  case 35: args [[1000000, 1000000, 2000000, 3000000, 1000000], 2000000]
+      expected 0
+      program  -1521536
+  case 67: args [[1000000, 2000000, 3000000, 1000000, 2000000], 10001]
+      expected 8801
+      program  2778
+  case 86: args [[2000000, 1000001, 2000001, 2000000], 2999999]
+      expected 1518519
+      program  -2750185
+  case 88: args [[2000000, 2999999, 10001, 3000000], 999999]
+      expected 120012
+      program  -387483
+  case 87: args [[2000000, 3000000, 10001, 3000001], 2000000]
+      expected 0
+      program  -220544
+  case 60: args [[1000001, 1000000, 10000, 3000000], 3000000]
+      expected 0
+      program  72384
+  case 99: args [[2000000, 3000000, 10001, 3000000], 2999999]
+      expected 1006667
+      program  -417206
+  case 93: args [[2000000, 10001, 3000000, 10002], 10001]
+      expected 0
+      program  -4446
+  case 75: args [[1000001, 1000000, 1000000, 1000000, 1000000], 10000]
+      expected 0
+      program  256
+  case 16: args [[2000000, 3000001, 3000000], 10002]
+      expected 8748
+      program  -9466
+  case 39: args [[1000000, 2000000, 3000000, 1000000], 10000]
+      expected 0
+      program  -1776
+  case 53: args [[2000000, 2000000, 3000000], 3000000]
+      expected 0
+      program  -1551616
+  case 20: args [[1000000, 2000000, 3000000, 2000000], 1000001]
+      expected 12
+      program  417712
+  case 56: args [[1000000, 3000000, 2000001, 3000000], 10001]
+      expected 918
+      program  7798
+  case 40: args [[2000000, 3000000, 1999999, 1000000, 1999999], 1000000]
+      expected 0
+      program  600960
+  case 77: args [[2000000, 2999999, 10001, 3000000], 1999999]
+      expected 1507500
+      program  -1845156
+  case 102: args [[2999999, 10000, 2000000, 3000000, 2000000], 1000001]
+      expected 480000
+      program  -575928
+  case 48: args [[1000000, 2000000, 3000000, 1000000], 10001]
+      expected 6
+      program  -9868
+  case 13: args [[2000000, 3000000, 3000000], 10001]
+      expected 1800
+      program  -4699
+  case 78: args [[1000000, 3000001, 2000000, 3000000, 1000000, 10002], 2000000]
+      expected 0
+      program  -27648
+  case 33: args [[2000000, 10001, 3000000, 10001], 10001]
+      expected 0
+      program  -4446
+  case 84: args [[1000000, 3000000, 2000001, 3000000], 10002]
+      expected 5550
+      program  6070
+  case 94: args [[2000000, 3000000, 3000000, 10001, 3000000], 1000000]
+      expected 0
+      program  -430848
+  case 52: args [[1000001, 1000000, 1000000, 1000000], 10000]
+      expected 0
+      program  6640
+  case 47: args [[1000000, 2000000, 3000000, 2000000], 10001]
+      expected 12
+      program  6765
+====================================================================================================
+task 598: 7 hold / 11 flip; sampled program: members [[57, '6'], [128, '6']]; fails 8 of 73 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check whether the given number is armstrong or not.
+  signature: fn armstrong_number(a0: i64) -> bool
+  stored asserts: [([153], True), ([259], False), ([4458], False)]
+  program:
+    fn armstrong_number(a0: i64) -> bool {
+      let mut sum = 0;
+      let mut temp = a0;
+      while temp > 0 {
+        let digit = temp % 10;
+        sum += digit.pow(3);
+        temp /= 10;
+      }
+      return sum == a0;
+    }
+  MBPP+ reference:
+    def armstrong_number(number):
+        order = len(str(number))
+        return sum([int(i) ** order for i in str(number)]) == number
+  case 6: args [2]
+      expected true
+      program  false
+  case 23: args [5]
+      expected true
+      program  false
+  case 57: args [8]
+      expected true
+      program  false
+  case 9: args [4]
+      expected true
+      program  false
+  case 45: args [6]
+      expected true
+      program  false
+  case 61: args [9]
+      expected true
+      program  false
+  case 3: args [3]
+      expected true
+      program  false
+  case 50: args [7]
+      expected true
+      program  false
+====================================================================================================
+task 623: 2 hold / 1 flip; sampled program: members [[140, '6']]; fails 4 of 52 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to compute the n-th power of each number in a list.
+  signature: fn nth_nums(a0: Vec<i64>, a1: i64) -> Vec<i64>
+  stored asserts: [([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2], [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]), ([[10, 20, 30], 3], [1000, 8000, 27000]), ([[12, 15], 5], [248832, 759375])]
+  program:
+    fn nth_nums(a0: Vec<i64>, a1: i64) -> Vec<i64> {
+        let mut res: Vec<i64> = Vec::new();
+        for i in 0..a0.len() {
+            let mut power = a0[i] as f64;
+            power = power.powf(a1 as f64);
+            res.push(power as i64);
+        }
+        res
+    }
+  MBPP+ reference:
+    def nth_nums(nums, n):
+     nth_nums = list(map(lambda x: x ** n, nums))
+     return nth_nums
+  case 22: args [[3, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100], 9]
+      expected [19683, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000]
+      program  [19683, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000]
+  case 23: args [[3, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77], 9]
+      expected [19683, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437]
+      program  [19683, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440]
+  case 36: args [[10, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77, 6, 50], 9]
+      expected [1000000000, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437, 10077696, 19
+      program  [1000000000, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440, 10077696, 19
+  case 27: args [[10, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77], 9]
+      expected [1000000000, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437]
+      program  [1000000000, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440]
+====================================================================================================
+task 794: 14 hold / 15 flip; sampled program: members [[71, '6']]; fails 16 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function that matches a string that has an 'a' followed by anything, ending in 'b'.
+  signature: fn text_starta_endb(a0: &str) -> bool
+  stored asserts: [(['aabbbb'], True), (['aabAbbbc'], False), (['accddbbjjj'], False)]
+  program:
+    fn text_starta_endb(a0: &str) -> bool {
+      a0.len() > 0 && a0.chars().nth(0).unwrap() == 'a' && a0.chars().nth(a0.len() - 1).unwrap() == 'b'
+    }
+  MBPP+ reference:
+    import re
+    def text_starta_endb(text):
+        patterns = 'a.*?b$'
+        return re.search(patterns,  text)
+  case 43: args ["xaaabbyz1323ababbbyz123bb"]
+      expected true
+      program  false
+  case 37: args ["xaabbyz1323ababbaaxyz123bbxbyz123bb"]
+      expected true
+      program  false
+  case 48: args ["xaabbayababb"]
+      expected true
+      program  false
+  case 79: args ["xa2axyz123bbb"]
+      expected true
+      program  false
+  case 72: args ["xaaabbyz1323ababbbyzaaabbbb"]
+      expected true
+      program  false
+  case 47: args ["xaaxyz123bbbb"]
+      expected true
+      program  false
+  case 97: args ["xaaabbyz1323ababbaaxyz12bbb"]
+      expected true
+      program  false
+  case 39: args ["xaaabbyz1323ababbaaxyz123bbxbyz123bb"]
+      expected true
+      program  false
+  case 86: args ["xaxaabbya1bxaabbyz1323ababbz123z123bbbb"]
+      expected true
+      program  false
+  case 54: args ["xaaabbyz1323aaaxyaaxyz123bbxyz123bbz12ab3bbxyz123bbbabbaaxyz123bbxbyz123bb"]
+      expected true
+      program  false
+  case 10: args ["xaabbyz1323ababb"]
+      expected true
+      program  false
+  case 73: args ["xaabbyz1323ababbaaxyz123bybxyz123bb"]
+      expected true
+      program  false
+  case 87: args ["xaabbya1bxaabbyz1323ababbz12xaabxaabbyz1231323ababbaBXbdUk3ayababb"]
+      expected true
+      program  false
+  case 17: args ["xaabbyz1323ababbaaxyz123bbxyz123bb"]
+      expected true
+      program  false
+  case 16: args ["xaabbyz1323ababbb"]
+      expected true
+      program  false
+  case 74: args ["xaaxyz123bbb"]
+      expected true
+      program  false
+====================================================================================================
+task 797: 29 hold / 2 flip; sampled program: members [[46, '6'], [93, '6']]; fails 10 of 102 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the sum of all odd natural numbers within the range l and r.
+  signature: fn sum_in_range(a0: i64, a1: i64) -> i64
+  stored asserts: [([2, 5], 8), ([5, 7], 12), ([7, 13], 40)]
+  program:
+    fn sum_in_range(l: i64, r: i64) -> i64 {
+      if l < 1 || r < 1 {
+        return 0;
+      }
+      let mut sum = 0;
+      for i in l..r + 1 {
+        if i % 2 != 0 {
+          sum += i;
+        }
+      }
+      sum
+    }
+  MBPP+ reference:
+    def sum_odd(n): 
+        terms = (n + 1) // 2
+        sum1 = terms * terms 
+        return sum1  
+    def sum_in_range(l,r): 
+        return sum_odd(r) - sum_odd(l - 1)
+  case 11: args [0, 100]
+      expected 2500
+      program  0
+  case 67: args [0, 99998]
+      expected 2499900001
+      program  0
+  case 5: args [0, 10000]
+      expected 25000000
+      program  0
+  case 21: args [0, 99]
+      expected 2500
+      program  0
+  case 85: args [0, 2]
+      expected 1
+      program  0
+  case 93: args [0, 96]
+      expected 2304
+      program  0
+  case 66: args [0, 98]
+      expected 2401
+      program  0
+  case 44: args [0, 100000]
+      expected 2500000000
+      program  0
+  case 48: args [0, 99999]
+      expected 2500000000
+      program  0
+  case 15: args [0, 1]
+      expected 1
+      program  0
+====================================================================================================
+task 800: 13 hold / 5 flip; sampled program: members [[3, '3'], [144, '6']]; fails 43 of 124 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove all whitespaces from a string.
+  signature: fn remove_all_spaces(a0: &str) -> String
+  stored asserts: [(['python  program'], 'pythonprogram'), (['python   programming    language'], 'pythonprogramminglanguage'), (['python                     program'], 'pythonprogram'), (['   python                     program'], 'pythonprogram')]
+  program:
+    fn remove_all_spaces(a0: &str) -> String {
+      let mut result = String::new();
+      for char in a0.chars() {
+        if !char.is_whitespace() {
+          result.push(char);
+        }
+      }
+      result
+    }
+  MBPP+ reference:
+    def remove_all_spaces(text):
+     return text.replace(' ', '')
+  case 48: args ["                     \t \n  python  \t \n  program  \t \n    \t \n      "]
+      expected "\t\npython\t\nprogram\t\n\t\n"
+      program  "pythonprogram"
+  case 106: args [" python  program                                                         python   program                                                    \t \n  pypythyonthon  \t \n m program  \t \n  python  \t \n  program  \t \n                  "]
+      expected "pythonprogrampythonprogram\t\npypythyonthon\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampypythyonthonmprogrampythonprogram"
+  case 36: args ["python\rprrogrpythonprogramminglanguageam"]
+      expected "python\rprrogrpythonprogramminglanguageam"
+      program  "pythonprrogrpythonprogramminglanguageam"
+  case 46: args ["python  program                                                         python  program                                                    \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n           "]
+      expected "pythonprogrampythonprogram\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampythonmprogrampythonprogram"
+  case 90: args [" \t \n  pypthon  \t \n  program \n    \t \n "]
+      expected "\t\npypthon\t\nprogram\n\t\n"
+      program  "pypthonprogram"
+  case 45: args ["  prypython\u000bprogramon  "]
+      expected "prypython\u000bprogramon"
+      program  "prypythonprogramon"
+  case 98: args ["python  pprogrpythonprogrammi python\tprogram        python  program                                                          "]
+      expected "pythonpprogrpythonprogrammipython\tprogrampythonprogram"
+      program  "pythonpprogrpythonprogrammipythonprogrampythonprogram"
+  case 31: args [" \t \n  pytprogrpythonprogramminglanguageamhon  \t \n  program  \t \n  python  \t \n  program  \t \n "]
+      expected "\t\npytprogrpythonprogramminglanguageamhon\t\nprogram\t\npython\t\nprogram\t\n"
+      program  "pytprogrpythonprogramminglanguageamhonprogrampythonprogram"
+  case 94: args ["   pyt hon     python\fprogram                program                              python                     program                           "]
+      expected "pythonpython\fprogramprogrampythonprogram"
+      program  "pythonpythonprogramprogrampythonprogram"
+  case 100: args [" python  program                                                         python   program                                                    \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n                  "]
+      expected "pythonprogrampythonprogram\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampythonmprogrampythonprogram"
+  case 78: args ["python  program                                                         python  program       python\tprogram                                                               "]
+      expected "pythonprogrampythonprogrampython\tprogram"
+      program  "pythonprogrampythonprogrampythonprogram"
+  case 121: args ["python  program            pr                                             python  p pr         python                     program                                       rogram                                                    \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n    
+      expected "pythonprogramprpythonpprpythonprogramrogram\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogramprpythonpprpythonprogramrogrampythonmprogrampythonprogram"
+  case 114: args [" python\tprogram   g    "]
+      expected "python\tprogramg"
+      program  "pythonprogramg"
+  case 58: args ["   python                     program                  ython\rprogram            python                     program                           "]
+      expected "pythonprogramython\rprogrampythonprogram"
+      program  "pythonprogramythonprogrampythonprogram"
+  case 38: args [" \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n "]
+      expected "\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonmprogrampythonprogram"
+  case 93: args ["python\rprogrpythonpguageam"]
+      expected "python\rprogrpythonpguageam"
+      program  "pythonprogrpythonpguageam"
+  case 119: args ["python  program                                                         python  program                                                    \t \n  python  \t \n m program  \t \n  pyth     "]
+      expected "pythonprogrampythonprogram\t\npython\t\nmprogram\t\npyth"
+      program  "pythonprogrampythonprogrampythonmprogrampyth"
+  case 25: args [" \t \n  python  \t \n  program  \t \n    \t \n "]
+      expected "\t\npython\t\nprogram\t\n\t\n"
+      program  "pythonprogram"
+  case 96: args [" \t \n  pytprogrpythonprogramminglanguprageamhon  \t \n  program  \t \n  python  \t \n  program  \t \n "]
+      expected "\t\npytprogrpythonprogramminglanguprageamhon\t\nprogram\t\npython\t\nprogram\t\n"
+      program  "pytprogrpythonprogramminglanguprageamhonprogrampythonprogram"
+  case 30: args ["python\rprogrpythonprogramminglanguageam"]
+      expected "python\rprogrpythonprogramminglanguageam"
+      program  "pythonprogrpythonprogramminglanguageam"
+  case 89: args ["   python                     program                              python                                     \t \n  python  \t \n  program  \t \n    \t \n                 "]
+      expected "pythonprogrampython\t\npython\t\nprogram\t\n\t\n"
+      program  "pythonprogrampythonpythonprogram"
+  case 56: args [" \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \nython\rprogram"]
+      expected "\t\npython\t\nmprogram\t\npython\t\nprogram\t\nython\rprogram"
+      program  "pythonmprogrampythonprogramythonprogram"
+  case 50: args ["ython\rprogram"]
+      expected "ython\rprogram"
+      program  "ythonprogram"
+  case 27: args ["python  prograpython\nprogramm                                                          "]
+      expected "pythonprograpython\nprogramm"
+      program  "pythonprograpythonprogramm"
+  case 104: args [" python  program                                                         python   program                                                    \t \n  py                           python   programming    language        pytprogrammhonprogramminglanguage                      thon  \t \n m program  \t 
+      expected "pythonprogrampythonprogram\t\npypythonprogramminglanguagepytprogrammhonprogramminglanguagethon\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampypythonprogramminglanguagepytprogrammhonprogramminglanguagethonmprogrampythonprogram"
+  case 22: args ["python\fprogram"]
+      expected "python\fprogram"
+      program  "pythonprogram"
+  case 40: args ["python  prograpython\nprogramm                                                        "]
+      expected "pythonprograpython\nprogramm"
+      program  "pythonprograpythonprogramm"
+  case 57: args ["python  program            pr                                             python  program                                                    \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n           "]
+      expected "pythonprogramprpythonprogram\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogramprpythonprogrampythonmprogrampythonprogram"
+  case 105: args ["   python pythpython\tprogramon                    program                              "]
+      expected "pythonpythpython\tprogramonprogram"
+      program  "pythonpythpythonprogramonprogram"
+  case 16: args ["python\nprogram"]
+      expected "python\nprogram"
+      program  "pythonprogram"
+  case 41: args [" python\tprogram       "]
+      expected "python\tprogram"
+      program  "pythonprogram"
+  case 107: args ["python  prograpython\nprogram m                                                        "]
+      expected "pythonprograpython\nprogramm"
+      program  "pythonprograpythonprogramm"
+  case 20: args ["python\tprogram"]
+      expected "python\tprogram"
+      program  "pythonprogram"
+  case 64: args [" \t \n  pythonprogrpythonprogramminglanguageam  \t \n  program  \t \n    \t \n "]
+      expected "\t\npythonprogrpythonprogramminglanguageam\t\nprogram\t\n\t\n"
+      program  "pythonprogrpythonprogramminglanguageamprogram"
+  case 43: args ["pythyon\u000bprogram"]
+      expected "pythyon\u000bprogram"
+      program  "pythyonprogram"
+  case 71: args ["python  prograpython\nprogramm                                                      python\rprrogrpythonprogramminglanguageam  "]
+      expected "pythonprograpython\nprogrammpython\rprrogrpythonprogramminglanguageam"
+      program  "pythonprograpythonprogrammpythonprrogrpythonprogramminglanguageam"
+  case 79: args ["pythpython\tprogramon"]
+      expected "pythpython\tprogramon"
+      program  "pythpythonprogramon"
+  case 81: args [" \t \n  python  \t \n  program \n    \t \n "]
+      expected "\t\npython\t\nprogram\n\t\n"
+      program  "pythonprogram"
+  case 21: args ["python\rprogram"]
+      expected "python\rprogram"
+      program  "pythonprogram"
+  case 84: args [" \t \n  pythonprogrpythonprogramminglanguageam  \t \n  progra m  \t \n    \t \n "]
+      expected "\t\npythonprogrpythonprogramminglanguageam\t\nprogram\t\n\t\n"
+      program  "pythonprogrpythonprogramminglanguageamprogram"
+  case 60: args [" \t \n  python  \t \n m progroam  \t \n  pythoon  \t \n  program  \t \nython\rprogram"]
+      expected "\t\npython\t\nmprogroam\t\npythoon\t\nprogram\t\nython\rprogram"
+      program  "pythonmprogroampythoonprogramythonprogram"
+  case 19: args [" \t \n  python  \t \n  program  \t \n  python  \t \n  program  \t \n "]
+      expected "\t\npython\t\nprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogram"
+  case 23: args ["python\u000bprogram"]
+      expected "python\u000bprogram"
+      program  "pythonprogram"
+

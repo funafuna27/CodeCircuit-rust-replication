@@ -1,0 +1,1527 @@
+44 mixed tasks; one flip each (stream [20261023, 21]); failing cases shown: 6 (stream [20261023, 22])
+====================================================================================================
+task 3: 1 hold / 9 flip; sampled program: members [[8, '3']]; fails 1 of 107 cases (0 panics); base agrees with stored asserts: False
+  MBPP prompt: Write a python function to identify non-prime numbers.
+  signature: fn is_not_prime(a0: i64) -> bool
+  stored asserts: [([2], False), ([10], True), ([35], True), ([37], False)]
+  program:
+    fn is_not_prime(a0: i64) -> bool {
+        if a0 <= 1 {
+            return false;
+        }
+        let mut i = 2;
+        while i * i <= a0 {
+            if a0 % i == 0 {
+                return true;
+            }
+            i += 1;
+        }
+        false
+    }
+  MBPP+ reference:
+    import math
+    def is_not_prime(n):
+        if n == 1:
+            return True
+        for i in range(2, int(math.sqrt(n))+1):
+            if n % i == 0:
+                return True
+        return False
+  case 0 (base): args [1]
+      expected true
+      program  false
+====================================================================================================
+task 6: 4 hold / 4 flip; sampled program: members [[19, '3']]; fails 24 of 111 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether the two numbers differ at one bit position only or not.
+  signature: fn differ_At_One_Bit_Pos(a0: i64, a1: i64) -> bool
+  stored asserts: [([13, 9], True), ([15, 8], False), ([2, 4], False), ([2, 3], True), ([5, 1], True), ([1, 5], True)]
+  program:
+    fn differ_At_One_Bit_Pos(a0: i64, a1: i64) -> bool {
+        let mask = 0xAAAAAAAA;
+        let a0_mask = a0 & mask;
+        let a1_mask = a1 & mask;
+        let a0_diff = a0_mask ^ a1_mask;
+        return (a0_diff == 0) as bool
+    }
+  MBPP+ reference:
+    def is_Power_Of_Two(x: int): 
+        return x > 0 and (x & (x - 1)) == 0
+    def differ_At_One_Bit_Pos(a: int,b: int):
+        return is_Power_Of_Two(a ^ b)
+  case 30: args [-101, -101]
+      expected false
+      program  true
+  case 24: args [-2, -2]
+      expected false
+      program  true
+  case 21: args [10, 10]
+      expected false
+      program  true
+  case 69: args [-123456789, -123456789]
+      expected false
+      program  true
+  case 6: args [0, 0]
+      expected false
+      program  true
+  case 67: args [-49, -102]
+      expected false
+      program  true
+====================================================================================================
+task 56: 16 hold / 2 flip; sampled program: members [[159, '6']]; fails 1 of 125 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check if a given number is one less than twice its reverse.
+  signature: fn check(a0: i64) -> bool
+  stored asserts: [([70], False), ([23], False), ([73], True)]
+  program:
+    fn check(a0: i64) -> bool {
+        let a = a0.to_string();
+        let b = a.chars().rev().collect::<String>();
+        if a == b {
+            return false;
+        }
+        let a = a.clone();
+        let b = b.clone();
+        let c = a.parse::<i64>().unwrap();
+        let d = b.parse::<i64>().unwrap();
+        if c + 1 == d * 2 {
+            return true;
+        }
+        false
+    }
+  MBPP+ reference:
+    def check(n):    
+        return n == 2 * int(str(n)[::-1]) - 1
+  case 4: args [1]
+      expected true
+      program  false
+====================================================================================================
+task 58: 11 hold / 8 flip; sampled program: members [[2, '3'], [15, '3'], [85, '6']]...; fails 28 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether the given two integers have opposite sign or not.
+  signature: fn opposite_Signs(a0: i64, a1: i64) -> bool
+  stored asserts: [([1, -2], True), ([3, 2], False), ([-10, -10], False), ([-2, 2], True)]
+  program:
+    fn opposite_Signs(a0: i64, a1: i64) -> bool {
+      return a0 * a1 < 0;
+    }
+  MBPP+ reference:
+    def opposite_Signs(x,y): 
+        return ((x ^ y) < 0)
+  case 93: args [-987654319, -1000000000003]
+      expected false
+      program  true
+  case 61: args [-987654319, -1000000000000]
+      expected false
+      program  true
+  case 68: args [-1000000000000, -987654319]
+      expected false
+      program  true
+  case 70: args [1000000000001, 987654321]
+      expected false
+      program  true
+  case 92: args [-1000000000002, 987654322]
+      expected true
+      program  false
+  case 38: args [-1000000000000, -987654320]
+      expected false
+      program  true
+====================================================================================================
+task 77: 5 hold / 1 flip; sampled program: members [[3, '3']]; fails 35 of 60 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find whether a number is divisible by 11.
+  signature: fn is_Diff(a0: i64) -> bool
+  stored asserts: [([12345], False), ([1212112], True), ([1212], False)]
+  program:
+    fn is_Diff(a0: i64) -> bool {
+      let sum = a0.clone();
+      let mut sum_even = 0;
+      for i in 0..a0.clone() {
+        sum_even += i;
+      }
+      let diff = sum_even.clone();
+      if diff % 11 == 0 {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  MBPP+ reference:
+    def is_Diff(n): 
+        return n % 11 == 0
+  case 14: args [-999]
+      expected false
+      program  true
+  case 39: args [-12346]
+      expected false
+      program  true
+  case 36: args [-53]
+      expected false
+      program  true
+  case 22: args [-54]
+      expected false
+      program  true
+  case 9: args [1002]
+      expected false
+      program  true
+  case 32: args [-38]
+      expected false
+      program  true
+====================================================================================================
+task 89: 1 hold / 14 flip; sampled program: members [[123, '6'], [156, '6']]; fails 63 of 103 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the closest smaller number than n.
+  signature: fn closest_num(a0: i64) -> i64
+  stored asserts: [([11], 10), ([7], 6), ([12], 11)]
+  program:
+    fn closest_num(a0: i64) -> i64 {
+        let mut min = a0;
+        for i in 1..=1000 {
+            if i < a0 {
+                min = i;
+            }
+        }
+        min
+    }
+  MBPP+ reference:
+    def closest_num(N):
+      return (N - 1)
+  case 10: args [-36]
+      expected -37
+      program  -36
+  case 62: args [-23]
+      expected -24
+      program  -23
+  case 51: args [-28]
+      expected -29
+      program  -28
+  case 91: args [-9]
+      expected -10
+      program  -9
+  case 45: args [-51]
+      expected -52
+      program  -51
+  case 4: args [0]
+      expected -1
+      program  0
+====================================================================================================
+task 113: 7 hold / 49 flip; sampled program: members [[32, '5'], [42, '6'], [45, '6']]...; fails 5 of 120 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check if a string represents an integer or not.
+  signature: fn check_integer(a0: &str) -> bool
+  stored asserts: [(['python'], False), (['1'], True), (['12345'], True)]
+  program:
+    fn check_integer(a0: &str) -> bool {
+      let a1 = a0.parse::<i32>();
+      a1.is_ok()
+    }
+  MBPP+ reference:
+    def check_integer(text):
+     text = text.strip()
+     if len(text) < 1:
+        return None
+     else:
+        if text[0] in '+-':
+            text = text[1:]
+        return text.isdigit()
+  case 8: args ["25    "]
+      expected true
+      program  false
+  case 7: args ["   15"]
+      expected true
+      program  false
+  case 9: args ["  -200   "]
+      expected true
+      program  false
+  case 61: args ["  -2000   "]
+      expected true
+      program  false
+  case 87: args ["    15"]
+      expected true
+      program  false
+====================================================================================================
+task 118: 20 hold / 49 flip; sampled program: members [[53, '6'], [102, '6']]; fails 21 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to convert a string to a list of strings split on the space character.
+  signature: fn string_to_list(a0: &str) -> Vec<String>
+  stored asserts: [(['python programming'], ['python', 'programming']), (['lists tuples strings'], ['lists', 'tuples', 'strings']), (['write a program'], ['write', 'a', 'program'])]
+  program:
+    fn string_to_list(a0: &str) -> Vec<String> {
+      let mut v = Vec::new();
+      a0.split_whitespace().for_each(|s| v.push(s.to_string()));
+      v
+    }
+  MBPP+ reference:
+    def string_to_list(string): 
+        return string.split(" ")
+  case 91: args ["string1,     st ring2,languag5678e  ng      string3"]
+      expected ["string1,", "", "", "", "", "st", "ring2,languag5678e", "", "ng", "", "", "", "", "", "string3"]
+      program  ["string1,", "st", "ring2,languag5678e", "ng", "string3"]
+  case 104: args ["lan12334 5678  9101gua g5678e  ng    "]
+      expected ["lan12334", "5678", "", "9101gua", "g5678e", "", "ng", "", "", "", ""]
+      program  ["lan12334", "5678", "9101gua", "g5678e", "ng"]
+  case 72: args ["langua g5678e  ng    "]
+      expected ["langua", "g5678e", "", "ng", "", "", "", ""]
+      program  ["langua", "g5678e", "ng"]
+  case 70: args ["12334 5678  9101"]
+      expected ["12334", "5678", "", "9101"]
+      program  ["12334", "5678", "9101"]
+  case 87: args ["languPythonage  ngn    "]
+      expected ["languPythonage", "", "ngn", "", "", "", ""]
+      program  ["languPythonage", "ngn"]
+  case 3: args [""]
+      expected [""]
+      program  []
+====================================================================================================
+task 128: 2 hold / 1 flip; sampled program: members [[27, '5']]; fails 57 of 107 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find words that are longer than n characters from a given list of words.
+  signature: fn long_words(a0: i64, a1: &str) -> Vec<String>
+  stored asserts: [([3, 'python is a programming language'], ['python', 'programming', 'language']), ([2, 'writing a program'], ['writing', 'program']), ([5, 'sorting list'], ['sorting'])]
+  program:
+    fn long_words(a0: i64, a1: &str) -> Vec<String> {
+        let mut long_words = Vec::new();
+        for word in a1.split_whitespace() {
+            if word.len() > 5 {
+                long_words.push(word.to_string());
+            }
+        }
+        long_words
+    }
+  MBPP+ reference:
+    def long_words(n, s):
+        return list(filter(lambda x: len(x) > n, s.split(' ')))
+  case 79: args [11, "heogramming language"]
+      expected []
+      program  ["heogramming", "language"]
+  case 54: args [99, "heogramming langualaneguagege"]
+      expected []
+      program  ["heogramming", "langualaneguagege"]
+  case 72: args [9, "helloh python is a programminlaneguageg language"]
+      expected ["programminlaneguageg"]
+      program  ["helloh", "python", "programminlaneguageg", "language"]
+  case 65: args [9, "thisisaverylongwordnopqrsw teseting wordlengths"]
+      expected ["thisisaverylongwordnopqrsw", "wordlengths"]
+      program  ["thisisaverylongwordnopqrsw", "teseting", "wordlengths"]
+  case 35: args [10, "helloh python is a programming language"]
+      expected ["programming"]
+      program  ["helloh", "python", "programming", "language"]
+  case 103: args [100, "hlello"]
+      expected []
+      program  ["hlello"]
+====================================================================================================
+task 167: 4 hold / 8 flip; sampled program: members [[12, '3']]; fails 5 of 111 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the smallest power of 2 greater than or equal to n.
+  signature: fn next_power_of_2(a0: i64) -> i64
+  stored asserts: [([0], 1), ([5], 8), ([17], 32)]
+  program:
+    fn next_power_of_2(a0: i64) -> i64 {
+        let mut n = a0;
+        let mut result = 1;
+        while n != 0 {
+            n >>= 1;
+            result <<= 1;
+        }
+        result
+    }
+  MBPP+ reference:
+    def next_power_of_2(n): 
+      if n and not n & (n - 1):
+        return n
+      res = 1
+      while n != 0: 
+        n >>= 1
+        res <<= 1
+      return res;
+  case 4: args [2]
+      expected 2
+      program  4
+  case 5: args [8]
+      expected 8
+      program  16
+  case 96: args [4]
+      expected 4
+      program  8
+  case 3: args [1]
+      expected 1
+      program  2
+  case 6: args [128]
+      expected 128
+      program  256
+====================================================================================================
+task 227: 13 hold / 2 flip; sampled program: members [[38, '5']]; fails 14 of 26 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find minimum of three numbers.
+  signature: fn min_of_three(a0: i64, a1: i64, a2: i64) -> i64
+  stored asserts: [([10, 20, 0], 0), ([19, 15, 18], 15), ([-10, -20, -30], -30)]
+  program:
+    fn min_of_three(a0: i64, a1: i64, a2: i64) -> i64 {
+        if a1 < a0 {
+            if a2 < a1 {
+                return a2;
+            } else {
+                return a1;
+            }
+        } else if a2 < a1 {
+            return a2;
+        } else {
+            return a1;
+        }
+    }
+  MBPP+ reference:
+    def min_of_three(a,b,c): 
+      return min(a, b, c)
+  case 16: args [3000000, 999999998, 1000000000]
+      expected 3000000
+      program  999999998
+  case 21: args [2000001, 1000000000, 1000000000]
+      expected 2000001
+      program  1000000000
+  case 6: args [999999, 2000000, 2000000]
+      expected 999999
+      program  2000000
+  case 12: args [999999, 999999999, 999999998]
+      expected 999999
+      program  999999998
+  case 15: args [1000001, 999999998, 2000000]
+      expected 1000001
+      program  2000000
+  case 3: args [1000000, 2000000, 3000000]
+      expected 1000000
+      program  2000000
+====================================================================================================
+task 242: 3 hold / 1 flip; sampled program: members [[22, '5'], [23, '5'], [28, '5']]; fails 17 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to count the total number of characters in a string.
+  signature: fn count_charac(a0: &str) -> i64
+  stored asserts: [(['python programming'], 18), (['language'], 8), (['words'], 5)]
+  program:
+    fn count_charac(a0: &str) -> i64 {
+        a0.len() as i64
+    }
+  MBPP+ reference:
+    def count_charac(str1):
+        return len(str1)
+  case 65: args ["aaccaaccVaccMPNwvVNMPNwcNMccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvVPNwvcNMaacccMPNwvVMPNwvwPNccMPNwVVV"]
+      expected 139
+      program  149
+  case 59: args ["ccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvV"]
+      expected 78
+      program  88
+  case 15: args ["\u0262\u1d1caaccMPNwv\u1d0d\u026a\u1d07\ua731"]
+      expected 15
+      program  25
+  case 98: args ["aaccaaccVaccMPNwvVNMPNwcNMvccMPcMPNwvVNvaaacccaac\u0262\u1d1caaccMPNwv\u1d0daacccMPNwvVMPNwv\u026a\u1d07\ua731cMPNwccMPcMPNwvVNwvVcNwvVPNwvcNMaacccMPNwvVMPNwvwPNccMPNwVVV"]
+      expected 140
+      program  150
+  case 48: args ["\u0262\u1d1caa\u0262ccMPNwv\u1d0d\u026a\u1d07\ua731"]
+      expected 16
+      program  27
+  case 37: args ["\u0262\u1d1caaccMPNwv\u1d0daccaaccMPNwccMPcMPNwvVNwvvVvMPccMPVNwvV\u026a\u1d07\ua731"]
+      expected 54
+      program  64
+====================================================================================================
+task 244: 1 hold / 2 flip; sampled program: members [[58, '6']]; fails 8 of 26 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the next perfect square greater than a given number.
+  signature: fn next_Perfect_Square(a0: i64) -> i64
+  stored asserts: [([35], 36), ([6], 9), ([9], 16)]
+  program:
+    fn next_Perfect_Square(a0: i64) -> i64 {
+      let mut square = 0;
+      let mut i = 1;
+      while square <= a0 {
+        let current_square = i * i;
+        if current_square > a0 {
+          break;
+        }
+        square = current_square;
+        i += 1;
+      }
+      i * i
+    }
+  MBPP+ reference:
+    import math  
+    def next_Perfect_Square(N): 
+        if N < 0:
+            return 0
+        nextN = math.floor(math.sqrt(N)) + 1
+        return nextN * nextN
+  case 22: args [-9]
+      expected 0
+      program  1
+  case 23: args [-6]
+      expected 0
+      program  1
+  case 14: args [-11]
+      expected 0
+      program  1
+  case 6: args [-10]
+      expected 0
+      program  1
+  case 3: args [-5]
+      expected 0
+      program  1
+  case 16: args [-1]
+      expected 0
+      program  1
+====================================================================================================
+task 269: 5 hold / 4 flip; sampled program: members [[34, '5']]; fails 14 of 82 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the ascii value of a character.
+  signature: fn ascii_value(a0: &str) -> i64
+  stored asserts: [(['A'], 65), (['R'], 82), (['S'], 83)]
+  program:
+    fn ascii_value(a0: &str) -> i64 {
+      a0.as_bytes().iter().map(|&b| b as u8).sum::<u8>() as i64
+    }
+  MBPP+ reference:
+    def ascii_value(k):
+      return ord(k)
+  case 23: args ["\u00e9"]
+      expected 233
+      program  108
+  case 29: args ["\u0080"]
+      expected 128
+      program  66
+  case 13: args ["\u03c0"]
+      expected 960
+      program  79
+  case 4: args ["\u00ae"]
+      expected 174
+      program  112
+  case 30: args ["\u2122"]
+      expected 8482
+      program  8
+  case 26: args ["\u2665"]
+      expected 9829
+      program  32
+====================================================================================================
+task 283: 1 hold / 1 flip; sampled program: members [[6, '3']]; fails 1 of 107 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself.
+  signature: fn validate(a0: i64) -> bool
+  stored asserts: [([1234], True), ([51241], False), ([321], True)]
+  program:
+    fn validate(a0: i64) -> bool {
+        let mut digit_counts = [0; 10];
+        let mut number = a0;
+        while number > 0 {
+            let digit = number % 10;
+            digit_counts[digit as usize] += 1;
+            number /= 10;
+        }
+        for i in 0..10 {
+            if digit_counts[i] > i {
+                return false;
+            }
+        }
+        true
+    }
+  MBPP+ reference:
+    def validate(n): 
+        digits = [int(digit) for digit in str(n)]
+        return all(digit >= digits.count(digit) for digit in digits)
+  case 39: args [0]
+      expected false
+      program  true
+====================================================================================================
+task 285: 24 hold / 17 flip; sampled program: members [[175, '6']]; fails 2 of 104 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function that checks whether a string contains the 'a' character followed by two or three 'b' characters.
+  signature: fn text_match_two_three(a0: &str) -> bool
+  stored asserts: [(['ac'], False), (['dc'], False), (['abbbba'], True)]
+  program:
+    fn text_match_two_three(a0: &str) -> bool {
+        a0.chars().enumerate().any(|(_, c)| c == 'b' && c == 'b' && a0.len() >= 3 && a0.len() >= 2)
+    }
+  MBPP+ reference:
+    import re
+    def text_match_two_three(text):
+        patterns = 'ab{2,3}'
+        return re.search(patterns, text) is not None
+  case 63: args ["vbCTq"]
+      expected false
+      program  true
+  case 77: args ["iivbCTqcxhxicicicxhxicixxhxhhixxhxiicKDZDlWIDTdicixhRhxicicicxhxhicixxhxhhixxhxhhxhhhxh"]
+      expected false
+      program  true
+====================================================================================================
+task 292: 3 hold / 17 flip; sampled program: members [[89, '6'], [150, '6']]; fails 25 of 103 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find quotient of two numbers (rounded down to the nearest integer).
+  signature: fn find(a0: i64, a1: i64) -> i64
+  stored asserts: [([10, 3], 3), ([4, 2], 2), ([20, 5], 4)]
+  program:
+    fn find(a0: i64, a1: i64) -> i64 {
+        let quotient = a0 as f64 / a1 as f64;
+        let quotient = quotient.round() as i64;
+        quotient
+    }
+  MBPP+ reference:
+    def find(n,m):  
+        return n // m
+  case 38: args [-2, 6]
+      expected -1
+      program  0
+  case 56: args [6, 7]
+      expected 0
+      program  1
+  case 96: args [39, 8]
+      expected 4
+      program  5
+  case 82: args [-1, 6]
+      expected -1
+      program  0
+  case 57: args [3, 4]
+      expected 0
+      program  1
+  case 47: args [4, 5]
+      expected 0
+      program  1
+====================================================================================================
+task 397: 12 hold / 1 flip; sampled program: members [[95, '6']]; fails 55 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the median of three numbers.
+  signature: fn median_numbers(a0: i64, a1: i64, a2: i64) -> f64
+  stored asserts: [([25, 55, 65], 55.0), ([20, 10, 30], 20.0), ([15, 45, 75], 45.0)]
+  program:
+    fn median_numbers(a0: i64, a1: i64, a2: i64) -> f64 {
+      let sorted = [a0, a1, a2].to_vec();
+      let middle = sorted.len() / 2;
+      let median = if sorted[middle] <= sorted[middle - 1] {
+        sorted[middle - 1] as f64
+      } else {
+        sorted[middle] as f64
+      };
+      median
+    }
+  MBPP+ reference:
+    def median_numbers(a,b,c):
+        return sorted([a,b,c])[1]
+  case 22: args [-20, 57, -16]
+      expected -16.0
+      program  57.0
+  case 44: args [3, 4, 3]
+      expected 3.0
+      program  4.0
+  case 43: args [31, -29, -29]
+      expected -29.0
+      program  31.0
+  case 97: args [4, 5, 4]
+      expected 4.0
+      program  5.0
+  case 99: args [57, 0, 14]
+      expected 14.0
+      program  57.0
+  case 76: args [-66, 55, -22]
+      expected -22.0
+      program  55.0
+====================================================================================================
+task 406: 30 hold / 11 flip; sampled program: members [[98, '6']]; fails 24 of 85 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find whether the parity of a given number is odd.
+  signature: fn find_Parity(a0: i64) -> bool
+  stored asserts: [([12], False), ([7], True), ([10], False)]
+  program:
+    fn find_Parity(a0: i64) -> bool {
+      let a1 = a0 % 2;
+      return a1 == 1;
+    }
+  MBPP+ reference:
+    def find_Parity(x): 
+        return x % 2 != 0
+  case 68: args [-97]
+      expected true
+      program  false
+  case 62: args [-35]
+      expected true
+      program  false
+  case 8: args [-9]
+      expected true
+      program  false
+  case 43: args [-59]
+      expected true
+      program  false
+  case 30: args [-43]
+      expected true
+      program  false
+  case 24: args [-7]
+      expected true
+      program  false
+====================================================================================================
+task 428: 13 hold / 1 flip; sampled program: members [[97, '6']]; fails 1 of 97 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to sort the given array by using shell sort.
+  signature: fn shell_sort(a0: Vec<i64>) -> Vec<i64>
+  stored asserts: [([[12, 23, 4, 5, 3, 2, 12, 81, 56, 95]], [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]), ([[24, 22, 39, 34, 87, 73, 68]], [22, 24, 34, 39, 68, 73, 87]), ([[32, 30, 16, 96, 82, 83, 74]], [16, 30, 32, 74, 82, 83, 96])]
+  program:
+    fn shell_sort(a0: Vec<i64>) -> Vec<i64> {
+        let n = a0.len();
+        let gap = 1;
+        let mut a = a0;
+        let mut i = 0;
+        loop {
+            i += 1;
+            for j in 0..n - i {
+                if a[j] > a[j + gap] {
+                    a.swap(j, j + gap);
+                }
+            }
+            if i == n {
+                break;
+            }
+        }
+        a
+    }
+  MBPP+ reference:
+    def shell_sort(my_list):
+        gap = len(my_list) // 2
+        while gap > 0:
+            for i in range(gap, len(my_list)):
+                current_item = my_list[i]
+                j = i
+                while j >= gap and my_list[j - gap] > current_item:
+                    my_list[j] = my_list[j - gap]
+                    j -= gap
+                my_list[j] = current_item
+            gap //= 2
+        return my_list
+  case 7: args [[]]
+      expected []
+      program  PANIC
+====================================================================================================
+task 451: 10 hold / 3 flip; sampled program: members [[27, '5'], [29, '5']]; fails 9 of 112 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove all whitespaces from the given string.
+  signature: fn remove_whitespaces(a0: &str) -> String
+  stored asserts: [([' Google    Flutter '], 'GoogleFlutter'), ([' Google    Dart '], 'GoogleDart'), ([' iOS    Swift '], 'iOSSwift')]
+  program:
+    fn remove_whitespaces(a0: &str) -> String {
+      let mut result = String::new();
+      for c in a0.chars() {
+        if !c.is_whitespace() {
+          result.push(c);
+        }
+      }
+      result
+    }
+  MBPP+ reference:
+    import re
+    def remove_whitespaces(text1):
+      return text1.replace(' ', '')
+  case 89: args ["  \u180e\u200b12345\n67\n\t890\u200c\u200d This\u180e\u200biOS\u180e\u200b\u200c\u200d\u2060Swift\u200c\u200d\u2060 "]
+      expected "\u180e\u200b12345\n67\n\t890\u200c\u200dThis\u180e\u200biOS\u180e\u200b\u200c\u200d\u2060Swift\u200c\u200d\u2060"
+      program  "\u{180e}\u{200b}1234567890\u{200c}\u{200d}This\u{180e}\u{200b}iOS\u{180e}\u{200b}\u{200c}\u{200d}\u{2060}Swift\u{200c}\u{200d}\u{2060}"
+  case 27: args [" \u180e\u200b1234567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b1234567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}1234567890\u{200c}\u{200d}"
+  case 79: args [" \u180e\u200b123\u200d4\n567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b123\u200d4\n567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}123\u{200d}4567890\u{200c}\u{200d}"
+  case 15: args ["1234567\n\t890"]
+      expected "1234567\n\t890"
+      program  "1234567890"
+  case 61: args [" \u180e\u200b123\u200d4567\n\t890\u200c\u200d "]
+      expected "\u180e\u200b123\u200d4567\n\t890\u200c\u200d"
+      program  "\u{180e}\u{200b}123\u{200d}4567890\u{200c}\u{200d}"
+  case 5: args ["\n\t"]
+      expected "\n\t"
+      program  ""
+====================================================================================================
+task 459: 18 hold / 12 flip; sampled program: members [[136, '6']]; fails 78 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove uppercase substrings from a given string.
+  signature: fn remove_uppercase(a0: &str) -> String
+  stored asserts: [(['cAstyoUrFavoRitETVshoWs'], 'cstyoravoitshos'), (['wAtchTheinTernEtrAdIo'], 'wtchheinerntrdo'), (['VoicESeaRchAndreComMendaTionS'], 'oiceachndreomendaion')]
+  program:
+    fn remove_uppercase(a0: &str) -> String {
+      let mut result = String::new();
+      for c in a0.chars() {
+        if c.is_ascii_uppercase() {
+          continue;
+        }
+        result.push(c);
+      }
+      result
+    }
+  MBPP+ reference:
+    def remove_uppercase(str1):
+      return ''.join(c for c in str1 if c.islower())
+  case 5: args ["ThiS%^%!s&a(mY)TesTStR%i*ng"]
+      expected "hisamesting"
+      program  "hi%^%!s&a(m)est%i*ng"
+  case 28: args ["ThiS%^%ABCDEFABCDEFGG!s&a(mY)TsesTABCDEFGThiS%^%)!s&a(mY)TsesTStABCDEFGEFG"]
+      expected "hisamseshisamsest"
+      program  "hi%^%!s&a(m)seshi%^%)!s&a(m)sest"
+  case 17: args ["ThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 58: args ["CACDEFCThiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngAG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 54: args ["ThBiS%^%ABCDEFG!s&a(mY)TsesTStR%i*ngABCDABCDEFGEFG"]
+      expected "hisamsesting"
+      program  "hi%^%!s&a(m)sest%i*ng"
+  case 33: args ["ThiS%^%!s&a(mY)TsesTStR%i*nAABCDEFGABCGEFG"]
+      expected "hisamsestin"
+      program  "hi%^%!s&a(m)sest%i*n"
+====================================================================================================
+task 471: 15 hold / 32 flip; sampled program: members [[30, '5'], [31, '5'], [179, '6']]; fails 49 of 104 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the product of the array multiplication modulo n.
+  signature: fn find_remainder(a0: Vec<i64>, a1: i64) -> i64
+  stored asserts: [([[100, 10, 5, 25, 35, 14], 11], 9), ([[1, 1, 1], 1], 0), ([[1, 2, 1], 2], 0)]
+  program:
+    fn find_remainder(a0: Vec<i64>, a1: i64) -> i64 {
+        let mut product = 1;
+        for i in a0.iter() {
+            product *= *i;
+        }
+        product % a1
+    }
+  MBPP+ reference:
+    def find_remainder(arr, n): 
+        from functools import reduce
+        return reduce(lambda x, y: x * y, arr) % n
+  case 83: args [[2000000, 2000000, 1000001, 1000000, 1000001, 2000000, 1000001], 2000001]
+      expected 1875001
+      program  275716
+  case 57: args [[1000001, 3000000, 2000001, 3000000], 10001]
+      expected 2709
+      program  3090
+  case 22: args [[1000000, 2000000, 10002, 3000000], 3000000]
+      expected 0
+      program  1593152
+  case 92: args [[2999999, 2000000, 1000001, 3000000], 1000000]
+      expected 0
+      program  -515328
+  case 101: args [[1000000, 2000000, 3000000, 1000000], 10002]
+      expected 384
+      program  -8848
+  case 12: args [[1000000, 2000000, 3000000, 1000000], 2000000]
+      expected 0
+      program  -171776
+====================================================================================================
+task 472: 44 hold / 11 flip; sampled program: members [[128, '6']]; fails 1 of 104 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether the given list contains consecutive numbers or not.
+  signature: fn check_Consecutive(a0: Vec<i64>) -> bool
+  stored asserts: [([[1, 2, 3, 4, 5]], True), ([[1, 2, 3, 5, 6]], False), ([[1, 2, 1]], False)]
+  program:
+    fn check_Consecutive(a0: Vec<i64>) -> bool {
+        if a0.len() < 2 {
+            return false;
+        }
+        let mut last = a0[0];
+        for i in 1..a0.len() {
+            if a0[i] != last + 1 {
+                return false;
+            }
+            last = a0[i];
+        }
+        true
+    }
+  MBPP+ reference:
+    def check_Consecutive(l): 
+        return sorted(l) == list(range(min(l),max(l)+1))
+  case 76: args [[4]]
+      expected true
+      program  false
+====================================================================================================
+task 477: 22 hold / 2 flip; sampled program: members [[146, '6']]; fails 48 of 113 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to convert the given string to lower case.
+  signature: fn is_lower(a0: &str) -> String
+  stored asserts: [(['InValid'], 'invalid'), (['TruE'], 'true'), (['SenTenCE'], 'sentence')]
+  program:
+    fn is_lower(a0: &str) -> String {
+      let mut result = String::new();
+      for c in a0.chars() {
+        if c.is_alphabetic() {
+          result.push(c.to_ascii_lowercase());
+        }
+      }
+      result
+    }
+  MBPP+ reference:
+    def is_lower(string):
+        return string.lower()
+  case 95: args ["cLLOWTrueEROWER CASLOWEWR CEASE ROROLOWREREOLEOWREREamelCacamelCaLOWRER CASOEsese"]
+      expected "cllowtrueerower caslowewr cease rorolowrereoleowrereamelcacamelcalowrer casoesese"
+      program  "cllowtrueerowercaslowewrceaserorolowrereoleowrereamelcacamelcalowrercasoesese"
+  case 21: args ["LOWTrucamespaceslCacamelCaseseeER CASOE"]
+      expected "lowtrucamespaceslcacamelcaseseeer casoe"
+      program  "lowtrucamespaceslcacamelcaseseeercasoe"
+  case 16: args ["1123"]
+      expected "1123"
+      program  ""
+  case 9: args ["nUmBeRs 123"]
+      expected "numbers 123"
+      program  "numbers"
+  case 56: args ["LR CASOE"]
+      expected "lr casoe"
+      program  "lrcasoe"
+  case 73: args ["LOWR SE"]
+      expected "lowr se"
+      program  "lowrse"
+====================================================================================================
+task 563: 1 hold / 1 flip; sampled program: members [[104, '6']]; fails 91 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to extract values between quotation marks from a string.
+  signature: fn extract_values(a0: &str) -> Vec<String>
+  stored asserts: [(['"Python", "PHP", "Java"'], ['Python', 'PHP', 'Java']), (['"python","program","language"'], ['python', 'program', 'language']), (['"red","blue","green","yellow"'], ['red', 'blue', 'green', 'yellow'])]
+  program:
+    fn extract_values(a0: &str) -> Vec<String> {
+        let mut values = Vec::new();
+        let mut current_value = String::new();
+        for char in a0.chars() {
+            if char == '"' {
+                if current_value.len() > 0 {
+                    values.push(current_value.clone());
+                    current_value = String::new();
+                }
+            } else if char.is_alphabetic() || char.is_numeric() {
+                current_value.push(char);
+            }
+        }
+        if !current_value.is_empty() {
+            values.push(current_value.clone());
+        }
+        values
+    }
+  MBPP+ reference:
+    import re
+    def extract_values(text):
+     return (re.findall(r'"(.*?)"', text))
+  case 104: args ["ah\"gres\"Thisen\" test input."]
+      expected ["gres"]
+      program  ["ah", "gres", "Thisen", "testinput"]
+  case 91: args ["string.\"This"]
+      expected []
+      program  ["string", "This"]
+  case 100: args ["\"r\"yow\"ed\" \"blue\" \"grinpTut\".een\" \"yow\""]
+      expected ["r", "ed", "blue", "grinpTut", " "]
+      program  ["r", "yow", "ed", "blue", "grinpTut", "een", "yow"]
+  case 63: args ["\"This is a \"nested\"\" input string.\"This is a \"complex\" input with nested \"quotes\" inside  a string\""]
+      expected ["This is a ", "", "This is a ", " input with nested ", " inside  a string"]
+      program  ["Thisisa", "nested", "inputstring", "Thisisa", "complex", "inputwithnested", "quotes", "insideastring"]
+  case 40: args ["\"red\" \"blue\" \"green\" \"yellow\" \"red\" \"blue\" \"green\"\"\"tesnt\"\"\"\"\"\"\"\"\" \"yello\"w\""]
+      expected ["red", "blue", "green", "yellow", "red", "blue", "green", "", "", "", "", "", " ", "w"]
+      program  ["red", "blue", "green", "yellow", "red", "blue", "green", "tesnt", "yello", "w"]
+  case 51: args ["l\"comple\"x\"CWE"]
+      expected ["comple"]
+      program  ["l", "comple", "x", "CWE"]
+====================================================================================================
+task 567: 7 hold / 4 flip; sampled program: members [[17, '3'], [35, '5']]; fails 1 of 78 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check whether a specified list is sorted or not.
+  signature: fn issort_list(a0: Vec<i64>) -> bool
+  stored asserts: [([[1, 2, 4, 6, 8, 10, 12, 14, 16, 17]], True), ([[1, 2, 4, 6, 8, 10, 12, 14, 20, 17]], False), ([[1, 2, 4, 6, 8, 10, 15, 14, 20]], False)]
+  program:
+    fn issort_list(a0: Vec<i64>) -> bool {
+      let mut i = 0;
+      let mut j = 1;
+      while i < a0.len() - 1 {
+        if a0[i] > a0[j] {
+          return false;
+        }
+        i += 1;
+        j += 1;
+      }
+      true
+    }
+  MBPP+ reference:
+    def issort_list(list1):
+        return all(a <= b for a, b in zip(list1, list1[1:]))
+  case 3: args [[]]
+      expected true
+      program  PANIC
+====================================================================================================
+task 569: 37 hold / 1 flip; sampled program: members [[114, '6']]; fails 8 of 107 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to sort each sublist of strings in a given list of lists.
+  signature: fn sort_sublists(a0: Vec<Vec<String>>) -> Vec<Vec<String>>
+  stored asserts: [([[['green', 'orange'], ['black', 'white'], ['white', 'black', 'orange']]], [['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]), ([[['green', 'orange'], ['black'], ['green', 'orange'], ['white']]], [['green', 'orange'], ['black'], ['green', 'orange'], ['white']]), ([[['a', 'b'], ['d', 'c'], ['g', 'h'], ['f', 'e']]], [['a', 'b'], ['c', 'd'], ['g', 'h'], ['e', 'f']])]
+  program:
+    fn sort_sublists(a0: Vec<Vec<String>>) -> Vec<Vec<String>> {
+      let mut result: Vec<Vec<String>> = Vec::new();
+      for sublist in a0 {
+        let mut sublist_result: Vec<String> = Vec::new();
+        for string in sublist {
+          sublist_result.push(string.to_lowercase());
+        }
+        sublist_result.sort();
+        result.push(sublist_result);
+      }
+      result
+    }
+  MBPP+ reference:
+    def sort_sublists(list1):
+        return list(map(sorted,list1))
+  case 96: args [[["apple"], ["fh", "gkiwirape", "mZFQv", "zAz", "Gpfv", "Tih"], [], ["chcerry", "pineapple"], []]]
+      expected [["apple"], ["Gpfv", "Tih", "fh", "gkiwirape", "mZFQv", "zAz"], [], ["chcerry", "pineapple"], []]
+      program  [["apple"], ["fh", "gkiwirape", "gpfv", "mzfqv", "tih", "zaz"], [], ["chcerry", "pineapple"], []]
+  case 81: args [[["TiNPm", "h", "gray", "pineapple"]]]
+      expected [["TiNPm", "gray", "h", "pineapple"]]
+      program  [["gray", "h", "pineapple", "tinpm"]]
+  case 57: args [[["TiNPm", "h", "gray", "pineapple"], ["yellow", "pineapple", "blgrapeack", "RPqMEp", "TwOPAWfh", "c"]]]
+      expected [["TiNPm", "gray", "h", "pineapple"], ["RPqMEp", "TwOPAWfh", "blgrapeack", "c", "pineapple", "yellow"]]
+      program  [["gray", "h", "pineapple", "tinpm"], ["blgrapeack", "c", "pineapple", "rpqmep", "twopawfh", "yellow"]]
+  case 65: args [[["TiNPm", "h", "gray", "pineapple", "TiNPm"], ["TiNPm", "h", "gray", "pineapple", "TiNPm"], [], ["TiNPm", "h", "gray", "pineapple", "TiNPm"]]]
+      expected [["TiNPm", "TiNPm", "gray", "h", "pineapple"], ["TiNPm", "TiNPm", "gray", "h", "pineapple"], [], ["TiNPm", "TiNPm", "gray", "h", "pineapple"]]
+      program  [["gray", "h", "pineapple", "tinpm", "tinpm"], ["gray", "h", "pineapple", "tinpm", "tinpm"], [], ["gray", "h", "pineapple", "tinpm", "tinpm"]]
+  case 29: args [[["TiNPm", "h", "gray", "pineapple"], []]]
+      expected [["TiNPm", "gray", "h", "pineapple"], []]
+      program  [["gray", "h", "pineapple", "tinpm"], []]
+  case 75: args [[["grapeapple", "apple"], ["dEEf", "", "fhiTqBKG", "D", "mankiwio", "fh", "peEkNRSS", "d", "green"], ["orange", "mango"], [], [], ["cherry", "pineapple"], [], [], [], ["dEEf", "", "fhiTqBKG", "D", "mankiwio", "fh", "peEkNRSS", "d", "green"]]]
+      expected [["apple", "grapeapple"], ["", "D", "d", "dEEf", "fh", "fhiTqBKG", "green", "mankiwio", "peEkNRSS"], ["mango", "orange"], [], [], ["cherry", "pineapple"], [], [], [], ["", "D", "d", "dEEf", "fh", "fhi
+      program  [["apple", "grapeapple"], ["", "d", "d", "deef", "fh", "fhitqbkg", "green", "mankiwio", "peeknrss"], ["mango", "orange"], [], [], ["cherry", "pineapple"], [], [], [], ["", "d", "d", "deef", "fh", "fhi
+====================================================================================================
+task 576: 2 hold / 20 flip; sampled program: members [[94, '6']]; fails 13 of 78 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether a list is sublist of another or not.
+  signature: fn is_Sub_Array(a0: Vec<i64>, a1: Vec<i64>) -> bool
+  stored asserts: [([[1, 4, 3, 5], [1, 2]], False), ([[1, 2, 1], [1, 2, 1]], True), ([[1, 0, 2, 2], [2, 2, 0]], False)]
+  program:
+    fn is_Sub_Array(a0: Vec<i64>, a1: Vec<i64>) -> bool {
+        a0.iter().all(|x| a1.contains(x))
+    }
+  MBPP+ reference:
+    def is_Sub_Array(A,B): 
+        a = 0
+        b = 0
+        while a < len(A) and b < len(B):
+            if A[a] == B[b]:
+                a += 1
+                b += 1
+            else:
+                a += 1
+        return b == len(B)
+  case 4: args [[], [1, 2, 3]]
+      expected false
+      program  true
+  case 36: args [[], [-41, 5, -27, -81, -41, 7, -56, -66, -98]]
+      expected false
+      program  true
+  case 7: args [[1, 2, 3, 4, 5], [1, 2, 3]]
+      expected true
+      program  false
+  case 52: args [[1, 2, 3, 4, 5], [3, 5]]
+      expected true
+      program  false
+  case 8: args [[1, 2, 3, 4, 5], [3, 4, 5]]
+      expected true
+      program  false
+  case 13: args [[1, 1, 2, 3, 4, 5], [1, 3, 5]]
+      expected true
+      program  false
+====================================================================================================
+task 594: 11 hold / 1 flip; sampled program: members [[77, '6']]; fails 36 of 109 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to find the difference of the first even and first odd number of a given list.
+  signature: fn diff_even_odd(a0: Vec<i64>) -> i64
+  stored asserts: [([[1, 3, 5, 7, 4, 1, 6, 8]], 3), ([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], 1), ([[1, 5, 7, 9, 10]], 9)]
+  program:
+    fn diff_even_odd(a0: Vec<i64>) -> i64 {
+        if a0.is_empty() {
+            return 0;
+        }
+        let mut even_index = 0;
+        for i in 0..a0.len() {
+            if a0[i] % 2 == 0 {
+                even_index = i;
+                break;
+            }
+        }
+        if even_index == 0 {
+            return -1;
+        }
+        let first_even = a0[even_index];
+        let first_odd = a0[0];
+        first_even - first_odd
+    }
+  MBPP+ reference:
+    def diff_even_odd(list1):
+        first_even = next((el for el in list1 if el%2==0), -1)
+        first_odd = next((el for el in list1 if el%2!=0), -1)
+        return (first_even - first_odd)
+  case 69: args [[20, 7, 7, 7, 7, 26, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7]]
+      expected 13
+      program  -1
+  case 27: args [[20, 7, 7, 7, 7, 7, 26, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]]
+      expected 13
+      program  -1
+  case 43: args [[4, 6, 2, 3, 4, 5, 7, 8, 8, 10, 11, 12]]
+      expected 1
+      program  -1
+  case 94: args [[30, 3, 4, 5, 6, 7, 8, 10, 11, 12, 11]]
+      expected 27
+      program  -1
+  case 71: args [[20, 7, 7, 7, 7, 26, 7, 30, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 8, 8]]
+      expected 13
+      program  -1
+  case 24: args [[28, 22, 23, 27, 24, 26, 25, 32, 31, 29, 30, 28, 25]]
+      expected 5
+      program  -1
+====================================================================================================
+task 598: 7 hold / 11 flip; sampled program: members [[57, '6'], [128, '6']]; fails 8 of 73 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check whether the given number is armstrong or not.
+  signature: fn armstrong_number(a0: i64) -> bool
+  stored asserts: [([153], True), ([259], False), ([4458], False)]
+  program:
+    fn armstrong_number(a0: i64) -> bool {
+      let mut sum = 0;
+      let mut temp = a0;
+      while temp > 0 {
+        let digit = temp % 10;
+        sum += digit.pow(3);
+        temp /= 10;
+      }
+      return sum == a0;
+    }
+  MBPP+ reference:
+    def armstrong_number(number):
+        order = len(str(number))
+        return sum([int(i) ** order for i in str(number)]) == number
+  case 6: args [2]
+      expected true
+      program  false
+  case 23: args [5]
+      expected true
+      program  false
+  case 57: args [8]
+      expected true
+      program  false
+  case 9: args [4]
+      expected true
+      program  false
+  case 45: args [6]
+      expected true
+      program  false
+  case 61: args [9]
+      expected true
+      program  false
+====================================================================================================
+task 623: 2 hold / 1 flip; sampled program: members [[140, '6']]; fails 4 of 52 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to compute the n-th power of each number in a list.
+  signature: fn nth_nums(a0: Vec<i64>, a1: i64) -> Vec<i64>
+  stored asserts: [([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 2], [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]), ([[10, 20, 30], 3], [1000, 8000, 27000]), ([[12, 15], 5], [248832, 759375])]
+  program:
+    fn nth_nums(a0: Vec<i64>, a1: i64) -> Vec<i64> {
+        let mut res: Vec<i64> = Vec::new();
+        for i in 0..a0.len() {
+            let mut power = a0[i] as f64;
+            power = power.powf(a1 as f64);
+            res.push(power as i64);
+        }
+        res
+    }
+  MBPP+ reference:
+    def nth_nums(nums, n):
+     nth_nums = list(map(lambda x: x ** n, nums))
+     return nth_nums
+  case 22: args [[3, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100], 9]
+      expected [19683, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000]
+      program  [19683, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000]
+  case 23: args [[3, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77], 9]
+      expected [19683, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437]
+      program  [19683, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440]
+  case 36: args [[10, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77, 6, 50], 9]
+      expected [1000000000, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437, 10077696, 19
+      program  [1000000000, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440, 10077696, 19
+  case 27: args [[10, 77, -100, 50, 6, 5, 50, -98, 0, -13, -100, 77], 9]
+      expected [1000000000, 95151694449171437, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171437]
+      program  [1000000000, 95151694449171440, -1000000000000000000, 1953125000000000, 10077696, 1953125, 1953125000000000, -833747762130149888, 0, -10604499373, -1000000000000000000, 95151694449171440]
+====================================================================================================
+task 643: 13 hold / 9 flip; sampled program: members [[144, '6']]; fails 98 of 106 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function that checks if a strings contains 'z', except at the start and end of the word.
+  signature: fn text_match_wordz_middle(a0: &str) -> bool
+  stored asserts: [(['pythonzabc.'], True), (['zxyabc.'], False), (['  lang  .'], False)]
+  program:
+    fn text_match_wordz_middle(a0: &str) -> bool {
+      if a0.starts_with("z") || a0.ends_with("z") {
+        return false;
+      }
+      for i in 0..a0.len() - 1 {
+        if a0.chars().nth(i).unwrap() == 'z' {
+          return true;
+        }
+      }
+      false
+    }
+  MBPP+ reference:
+    import re
+    def text_match_wordz_middle(text):
+    	return re.search(r'\Bz\B',  text) is not None
+  case 40: args ["azbczyyz"]
+      expected true
+      program  false
+  case 72: args ["zzzzzzxyabczzz xxzzxxyzzzzzzxyabczzzzz zzzzczxyabczzzzz abczyz baaz azzbzzz"]
+      expected true
+      program  false
+  case 37: args ["yabczzxxyzzxyabczz"]
+      expected true
+      program  false
+  case 56: args ["yabczyyzzzxybxabczzzz"]
+      expected true
+      program  false
+  case 70: args ["yabczyyabczzzzxxzzxxyz"]
+      expected true
+      program  false
+  case 88: args ["azzbzzzzzxyabczzz xxzzxxyz zzzzzxyabzzzzzzzxzyabczzzzzxyabczzz xxzzxxyz zzzzzxyabczzzzz abczyz baaz azzzbzzzczzzzz abczyz baaz azzbzzzaabaazz"]
+      expected true
+      program  false
+====================================================================================================
+task 733: 2 hold / 1 flip; sampled program: members [[8, '3']]; fails 39 of 105 cases (0 panics); base agrees with stored asserts: False
+  MBPP prompt: Write a function to find the index of the first occurrence of a given number in a sorted array.
+  signature: fn find_first_occurrence(a0: Vec<i64>, a1: i64) -> i64
+  stored asserts: [([[2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5], 1), ([[2, 3, 5, 5, 6, 6, 8, 9, 9, 9], 5], 2), ([[2, 4, 1, 5, 6, 6, 8, 9, 9, 9], 6], 4)]
+  program:
+    fn find_first_occurrence(a0: Vec<i64>, a1: i64) -> i64 {
+        let mut left = 0;
+        let mut right = a0.len() - 1;
+        while left <= right {
+            let mid = left + (right - left) / 2;
+            if a0[mid] == a1 {
+                return mid as i64;
+            } else if a0[mid] < a1 {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        -1
+    }
+  MBPP+ reference:
+    def find_first_occurrence(A, x):
+        (left, right) = (0, len(A) - 1)
+        result = -1
+        while left <= right:
+            mid = (left + right) // 2
+            if x == A[mid]:
+                result = mid
+                right = mid - 1
+            elif x < A[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return result
+  case 8: args [[5, 5, 5, 5, 5, 5], 5]
+      expected 0
+      program  2
+  case 9: args [[5, 5, 5, 5, 6], 5]
+      expected 0
+      program  2
+  case 88: args [[4, 5, 5, 5, 5, 5], 5]
+      expected 1
+      program  2
+  case 7: args [[5, 5, 5, 5], 5]
+      expected 0
+      program  1
+  case 10: args [[5, 5, 5, 6], 5]
+      expected 0
+      program  1
+  case 15: args [[5, 5, 6], 5]
+      expected 0
+      program  1
+====================================================================================================
+task 736: 1 hold / 1 flip; sampled program: members [[147, '6']]; fails 8 of 60 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to locate the left insertion point for a specified value in sorted order. https://www.w3resource.com/python-exercises/data-structures-and-algorithms/python-data-structure-exercise-24.php
+  signature: fn left_insertion(a0: Vec<i64>, a1: i64) -> i64
+  stored asserts: [([[1, 2, 4, 5], 6], 4), ([[1, 2, 4, 5], 3], 2), ([[1, 2, 4, 5], 7], 4)]
+  program:
+    fn left_insertion(a0: Vec<i64>, a1: i64) -> i64 {
+        let mut i = 0;
+        while i < a0.len() {
+            if a0[i] > a1 {
+                return i as i64;
+            }
+            i += 1;
+        }
+        a0.len() as i64
+    }
+  MBPP+ reference:
+    import bisect
+    def left_insertion(a, x):
+        return bisect.bisect_left(a, x)
+  case 28: args [[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30], 14]
+      expected 7
+      program  8
+  case 12: args [[14], 14]
+      expected 0
+      program  1
+  case 37: args [[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 26, 28, 30], 0]
+      expected 0
+      program  1
+  case 52: args [[14, 14], 14]
+      expected 0
+      program  2
+  case 17: args [[0, 2, 4, 6, 8, 10, 12, 14, 16, 19, 20, 22, 22, 26, 28, 30], 0]
+      expected 0
+      program  1
+  case 13: args [[0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30], 0]
+      expected 0
+      program  1
+====================================================================================================
+task 737: 1 hold / 3 flip; sampled program: members [[137, '6']]; fails 1 of 110 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check whether the given string is starting with a vowel or not using regex.
+  signature: fn check_str(a0: &str) -> bool
+  stored asserts: [(['annie'], True), (['dawood'], False), (['Else'], True)]
+  program:
+    fn check_str(a0: &str) -> bool {
+        a0.chars().take(1).next().unwrap().to_ascii_lowercase() == 'a' || 
+        a0.chars().take(1).next().unwrap().to_ascii_lowercase() == 'e' || 
+        a0.chars().take(1).next().unwrap().to_ascii_lowercase() == 'i' || 
+        a0.chars().take(1).next().unwrap().to_ascii_lowercase() == 'o' || 
+        a0.chars().take(1).next().unwrap().to_ascii_lowercase() == 'u'
+    }
+  MBPP+ reference:
+    import re 
+    def check_str(string): 
+    	regex = '^[aeiouAEIOU][A-Za-z0-9_]*'
+    	return re.search(regex, string)
+  case 95: args [""]
+      expected false
+      program  PANIC
+====================================================================================================
+task 741: 23 hold / 17 flip; sampled program: members [[100, '6']]; fails 1 of 104 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether all the characters are same or not.
+  signature: fn all_Characters_Same(a0: &str) -> bool
+  stored asserts: [(['python'], False), (['aaa'], True), (['data'], False)]
+  program:
+    fn all_Characters_Same(a0: &str) -> bool {
+        let mut c = a0.chars().next().unwrap();
+        for i in 0..a0.len() {
+            if c != a0.chars().nth(i).unwrap() {
+                return false;
+            }
+        }
+        true
+    }
+  MBPP+ reference:
+    def all_Characters_Same(s) :
+        return all(ch == s[0] for ch in s[1:])
+  case 3: args [""]
+      expected true
+      program  PANIC
+====================================================================================================
+task 751: 12 hold / 35 flip; sampled program: members [[46, '6']]; fails 4 of 108 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to check if the given array represents min heap or not. https://www.geeksforgeeks.org/how-to-check-if-a-given-array-represents-a-binary-heap/
+  signature: fn check_min_heap(a0: Vec<i64>) -> bool
+  stored asserts: [([[1, 2, 3, 4, 5, 6]], True), ([[2, 3, 4, 5, 10, 15]], True), ([[2, 10, 4, 5, 3, 15]], False)]
+  program:
+    fn check_min_heap(a0: Vec<i64>) -> bool {
+        if a0.len() <= 1 {
+            return true;
+        }
+        let mut i = 1;
+        while i < a0.len() {
+            if a0[i] < a0[i / 2] {
+                return false;
+            }
+            i = i * 2;
+        }
+        return true;
+    }
+  MBPP+ reference:
+    def check_min_heap_helper(arr, i):
+        if 2 * i + 2 > len(arr):
+          return True
+        left_child = (arr[i] <= arr[2 * i + 1]) and check_min_heap_helper(arr, 2 * i + 1)
+        right_child = (2 * i + 2 == len(arr)) or  \
+                    (arr[i] <= arr[2 * i + 2] and \
+                     check_min_heap_helper(arr, 2 * i + 2))
+        return left_child and right_child
+    def check_min_heap(arr):
+      return check_min_heap_helper(arr, 0)
+  case 95: args [[1, 2, 3, 4, 5, 6, 7, 8, 5, 9, 10, 3, 4, 3, 3]]
+      expected false
+      program  true
+  case 87: args [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 3, 4, 31, 3]]
+      expected false
+      program  true
+  case 20: args [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 3, 4, 3]]
+      expected false
+      program  true
+  case 63: args [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 5, 12, 13, 14, 16, 17, 18, 19]]
+      expected false
+      program  true
+====================================================================================================
+task 766: 3 hold / 8 flip; sampled program: members [[12, '3'], [21, '5'], [22, '5']]...; fails 1 of 41 cases (1 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to return a list of all pairs of consecutive items in a given list.
+  signature: fn pair_wise(a0: Vec<i64>) -> Vec<(i64, i64)>
+  stored asserts: [([[1, 1, 2, 3, 3, 4, 4, 5]], [(1, 1), (1, 2), (2, 3), (3, 3), (3, 4), (4, 4), (4, 5)]), ([[1, 5, 7, 9, 10]], [(1, 5), (5, 7), (7, 9), (9, 10)]), ([[5, 1, 9, 7, 10]], [(5, 1), (1, 9), (9, 7), (7, 10)]), ([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), (9, 10)])]
+  program:
+    fn pair_wise(a0: Vec<i64>) -> Vec<(i64, i64)> {
+      let mut result = Vec::new();
+      for i in 0..a0.len() - 1 {
+        let pair = (a0[i], a0[i+1]);
+        result.push(pair);
+      }
+      result
+    }
+  MBPP+ reference:
+    def pair_wise(l1):
+        return list(zip(l1, l1[1:]))
+  case 4: args [[]]
+      expected []
+      program  PANIC
+====================================================================================================
+task 775: 2 hold / 29 flip; sampled program: members [[31, '5']]; fails 68 of 105 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to check whether every odd index contains odd numbers of a given list.
+  signature: fn odd_position(a0: Vec<i64>) -> bool
+  stored asserts: [([[2, 1, 4, 3, 6, 7, 6, 3]], True), ([[4, 1, 2]], True), ([[1, 2, 3]], False)]
+  program:
+    fn odd_position(a0: Vec<i64>) -> bool {
+        for i in 1..a0.len() {
+            if i % 2 != 0 && a0[i as usize] % 2 != 0 {
+                return true;
+            }
+        }
+        false
+    }
+  MBPP+ reference:
+    def odd_position(nums):
+    	return all(n % 2 == 1 for n in nums[1::2])
+  case 46: args [[2, 9, 5, 4, 4, 6, 13, 7, 8, 13]]
+      expected false
+      program  true
+  case 27: args [[3, 9, 5, 4, 4, 3, 3, 6, 13, 7, 8, 3]]
+      expected false
+      program  true
+  case 67: args [[1, 3, 5, 7, 15, 9, 11, 4, 15, 3, 3]]
+      expected false
+      program  true
+  case 47: args [[3, 9, 5, 7, 4, 3, 3, 6, 13, 7, 8, 13, 3]]
+      expected false
+      program  true
+  case 45: args [[1, 3, 5, 7, 15, 9, 11, 4, 13, 15, 3, 3]]
+      expected false
+      program  true
+  case 74: args [[2, 5, 4, 3, 7, 8, 5, 5]]
+      expected false
+      program  true
+====================================================================================================
+task 794: 14 hold / 15 flip; sampled program: members [[71, '6']]; fails 16 of 106 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function that matches a string that has an 'a' followed by anything, ending in 'b'.
+  signature: fn text_starta_endb(a0: &str) -> bool
+  stored asserts: [(['aabbbb'], True), (['aabAbbbc'], False), (['accddbbjjj'], False)]
+  program:
+    fn text_starta_endb(a0: &str) -> bool {
+      a0.len() > 0 && a0.chars().nth(0).unwrap() == 'a' && a0.chars().nth(a0.len() - 1).unwrap() == 'b'
+    }
+  MBPP+ reference:
+    import re
+    def text_starta_endb(text):
+        patterns = 'a.*?b$'
+        return re.search(patterns,  text)
+  case 43: args ["xaaabbyz1323ababbbyz123bb"]
+      expected true
+      program  false
+  case 37: args ["xaabbyz1323ababbaaxyz123bbxbyz123bb"]
+      expected true
+      program  false
+  case 48: args ["xaabbayababb"]
+      expected true
+      program  false
+  case 79: args ["xa2axyz123bbb"]
+      expected true
+      program  false
+  case 72: args ["xaaabbyz1323ababbbyzaaabbbb"]
+      expected true
+      program  false
+  case 47: args ["xaaxyz123bbbb"]
+      expected true
+      program  false
+====================================================================================================
+task 797: 29 hold / 2 flip; sampled program: members [[46, '6'], [93, '6']]; fails 10 of 102 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a python function to find the sum of all odd natural numbers within the range l and r.
+  signature: fn sum_in_range(a0: i64, a1: i64) -> i64
+  stored asserts: [([2, 5], 8), ([5, 7], 12), ([7, 13], 40)]
+  program:
+    fn sum_in_range(l: i64, r: i64) -> i64 {
+      if l < 1 || r < 1 {
+        return 0;
+      }
+      let mut sum = 0;
+      for i in l..r + 1 {
+        if i % 2 != 0 {
+          sum += i;
+        }
+      }
+      sum
+    }
+  MBPP+ reference:
+    def sum_odd(n): 
+        terms = (n + 1) // 2
+        sum1 = terms * terms 
+        return sum1  
+    def sum_in_range(l,r): 
+        return sum_odd(r) - sum_odd(l - 1)
+  case 11: args [0, 100]
+      expected 2500
+      program  0
+  case 67: args [0, 99998]
+      expected 2499900001
+      program  0
+  case 5: args [0, 10000]
+      expected 25000000
+      program  0
+  case 21: args [0, 99]
+      expected 2500
+      program  0
+  case 85: args [0, 2]
+      expected 1
+      program  0
+  case 93: args [0, 96]
+      expected 2304
+      program  0
+====================================================================================================
+task 800: 13 hold / 5 flip; sampled program: members [[3, '3'], [144, '6']]; fails 43 of 124 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function to remove all whitespaces from a string.
+  signature: fn remove_all_spaces(a0: &str) -> String
+  stored asserts: [(['python  program'], 'pythonprogram'), (['python   programming    language'], 'pythonprogramminglanguage'), (['python                     program'], 'pythonprogram'), (['   python                     program'], 'pythonprogram')]
+  program:
+    fn remove_all_spaces(a0: &str) -> String {
+      let mut result = String::new();
+      for char in a0.chars() {
+        if !char.is_whitespace() {
+          result.push(char);
+        }
+      }
+      result
+    }
+  MBPP+ reference:
+    def remove_all_spaces(text):
+     return text.replace(' ', '')
+  case 48: args ["                     \t \n  python  \t \n  program  \t \n    \t \n      "]
+      expected "\t\npython\t\nprogram\t\n\t\n"
+      program  "pythonprogram"
+  case 106: args [" python  program                                                         python   program                                                    \t \n  pypythyonthon  \t \n m program  \t \n  python  \t \n  program  \t \n                  "]
+      expected "pythonprogrampythonprogram\t\npypythyonthon\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampypythyonthonmprogrampythonprogram"
+  case 36: args ["python\rprrogrpythonprogramminglanguageam"]
+      expected "python\rprrogrpythonprogramminglanguageam"
+      program  "pythonprrogrpythonprogramminglanguageam"
+  case 46: args ["python  program                                                         python  program                                                    \t \n  python  \t \n m program  \t \n  python  \t \n  program  \t \n           "]
+      expected "pythonprogrampythonprogram\t\npython\t\nmprogram\t\npython\t\nprogram\t\n"
+      program  "pythonprogrampythonprogrampythonmprogrampythonprogram"
+  case 90: args [" \t \n  pypthon  \t \n  program \n    \t \n "]
+      expected "\t\npypthon\t\nprogram\n\t\n"
+      program  "pypthonprogram"
+  case 45: args ["  prypython\u000bprogramon  "]
+      expected "prypython\u000bprogramon"
+      program  "prypythonprogramon"
+====================================================================================================
+task 805: 9 hold / 8 flip; sampled program: members [[25, '5']]; fails 9 of 128 cases (0 panics); base agrees with stored asserts: True
+  MBPP prompt: Write a function that returns the list in a list of lists whose sum of elements is the highest.
+  signature: fn max_sum_list(a0: Vec<Vec<i64>>) -> Vec<i64>
+  stored asserts: [([[[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]], [10, 11, 12]), ([[[3, 2, 1], [6, 5, 4], [12, 11, 10]]], [12, 11, 10]), ([[[2, 3, 1]]], [2, 3, 1])]
+  program:
+    fn max_sum_list(a0: Vec<Vec<i64>>) -> Vec<i64> {
+        let mut max_sum = i64::MIN;
+        let mut max_list = Vec::new();
+        for i in 0..a0.len() {
+            for j in 0..a0[i].len() {
+                if a0[i][j] > max_sum {
+                    max_sum = a0[i][j];
+                    max_list = a0[i].clone();
+                }
+            }
+        }
+        max_list
+    }
+  MBPP+ reference:
+    def max_sum_list(lists):
+     return max(lists, key=sum)
+  case 52: args [[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [17, 18], [10, 11, 12]]]
+      expected [13, 14, 15]
+      program  [17, 18]
+  case 102: args [[[1, 2, 3], [10, 11, -50, 12], [10, 11, -50, 12]]]
+      expected [1, 2, 3]
+      program  [10, 11, -50, 12]
+  case 106: args [[[5000, 60000, 60000], [5000, 60000, 60000], [5000, 60000, 60000], [5000, 60000, 60000], [700, 8000, 90000]]]
+      expected [5000, 60000, 60000]
+      program  [700, 8000, 90000]
+  case 33: args [[[1, 20, 300], [5000, 60000, 60000], [5000, 60000, 60000], [5000, 60000, 60000], [700, 8000, 90000]]]
+      expected [5000, 60000, 60000]
+      program  [700, 8000, 90000]
+  case 60: args [[[10, 1100, 20, 30], [10, 1100, 20, 30], [40, 50, 60, 70], [100, 110, 120, 130, 140], [150, 160, 170], [180, 190, 200, 210, 220, 230], [150, 160, 170]]]
+      expected [180, 190, 200, 210, 220, 230]
+      program  [10, 1100, 20, 30]
+  case 94: args [[[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [17, 18], [10, 11, 12], [10, 11, 12]]]
+      expected [13, 14, 15]
+      program  [17, 18]
