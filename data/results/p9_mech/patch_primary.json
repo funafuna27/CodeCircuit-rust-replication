@@ -1,0 +1,31 @@
+{
+ "role": "primary",
+ "items": 3457,
+ "seconds_total": 4552.0,
+ "s_median": 1.247,
+ "max_mem_gb": 9.71,
+ "gpu": "NVIDIA GeForce RTX 5070",
+ "torch": "2.11.0+cu128",
+ "library": {
+  "circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer",
+  "version": "0.5.3.dev1+g6018ed8d3"
+ },
+ "guard": {
+  "PREREGISTRATION_P9_M1.md": "4f47d227807815b7",
+  "PREREGISTRATION_P9_MECH.md": "be507d3fe4afd3b2",
+  "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71",
+  "data/p9_mech_common.py": "26efbd490d21bcd0",
+  "data/p9_mech_spans.py": "c479bc9aa19da90e",
+  "data/p9_mech_patch.py": "2d95cbc10223eebd",
+  "data/p9_mech_graphs.py": "8e7a627edb594962",
+  "data/p9_mech_analysis.py": "a7ef41f886c7ca81",
+  "data/p9_b_analysis.py": "7f74261c7f8f7885",
+  "data/p9_common.py": "2ae1e55a3d7dcf08",
+  "data/p9_m1_extract.py": "0e7ef0905d88a7dc",
+  "data/p9_m1_common.py": "7166104d8918d584",
+  "data/graph_dataset.py": "825263f3d5304153",
+  "data/igraph_features.py": "7871dd4eb9011777",
+  "HEAD": "1655be0691f2fddae21fa43b6c6cdb749cb29ab7"
+ },
+ "sha256": "a8a72d9497c710388906bc90efba7d05c75991cda4188954765c32cfb974e7e7"
+}

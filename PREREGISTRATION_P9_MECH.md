@@ -151,3 +151,28 @@ PART=P python p9_mech_analysis.py
 # ~/p9_work/mech/colab/out
 PART=G python p9_mech_analysis.py
 ```
+
+## 11. Results — P (patching; 2026-10-23, 3,457 items, 167 problems, local RTX 5070, 76 minutes)
+
+`results/p9_mech/patch_primary.jsonl.gz` (sha256 a8a72d94…), `analysis_P.json`; recomputed independently from
+the item file (same means to four decimals). Problem means with 95% problem-bootstrap intervals.
+
+- **P1 rejected:** d_D +0.121 nats [+0.099, +0.145], one-sided p 1e-5 (the floor of 99,999 flips); the
+  80% MDE was 0.030. E0384 +0.136 (130 problems), E0596 +0.100 (81).
+- **P2 not rejected:** d_D − d_K +0.018 [−0.015, +0.047], p 0.137 (d_K +0.103 [+0.066, +0.148]).
+- **P3 not rejected:** d_D / |span| − mean(d_R) −0.008 [−0.049, +0.028], p 0.635 (61 problems with a read;
+  the reads' own change +0.046 per token [+0.020, +0.081]).
+- Descriptive: the gap (span log p_A − log p_V) +0.321 [+0.230, +0.425]; restored by D 38%, by W 98%; d_W
+  +0.314; the background +0.010 per token [+0.007, +0.014]; **the span's change per token minus the
+  background's +0.038 [+0.029, +0.048]**; 519 of 3,457 items have d_D < 0.
+- The sweep (167 G items, D patched at layer l only): 0 at layers 0–3, rising from layer 4 (+0.017) to
+  +0.047 at 11, +0.068 at 14, +0.115 at 18 and its peak +0.132 [+0.103, +0.165] at 22, then +0.054 at 23
+  and 0 at 24–25. Read: what D carries about x's `mut` is written there over layers 4–21 and is read from
+  D by later positions by layer 23; a patch at 24 or later comes too late.
+- **Reading (§5, row "rejected / neither"):** restoring x's name restores part of the mutation (38% of
+  the gap, more per token than the background), as does the next token; not shown to be specific to the
+  mutation over x's other reads.
+- Against §6: P1, its size, both fractions (D near the top of 10–40%), P2 and the layer-0 null as
+  predicted; P3 not rejected (predicted even odds). Wrong: the span exceeds the background by 0.038 per
+  token, not ≤ 0.01; and the sweep is about half its peak at layer 15 and peaks at 22, not near its
+  all-layer value by 15.
