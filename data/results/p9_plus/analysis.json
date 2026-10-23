@@ -1,0 +1,256 @@
+{
+ "part": "2",
+ "rehearsal": false,
+ "guard": {
+  "PREREGISTRATION_P9_M1.md": "4f47d227807815b7",
+  "PREREGISTRATION_P9_MECH.md": "b3d88723b6646200",
+  "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71",
+  "PREREGISTRATION_P9_PLUS.md": "ad5aaa4403bfbfad",
+  "data/p9_plus_common.py": "52dafc1bf68b59bc",
+  "data/p9_plus_extract.py": "4df3cd83f3ccb4b7",
+  "data/p9_plus_analysis.py": "5747022afa3f06a5",
+  "data/p9_c_audit.py": "e7fe027fbb5191d7",
+  "data/p9_common.py": "2ae1e55a3d7dcf08",
+  "data/p9_m1_extract.py": "0e7ef0905d88a7dc",
+  "data/p9_m1_common.py": "7166104d8918d584",
+  "HEAD": "e99c98845f22ba34ce6c97d510dd99e9e0c7d12a"
+ },
+ "extract_sha256": "418b29bb870d97f196beb7cceb9db286c248d840290907ba694d280be4cc0bf2",
+ "population": {
+  "tasks": 44,
+  "programs": 908,
+  "holds": 474,
+  "flips": 434
+ },
+ "svd": {
+  "share_of_within_task_ss": 0.7889,
+  "singular_values": [
+   419.6346,
+   256.4329,
+   176.5628,
+   151.1362,
+   143.6861
+  ]
+ },
+ "Q1": {
+  "tasks": 44,
+  "mean": 0.0858,
+  "ci95": [
+   -0.0033,
+   0.1732
+  ],
+  "sd": 0.3,
+  "mde80_one_sided": 0.1125,
+  "p_permutation": 0.03980099502487562,
+  "K": 200,
+  "p_sign_flip_reference": 0.03208,
+  "rejected": true
+ },
+ "S1_C": {
+  "tasks": 44,
+  "mean": 0.0275,
+  "ci95": [
+   -0.0737,
+   0.1268
+  ],
+  "sd": 0.3442,
+  "mde80_one_sided": 0.129,
+  "p_permutation": 0.24875621890547264,
+  "rejected": false,
+  "tested": true
+ },
+ "S2_increment_P_over_C": {
+  "tasks": 44,
+  "mean": 0.0583,
+  "ci95": [
+   -0.0129,
+   0.1302
+  ],
+  "sd": 0.244,
+  "mde80_one_sided": 0.0915,
+  "p_sign_flip": 0.06061,
+  "rejected": false,
+  "tested": true
+ },
+ "permutation_null": {
+  "CP": {
+   "mean": -0.0026,
+   "q95": 0.0724
+  },
+  "C": {
+   "mean": 0.0006,
+   "q95": 0.0632
+  }
+ },
+ "descriptive": {
+  "P_code_alone": {
+   "tasks": 44,
+   "mean": 0.1232,
+   "ci95": [
+    0.044,
+    0.2038
+   ],
+   "sd": 0.2688,
+   "mde80_one_sided": 0.1007
+  },
+  "CP_logistic": {
+   "tasks": 44,
+   "mean": 0.0939,
+   "ci95": [
+    -0.004,
+    0.1934
+   ],
+   "sd": 0.3336,
+   "mde80_one_sided": 0.1251
+  },
+  "C_logistic": {
+   "tasks": 44,
+   "mean": 0.0745,
+   "ci95": [
+    -0.0229,
+    0.1708
+   ],
+   "sd": 0.3347,
+   "mde80_one_sided": 0.1255
+  },
+  "single_columns": {
+   "final_top1": {
+    "tasks": 44,
+    "mean": -0.0383,
+    "ci95": [
+     -0.1226,
+     0.0474
+    ],
+    "sd": 0.2922,
+    "mde80_one_sided": 0.1095
+   },
+   "final_entropy": {
+    "tasks": 44,
+    "mean": -0.0129,
+    "ci95": [
+     -0.1013,
+     0.0759
+    ],
+    "sd": 0.302,
+    "mde80_one_sided": 0.1132
+   },
+   "final_top1_minus_top2": {
+    "tasks": 44,
+    "mean": -0.0398,
+    "ci95": [
+     -0.1236,
+     0.0461
+    ],
+    "sd": 0.291,
+    "mde80_one_sided": 0.1091
+   },
+   "code_logp_sum": {
+    "tasks": 44,
+    "mean": 0.0778,
+    "ci95": [
+     -0.011,
+     0.1673
+    ],
+    "sd": 0.3092,
+    "mde80_one_sided": 0.1159
+   },
+   "code_logp_mean": {
+    "tasks": 44,
+    "mean": -0.1124,
+    "ci95": [
+     -0.2024,
+     -0.0202
+    ],
+    "sd": 0.3177,
+    "mde80_one_sided": 0.1191
+   },
+   "code_logp_min": {
+    "tasks": 44,
+    "mean": -0.0463,
+    "ci95": [
+     -0.1301,
+     0.0394
+    ],
+    "sd": 0.2901,
+    "mde80_one_sided": 0.1088
+   },
+   "code_entropy_mean": {
+    "tasks": 44,
+    "mean": 0.0346,
+    "ci95": [
+     -0.0614,
+     0.1256
+    ],
+    "sd": 0.3199,
+    "mde80_one_sided": 0.1199
+   },
+   "n_code": {
+    "tasks": 44,
+    "mean": -0.1231,
+    "ci95": [
+     -0.2133,
+     -0.0279
+    ],
+    "sd": 0.3094,
+    "mde80_one_sided": 0.116
+   },
+   "f0_active_features": {
+    "tasks": 44,
+    "mean": -0.1163,
+    "ci95": [
+     -0.2077,
+     -0.0215
+    ],
+    "sd": 0.3093,
+    "mde80_one_sided": 0.1159
+   },
+   "f3_top_salient_prob": {
+    "tasks": 44,
+    "mean": -0.036,
+    "ci95": [
+     -0.1208,
+     0.0495
+    ],
+    "sd": 0.294,
+    "mde80_one_sided": 0.1102
+   },
+   "f4_salient_entropy": {
+    "tasks": 44,
+    "mean": -0.0112,
+    "ci95": [
+     -0.1041,
+     0.0789
+    ],
+    "sd": 0.3108,
+    "mde80_one_sided": 0.1165
+   }
+  },
+  "Q1_without_audit_artefact_tasks": {
+   "tasks": 36,
+   "mean": 0.0879,
+   "ci95": [
+    -0.0169,
+    0.1867
+   ],
+   "sd": 0.3165,
+   "mde80_one_sided": 0.1312,
+   "p_sign_flip": 0.05329
+  },
+  "Q1_tasks_2plus_each": {
+   "tasks": 28,
+   "mean": 0.08,
+   "ci95": [
+    0.0054,
+    0.1552
+   ],
+   "sd": 0.2064,
+   "mde80_one_sided": 0.097
+  },
+  "pooled_pairs_auc": {
+   "CP": 0.5673,
+   "C": 0.4902,
+   "P": 0.5921
+  }
+ },
+ "seconds": 345.6
+}

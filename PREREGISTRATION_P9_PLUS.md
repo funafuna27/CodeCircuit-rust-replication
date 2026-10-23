@@ -154,3 +154,56 @@ python p9_plus_extract.py       # local RTX 5070, about 10 minutes
 python p9_plus_analysis.py      # CPU, 16 workers, about 10 minutes
 python p9_plus_check.py         # independent recomputation
 ```
+
+## 11. Results (2026-10-23, run 15:22–15:33 JST on commit e99c988)
+
+**The run:** 908 texts at 0.33 s each on the RTX 5070 (`~/p9_work/plus/extract_plus.npz`, sha256
+418b29bb…). P_code's 45 directions hold 0.789 of the within-task sum of squares.
+
+**Checks:** `p9_plus_check.py`, written apart from the analysis, gives the same values to four
+decimals for the population, Q1, S1, P_code alone and the code's mean log p.
+
+**Outputs** (`results/p9_plus/`): `analysis.json`, `scores.jsonl.gz`, `permutation_null.npy`,
+`check.json`.
+
+| test | tasks | T = mean(AUC_t − 0.5) | 95% CI | p | decision |
+|---|---|---|---|---|---|
+| Q1: C + P_code | 44 | +0.086 | [−0.003, +0.173] | 0.040 (permutation, K 200; sign flip 0.032) | **rejected** |
+| S1: C alone (Holm) | 44 | +0.028 | [−0.074, +0.127] | 0.249 | not rejected |
+| S2: P_code beyond C (Holm) | 44 | +0.058 | [−0.013, +0.130] | 0.061 | not rejected |
+
+Q1's permutation p rests on 7 of 200 permuted statistics at or above T. Its Monte Carlo SE at 0.04
+is about 0.014. The registered decision stands on K = 200, and the result is close to the line.
+
+**Reading (§6, row 4).** Within a task, the output distribution and the activations over the code
+together rank the programs MBPP+ confirms above those it overturns. The mean within-task AUROC is 0.586
+[0.497, 0.673]. Neither part is shown alone. This is information about errors beyond the asserts,
+not knowledge of correctness: 18% of flips are artefacts, and 11 of the 36 genuine ones fail only on
+edge inputs (§8).
+
+**Descriptive:**
+- **P_code alone:** +0.123 [+0.044, +0.204] (AUROC 0.623), above C + P_code. The forest on C alone
+  (+0.028) is the weaker part.
+- **Logistic learner:** C + P_code +0.094 [−0.004, +0.193]; C +0.075 [−0.023, +0.171].
+- **Single columns** (positive means holds score higher):
+  - number of code tokens −0.123 [−0.213, −0.028]: holds are shorter;
+  - the code's mean log p −0.112 [−0.202, −0.020]: holds are less probable per token;
+  - f0, the active-feature count, −0.116 [−0.208, −0.022];
+  - summed log p +0.078 [−0.011, +0.167];
+  - the final position's columns and the entropies lie within ±0.04.
+- **Subsets:**
+  - without the 8 artefact tasks (36): +0.088 [−0.017, +0.187], sign flip p 0.053;
+  - tasks with at least two holds and two flips (28): +0.080 [+0.005, +0.155].
+- **Pooled within-task AUROC:** C + P_code 0.567, C 0.490, P_code 0.592.
+- **The permutation null:** C + P_code mean −0.003 (95th percentile 0.072); C +0.001 (0.063).
+
+**Against §7.**
+- **Held:** Q1 rejected, with T inside its predicted range (+0.05 to +0.15); S2 not rejected; the
+  permutation null's mean within ±0.01.
+- **Missed:**
+  - S1 was predicted rejected. C is the weaker part: 0.058 below C + P_code, not within 0.02.
+  - S2's increment (+0.058) lies outside the predicted ±0.03, though S2 is not rejected.
+  - The code's mean log p points the other way: holds are less probable per token (−0.112), not
+    +0.05 to +0.15.
+  - Length is not neutral: holds are shorter (−0.123), not within ±0.05.
+  - Without the artefact tasks, T barely moves (+0.002), not the predicted rise of 0.01–0.03.

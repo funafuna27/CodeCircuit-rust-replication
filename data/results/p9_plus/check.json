@@ -1,0 +1,33 @@
+{
+ "recomputed": {
+  "population": [
+   44,
+   908,
+   474,
+   434
+  ],
+  "Q1": 0.0858,
+  "S1_C": 0.0275,
+  "P_code_alone": 0.1232,
+  "code_logp_mean": -0.1124
+ },
+ "analysis": {
+  "population": [
+   44,
+   908,
+   474,
+   434
+  ],
+  "Q1": 0.0858,
+  "S1_C": 0.0275,
+  "P_code_alone": 0.1232,
+  "code_logp_mean": -0.1124
+ },
+ "agree": {
+  "population": true,
+  "Q1": true,
+  "S1_C": true,
+  "P_code_alone": true,
+  "code_logp_mean": true
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "texts": 908,
+ "seconds_total": 305.4,
+ "s_median": 0.331,
+ "max_mem_gb": 12.63,
+ "gpu": "NVIDIA GeForce RTX 5070",
+ "torch": "2.11.0+cu128",
+ "library": {
+  "circuit_tracer": "/home/user1/miniconda3/envs/codecircuit/lib/python3.13/site-packages/circuit_tracer",
+  "version": "0.5.3.dev1+g6018ed8d3"
+ },
+ "guard": {
+  "PREREGISTRATION_P9_M1.md": "4f47d227807815b7",
+  "PREREGISTRATION_P9_MECH.md": "b3d88723b6646200",
+  "PREREGISTRATION_P9_MUTSTATE.md": "b2f79ca3802fae71",
+  "PREREGISTRATION_P9_PLUS.md": "ad5aaa4403bfbfad",
+  "data/p9_plus_common.py": "52dafc1bf68b59bc",
+  "data/p9_plus_extract.py": "4df3cd83f3ccb4b7",
+  "data/p9_plus_analysis.py": "5747022afa3f06a5",
+  "data/p9_c_audit.py": "e7fe027fbb5191d7",
+  "data/p9_common.py": "2ae1e55a3d7dcf08",
+  "data/p9_m1_extract.py": "0e7ef0905d88a7dc",
+  "data/p9_m1_common.py": "7166104d8918d584",
+  "HEAD": "e99c98845f22ba34ce6c97d510dd99e9e0c7d12a"
+ },
+ "sha256": "418b29bb870d97f196beb7cceb9db286c248d840290907ba694d280be4cc0bf2"
+}
