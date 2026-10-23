@@ -207,3 +207,25 @@ edge inputs (§8).
     +0.05 to +0.15.
   - Length is not neutral: holds are shorter (−0.123), not within ±0.05.
   - Without the artefact tasks, T barely moves (+0.002), not the predicted rise of 0.01–0.03.
+
+## 12. Post hoc checks (written after §11)
+
+Script: `p9_plus_explore.py`. Output: `results/p9_plus/explore.json`. The signals were rebuilt as the
+analysis built them, and the out-of-fold scores equal the saved ones exactly. Nothing here changes a
+registered decision.
+
+**Q1's Monte Carlo error.** 1,800 more permutations were drawn from the same family (streams
+[20261023, 31, k], k = 200..1999).
+- At K = 2,000, p = 0.032: 63 permuted statistics lie at or above T. The 1,800 new permutations alone
+  give 0.032.
+- The Monte Carlo SE is about 0.004. The registered rejection at p 0.040 is not a Monte Carlo accident.
+
+**Length.** Within a task, holds are shorter than flips: by 6.6 code tokens, as a median over tasks.
+- P_code's out-of-fold score correlates −0.12 with the centred length.
+- With a pooled linear length slope removed, P_code keeps +0.101 [+0.021, +0.181] (AUROC 0.601;
+  sign flip p 0.010).
+- The forest on length alone gives +0.030 [−0.059, +0.118].
+- P_code + length beyond length gives +0.083 [−0.004, +0.178] (p 0.041).
+- C without its length column gives +0.030.
+
+P_code's within-task signal is not length.
