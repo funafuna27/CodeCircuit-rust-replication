@@ -138,7 +138,13 @@ method); not rejected: "not shown", with its interval.
 
 ## 9. Deviations
 
-None yet.
+1. **The graphs ran on an A100-SXM4-40GB, not the 80GB card §4 names** (the bench's). Colab assigned the
+   40GB variant; all 167 graphs and GxA passes came from one session (one `run_*.json`), with the
+   committed script (sha256 8e7a627e…) and the §4 environment (torch 2.11.0+cu130, circuit-tracer
+   0.5.3.dev1+g6018ed8d3, transformers 4.57.3, transformer-lens 3.2.1). Both cards are the same GA100 chip
+   with 108 SMs; only the memory differs. The analysis's check ("A100" and the committed script) passes,
+   "all on one GPU type" holds, and no G number is compared with a graph from another card. Noticed when
+   the outputs were copied, recorded with the results.
 
 ## 10. Execution
 
