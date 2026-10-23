@@ -176,3 +176,28 @@ the item file (same means to four decimals). Problem means with 95% problem-boot
   predicted; P3 not rejected (predicted even odds). Wrong: the span exceeds the background by 0.038 per
   token, not ≤ 0.01; and the sweep is about half its peak at layer 15 and peaks at 22, not near its
   all-layer value by 15.
+
+## 12. Results — G (graphs and GxA; 2026-10-23, 167 problems, Colab A100-SXM4-40GB)
+
+`results/p9_mech/analysis_G.json`; the raw outputs in `results/p9_mech/colab_out.tar.gz`. All 167 graphs had
+the expected tokens and node count and their 49 features; attribute 42.4 s median (max 80.0). The target's
+probability agrees between the graph and the plain model to 0.0017 (median). The shares on D were
+recomputed independently from the raw outputs (same means). Problem means with 95% problem-bootstrap
+intervals.
+
+- **G1 rejected:** s_graph(D) − s_GxA(D) +0.059 [+0.052, +0.065], one-sided p 1e-5 (80% MDE 0.008);
+  s_graph(D) 0.085 (median 0.091), s_GxA(D) 0.026 (median 0.019); the graph's share is below GxA's on 13
+  of 167 items.
+- **Specificity row** (57 problems whose G item mentions x again before q): per token, D minus x's other
+  mentions is +0.013 [+0.005, +0.022] for the graph and −0.001 [−0.005, +0.004] for GxA; graph minus GxA
+  +0.014 [+0.005, +0.023]. Per token over all 167, the graph puts 0.076 on D and 0.011 on other `let`
+  names; GxA 0.022 and 0.010. On the 57, x's other mentions get 0.027 (graph) and 0.013 (GxA) per token.
+- The final position: graph 0.113, GxA 0.033.
+- **Spearman with the same item's d_D:** graph −0.33, GxA −0.07; graph minus GxA [−0.43, −0.09]. Neither
+  method's share on D rises with the causal effect of patching D; the graph's falls with it.
+- **Reading (§5):** the graph places more of the mutation's attribution on rustc's cause than GxA does;
+  among mentions of x, D stands out for the graph and not for GxA. But the graph's share on D is lower
+  where patching D matters more, so its concentration on D is not evidence that D carries what the model
+  uses about x's mutability.
+- Against §6: G1, both shares and the specificity row as predicted; the graph's correlation (−0.33) lies
+  just outside the predicted ±0.3, in the direction opposite to what a faithful explanation would show.
