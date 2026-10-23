@@ -62,6 +62,13 @@ paper's causal claim by zeroing graph-ranked features at the model's own bugs
 (`PREREGISTRATION_P8_INTERVENTION.md`, finished 2026-10-19). The study closed
 with Phase 8; the conclusion comes first, the phases follow.
 
+**Reopened for Phase 9 (2026-10-22).** At the author's request, a ninth phase
+asked narrower questions with labels that carry no noise: rustc's borrow checker
+and MBPP+'s cases. Its parts are pre-registered in `PREREGISTRATION_P9_*.md` and
+reported in "Phase 9", after Phase 8. The conclusion below is kept as it was
+written when the study closed. What Phase 9 changes is stated at the end of its
+own section.
+
 ## Conclusion (study closed 2026-10-19)
 
 No further phase is planned. Over eight phases, seven of them pre-registered,
@@ -1157,6 +1164,221 @@ its 28 GPU-h. Its limits:
 - the wrong token's logit as the target;
 - Gemma-2-2b-it with its transcoders;
 - 30 MBPP problems in Rust.
+
+## Phase 9: rustc as the label (reopened 2026-10-22)
+
+Phases 1–8 labelled programs with MBPP's three asserts, which let wrong
+programs through: in Phase 7, a third of the checkable mutants that pass them
+(64 of 193) return a wrong value on a nearby input. Phase 9 asks narrower
+questions with labels that carry no noise: the borrow checker's verdict, and
+MBPP+'s cases. Each part was
+pre-registered before its data existed, and its point estimates were recomputed
+by separate code.
+
+- **Part ①** (`PREREGISTRATION_P9_MUTSTATE.md`): does Gemma track that a
+  binding is immutable, at a mutation rustc rejects?
+- **Gate 3** (`PREREGISTRATION_P9_MECH.md`): where does that information sit?
+  Activation patching, and attribution graphs against one backward pass.
+- **Part ③** (`PREREGISTRATION_P9_M1.md`): between problems, the paper's own
+  setting, what does the graph add to the output distribution and to a probe of
+  plain activations?
+- **Part ②** (`PREREGISTRATION_P9_PLUS.md`): within a task, does the forward
+  pass tell which of Gemma's passing programs MBPP+ overturns?
+
+### ① Does Gemma track that a binding is immutable?
+
+**The texts:**
+- In a compiling sample S, x is a `let mut` binding whose `mut` is necessary,
+  and y is an immutable `let`.
+- **V** moves the exact text `mut ` from x to y: the characters and the tokens
+  are the same. rustc rejects V only for mutating x (E0384, E0596, E0594).
+- **A** adds `mut` to y and keeps x's, so it compiles.
+
+**The statistic:** at the first mutation of x, the summed log-probability of the
+statement's leading tokens in V minus in A. From it is subtracted the same
+difference at background tokens matched for entropy and distance from the edit.
+
+**The data:** 3,457 items from 1,800 sources over 167 problems (the samples of
+Phases 3, 5 and 6). One score per problem, a one-sided problem-level sign flip.
+
+| test | problems | mean (nats) | 95% CI | p | decision |
+|---|---|---|---|---|---|
+| primary: the mutation drops beyond matched background | 167 | −0.290 | [−0.390, −0.200] | 1e-5 | rejected |
+| S2: x's own `mut` against another necessary binding's | 86 | −0.607 | [−0.787, −0.441] | 1e-5 | rejected |
+| S1: the mutation against reads of x | 61 | −0.060 | [−0.184, +0.078] | 0.20 | not rejected |
+
+**Reading:**
+- Gemma's probability of mutating x drops when x is not `mut`. The drop goes
+  beyond what the edit does elsewhere, and it depends on whose `mut` was removed.
+- Specificity is not shown: reads of x drop too (−0.113).
+- Adding `mut` to y alone lowers the mutation of x by 0.21 nats. Gemma predicts
+  which binding a statement mutates from which bindings are declared `mut`.
+- **The probe:** at x's token, a probe of the activations separates x losing
+  `mut` from another binding losing it (0.958). The next-token distribution
+  there does not (0.517).
+
+### Gate 3: where the information sits
+
+**Patching (P).** At every layer, the residual stream at x's name in its
+declaration (D, where rustc's `mut ` suggestion points) is copied from A into V.
+The same 3,457 items are used.
+
+| test | problems | mean (nats) | 95% CI | p | decision |
+|---|---|---|---|---|---|
+| P1: patching D restores the mutation | 167 | +0.121 | [+0.099, +0.145] | 1e-5 | rejected |
+| P2: D more than the next token | 167 | +0.018 | [−0.015, +0.047] | 0.14 | not rejected |
+| P3: the mutation more than reads of x, per token | 61 | −0.008 | [−0.049, +0.028] | 0.64 | not rejected |
+
+- **How much is restored:**
+  - D restores 38% of the gap between A and V (+0.321).
+  - The whole declaration restores 98%.
+  - The token after D alone restores +0.103.
+- **Against the background:** per token, the mutation gains 0.038 more than the
+  background does.
+- **The layers:** patched at one layer only, the effect is 0 at layers 0–3,
+  rises from layer 4 to +0.132 at layer 22, and is 0 again from layer 24. The
+  information is written at D over layers 4–21 and read from it by layer 23.
+- **Reading:** restoring x's name restores part of the mutation, and so does the
+  next token. Specificity to the mutation is not shown.
+
+**Graphs (G).** 167 attribution graphs were built, one per problem (target: the
+mutation's first token; `BATCH_SIZE` 64; all on one Colab A100). They are
+compared with gradient × activation (GxA) from one backward pass of the plain
+model.
+
+- **G1 is rejected.** The graph puts 0.085 of the attribution on D, GxA 0.026:
+  difference +0.059 [+0.052, +0.065], p 1e-5.
+- **Among mentions of x** (57 problems), D stands out for the graph (+0.013
+  [+0.005, +0.022] per token) and not for GxA (−0.001).
+- **But it does not track the cause:** the graph's share on D correlates −0.33
+  with the patching effect at D (GxA −0.07; difference [−0.43, −0.09]). Where D
+  matters more causally, the graph puts less on it.
+- **Reading:** the graph concentrates on rustc's cause more than one backward
+  pass does, but that concentration is not evidence that D carries what the
+  model uses.
+- **Deviation:** Colab gave an A100-SXM4-40GB, not the 80GB card of the
+  benchmark. All 167 graphs came from that one card.
+
+### ③ What the graph adds between problems
+
+**The setting** is the paper's own: one score per problem from its line
+prefixes (Rust strict, 206 problems, with Phase 2's rows and labels), and a
+random forest out of fold over problems.
+
+**The signals:**
+- **C:** the output distribution and length.
+- **P:** a probe of plain transcoder activations (45 SVD directions); P_code
+  uses the code positions only.
+- No graph was built. C and P come from one forward pass, whose activations
+  equal the stored graphs' bit for bit.
+
+| signal or contrast | AUROC or Δ | 95% CI | reading |
+|---|---|---|---|
+| G | 0.789 | [0.724, 0.848] | |
+| C | 0.707 | [0.634, 0.777] | |
+| G + C | 0.777 | [0.712, 0.839] | |
+| P_code + C | 0.784 | | |
+| primary: G + C − C | +0.070 | [+0.029, +0.110] | not determined once the null centre and widening are applied ([−0.006, +0.109]); seed-dependent |
+| G's attribution-dependent columns beyond G_free + C + P | +0.017 | [+0.005, +0.031] | adds less than 0.05 |
+| P_code beyond C | +0.076 | [+0.019, +0.135] | adds |
+
+**Reading:**
+- Between problems, the graph's increment over C is not determined.
+- Once a probe of plain activations is in the base, attribution adds less than
+  0.05.
+- The probe over the code positions adds to C about as much as the whole graph
+  does.
+- In Python (240 problems) the primary is +0.035 and not determined.
+
+### ② Within a task: the programs MBPP+ overturns
+
+MBPP's three asserts pass programs that MBPP+'s cases (about 100 per task)
+overturn: 506 of the 1,936 distinct passing programs in the registered label
+set. In 44 tasks, Gemma wrote both kinds: 908 programs, 474 that hold and 434
+that flip.
+
+**The question:** within each task, does Gemma's forward pass rank the programs
+that hold above those that flip?
+
+**The method:**
+- The signals are part ③'s: C, and P_code over the code positions. Both are
+  centred within the task.
+- The same forest is used, out of fold over tasks.
+- The statistic is the mean over tasks of the within-task AUROC.
+- The test is one-sided, by permuting labels within tasks and refitting.
+
+**The audit first.** Of 44 flips drawn one per task:
+- 8 are MBPP+ artefacts, mostly the reference's conventions (for example,
+  "remove all whitespace" keeping tabs);
+- 11 of the 36 genuine ones fail only on edge inputs: an empty input,
+  negatives, non-ASCII text, or overflow.
+
+| test | mean within-task AUROC (Δ for S2) | 95% CI | p | decision |
+|---|---|---|---|---|
+| Q1: C + P_code | 0.586 | [0.497, 0.673] | 0.040 (permutation, K 200) | rejected |
+| S1: C alone | 0.527 | [0.426, 0.627] | 0.249 | not rejected |
+| S2: P_code beyond C | +0.058 | [−0.013, +0.130] | 0.061 | not rejected |
+
+- **Descriptive:**
+  - P_code alone scores 0.623 [0.544, 0.704].
+  - Holds are shorter than flips (the token count scores 0.377) and less
+    probable per token (the mean log p scores 0.388). This is against the
+    prediction.
+- **Post hoc:**
+  - With 2,000 permutations, Q1's p is 0.032.
+  - With a linear length effect removed, P_code's score keeps 0.601
+    [0.521, 0.681].
+- **Reading:** within a task, the output distribution and the activations over
+  the code together carry some information about which passing programs are
+  wrong beyond the asserts. The effect is small, and neither part is shown
+  alone.
+
+### What Phase 9 adds
+
+| question | answer | part |
+|---|---|---|
+| Does Gemma track that a binding is immutable? | **Yes, at the mutation.** Its probability drops by 0.29 nats beyond matched background, depending on whose `mut` was removed. Not shown to be specific to the mutation: reads of x drop too | ① |
+| Where is it carried? | **At x's name and the next token** in the declaration, written over layers 4–21 and read by layer 23. The whole declaration restores 98% of the gap | gate 3 |
+| Does the graph point at the cause? | **More than one backward pass does**: 0.085 against 0.026 of the attribution lies on rustc's cause. But its share is lower where the cause matters more (−0.33) | gate 3 |
+| Between problems, what does the graph add? | **Over the output distribution, not determined** (+0.070). **Beyond a probe of plain activations, its attribution adds less than 0.05** | ③ |
+| Within a task, does the forward pass tell the programs MBPP+ overturns? | **Weakly, and only together**: C + P_code 0.586 (p 0.040). Neither part is shown alone; P_code alone 0.623 (descriptive) | ② |
+
+**In short:**
+- Phase 9 repeats the closing conclusion in the paper's own setting: the
+  attribution adds less than 0.05 beyond plain activations (③).
+- It adds two things:
+  - Gemma's forward pass tracks a non-local Rust state, mutability, at the
+    binding's declaration (①, gate 3).
+  - The graph's attribution, though it concentrates on the compiler's cause,
+    does not follow the causal effect there (gate 3).
+- Within a task, the forward pass carries a small signal about errors beyond
+  MBPP's asserts (②). Descriptively it comes more from the activations
+  (P_code alone 0.623) than from the output distribution (C alone 0.527); the
+  registered tests do not separate the two.
+
+**Limits:**
+- One model (gemma-2-2b-it) with its transcoders.
+- Mutability only, among Rust's non-local states; moves and borrows were not
+  tested.
+- Part ① edits Gemma's compiling samples; they are not its own errors.
+- Part ② has 44 tasks, and its flips include artefacts (18%).
+
+**Where everything is:**
+
+| part | pre-registration | scripts in `data/` | results in `data/results/` |
+|---|---|---|---|
+| stage A: labels and items (gate 1) | decisions in `PREREGISTRATION_P9_MUTSTATE.md` §7 | `p9_common.py`, `p9_pool.py`, `p9_a1_*`, `p9_a2_*`, `p9_a3_*` | `p9_state/` |
+| ①, mutability | `PREREGISTRATION_P9_MUTSTATE.md` | `p9_b_*` | `p9_state/` |
+| ③, between problems | `PREREGISTRATION_P9_M1.md` | `p9_m1_*` | `p9_m1/` |
+| gate 3, patching and graphs | `PREREGISTRATION_P9_MECH.md` | `p9_mech_*`; the Colab speed test `bench_colab.py`, `bench_compare.py` | `p9_mech/` (the graphs' outputs in `colab_out.tar.gz`), `colab_bench/` |
+| ②, MBPP+ within a task | `PREREGISTRATION_P9_PLUS.md` | `p9_c_audit.py`, `p9_plus_*` | `p9_plus/`; the audit in `p9_state/c_audit*` |
+
+- MBPP+ is fetched by `p9_a3_fetch.py` into `/home/user1/p9data`, outside the
+  repository.
+- The forward passes and activation extractions live in `/home/user1/p9_work`,
+  also outside it. Each result file records their sha256.
+- Gate 3's 167 graphs were not saved, by design; their per-position influences
+  and 49 features are kept.
 
 # Baselines
 To help you reproduce our results more conveniently, here is the repository for the baseline: [Fair-mir](https://github.com/ncancedda/Chain-of-Embedding/tree/fair-mir).
