@@ -347,3 +347,28 @@ widening, SESOI 0.05):
 **Prediction:**
 - Every upper bracket lies below 0.05, the largest about 0.04.
 - The logistic learner's plug-in lies within ±0.01 of the forest's.
+
+**Results (appended 2026-10-26, after the run).** Run 15:55–18:00 JST on commit 5f6d883. The
+extractions' sha256 and the code hashes checked. Variant 0 reproduced §11 exactly (+0.0174, c0 +0.0027,
+upper bracket +0.0317). Every null centre used all 100 draws (Monte Carlo SE ≤ 0.001).
+
+| variant | plug-in [95%] | c0 (L) | bracket | reading |
+|---|---|---|---|---|
+| 0 reference | +0.017 [+0.005, +0.031] | +0.003 | [−0.002, +0.032] | less than 0.05; not distinguishable from 0 |
+| 1–10 seed pairs | +0.007 to +0.019 (median +0.014) | −0.000 to +0.003 | lower −0.011 to +0.002; upper +0.023 to +0.036 | as variant 0, except variant 4 (814016, 41454): [+0.002, +0.034], "adds a little (+0.018), less than 0.05" |
+| 11 logistic | −0.006 [−0.019, +0.007] | −0.004 | [−0.019, +0.014] | as variant 0 |
+| 12 MBPP+, §7 rule | +0.011 [−0.003, +0.024] | +0.004 | [−0.011, +0.024] | as variant 0 |
+| 13 MBPP+, no exclusions | +0.018 [+0.003, +0.032] | +0.002 | [−0.003, +0.034] | as variant 0 |
+| 14 Python 240 | +0.007 [−0.006, +0.020] | +0.001 | [−0.011, +0.022] | as variant 0 |
+
+**Under the rule.** Every upper bracket is below 0.05; the largest is +0.036 (variant 5). So the
+write-up may say that the attribution adds less than 0.05 beyond C + P, in Rust strict under these
+variants and in Python 240. Whether it adds anything stays open: 14 of the 15 brackets include 0, and
+one seed pair excludes it narrowly (lower bracket +0.0015). Unlike the primary in §11, the reference
+seeds do not sit at one end of the seed pairs: 7 of the 10 alternatives give less.
+
+**Against the prediction.**
+- The first held: the largest upper bracket is +0.036 (predicted about 0.04).
+- The second missed. The logistic learner's plug-in is −0.006, 0.024 below the forest's, not within
+  ±0.01. The forest's small increment does not appear under a linear learner. The miss runs in the
+  direction of the claim: the logistic upper bracket is the smallest of all (+0.014).
