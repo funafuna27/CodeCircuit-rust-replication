@@ -310,3 +310,40 @@ held; S2 for P slightly above range (+0.053) and P_code larger, not smaller, tha
 Step 0: every step-0 AUROC above 0.6 held (C 0.601); G's one-row contrast within 0.05 of C's missed
 (−0.060); the step-0 Δ within ±0.05 missed (+0.056). Python: the reading held; C's one-row contrast
 (+0.113) outside ±0.06 (missed).
+
+## 12. Post hoc: S1's sensitivity (written 2026-10-26, before any of it was computed)
+
+**Why this addendum.** Reviewers of the write-up noted a gap. S1 (the attribution-dependent columns
+beyond G_free + C + P) carries the write-up's central claim. Yet it was run with one seed pair and one
+learner, while §6 gave the primary seed pairs, a logistic learner and MBPP+ labels. This addendum fixes
+the same checks for S1 before any is computed. It is post hoc: it can qualify S1's registered reading,
+not strengthen it. Script: `p9_m1_s1_sensitivity.py`. Output: `results/p9_m1/s1_sensitivity.json`.
+
+**The contrast:** S1 as §6 defines it, full G + C + P against base G_free + C + P.
+- The data are the stored extractions: sha256 checked; the hashes of the code that made them must equal
+  the current files.
+- The signals, P's SVD and the problem draws are the analysis's own (stream [20261022, 81, population]).
+
+**Variants, each with its own design-L null centre** (100 draws, stream 86 with key = population × 100 +
+20 + variant index; computed with the variant's seeds, learner and labels) and §6's reading (1.28
+widening, SESOI 0.05):
+
+| variant | population | change from the registered S1 |
+|---|---|---|
+| 0 (reference) | Rust strict | none; key 2 as in §11. It must reproduce §11 exactly (plug-in +0.0174, c0 +0.0027, upper bracket +0.0317), or nothing else is read |
+| 1–10 | Rust strict | §6's alternative seed pairs (stream 85: perm_base, rf_seed) |
+| 11 | Rust strict | the logistic learner (rank normal scores, C = 1) |
+| 12 | Rust strict | MBPP+ labels, §7 rule (85 / 206 positive) |
+| 13 | Rust strict | MBPP+ labels, no exclusions (77 / 206 positive) |
+| 14 | Python 240 | none (§11 has S1 there only raw, +0.007) |
+
+**Rule for the write-up:**
+- If every variant's upper bracket is below 0.05, it says: the attribution adds less than 0.05 beyond C
+  + P.
+- Otherwise it says: the increment is small (+0.017) but not bounded below 0.05 under the named
+  variants.
+- The registered reading of §11 stays as it is either way.
+
+**Prediction:**
+- Every upper bracket lies below 0.05, the largest about 0.04.
+- The logistic learner's plug-in lies within ±0.01 of the forest's.
