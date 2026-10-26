@@ -93,6 +93,22 @@ set against a cheaper method (Phases 4, 5, 7 and 8), it did no better: the kind
 of edit, the output distribution, a probe of plain activations, a token ban, or
 one backward pass.
 
+> **Note added 2026-10-26, after Phase 9.** The paragraph above covers Phases
+> 1–8 and is kept as written. Phase 9's between-problem test (part ③) narrows
+> it:
+> - In Rust, the graph scores above the output distribution between problems:
+>   0.789 against 0.707. Its increment over it (+0.070) is "not determined"
+>   once the null centre is applied, and it is +0.08 to +0.09 under other seeds.
+> - In Python the two are level (0.709 against 0.713).
+> - What holds there is narrower: the output distribution together with a probe
+>   of plain activations matches the graph (P_code + C 0.784 against G + C
+>   0.777).
+> - The table's row on the paper's surface baselines is also partly answered by
+>   that part. Its C holds close equivalents of them, not the paper's own
+>   implementations: the final position's top-1 probability and entropy, and
+>   the code's mean log-probability and mean entropy. So for Python, "not
+>   rerun" no longer quite holds: there the graph and C are level.
+
 **What the study does not cover.**
 - One model, gemma-2-2b-it, with its transcoders; MBPP's short functions;
   Python and Rust only.
@@ -1258,6 +1274,19 @@ model.
   model uses.
 - **Deviation:** Colab gave an A100-SXM4-40GB, not the 80GB card of the
   benchmark. All 167 graphs came from that one card.
+- **Note added 2026-10-26 (post hoc, `PREREGISTRATION_P9_MECH.md` §13):** most
+  of the −0.33 goes with the mutation's log-probability in V (lpV).
+  - When V already makes the mutation likely, patching can restore little
+    (ρ −0.59), and the graph puts more on D (ρ +0.42).
+  - Conditioned on lpV, the graph's correlation is −0.107 [−0.267, +0.051],
+    and its difference from GxA is −0.041 [−0.242, +0.149].
+  - Across the covariate sets that include lpV, the graph's correlation runs
+    from −0.10 to −0.16 and the difference from −0.04 to −0.18; several
+    intervals include 0.
+  - "It does not track the cause" therefore overstates the result. G1 stands,
+    but the graph's concentration on D is not shown to follow the causal effect,
+    and whether it runs against that effect cannot be separated from V's
+    baseline probability.
 
 ### ③ What the graph adds between problems
 
@@ -1289,6 +1318,15 @@ random forest out of fold over problems.
 - The probe over the code positions adds to C about as much as the whole graph
   does.
 - In Python (240 problems) the primary is +0.035 and not determined.
+
+> **Note added 2026-10-26 (post hoc, `PREREGISTRATION_P9_M1.md` §12).** The
+> row "beyond G_free + C + P" was rerun under 14 variants, fixed before any was
+> computed. They are §6's ten other seed pairs, the logistic learner, both
+> MBPP+ label sets and Python 240, each with its own null centre. Every upper
+> bracket is below 0.05 (the largest +0.036), so "adds less than 0.05" holds
+> under all of them. Whether it adds anything stays open. The seed pairs give
+> +0.007 to +0.019, the logistic learner −0.006 and Python +0.007; 14 of the 15
+> brackets include 0.
 
 ### ② Within a task: the programs MBPP+ overturns
 
@@ -1355,6 +1393,13 @@ that hold above those that flip?
   MBPP's asserts (②). Descriptively it comes more from the activations
   (P_code alone 0.623) than from the output distribution (C alone 0.527); the
   registered tests do not separate the two.
+
+> **Note added 2026-10-26.** The second of the "two things" above is weakened by
+> a post hoc check (gate 3's note; `PREREGISTRATION_P9_MECH.md` §13). The graph
+> concentrates on the compiler's cause more than one backward pass does. Whether
+> that concentration runs against the causal effect cannot be separated from
+> the mutation's baseline probability in V. The row "Does the graph point at the
+> cause?" in the table above should be read the same way.
 
 **Limits:**
 - One model (gemma-2-2b-it) with its transcoders.
