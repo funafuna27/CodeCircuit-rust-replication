@@ -73,3 +73,7 @@ its committer date is when it was copied. None of them touches
 | `67e4483` | `0399695` | 2026-10-23 15:34 +0900 | Phase 9 part 2: within-task MBPP+ results (Q1 rejected at p 0.040; S1, S2 not) |
 | `8ea59c3` | `d9f7739` | 2026-10-23 16:05 +0900 | Phase 9 part 2: post hoc checks (more permutations, length) |
 | `4f3e2e3` | `2ef04ac` | 2026-10-23 16:06 +0900 | readme: Phase 9 section (rustc and MBPP+ as labels) |
+| `5f6d883` | `804b4a7` | 2026-10-26 15:55 +0900 | Phase 9 M1: post hoc S1 sensitivity, fixed before it is computed (section 12) |
+| `8309883` | `14e97ff` | 2026-10-26 15:56 +0900 | Phase 9 gate 3: post hoc covariates of the graph-vs-patching correlation (section 13) |
+| `3e3efa7` | `e11b121` | 2026-10-26 18:02 +0900 | Phase 9 M1: S1 sensitivity results (section 12) |
+| `052fdb1` | `c0ec8f6` | 2026-10-26 18:02 +0900 | readme: dated notes after Phase 9 (closing paragraph, gate 3, part 3) |
