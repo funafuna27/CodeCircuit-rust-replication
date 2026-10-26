@@ -1,0 +1,121 @@
+{
+ "post_hoc": true,
+ "items": 167,
+ "inputs_sha256": {
+  "analysis_G.json": "dfa9e0131963a0d3eba416872cd3fa4bded21a4971ab06d925a447cc9bc1f249",
+  "patch_primary.jsonl.gz": "a8a72d9497c710388906bc90efba7d05c75991cda4188954765c32cfb974e7e7"
+ },
+ "partial_spearman_with_d_D": {
+  "none (registered)": {
+   "graph": -0.328,
+   "graph_ci95": [
+    -0.471,
+    -0.176
+   ],
+   "gxa": -0.068,
+   "gxa_ci95": [
+    -0.231,
+    0.099
+   ],
+   "graph_minus_gxa": -0.26,
+   "graph_minus_gxa_ci95": [
+    -0.431,
+    -0.091
+   ]
+  },
+  "lpV": {
+   "graph": -0.107,
+   "graph_ci95": [
+    -0.267,
+    0.051
+   ],
+   "gxa": -0.066,
+   "gxa_ci95": [
+    -0.225,
+    0.092
+   ],
+   "graph_minus_gxa": -0.041,
+   "graph_minus_gxa_ci95": [
+    -0.242,
+    0.149
+   ]
+  },
+  "gap": {
+   "graph": -0.209,
+   "graph_ci95": [
+    -0.368,
+    -0.051
+   ],
+   "gxa": 0.077,
+   "gxa_ci95": [
+    -0.067,
+    0.203
+   ],
+   "graph_minus_gxa": -0.286,
+   "graph_minus_gxa_ci95": [
+    -0.459,
+    -0.103
+   ]
+  },
+  "lpV + gap": {
+   "graph": -0.102,
+   "graph_ci95": [
+    -0.261,
+    0.05
+   ],
+   "gxa": 0.038,
+   "gxa_ci95": [
+    -0.109,
+    0.171
+   ],
+   "graph_minus_gxa": -0.14,
+   "graph_minus_gxa_ci95": [
+    -0.324,
+    0.041
+   ]
+  },
+  "n_pos + graph_last": {
+   "graph": -0.354,
+   "graph_ci95": [
+    -0.498,
+    -0.208
+   ],
+   "gxa": -0.098,
+   "gxa_ci95": [
+    -0.263,
+    0.062
+   ],
+   "graph_minus_gxa": -0.256,
+   "graph_minus_gxa_ci95": [
+    -0.424,
+    -0.094
+   ]
+  },
+  "all five": {
+   "graph": -0.157,
+   "graph_ci95": [
+    -0.307,
+    -0.014
+   ],
+   "gxa": 0.025,
+   "gxa_ci95": [
+    -0.135,
+    0.169
+   ],
+   "graph_minus_gxa": -0.181,
+   "graph_minus_gxa_ci95": [
+    -0.353,
+    -0.007
+   ]
+  }
+ },
+ "spearman": {
+  "d_D_vs_lpV": -0.591,
+  "graph_vs_lpV": 0.422,
+  "gxa_vs_lpV": 0.025
+ },
+ "gap": {
+  "median": 0.0382,
+  "items_gap_le_0": 40
+ }
+}

@@ -207,3 +207,39 @@ intervals.
   uses about x's mutability.
 - Against §6: G1, both shares and the specificity row as predicted; the graph's correlation (−0.33) lies
   just outside the predicted ±0.3, in the direction opposite to what a faithful explanation would show.
+
+## 13. Post hoc: what the graph-vs-patching correlation goes with (2026-10-26)
+
+§12 reported, as a registered descriptive, the Spearman correlation between each method's share on D and the
+same item's patching effect: graph −0.33, GxA −0.07. The write-up read it as "the graph's share is lower
+where patching D matters more".
+
+**How this came up.** Reviewers of the write-up (2026-10-26; three independent recomputations) found that
+most of the correlation goes with lpV, the mutation span's log p in V. When V already gives the mutation a
+high probability:
+- patching can restore little (ρ(d_D, lpV) −0.59);
+- the graph puts more on D (ρ(graph share, lpV) +0.42; GxA +0.03).
+
+`p9_mech_covariates.py` records this (`results/p9_mech/covariates.json`). It uses partial Spearman
+correlations: ranks residualised on the covariates' ranks. Intervals come from 2,000 bootstrap draws of the
+167 items, one per problem (stream [20261023, 50]).
+
+| covariates | graph | GxA | graph − GxA |
+|---|---|---|---|
+| none (§12, registered) | −0.328 [−0.471, −0.176] | −0.068 | −0.260 [−0.431, −0.091] |
+| lpV | −0.107 [−0.267, +0.051] | −0.066 | −0.041 [−0.242, +0.149] |
+| gap (lpA − lpV) | −0.209 [−0.368, −0.051] | +0.077 | −0.286 [−0.459, −0.103] |
+| lpV + gap | −0.102 [−0.261, +0.050] | +0.038 | −0.140 [−0.324, +0.041] |
+| prefix length + the final position's share | −0.354 [−0.498, −0.208] | −0.098 | −0.256 [−0.424, −0.094] |
+| all five (lpV, gap, prefix length, final share, span length) | −0.157 [−0.307, −0.014] | +0.025 | −0.181 [−0.353, −0.007] |
+
+The gap is small on these items: median 0.038 nats, and 40 of 167 items have a gap ≤ 0.
+
+**Reading (replaces the write-up's sentence; §12's numbers stand).**
+- **G1 stands.** The graph puts more of the mutation's attribution on D than GxA does.
+- **Not shown:** that this concentration follows the causal effect of D.
+- **Not separable from lpV:** whether it runs against that effect. With lpV in the model, the graph's
+  correlation is −0.10 to −0.16, and its difference from GxA ranges from −0.04 to −0.18 depending on the
+  covariate set; several intervals include 0.
+- lpV may be a mediator rather than a confounder. If so, conditioning on it removes part of what was asked.
+  That is why the claim is weakened, not reversed.
